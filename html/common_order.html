@@ -33,7 +33,7 @@
 		}
 	</style>
 </head>
-<body style="background-color: #EEEEEE;">
+<body style="background-color: #EEEEEE;" id="body">
 	<div class="mui-bar mui-bar-nav mui-bar-transparent">
 		<span class="mui-icon mui-icon-back"></span>
 		<span class="mui-title">常规订单</span>
@@ -73,16 +73,11 @@
 				</ul>
 			</div>
 		</div>
-		<!-- <div class="c-footer">
-			佳居店员中心
-		</div> -->
 	</div>
-	
 </body>
 <script src="../js/mui.min.js"></script>
 <script src="../js/jquery-1.11.0.min.js"></script>
 <script src="../js/vue.min.js" type="text/javascript"></script>
-<script src="../js/util.js" type="text/javascript"></script>
 <script type="text/javascript" src="../js/icon-back.js" ></script>
 <script type="text/javascript" src="../js/back-to-top.js" ></script>
 <script type="text/javascript">
@@ -181,24 +176,43 @@
 			]
 		},
 		methods:{
-			
+			initScroll(){
+				mui('.mui-scroll-wrapper').scroll({
+					deceleration: 0.0005 //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
+				});
+			},
+			pullRefresh(){
+				var _self=this;
+				mui.init({
+				  pullRefresh : {
+					container:"#common_order",//下拉刷新容器标识，querySelector能定位的css选择器均可，比如：id、.class等
+					up : {
+					  height:50,//可选.默认50.触发上拉加载拖动距离
+					  auto:false,//可选,默认false.自动上拉加载一次
+					  contentrefresh : "正在加载...",//可选，正在加载状态时，上拉加载控件上显示的标题内容
+					  contentnomore:'没有更多数据了',//可选，请求完毕若没有更多数据时显示的提醒内容；
+					  callback :function(){
+						  //console.log(_self.List)
+						  setTimeout(()=>{
+							  _self.List.splice(_self.List.length,0,{
+								  name:'大锤4',
+								  src:'http://img0.imgtn.bdimg.com/it/u=3662028681,2807228479&fm=26&gp=0.jpg',
+								  order_no:'CG0001254458',
+								  pics:[
+								  ],
+								  fsrq:'2018.06.18 14:35'
+							  });
+							  this.endPullupToRefresh(false);
+						  },2000);
+					  } //必选，刷新函数，根据具体业务来编写，比如通过ajax从服务器获取新数据；
+					}
+				  }
+				});
+			}
 		},
 		mounted() {
-			pullRefresh('#common_order',function(cb){
-				var _self=this;
-				setTimeout(function(){
-					_self.List.splice(_self.List.length,0,{
-						name:'大锤4',
-						src:'http://img0.imgtn.bdimg.com/it/u=3662028681,2807228479&fm=26&gp=0.jpg',
-						order_no:'CG0001254458',
-						pics:[],
-						fsrq:'2018.06.18 14:35'
-					});
-					cb();
-				},2000);
-			}.bind(this));
-			//this.initScroll();
-			//this.pullRefresh();
+			this.initScroll();
+			this.pullRefresh();
 		}
 	});
 	
