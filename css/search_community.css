@@ -1,0 +1,82 @@
+
+	.search-content{
+	width: 100%;
+	height: 55px;
+	background-color: #EEEEEE;
+	}
+	.search-input{
+	width: 80%;
+	height: 35px;
+	position: relative;
+	left: 5%;
+	top: 10px;
+	background-color: white;
+	border-radius:25px;
+	float: left;	
+	}
+	input[type=text]{
+	font-size: 14px; 
+	color: #CCCCCC; 
+	margin: 0; 
+	padding: 0; 
+	border: 0; 
+	position: relative;
+	left: 5%;
+	width: 95%;
+	height: 35px;
+	float: left;
+	border-radius:50px;
+	}
+	input::-webkit-input-placeholder,
+	textarea::-webkit-input-placeholder {
+	color: #CCCCCC;
+	position: relative;
+	left: 0;
+	}
+	.search-icon{
+	float: right;
+	position: relative;
+	right: 5%;
+	top: 18px;
+	color: #59C9A5;
+	}
+	.search-icon .mui-icon{
+	font-weight: 900;
+	color: #6991FE;
+	}
+	.where-city{
+	width: 90%;
+	height: 60px;
+	position: relative;
+	left: 5%;
+	border-bottom: 1px solid #EEEEEE;
+	/*background-color: #59C9A5;*/
+	}
+	.where-city-prompt1{
+	width: 50%;
+	float: left;
+	position: relative;
+	top: 38%;
+	font-size: 14px;
+	color: #CCCCCC;
+	}
+	.where-city-prompt2{
+	width: 20%;
+	float: right;
+	position: relative;
+	top: 28%;
+	font-size: 14px;
+	color: #CCCCCC;
+	}
+	.btn-yes{
+	float: right;
+	border-radius:25px;
+	height: 28px;
+	width: 60px;
+	color: #CCCCCC;
+	border: 1px solid #EEEEEE;
+	padding: 0;
+	}
+	.where-city{
+		display: none;
+	}

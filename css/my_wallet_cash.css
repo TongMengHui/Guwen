@@ -1,0 +1,21 @@
+	.user-info {
+    background-color: #6C91FE;
+	}
+	.withdrawal {   
+    color: #6C91FE;
+    border: 1px solid #6C91FE;   
+	}
+	.mui-bar-tab {
+    background-color: #6C91FE;  
+	}
+	.verification {
+    margin-bottom: 30px;
+	}
+	.get-code{
+		margin-top: 8px;
+		padding: 0;
+		height: 29px;
+		width: 85px;
+		line-height: 29px;
+		text-align: center;
+	}

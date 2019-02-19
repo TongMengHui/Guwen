@@ -1,0 +1,123 @@
+
+    .client-info-container{
+    position: relative;
+    top: 1px;
+    left: 4%;
+    height: 60px;
+    width: 92%;
+    border-bottom: 1px solid #EEEEEE;
+    }
+    .info-caption{
+    position: relative;
+    top: 20px;
+    float: left;
+    width: 25%;
+    height: 30px;
+    border: 0;
+    font-size: 16px;
+    color: #666666;
+    }
+    .info-input{
+    position: relative;
+    top: 17px;
+    float: left;
+    width: 60%;
+    height: 30px;
+    border: 0;
+    font-size: 16px;
+    color: #999999;
+    line-height: 30px;
+    }
+    .info-more-container{
+    position: relative;
+    top: 17px;
+    float: right;
+    width: 15%;
+    height: 30px;
+    background-color: white;
+    }
+    .info-more-font{
+    position: relative;
+    top: 5px;
+    float: right;
+    width: auto;
+    height: 20px;
+    font-size: 16px;
+    color: #CCCCCC;
+    }
+    .info-more-icon{
+    position: relative;
+    top: 5px;
+    float: right;
+    width: 15px;
+    height: 20px;
+    font-size: 16px;
+    color: #CCCCCC;
+    }
+    .info-more-icon .mui-icon{
+    font-size: 18px;
+    }
+	.mui-switch-blue.mui-active {
+    border: 2px solid #6C91FE;
+    background-color: #6991FE;
+	}
+	.mui-switch-mini {
+    width: 47px;
+    height: 29px;
+	}
+	.mui-switch .mui-switch-handle {
+    position: absolute;
+    z-index: 1;
+    top: -1px; 
+    right: -1px;
+    left: 1px;  
+    width: 26px;
+    height: 26px;
+    }
+    .horizontal-line{
+    height: 7px;
+    width: 100%;
+    background-color: #EEEEEE;
+    }
+    .third-party-container{   
+    width: 100%;
+    height: 41px;
+    font-size: 18px;
+    color: #999999;
+    background-color: #EEEEEE;
+    }
+    .third-party-caption{
+    position: relative;
+    top: 10px;
+    left: 4%;
+    height: 20px;
+    width: 92%;
+    }
+    .drop-out-btn{
+    height: 60px;
+    width: 100%;
+    font-size: 18px;
+    color: #6C91FE;
+    border: 0;
+    border-radius: 0;
+    background-color: #FFFFFF;
+    }
+    .bottom-font{
+	
+	width: 100%;
+	height: 50px;
+	font-size: 15px;
+	color: #CCCCCC;
+	text-align: center;
+	line-height: 50px;
+	background-color: #EEEEEE;
+	}
+	.mui-popup-button:first-child {
+    font-size: 16px;
+    color: #999999;
+	}
+	.mui-popup-button.mui-popup-button-bold {
+    font-weight: inherit;
+    font-size: 16px;
+    color: #6C91FE;
+	}

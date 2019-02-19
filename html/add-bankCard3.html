@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>添加银行卡</title>
+		<link rel="stylesheet" href="../css/mui.css" />
+		<link rel="stylesheet" href="../css/mui.picker.css">
+		<link rel="stylesheet" href="../css/mui.poppicker.css">
+		<link rel="stylesheet" href="../css/common.css" />
+		<style>
+			.mui-content{padding-bottom:50px;}
+		.mui-table-view:after{height:0px;}
+		.cardholder>p{padding:15px;color:#999999;}
+		.cardholder span{color:#999999;margin-left:8px;}
+		.cardholder li:nth-of-type(2){}
+		.card-info>p{padding:15px;color:#999999;}
+		
+		.mui-icon-arrowright,.select{color:#cccccc;font-size:15px;}
+		.mui-icon-arrowright{right:15px;}
+		.select{right:35px;}
+		
+		.mui-bar-tab{bottom:0;background-color:#D6AE70;width:100%;text-align: center;height:50px;line-height: 50px;}
+		.mui-bar-tab p{color:#ffffff;font-size:18px;}
+		
+		.verify>p{color:#999999;padding:15px;}
+		.verify li:nth-of-type(2) span{color:rgb(108, 145, 254);;border:1px solid rgb(108, 145, 254);;border-radius:20px;padding:2px 10px;position: absolute;right:15px;}
+		.chooseCity{font-size: 15px;color: rgb(153, 153, 153);}
+	</style>
+	</head>
+	<body>
+		<div class="mui-bar mui-bar-nav">
+			<span class="mui-icon mui-icon-back"></span>
+			<span class="position-center">修改银行卡</span>
+		</div>
+		<div class="mui-content">
+			<div class="bg-white cardholder">
+				<p>持卡人信息</p>
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell">
+						持&nbsp卡&nbsp人&nbsp：<span>神小题</span>
+					</li>
+					<li class="mui-table-view-cell">
+						身份证号：<span>320123********2561</span>
+					</li>
+					<li class="mui-table-view-cell">
+						手机号码：
+						<input type="text" placeholder="填写在银行预留的手机号" />
+					</li>
+				</ul>
+			</div>
+			<div class="card-info">
+				<p>银行卡信息</p>
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell">
+						银行卡号：
+						<input type="text" placeholder="请填写您的银行卡号" />
+					</li>
+					<li class="mui-table-view-cell">
+						确认卡号：
+						<input type="text" placeholder="请确认您的银行卡号" />
+					</li>
+					<li class="mui-table-view-cell">
+						开户银行：
+						<span>自动识别</span>
+					</li>
+					<li class="mui-table-view-cell">
+						开户城市：
+						<input type="text" class="chooseCity" placeholder="请选择您开户行所在地" />
+						<span class="position-top select" onclick="chooseCity();">选择</span>
+						<span class="mui-icon mui-icon-arrowright position-top"></span>
+					</li>
+					<li class="mui-table-view-cell">
+						开户网点：
+						<input type="text" placeholder="填写您的具体开户网点" />
+						<!-- <span class="position-top select">选择</span> -->
+						<!-- <span class="mui-icon mui-icon-arrowright position-top"></span> -->
+					</li>
+				</ul>
+			</div>
+			<div class="verify bg-white">
+			<p>验证信息</p>
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell">
+					手机号
+					<span></span>
+				</li>
+				<li class="mui-table-view-cell">
+					验证码
+					<input type="text" placeholder="请输入验证码" />
+					<span>获取验证码</span>
+				</li>
+			</ul>
+		</div>
+			<div class="slogan">  
+				<p>GO家居-优化您的居家生活</p>  
+			</div>  
+			<div class="mui-bar mui-bar-tab" style="background: rgb(108,145,254);">  
+				<a href="add-bankCard.html"><p>确认添加</p></a> 	 
+			</div>  
+		</div>
+	</body>
+	<script src="../js/jquery-1.11.0.min.js"></script>
+	<script src="../js/mui.min.js"></script>
+	<script src="../js/mui.picker.min.js"></script>
+	<script src="../js/icon-back.js"></script>
+	<script src="../js/common.js"></script>
+	<script type="text/javascript">
+		function chooseCity() {
+			$(".chooseCity").text("");
+			var picker = new mui.PopPicker({
+				layer: 3,
+				buttons: ['cancle', 'ok']
+			});
+			picker.setData([{
+				value: '0',
+				text: '江苏省',
+				children: [{
+					value: "1",
+					text: "苏州市",
+					children: [{
+						value: "2",
+						text: "相城区"
+					}, {
+						value: "3",
+						text: "吴中区"
+					}, {
+						value: "4",
+						text: "沧浪区"
+					}],
+				}, {
+					value: "5",
+					text: "南京市",
+					children: [{
+						value: "6",
+						text: "A-A1-A0"
+					}, {
+						value: "7",
+						text: "A-A1-A1"
+					}, {
+						value: "8",
+						text: "A-A1-A2"
+					}],
+				}],
+
+			}, {
+				value: '9',
+				text: 'B',
+				children: [{
+					value: "10",
+					text: "B-B",
+					children: [{
+						value: "11",
+						text: "B-B-B0"
+					}, {
+						value: "12",
+						text: "B-B-B1"
+					}, {
+						value: "13",
+						text: "B-B-B2"
+					}],
+				}]
+			}]);
+
+			
+				$(".chooseCity").text("");
+				// 默认第一层显示第1项;第二层显示第2项;第三层显示第3项;
+				picker.pickers[0].setSelectedIndex(0);
+				picker.pickers[1].setSelectedIndex(1);
+				picker.pickers[2].setSelectedIndex(2);
+				picker.show(function(selectItems) {
+					var text1 = selectItems[0].text;
+					var text2 = selectItems[1].text;
+					var text3 = selectItems[2].text;
+					$(".chooseCity").val(text1 + " " + text2 + " " + text3);
+				})
+		}
+	</script>
+</html>

@@ -1,0 +1,43 @@
+
+	.info{
+   	position: relative;
+   	height: 40px;
+   	width: 90%;
+   	margin-left: 5%;
+   	margin-top: 20px;
+   	font-size: 14px;
+   	/*border: 1px solid #CCCCCC;*/
+   	}
+   	.sfz-front{
+   	height: 190px;
+   	width: 90%;
+   	margin-left: 5%;
+   	margin-top: 10px;
+   	text-align: center;
+   	background-color: white;
+   	border: 1px solid #EEEEEE;
+   	}
+   	.sfz-back{
+   	height: 190px;
+   	width: 90%;
+   	margin-left: 5%;
+   	margin-top: 10px;
+   	text-align: center;
+   	background-color: white;
+   	border: 1px solid #EEEEEE;
+   	}
+   	.mui-popover.mui-popover-action .mui-table-view {
+    margin: 0px;
+    margin-top: 9px;
+    text-align: center;
+    font-size: 15px;
+    color: #333333;
+    border-radius: 0px;
+	}
+	.mui-popover .mui-table-view {
+    margin-bottom: 0;
+    background-color: white; 
+	}
+	.mui-popover.mui-popover-action .mui-table-view .mui-table-view-cell:after {
+	height: 0;	
+	}

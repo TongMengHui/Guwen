@@ -1,0 +1,422 @@
+
+	.case-info-container{
+    position: relative;
+    top: 0px;
+    left: 5%;
+    height: 55px;
+    width: 90%;
+    border-bottom: 1px solid #EEEEEE;
+    /*background-color: #5E90FF;*/
+    }
+    .info-caption{
+    position: relative;
+    top: 20px;
+    float: left;
+    width: auto;
+    height: 30px;
+    border: 0;
+    font-size: 16px;
+    color: #666666;
+    }
+    .info-input{
+    position: relative;
+    top: 17px;
+    float: left;
+    width: 50%;
+    height: 30px;
+    border: 0;
+    font-size: 16px;
+    color: #999999;
+   /* background-color: #4CD964;*/
+    }
+    .info-more-container{
+    position: relative;
+    top: 17px;
+    float: right;
+    width: auto;
+    height: 30px;
+    }
+    .info-more-font{
+    position: relative;
+    top: 5px;
+    float: right;
+    width: auto;
+    height: 20px;
+    font-size: 16px;
+    color: #CCCCCC;
+    }
+    .info-more-icon{
+    position: relative;
+    top: 5px;
+    float: right;
+    width: 15px;
+    height: 20px;
+    font-size: 16px;
+    color: #CCCCCC;
+    }
+    .info-more-icon .mui-icon{
+    font-size: 18px;
+    }
+    .horizontal-line{
+    position: relative;
+    top: -1px;
+    width: 100%;
+    height: 7px;
+    background-color: #EEEEEE;
+    }
+    .case-name{
+    position: relative;
+    width: 100%;
+    height: 90px;
+    }
+    .case-name-caption{
+    position: relative;
+    left: 5%;
+    top: 20px;
+    width: 90%;
+    height: 22px;
+    font-size: 18px;
+    color: #666666;
+   /* background-color: #4CD964;*/
+    }
+    .case-name-input-content{
+    position: relative;
+    left: 5%;
+    top: 25px;
+    width: 90%;
+    height: 30px;
+    border-bottom: 1px solid #EEEEEE;
+   /* background-color: #4CD964;*/
+    }
+    .case-name-input{
+    position: absolute;
+    left: 0;
+    width: 80%;
+    height: 25px;
+    font-size: 16px;
+    color: #CCCCCC;
+    border: 0;
+    }
+    .case-name-icon{
+    position: absolute;
+    right: 0;
+    bottom: 10px;
+    width: 16px;
+    height: 16px;
+    }
+    .case-image{
+    position: relative;
+    width: 100%;
+    height: 205px;
+    /*background-color: #6C91FE;*/	
+    }
+    .case-image-caption{
+    position: relative;
+    left: 5%;
+    top: 20px;
+    width: 90%;
+    height: 22px;
+    font-size: 18px;
+    color: #666666;
+   /* background-color: #4CD964;*/
+    }
+    .case-image-content{
+    position: relative;
+    left: 5%;
+    top: 30px;
+    height: 150px;
+    width: 90%;
+    background-color: #EEEEEE;
+    }
+    .case-image-album{
+    position: relative;
+    top: 30px;
+    width: 100%;
+    height: 60px;
+    text-align: center;
+   /* background-color: #4CD964;*/
+    }
+    .case-image-icon{
+    height: 60px;
+    width: 60px;
+    border-radius: 50px;
+    }
+    .case-image-album-caption{
+    position: relative;
+    top: 40px;
+    width: 100%;
+    height: 22px;
+    font-size: 16px;
+    color: #999999;
+    text-align: center;
+   /* background-color: #4CD964;*/
+    }
+    .case-description{
+    position: relative;
+    width: 100%;
+    height: 200px;
+   /* background-color: #6C91FE;*/
+    }
+    .case-description-caption{
+    position: relative;
+    left: 5%;
+    top: 20px;
+    width: 90%;
+    height: 22px;
+    font-size: 18px;
+    color: #666666;
+    /*background-color: #4CD964;*/
+    }
+    .case-description-input-content{
+    position: absolute;
+    left: 5%;
+    bottom: 1px;
+    width: 90%;
+    height: 150px;
+    border-bottom: 1px solid #EEEEEE;
+    /*background-color: #8A6DE9;*/
+    }
+    .case-description-input{
+    position: absolute;
+    left: 0;
+    bottom: -15px;
+    width: 94%;
+    height: 150px;
+    font-size: 16px;
+    color: #CCCCCC;
+    border: 0;
+    padding-top: 0;
+    padding-left: 0;
+    padding-right: 0;
+    /*background-color: #4CD964;*/
+    }
+    .case-description-icon{
+    position: absolute;
+    right: 0;
+    bottom: 10px;
+    width: 16px;
+    height: 16px;
+    }
+    .batch-case-image{
+    position: relative;
+    width: 100%;
+    height: 60px;
+   /* background-color: #6C91FE;	*/
+    }
+    .batch-case-image-caption{
+    position: relative;
+    left: 5%;
+    top: 20px;
+    width: 90%;
+    height: 22px;
+    font-size: 18px;
+    color: #666666;
+   /* background-color: #4CD964;*/
+    }
+    .case-add-btn{
+	position: relative;
+	float: right;
+	width: 62px;
+	height: 25px;
+	font-size: 14px;
+	color: #6C91FE;
+	border-radius: 25px;
+	border: 1px solid #6C91FE;
+	padding-top: 2px;
+	}
+	.edit-case{
+    position: relative;
+    width: 100%;
+    height: 330px;
+   /* background-color: #4CD964;*/
+    }
+    #case-pic{
+    position: relative;
+    left: 5%;
+    width: 90%;
+    height: 215px;
+    z-index: 0;
+    }
+    #case-pic #edit-function-change{
+    position: absolute;
+    right: 0;
+	bottom: 0;
+    width: 45px;
+    height: 30px;
+    font-size: 14px;
+    color: white;
+    opacity: 0.9;
+    border: 0;
+    background-color: #555555;
+    z-index: 2;
+    }
+     #case-pic #edit-function-delete{
+    position: absolute;
+    right: 45px;
+	bottom: 0;
+    width: 45px;
+    height: 30px;
+    color: white;
+    opacity: 0.9;
+    border: 0;
+    background-color: #333333;
+    z-index: 2;
+    }
+    #edit-function-delete .mui-icon {
+    font-size: 20px;
+    }
+    .edit-content{
+    position: relative;
+    left: 5%;
+    height: 50px;
+    width: 90%;
+    border-bottom: 1px solid #EEEEEE;
+   /* background-color: #5E90FF;*/
+    }
+    .prompt-input{
+    position: relative;
+    top: 10px;
+    float: left;
+    width: 80%;
+    height: 30px;
+    border: 0;
+    color: #666666;
+    }
+    .edit-icon-content{
+    position: relative;
+    top: 10px;
+    float: right;
+    width: 20%;
+    height: 30px;
+    background-color: white;
+    }
+    .edit-icon-font{
+    position: relative;
+    top: 5px;
+    float: right;
+    width: 35px;
+    height: 20px;
+    font-size: 16px;
+    color: #CCCCCC;
+    }
+    .edit-icon-icon{
+    position: relative;
+    top: 5px;
+    float: right;
+    width: 15px;
+    height: 20px;
+    font-size: 16px;
+    color: #CCCCCC;
+    }
+    .edit-icon-icon .mui-icon{
+    font-size: 18px;
+    }
+    .related-products-caption{
+    position: relative;
+    left: 5%;
+    top: 20px;
+    width: 90%;
+    height: 22px;
+    font-size: 18px;
+    color: #666666;
+  /*  background-color: #4CD964;	*/
+    }
+    .product-info-container{
+    position: relative;
+    top: 20px;
+    width: 100%;
+    height: 95px;
+    border-bottom: 1px solid #EEEEEE;
+   /* background-color: #6C91FE;*/
+    }
+    .product-info-container-inside{
+    position: relative;
+    top: 15px;
+    left: 5%;
+    height: 65px;
+    width: 90%;
+   /* background-color: #8C70FF;*/
+    }
+    .product-pic{
+    position: relative;
+    float: left;
+    height: 65px;
+    width: 65px;
+    }
+    .product-introduction-container{
+    position: relative;
+    left: 15px;
+    float: left;
+    height: 65px;
+    width: 65%;
+   /* background-color: #6C91FE;*/
+    }	
+    .product-caption{
+    width: 100%;
+    height: 20px;
+    font-size: 14px;
+    color: #333333;
+   /* background-color: #4CD964;*/
+    }
+    .product-brand{
+    width: 100%;
+    height: 20px;
+    font-size: 11px;
+    color: #999999;
+  /*  background-color: #4CD964;*/
+    }
+    .product-price{
+    width: 100%;
+    height: 20px;
+    font-size: 14px;
+    color: #666666;
+   /* background-color: #4CD964;*/
+    }
+    .delete-icon{
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    width: 20px;
+    height: 24px;    
+    color: gray;
+    border: 0;
+    padding: 0;
+    background-color: white;
+    }
+    .delete-icon .mui-icon {
+    font-size: 25px;
+    }
+    .customer-information-caption{
+    position: relative;
+    left: 5%;
+    top: 20px;
+    width: 90%;
+    height: 22px;
+    font-size: 18px;
+    color: #666666;
+    margin-top: 20px;
+    /*background-color: #4CD964;*/	
+    }
+    .client-info-container{
+    position: relative;
+    top: 20px;
+    left: 5%;
+    height: 60px;
+    width: 90%;
+    border-bottom: 1px solid #EEEEEE;
+    }
+    .publish-btn-container{
+    position: relative;  
+    top: 25px;
+    width: 100%;
+    height: 50px;
+    }
+    .publish-btn{
+    width: 100%;
+    height: 100%;
+    font-size: 16;
+    color: white;
+    border: 0;
+    border-radius: 0;	
+    background-color: #CCCCCC;
+    }

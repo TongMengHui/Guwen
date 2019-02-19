@@ -1,0 +1,41 @@
+.mui-content{background-color:#F5F5F9;padding-bottom:50px;}
+.user-info{background-color:#DDB87B;overflow: hidden;color:#ffffff;padding:15px;}
+.user-info img{width:55px;height:55px;}
+.user-info>div{margin-left:70px;}
+.user-info>div>span{display: inline-block;margin-top:10px;}
+.user-info>div>p{font-size: 16px;}
+
+.border{padding:15px;}
+.money>span:nth-of-type(1),.account>span:nth-of-type(1){color:#666666;font-size:15px;}
+.money>div{border-bottom:1px solid #F5F5F9;padding-bottom:10px;padding-top:15px;}
+.money>div>span:nth-of-type(1){color:#cccccc;font-size:25px;}
+.money>div>span:nth-of-type(2){font-size:26px;color:#666666;}
+.money>p{color:#cccccc;font-size:13px;margin-top:16px;}
+
+.account img{width:23px;height:23px;}
+.account>div>span{font-size:18px;color:#999999;margin-left:8px;}
+
+.verification>li>span:nth-of-type(1){color:#666666;}
+.verification>li:nth-of-type(1)>span:nth-of-type(2){color:#999999;}
+.verification{margin-bottom:70px;}
+.withdrawal{float: right;color:#DBB578;border:1px solid #DBB578;border-radius:20px;padding:2px 10px;}
+
+
+
+.slogan{background-color:#f5f5f9;text-align: center;}
+.slogan>p{color:#CCCCCC;font-size:12px;padding:20px;}
+.mui-bar-tab{bottom:0;background-color:#D6AE70;width:100%;text-align: center;height:50px;line-height: 50px;}
+.mui-bar-tab p{color:#ffffff;font-size:18px;}
+
+
+
+.mui-popup-inner{padding:30px;}
+.mui-popup-buttons{height:60px;font-size:16px;}
+.mui-popup-buttons>span:nth-of-type(1){color:#999999;}
+.mui-popup-buttons>span:nth-of-type(2){color:#D6AE70;}
+.mui-popup-button{height:60px;line-height: 60px;}
+.yellow{
+	background: rgb(253,218,114);
+	color: #fff;
+	border-radius: 50%;
+}

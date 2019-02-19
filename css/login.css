@@ -1,0 +1,153 @@
+ 	
+	#logo-content{
+    position:relative;
+    margin:0 auto;
+    width: 100%; 
+    height: 210px;
+    background: linear-gradient(to right, #8C70FF, #5E90FF);
+    /*background-color: #6C91FE;*/
+    }	
+    #logo{
+    position:absolute;
+    top:50px;
+    left:25%;
+    width:50%;
+    height:50%;
+    }
+	.login-content{
+	position: relative;
+	width: 100%;
+	height: 100px; 
+	margin:0 auto;
+	z-index: 0;
+	}
+    .login {
+    height: 240%; 
+    width: 90%; 
+    position:absolute;
+    top:-20px;
+    left:5%;
+    border-radius:10px;
+    background-color: #FFFFFF;
+    z-index: 3;
+    }
+  
+    .mui-segmented-control.mui-segmented-control-inverted {
+    width: 90%;
+    position: relative;
+    left: 5%;
+    border: 0;
+    border-radius: 0;
+	}
+   .mui-scroll{
+   	display: flex;
+   	justify-content: space-around;
+   	position: relative;
+   	left: 0;
+   	top:2px;
+   	}
+   	.mui-control-item{	
+   	font-size: 18px;
+   	
+    }
+  	.mui-segmented-control.mui-scroll-wrapper .mui-control-item {
+    display: inline-block;
+    width: 50%;
+    padding: 0 20px;
+    border: 0;
+	}
+    .mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active {
+    color: #6C91FE;
+    border-bottom: 3px solid #6C91FE;
+    width: 100%;
+	}
+	
+	.mui-input-row label {
+	position: relative;
+    float: left;
+    color: #666;
+    font-size: 15px;
+    /*width: 25%;*/
+    padding: 17px 15px;
+	}
+	.mui-input-row label~input {
+    float: left;
+    width: auto;
+    margin-bottom: 0;
+    padding-left: 0;
+    border: 0;
+	}
+	input[type=number]{
+    line-height: 21px;
+    height: 50px;
+    padding: 10px 15px;
+	float: left;
+	position: absolute;
+	left: 25%;
+	}
+	.mui-input-group .mui-input-row:after {
+    position: absolute;
+    right: 15px;
+    bottom: 0;
+    left: 15px;
+	}
+	.mui-input-group .mui-input-row {
+    height: 50px;
+	}
+	.mui-input-group:after{ height:0}
+	.mui-input-group:before{ height:0}
+	.mui-btn-login{
+	height: 40px;
+	width: 90%;
+	position: absolute;
+	left: 5%;
+	top: 30%;
+	line-height: 30px;
+	background-color: #6C91FE;
+	border-radius:20px;
+	border: none;
+	color: white;	
+	font-size: 18px;
+	}
+	.mui-btn-test{
+		width: 96px;
+	float: right;
+	position: absolute;
+	right: 5%;
+	top: 9px;
+	border-radius:20px;
+	color: #6C91FE;
+	border-color: #6C91FE;
+	}
+	.mui-forget{
+	float: right;
+	position: absolute;
+	right: 5%;
+	top: 140%;
+	font-size: 16px;
+	color: #999999;
+	}
+	.dsf{
+	position: relative;
+	top: 85px;
+   	height: 60px;
+   	line-height: 60px;
+   	text-align: center;
+	}
+ 	.dsf .dsf-line{
+   	display: inline-block;
+   	width: 30px;
+   	vertical-align: 3px;
+   	border-top: 1px solid #ccc ;
+	}
+	.dsf .dsf-font{
+   	color: #999999;
+   	font-size: 13px;
+   	vertical-align: middle;
+	}
+	.promt{
+		padding: 0px 15px;
+		color: red;
+		font-size: 12px;
+		height: 12px;
+	}

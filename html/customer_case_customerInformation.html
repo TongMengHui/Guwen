@@ -1,0 +1,146 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>客户案例-客户信息</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../css/mui.picker.min.css">
+		<link rel="stylesheet" type="text/css" href="../css/customer_case_customerInformation.css" />
+	</head>
+	<body style="background-color: white;">
+		<header class="mui-bar mui-bar-nav mui-bar-nav-bg" style="background-color: white; box-shadow: none; border-bottom: 1px solid #EEEEEE;">
+			<span class="mui-icon mui-icon-back"></span>
+			<span class="mui-title" style="font-size: 18px; color: #333333;">发布案例</span>
+		</header>
+		<div class="mui-content" style="background-color: white;">
+			<div id="time-line-container">
+				<div id="line">
+					<div id="line-front"></div>
+					<div id="line-middle"></div>
+					<div id="line-back"></div>
+				</div>
+				<div id="round-attribute">
+					<img src="../img/attribute.png" style="width: 100%; height: 100%;" />
+				</div>
+				<div id="round-description">
+					<img src="../img/description.png" style="width: 100%; height: 100%;" />
+				</div>
+				<div id="round-relate-products">
+					<img src="../img/relate-products.png" style="width: 100%; height: 100%;" />
+				</div>
+				<div id="round-customer-information">
+					<img src="../img/customer-information.png" style="width: 100%; height: 100%;" />
+				</div>
+				<div id="font-attribute">案例属性</div>
+				<div id="font-description">案例描述</div>
+				<div id="font-relate-products">关联产品</div>
+				<div id="font-customer-information">客户信息</div>
+			</div>
+			<div class="products-caption">
+				客户信息
+			</div>
+			<div class="client-info-container">
+				<div class="info-caption">
+					用户姓名：
+				</div>
+				<input class="info-input" placeholder="请填写用户真实姓名" />
+			</div>
+			<div class="client-info-container">
+				<div class="info-caption">
+					性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别：
+				</div>
+				<input class="info-input" placeholder="先生" />
+				<a href="#">
+					<div class="info-more-container">
+						<div class="info-more-icon">
+							<span class="mui-icon mui-icon-arrowright"></span>
+						</div>
+						<div class="info-more-font">选择</div>
+					</div>
+				</a>
+			</div>
+			<div class="client-info-container">
+				<div class="info-caption">
+					手机号码：
+				</div>
+				<input class="info-input" placeholder="请填写客户手机号码" />
+				<div class="info-more-container">
+					<div class="info-more-font">非必填</div>
+				</div>
+			</div>
+			<div class="client-info-container">
+				<div class="info-caption">
+					所在地：
+				</div>
+				<input class="info-input" placeholder="选择客户住宅所在地" />
+				<a href="#">
+					<div class="info-more-container">
+						<div class="info-more-icon">
+							<span class="mui-icon mui-icon-arrowright"></span>
+						</div>
+						<div class="info-more-font">选择</div>
+					</div>
+				</a>
+			</div>
+			<div class="client-info-container">
+				<div class="info-caption">
+					所属小区：
+				</div>
+				<input class="info-input" placeholder="请选择所属小区" />
+				<a href="search_community.html">
+					<div class="info-more-container">
+						<div class="info-more-icon">
+							<span class="mui-icon mui-icon-arrowright"></span>
+						</div>
+						<div class="info-more-font">选择</div>
+					</div>
+				</a>
+			</div>
+			<a href="customer_case.html"><button class="publish-btn">发布</button></a>
+
+	</body>
+	<script src="../js/mui.min.js"></script>
+	<script type="text/javascript" src="../js/jquery-1.11.0.min.js"></script>
+	<script src="../js/mui.picker.js"></script>
+	<script src="../js/mui.poppicker.js"></script>
+	<script type="text/javascript" src="../js/icon-back.js"></script>
+	<script type="text/javascript">
+		mui.init()
+		var infoMore = mui('.info-more-font')
+		var infoInput = mui('.info-input')
+		// 选择性别
+		infoMore[0].addEventListener('tap', function() {
+			var picker = new mui.PopPicker();
+			picker.setData([{
+				value: '0',
+				text: '先生'
+			},
+			{
+				value: '1',
+				text: '女士'
+			}]);
+			picker.show(function(selectItems) {
+				console.log(selectItems)
+				infoInput[1].value = selectItems[0].text
+			})
+		})
+		// 选择所在地
+		infoMore[2].addEventListener('tap', function() {
+			var picker = new mui.PopPicker();
+			picker.setData([{
+				value: '0',
+				text: '苏州'
+			},
+			{
+				value: '1',
+				text: '南京'
+			}]);
+			picker.show(function(selectItems) {
+				console.log(selectItems)
+				infoInput[3].value = selectItems[0].text
+			})
+		})
+		
+	</script>
+</html>

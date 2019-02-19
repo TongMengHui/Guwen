@@ -1,0 +1,53 @@
+a{display: inline-block;}
+
+.mui-bar>span{color:#ffffff;}
+.mui-bar>span:nth-of-type(2){right:40px;}
+.mui-bar>span:nth-of-type(3){right:15px;}
+.bg-image{background:url(../../img/user/scbanner.png) no-repeat;background-size:100% 200px;width:100%;height:200px;}
+
+.mall-distance{padding:15px;border-bottom:1px solid #f5f5f9;}
+.mall-distance>div{display: inline-block;}
+.mall-distance>div>span{display: block;}
+.mall-distance>div:nth-of-type(1){width:70%;}
+.mall-distance>div:nth-of-type(2){width:28%;text-align: center;border-left:1px solid #f5f5f9;}
+.mall-distance>div>span:nth-of-type(2){margin-top:10px;}
+
+
+.market-navigation>ul{display: flex;flex-direction: row;justify-content: space-around;border-bottom:1px solid #F5F5F9;padding-top:20px;padding-bottom:20px;}
+.market-navigation>ul>li{text-align: center;}
+.market-navigation>ul>li>a>img{width:45px;height:45px;}
+.market-navigation p{color:#666666;}
+
+.popular-activities{padding:15px;position:relative;border-bottom:1px solid #f5f5f9;}
+.popular-activities>div:nth-of-type(1)>a span:nth-of-type(1){}
+.popular-activities>div:nth-of-type(1)>a span:nth-of-type(2){}
+.popular-activities>div:nth-of-type(2) img{width:295px;height:128px;}
+.popular-activities>div:nth-of-type(2){margin-top:10px;}
+.popular-activities>div:nth-of-type(2) span{display: block;margin-top:5px;}
+
+.swiper-slide{width:90%;}
+
+
+.recommend-business{padding:15px;}
+
+.recommend-business>div:nth-of-type(1)>a span:nth-of-type(1){}
+.recommend-business>div:nth-of-type(1)>a span:nth-of-type(2){}
+.recommend-business>ul{display: flex;flex-direction: row;justify-content: space-between;}
+.floor{margin-top:20px;width:50px;height:26px;background-color:#F2F2F2;color:#666666;text-align: center;line-height: 26px;}
+
+.recommend-business .selected{color:#ffffff;background-color:#343434;}
+
+.merchants
+.merchants>div:nth-of-type(1){padding:15px;}
+.merchants ul{overflow: hidden;}
+.merchants a>img{height:184px;width:100%;}
+.merchants li a{display:block;}
+.merchants li p{color:#333333;}
+.merchants li span:nth-of-type(1){font-size:11px;color:#999999;padding-top:4px;padding-bottom:6px;}
+.merchants li span:nth-of-type(2){font-size:12px;color:#999999;}
+
+.mui-table-view-cell{padding:11px 0px;}
+
+.case-shows{margin-top:10px;}
+.case-shows div{padding-left:65px;}
+.case-shows>img{width:39px;height:39px;margin-left:15px;}

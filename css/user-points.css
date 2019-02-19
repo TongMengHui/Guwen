@@ -1,0 +1,60 @@
+.mui-bar-nav{background:-webkit-linear-gradient(left,#C09F68,#E8D5A8);border-bottom:none;color:#ffffff;}
+.recoder{right:10px;border:1px solid #ffffff;border-radius:20px;padding:2px 6px;}
+.current{text-align: center;background:-webkit-linear-gradient(left,#C09F68,#E8D5A8);color:#ffffff;padding:30px;}
+.current>span:nth-of-type(1){font-size:35px;}
+.current>span:nth-of-type(2){font-size:50px;}
+.current>span:nth-of-type(3){display: block;margin-top:10px;color:#ffffff;}
+
+
+.sign-in{padding:15px;overflow: hidden;position: relative;}
+.sign-in>div:nth-of-type(1)>p:nth-of-type(1){font-size:15px;color:#999999;}
+.sign-in>div:nth-of-type(1)>p:nth-of-type(2){color:#999999;}
+.sign-in>div:nth-of-type(1)>p:nth-of-type(2)>span{color:#CA9C68;}
+.sign-in>div:nth-of-type(1)>p:nth-of-type(3){position: absolute;right:15px;top:20px;background-color:#E4E4E4;border-radius: 20px;padding:8px 14px;color:#ffffff;}
+
+
+.sign-in-date{margin-top:20px;display: flex;justify-content: space-around;position:relative;padding-bottom:40px;}
+.sign-in-date>span{display:inline-block;width:25px;height:25px;border:1px solid #cccccc;background-color:#E4E4E4;border-radius:50%;font-size:12px;text-align: center;line-height: 25px;color:#cccccc;z-index: 1;}
+.sign-in-date>div{height:1px;width:90%;background-color:#cccccc;position: absolute;left:15px;top:12px;}
+.sign-in-date>div>span:nth-last-of-type(1){position: relative;}
+.sign-in-date img{width:19px;height:19px;position: absolute;top:-10px;right:6px;;}
+.sign-in-date p{color:#cccccc;position: absolute;left:50%;top:40px;transform: translateX(-50%);-moz-transform: translateX(-50%);-ms-transform: translateX(-50%);-webkit-transform: translateX(-50%);}
+
+
+.earn-points{padding:15px;}
+.earn-points>div:nth-of-type(1){position: relative;}
+.earn-points>div:nth-of-type(1)>span:nth-of-type(2){display: block;color:#999999;font-size:12px;}
+.earn-points>div:nth-of-type(1)>span:nth-of-type(3),.earn-points>div:nth-of-type(1)>span:nth-of-type(4){position:absolute;font-size:14px;}
+.earn-points>div:nth-of-type(1)>span:nth-of-type(3){right:10px;top:8px}
+.earn-points>div:nth-of-type(1)>span:nth-of-type(4){right:0px;top:12px}
+
+
+.earn-points>div:nth-of-type(2){margin-top:20px;}
+.earn-points img{width:40px;height:40px;background-color:#ffffff;border-radius:50%;}
+.earn-points>div:nth-of-type(2)>div>div{width:130px;height:75px;border-radius:5px;float:left;margin-right:8px;}
+.earn-points>div:nth-of-type(2)>div>div:nth-of-type(1){background:-webkit-linear-gradient(left,#C09F68,#E8D5A8);}
+.earn-points>div:nth-of-type(2)>div>div:nth-of-type(2){background:-webkit-linear-gradient(left,#67748B,#8290AB);}
+.earn-points>div:nth-of-type(2)>div>div:nth-of-type(3){background:-webkit-linear-gradient(left,#CB9B97,#EEC9C5);}
+.earn-points>div:nth-of-type(2) span{display: block;text-align: center;}
+.earn-points>div:nth-of-type(2) span:nth-of-type(1){margin-top:14px;}
+
+.coupon-exchange {padding-top:20px;}
+.coupon-exchange>div{margin-left:10px;position: relative;}
+.coupon-exchange>div>span+span{font-size:14px;color:#CCCCCC;}
+.coupon-exchange>div>span:nth-of-type(2){right:20px;}
+.coupon-exchange>div>span:nth-of-type(3){right:10px;}
+.coupons{padding:15px;overflow: hidden;margin-top:10px;display: flex;flex-direction: row;flex-wrap: wrap;justify-content: space-around;}
+.coupons>li{width:32%;}
+.coupons>li span{display: block;}
+.coupons>li>div>span:nth-of-type(2){color:#C09F68;font-size:13px;}
+.coupons>li>div:nth-of-type(1){height:111px;text-align: center;padding-top:20px;background-color:#f2f2f2;}
+.coupons>li>div:nth-of-type(1)>span:nth-of-type(1){color:#C09F68;font-size:35px;}
+.coupons>li>div:nth-of-type(1)>span:nth-of-type(1)>span{display:inline-block;color:#FF625F;font-size:35px;padding-left:5px;}
+.coupons>li>div:nth-of-type(2){margin-bottom:20px;}
+.coupons>li>div:nth-of-type(2)>span{margin-top:5px;}
+.coupons>li>div:nth-of-type(2)>span:nth-of-type(1){color:#666666;font-size:13px;}
+
+
+.footer>p{color:#cccccc;text-align: center;background-color:#F5F5F9;padding:16px;font-size:12px;}
+
+.sign-in-date .select{border:2px solid #C09F68;color:#C09F68;}

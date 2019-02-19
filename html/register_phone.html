@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>注册-手机验证-店员版</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<link href="../css/mui.min.css" rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" href="../css/register_phone.css"/>
+</head>
+<body style="background-color: white;">
+<header class="mui-bar mui-bar-nav mui-bar-nav-bg" style="background-color: white; box-shadow: none; border-bottom: 1px solid #CCCCCC;">
+	<span class="mui-icon mui-icon-back"></span>
+   	<span class="mui-title" style="font-size: 18px; color: #333333;">用户注册</span>
+</header>
+<div class="mui-content" style="background-color: white;">
+	<div id="time-line-content">
+		<div id="line">
+			<div id="line-front"></div>
+			<div id="line-back"></div>
+		</div>
+		<div id="round-front"></div>
+		<div id="round-middle"></div>
+		<div id="round-back"></div>
+		<div id="font-front">选择身份</div>
+		<div id="font-middle">手机验证</div>
+		<div id="font-back">设置密码</div>
+	</div>
+	<div class="phonetest-content">
+		<div class="phone-content">
+			<div class="phone-info">手机号</div>
+			<div class="phone-number-input">
+				<input type="number" id="phone_number" placeholder="请输入手机号"/>
+			</div>		
+		</div>
+		<div class="test-content">
+			<div class="test-info">验证码</div>
+			<div class="test-code-input">
+				<input type="number" placeholder="请输入验证码"/>
+			</div>			
+				<input type="button" class="test-code-btn" value="获取验证码" onclick="sendCode(this), checkMobile(phone_number.value)"></input>		
+		</div>
+		<div class="next-content">
+			<a href="register_password.html"><button class="next-btn">下一步</button></a>
+			<a href="login.html"><span class="had">已有账号立即登录</span></a>
+		</div>
+	</div>
+	<div class="bottom-font">
+		GO佳居网
+	</div>
+</div>
+</body>
+<script src="../js/mui.min.js"></script>
+<script type="text/javascript" src="../js/jquery-1.11.0.min.js" ></script>
+<script type="text/javascript" src="../js/icon-back.js" ></script>
+<script type="text/javascript">
+	mui.init()	
+	var clock = '';
+ 	var nums = 60;
+ 	var btn;
+ 	function sendCode(thisBtn)
+ 	{ 
+ 		btn = thisBtn;
+ 		btn.disabled = true; //将按钮置为不可点击
+ 		btn.type.color="#cccccc"
+ 		btn.value = nums+'秒后重新获取';
+ 		clock = setInterval(doLoop, 1000); //一秒执行一次
+ 	}
+ 	function doLoop()
+ 	{
+ 		nums--;
+ 		if(nums > 0){
+  		btn.value = nums+'秒后重新获取';
+ 		}else{
+  		clearInterval(clock); //清除js定时器
+  		btn.disabled = false;
+  		btn.value = '获取验证码';
+  		nums = 60; //重置时间
+ 		}
+ 	}
+ 	function checkMobile(str) {
+    	if(str==""){
+        	alert("手机号不能为空！");
+    	}
+    	else{
+        	var re = /^1\d{10}$/     // 以1开始后面加10位数字
+        		if (re.test(str)==false) {
+            		alert("手机号格式错误！");
+        		}
+    	}
+	}
+
+</script>
+</html>

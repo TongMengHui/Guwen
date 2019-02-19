@@ -1,0 +1,12 @@
+	.picture-name-edit{
+	border: 0;
+	} 
+	.save-btn{
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    height: 50px;
+    font-size: 16px;
+    color: white;
+    background-color: #6991FE;
+    }

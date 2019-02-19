@@ -1,0 +1,157 @@
+
+	#time-line-content{
+    position:relative;
+    margin:0 auto;
+    width: 100%; 
+    height: 100px;
+    z-index: 0;
+    box-shadow: 0 5px 5px #DDDDDD;
+    background-color: white;
+    }
+	#time-line-content #line{
+    position:absolute;
+    top: 45%;
+    left: 15%;
+    width:70%;
+    height:4%;
+    border-radius:5px;
+    z-index:1;
+    }
+    #time-line-content #line-front{
+    width: 50%;
+    height: 100%;
+    background-color: #6991FE;
+    border-radius:5px;
+    z-index:2;
+    float: left;
+    }
+    #time-line-content #line-back{
+    width: 50%;
+    height: 100%;
+    background-color: #6991FE;
+    border-radius:5px;
+    z-index:2;
+    float: left;
+    }
+	#time-line-content #round-front{
+    position:absolute;
+    top:30%;
+    left:12%;
+    width:33px;
+    height:33px;
+	border-radius: 50%;
+    z-index:3;
+    }
+    #time-line-content #round-middle{
+    position:absolute;
+    top:30%;
+    left:45%;
+    width:33px;
+    height:33px;
+	border-radius: 50%;
+    z-index:3;
+    }
+     #time-line-content #round-back{
+    position:absolute;
+    top:30%;
+    left:78%;
+    width:33px;
+    height:33px;
+	border-radius: 50%;
+    z-index:3;
+    }
+    #time-line-content #font-front{
+    position:absolute;
+    top:70%;
+    left:10%;
+    font-size: 12px;
+    color: #999999;
+    z-index:3;
+    }
+    #time-line-content #font-middle{
+    position:absolute;
+    top:70%;
+    left:43%;
+    font-size: 12px;
+    color: #999999;
+    z-index:3;
+    }
+    #time-line-content #font-back{
+    position:absolute;
+    top:70%;
+    left:76%;
+    font-size: 12px;
+    color: #999999;
+    z-index:3;
+    }
+    .review{
+    position: relative;
+    width:100%;
+    height: 300px;
+    }
+    .under-review-icon{
+    width: 100%;
+    height: 140px;
+    position: relative;
+    top: 60px;
+    text-align: center;
+    }
+    .success{
+    width: 100%;
+    height: 22px;
+    position: relative;
+    top: 80px;
+    font-size: 18px;
+    color: #999999;
+    text-align: center;
+    }
+    .wait{
+    width: 100%;
+    height: 22px;
+    position: relative;
+    top: 81px;
+    font-size: 18px;
+    color: #999999;
+    text-align: center;
+    }
+    .enter-index{
+    position: absolute;
+    bottom: 100px;
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    }
+    .enter-index-btn{
+    width: 300px;
+    height: 45px;
+    font-size: 16px;
+    color: white;
+    border-radius: 25px;
+    border: 0;
+    background-color: #5E90FF;
+    }
+    .improve-info{
+    position: absolute;
+    bottom: 40px;
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    }
+    .improve-info-btn{
+    width: 300px;
+    height:45px;
+    font-size: 16px;
+    color: #999999;
+    border-radius: 25px;
+    border: 0;
+    background-color: white;
+    }
+    .font-bottom{
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    height: 22px; 
+    font-size: 15px;
+    color: #CCCCCC;
+    text-align: center;
+    }

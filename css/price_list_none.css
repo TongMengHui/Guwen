@@ -1,0 +1,59 @@
+
+	.mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active {
+    color: #6C91FE;
+    border-bottom: 1px solid #6C91FE;
+    background: 0 0;
+	}
+	.mui-segmented-control{
+    font-size: 14px;
+    }
+    .mui-segmented-control.mui-scroll-wrapper .mui-scroll {
+    width: 100%;
+    height: 45px;
+	}
+	.mui-segmented-control.mui-scroll-wrapper .mui-control-item {
+	color: #666666;
+    display: inline-block;
+    width: 50%;
+    float: left;
+    border-right: 1px solid #EEEEEE;
+    border-bottom: 1px solid #EEEEEE;
+	}
+	.mui-segmented-control .mui-control-item {
+    line-height: 36px;
+    overflow: inherit; 
+    text-align: center;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+	}
+	.icon_content{
+	position: relative;
+	top: 120px;
+	width: 100%;
+	height: 126px;
+	text-align: center;
+	}
+	.icon{
+	width: 126px;
+	height: 126px;	
+	}
+	.font-caption{
+	position: relative;
+	top: 130px;
+	width: 100%;
+	height: 22px;
+	font-size: 18px;
+	color: #CCCCCC;
+	text-align: center;
+	}	
+	.bottom-font{
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	height: 50px;
+	font-size: 15px;
+	color: #CCCCCC;
+	text-align: center;
+	line-height: 50px;
+	background-color: #EEEEEE;
+	}

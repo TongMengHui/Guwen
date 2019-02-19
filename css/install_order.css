@@ -1,0 +1,12 @@
+.mui-segmented-control.mui-segmented-control-inverted .mui-control-item{color:#666666;}
+.mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active{background-color:#ffffff;color:#6C91FE;border-bottom:1px solid #6C91FE}		
+
+.list>li{position: relative;background: #fff;}
+.list>li>div:nth-of-type(2) img{width:19%;height:65px;}
+.list>li{border-top:8px solid #f5f5f9;padding:15px;}
+.list>li>div:nth-of-type(1){border-bottom:1px solid #e4e4e4}
+.list>li>div:nth-of-type(1)>div:nth-of-type(2){font-size:12px;color:#999999;margin:8px 0;}
+		
+.list>li>div:nth-of-type(2){font-size:12px;color:#999999;}
+.list>li>img{position: absolute;width:116px;height:116px;top:40px;left:130px;}
+.slogan{width:100%;position: absolute;bottom:0;}

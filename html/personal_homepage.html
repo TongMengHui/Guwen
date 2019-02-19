@@ -1,0 +1,165 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>个人主页</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../css/personal_homepage.css" />
+	</head>
+	<body style="background-color: white;">
+		<header class="mui-bar mui-bar-nav mui-bar-nav-bg" style="background-color: white; box-shadow: none;">
+			<span class="mui-icon mui-icon-back"></span>
+			<font class="mui-title" style="font-size: 18px; color: #333333;">个人主页</font>
+		</header>
+		<div class="mui-content" style="background-color: white;">
+			<div id="home-image-content">
+				<img id="bg" />
+				<input id="bg_change" type="file" onchange="chooseBg(this)" style="display:none">
+				<div id="camera-content" onclick="bg_change.click()">
+					<div id="round">
+						<img src="../img/camera.png" id="camera" />
+					</div>
+					<div id="caption">
+						上传主页形象图
+					</div>
+				</div>
+				<a href="#"><button id="modify-btn">修改</button></a>
+			</div>
+			<div class="avatar-content-long">
+				<div class="avatar-content">
+					<div class="avatar-round">
+						<input id="avatar_change" type="file" onchange="chooseAvatar(this)" style="display:none">
+						<img src="../img/avatar.png" class="avatar-img" id="avatar_img" onclick="avatar_change.click()" />
+					</div>
+					<a href="personal_information.html"><button class="settings-btn">设置</button></a>
+				</div>
+			</div>
+			<div class="user-name-job-content">
+				<span id="user-name">夏夏</span>
+				<button class="job-btn">认证家居顾问</button>
+			</div>
+			<div class="shop-info-content">
+				<div class="shop-info-caption">
+					所在地区：
+				</div>
+				<div class="shop-info-detail" id="area">
+					江苏省-苏州市-相城区
+				</div>
+			</div>
+			<div class="shop-info-content">
+				<div class="shop-info-caption">
+					所在店铺：
+				</div>
+				<div class="shop-info-detail" id="shop">
+					FIND
+				</div>
+			</div>
+			<div class="shop-info-content">
+				<div class="shop-info-caption">
+					店铺地址：
+				</div>
+				<div class="shop-info-detail" id="address">
+					红星美凯龙相城店4楼
+				</div>
+			</div>
+			<div class="signature-content">
+				<input class="signature-input" placeholder="编辑个性签名，让大家更了解你哦......" />
+				<img src="../img/pen.png" class="signature-icon" />
+			</div>
+			<div class="horizontal-line"></div>
+			<div class="features-info-content">
+				<div class="features-info-icon">
+					<img src="../img/feature1.png" class="icon-img" />
+				</div>
+				<div class="features-info-detail" id="address">
+					客户案例（16）
+				</div>
+				<a href="customer_case.html">
+					<div class="features-info-more">
+						<img src="../img/left-icon.png" class="more-icon" />
+					</div>
+				</a>
+			</div>
+			<div class="features-info-content">
+				<div class="features-info-icon">
+					<img src="../img/xiaoxi3.png" class="icon-img" />
+				</div>
+				<div class="features-info-detail" id="address">
+					产品推荐（20）
+				</div>
+				<a href="#">
+					<div class="features-info-more">
+						<img src="../img/left-icon.png" class="more-icon" />
+					</div>
+				</a>
+			</div>
+			<div class="horizontal-line"></div>
+			<div class="features-info-content">
+				<div class="features-info-icon">
+					<img src="../img/scpj.png" class="icon-img" />
+				</div>
+				<div class="features-info-detail" id="address">
+					客户留言（12）
+				</div>
+				<a href="client_messages.html">
+					<div class="features-info-more">
+						<img src="../img/left-icon.png" class="more-icon" />
+					</div>
+				</a>
+			</div>
+			<div class="features-info-content">
+				<div class="features-info-icon">
+					<img src="../img/dianzan.png" class="icon-img" />
+				</div>
+				<div class="features-info-detail" id="address">
+					案例点评（8）
+				</div>
+				<a href="#">
+					<div class="features-info-more">
+						<img src="../img/left-icon.png" class="more-icon" />
+					</div>
+				</a>
+			</div>
+			<div class="access-statistics-content">
+				<div class="access-statistics-caption">访问统计</div>
+				<div class="access-statistics-quantity">
+					12,000人
+				</div>
+			</div>
+			<div class="bottom-font">
+				GO佳居顾问中心
+			</div>
+		</div>
+	</body>
+	<script src="../js/mui.min.js"></script>
+	<script type="text/javascript" src="../js/jquery-1.11.0.min.js"></script>
+	<script type="text/javascript" src="../js/icon-back.js"></script>
+	<script type="text/javascript">
+		mui.init()
+
+		function chooseAvatar(file) {
+			var file = file.files[0];
+			var reader = new FileReader();
+			reader.readAsDataURL(file);
+			reader.onload = function() {
+				var img = document.getElementById('avatar_img');
+				img.src = this.result
+			};
+		}
+
+		function chooseBg(file) {
+			var file = file.files[0];
+			var reader = new FileReader();
+			reader.readAsDataURL(file);
+			reader.onload = function() {
+				var img = document.getElementById('bg');
+				img.src = this.result
+			};
+			var modify_btn = document.getElementById('modify-btn')
+			modify_btn.style.display = 'block';
+			var camera = document.getElementById('camera-content');
+			camera.style.display = 'none';
+		}
+	</script>
+</html>

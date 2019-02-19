@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<title>我的钱包</title>
+	<link rel="stylesheet" href="../css/mui.css" />
+	<link rel="stylesheet" href="../css/common.css" />
+	<link rel="stylesheet" href="../css/user-wallet.css" />
+	<link rel="stylesheet" type="text/css" href="../css/my_wallet.css"/>
+</head>
+<body>
+	<div class="mui-bar mui-bar-nav">
+		<span class="mui-icon mui-icon-back"></span>
+		<span class="position-center">我的钱包</span>
+	</div>
+	<div class="mui-content bg-white">
+		<div class="assets">
+			<div>
+				<p>100.00</p>
+				<p>总资产</p>
+			</div>
+			<div>
+				<div>
+					<p>80.00</p>
+					<p>可以金额</p>
+				</div>
+				<div>
+					<p>20.00</p>
+					<p>冻结金额</p>
+				</div>
+			</div>
+			<div class="horizontal-line"></div>
+			<div class="vertical-line"></div>
+		</div> 
+		<div class="card">
+			<img src="../img/yhk.png" alt="银行卡" class="mui-pull-left" />
+			<div class="mui-pull-left">
+				<p>我的银行卡</p>
+				<p>添加银行卡方便资产管理及现金取现</p>
+			</div>
+			<a href="add-bankCard2.html"  class="mui-pull-right mui-btn">
+				<span>去添加</span>
+			</a>
+		</div>
+		<div class="billing-details">
+			<p>账单明细</p>
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell">
+					<div class="mui-pull-left">
+						<span>免息红包</span>
+						<span>2018-05-12</span>
+					</div>
+					<div class="mui-pull-right">
+						<span class="increase">+200</span>
+						<span></span>
+					</div>
+				</li>
+				<li class="mui-table-view-cell">
+					<div class="mui-pull-left">
+						<span>现金提现</span>
+						<span>2018-05-12</span>
+					</div>
+					<div class="mui-pull-right">
+						<span class="reduce">-200</span>
+						<span class="reduce">提现中</span>
+					</div>
+				</li>
+				<li class="mui-table-view-cell">
+					<div class="mui-pull-left">
+						<span>现金提现</span>
+						<span>2018-05-12</span>
+					</div>
+					<div class="mui-pull-right">
+						<span class="reduce">-200</span>
+						<span class="reduce">提现中</span>
+					</div>
+				</li>
+				<li class="mui-table-view-cell">
+					<div class="mui-pull-left">
+						<span>现金提现</span>
+						<span>2018-05-12</span>
+					</div>
+					<div class="mui-pull-right">
+						<span class="reduce">-200</span>
+						<span class="reduce">提现中</span>
+					</div>
+				</li>
+				<li class="mui-table-view-cell">
+					<div class="mui-pull-left">
+						<span>现金提现</span>
+						<span>2018-05-12</span>
+					</div>
+					<div class="mui-pull-right">
+						<span class="reduce">-200</span>
+						<span class="reduce">提现中</span>
+					</div>
+				</li>
+			</ul>
+			<div class="slogan">
+				<p>GO家居-优化您的居家生活</p>
+			</div>
+		</div>
+		<div class="mui-bar mui-bar-tab"  id="add" >
+			<p>我要提现</p>
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="../js/jquery-1.11.0.min.js" ></script>
+<script type="text/javascript" src="../js/icon-back.js" ></script>
+<script src="../js/mui.min.js"></script>
+<script src="../js/common.js"></script>
+<script>
+	mui.init();
+	var btnArray = ['取消', '去绑定'];
+	$('#add').on('tap',function(){
+		mui.confirm("提现前您还需绑定银行卡哦",' ',btnArray,function(e){
+			console.log(e)
+	   if(e.index == 1) {   
+           	mui.openWindow({
+				url: 'add-bankCard2.html',
+				id: 'add-bankCard2',
+				preload: true,
+			});
+           }
+		})
+	});
+	
+	
+	
+</script>
+</html>

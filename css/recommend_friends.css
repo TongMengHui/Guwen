@@ -1,0 +1,104 @@
+	.pic{
+	width: 100%;
+	height: 250px;
+	}
+	#record-content{
+	position: relative;
+	height: 131px;
+	width: 100%;
+	background-color: white;
+	z-index: 0;
+	}
+	#record-content #line{
+	position: absolute;
+	left: 50%;
+	top: 15%;
+	width: 1px;
+	height: 70%;
+	background-color: #EFEFF4;
+	z-index: 2;
+	}
+	#record-content #number-content{
+	position: relative;
+	float: left;
+	width: 50%;
+	height: 100%;
+	z-index: 1;
+	}
+	#record-content #bonus-content{
+	position: relative;
+	float: left;
+	width: 50%;
+	height: 100%;
+	z-index: 1;
+	}
+	.invited-caption{
+	position: absolute;
+	top: 25px;
+	width: 100%;
+	height: 20px;
+	font-size: 14px;
+	color: #999999;
+	text-align: center;
+	}
+	.invited-number{
+	position: absolute;
+	top: 60px;
+	width: 100%;
+	height: 25px;
+	text-align: center;
+	}
+	.view-record-content{
+	position: absolute;
+	top: 95px;
+	width: 100%;
+	height: 21px;
+	text-align: center;
+	}
+	.view-record-btn{
+	font-size: 14px;
+	color: #CCCCCC;
+	height: 20px;
+	width: 70px;
+	padding: 0;
+	margin: 0;
+	border: 1px solid #CCCCCC;
+	border-radius: 25px;
+	}
+	.reward-rules{
+	position: relative;
+	height: 235px;
+	width: 92%;
+	margin-left: 4%;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	border-radius: 10px;
+	background-color: white;
+	}
+	.reward-rules-caption{
+	position: absolute;
+	top: 30px;
+	width: 100%;
+	height: auto;
+	font-size: 18px;
+	color: #666666;
+	text-align: center;
+	}
+	.rules{
+	position: absolute;
+	top: 55px;
+	width: 90%;
+	height: 170px;
+	font-size: 14px;
+	color: #999999;
+	line-height: 25px;
+	margin-left: 5%;
+	word-break: break-all;
+	}
+	.invite-btn{
+	width: 100%;
+	height: 50px;
+	font-size: 16px;
+	color: white;
+	background-color: #F16466;
+	}

@@ -1,0 +1,10 @@
+body{background-color:#f5f5f9;}
+.information-title{border-bottom:8px solid #f5f5f9;}
+.mui-input-row{position: relative;padding:10px 0}
+.mui-input-row label{margin-left:40px;}
+
+.mui-radio>input[type='radio']:before{font-size:22px;}
+.mui-radio>input[type='radio']:checked:before{color:#59C9A5;}
+.mui-radio input[type='radio']{position:absolute;left:20px;top:50%;transform: translateY(-50%);-moz-transform: translateY(-50%);-ms-transform: translateY(-50%);-webkit-transform: translateY(-50%);}
+
+.submit{bottom:20px;}

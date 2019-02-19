@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<title>个人信息</title>
+	<link rel="stylesheet" href="../css/mui.css" />
+	<link rel="stylesheet" href="../css/common.css" />
+	<link rel="stylesheet" type="text/css" href="../css/user-infomation.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/personal_information.css"/>
+</head>
+<body>
+	<!--头部信息-->
+	<div class="information-image">
+		<!--标题-->
+		<div class="information-title">
+			<span class="mui-icon mui-icon-back"></span>
+			<p class="title">个人信息</p>
+		</div>
+		<!--进度条-->
+		<div>
+			<p>信息完整度31%</p>
+			<div id="progress" class="mui-progressbar mui-progressbar-green ">
+				<span></span>
+			</div>
+		</div>
+		<!--头像ID-->
+		<div>
+			<div class="touxiang-wrap">
+				<img src="../img/touxiang.png" alt="头像" class="touxiang position"/>
+			</div>
+			<div> 
+				<p>设置头像</p>
+				<p>个人编码:GO201820123</p>
+			</div>
+		</div>
+	</div>
+	<ul class="mui-table-view border">
+		<li class="mui-table-view-cell ">
+			昵&nbsp&nbsp&nbsp&nbsp称：
+			<input type="text" placeholder="请设置个人昵称" />
+		</li>
+		<li class="mui-table-view-cell ">
+			真实姓名：
+			<input type="text"/>	
+			<span class="choose position-top">去认证</span>
+			<span class="mui-icon mui-icon-arrowright arrowright"></span>
+		</li>
+		<li class="mui-table-view-cell ">
+			身份证号：
+			<input type="text" />	
+			<span class="choose position-top">去认证</span>
+			<span class="mui-icon mui-icon-arrowright arrowright"></span>
+		</li>
+		<li class="mui-table-view-cell ">
+			性&nbsp&nbsp&nbsp&nbsp别：
+			<input type="text" placeholder="保密" />	
+			<span class="choose position-top">选择</span>
+			<span class="mui-icon mui-icon-arrowright arrowright"></span>
+		</li>
+		<li class="mui-table-view-cell ">
+			出生日期：
+			<input type="text" placeholder="请选择您的出生日期" />	
+			<span class="choose position-top">选择</span>
+			<span class="mui-icon mui-icon-arrowright arrowright"></span>
+		</li>
+		<li class="mui-table-view-cell ">
+			手&nbsp&nbsp&nbsp&nbsp机：
+			<input type="text" placeholder="138516230132" />	
+			<span class="choose position-top">修改</span>
+			<span class="mui-icon mui-icon-arrowright arrowright"></span>
+		</li>
+		<li class="mui-table-view-cell ">
+			邮&nbsp&nbsp&nbsp&nbsp箱：
+			<input type="text" placeholder="请绑定您的常用邮箱" />	
+			<span class="choose position-top">绑定</span>
+			<span class="mui-icon mui-icon-arrowright arrowright"></span>
+		</li>
+	</ul >
+		
+	<ul class="mui-table-view border ">
+		<li class="mui-table-view-cell">
+			所在城市：
+			<input type="text" placeholder="请选择您所在的城市"/>
+			<span class="mui-icon mui-icon-arrowdown arrowright "></span>
+		</li>
+		<li class="mui-table-view-cell">
+			街道地址：
+			<input type="text" placeholder="请输入您的详细地址" />
+		</li>		
+	</ul>
+	<ul class="mui-table-view border">		
+		<li class="mui-table-view-cell ">
+			我的职业：
+			<input type="text" placeholder="家居顾问" />	
+			<span class="choose position-top">选择</span>
+			<span class="mui-icon mui-icon-arrowright arrowright"></span>
+		</li>
+		<li class="mui-table-view-cell ">
+			从业年限：
+			<input type="text" placeholder="请选择从业年限" />	
+			<span class="choose position-top">选择</span>
+			<span class="mui-icon mui-icon-arrowright arrowright"></span>
+		</li>		
+		<li class="mui-table-view-cell ">
+			单位名称：
+			<input type="text" placeholder="暂未绑定" />	
+			<span class="choose position-top">绑定</span>
+			<span class="mui-icon mui-icon-arrowright arrowright"></span>
+		</li>
+		<li class="mui-table-view-cell ">
+			个人描述：<br/>
+			<!--<input type="text" placeholder="138516230132" />-->
+			<textarea style="width: 100%; height: 120px; border: 0;" placeholder="请填写自我介绍，让客户更了解你" ></textarea>
+			
+		</li>
+	</ul >
+	<ul class="mui-table-view border ">
+		<li class="mui-table-view-cell">			
+			<input type="text" style="color: #CCCCCC;" placeholder="推荐人 昵称(推荐码)" />
+		</li>
+	</ul>
+	<div class="submit">
+		<p>保存</p>
+	</div>
+</body>
+<script type="text/javascript" src="../js/jquery-1.11.0.min.js"></script>
+<script src="../js/common.js"></script>
+<script type="text/javascript" src="../js/mui.min.js"></script>
+<script type="text/javascript">
+	mui("#progress").progressbar({progress:31}).show();
+</script>
+</html>

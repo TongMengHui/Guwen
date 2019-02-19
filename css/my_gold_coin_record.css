@@ -1,0 +1,131 @@
+
+	* { touch-action: pan-y; } 
+	.mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active {
+    color: #6C91FE;
+    border-bottom: 1px solid #6C91FE;
+    background: 0 0;
+	}
+	.mui-segmented-control{
+    font-size: 14px;
+    }
+    .mui-segmented-control.mui-scroll-wrapper .mui-scroll {
+    width: 100%;
+    height: 45px;
+	}
+	.mui-segmented-control.mui-scroll-wrapper .mui-control-item {
+	color: #666666;
+    display: inline-block;
+    width: 50%;
+    height: 38px;
+    float: left;
+    border-right: 1px solid #EEEEEE;
+    border-bottom: 1px solid #EEEEEE;
+	}
+	.mui-segmented-control .mui-control-item {
+    line-height: 36px;
+    overflow: inherit; 
+    text-align: center;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+	}
+	.registration-record-list-item{
+	width: 100%;
+	height: 75px;
+	border-bottom: 1px solid #EEEEEE;
+	}
+	.registration-record-content{
+	width: 90%;
+	height: 100%;
+	margin-left: 5%;
+	}
+	.reward-record-list-item{
+	width: 100%;
+	height: 75px;
+	border-bottom: 1px solid #EEEEEE;
+	}
+	.reward-record-content{
+	width: 90%;
+	height: 100%;
+	margin-left: 5%;
+	}	
+	.info-content{
+	position: relative;
+	top: 5px;
+	float: left;
+	width: 50%;
+	height: 100%;
+	}
+	.direction-content{
+	position: relative;
+	width: 100%;
+	height: 22px;
+	margin-top: 12px;
+	}
+	.direction{
+	position: relative;
+	float: left;
+	width: auto;
+	height: 100%;
+	font-size: 16px;
+	color: #666666;
+	}
+	.time{
+	position: relative;
+	width: 100%;
+	height: 20px;
+	font-size: 13px;
+	color: #CCCCCC;
+	margin-top: 5px;
+	}
+	.quantity-balance-content{
+	position: relative;
+	top: 5px;
+	float: right;
+	width: 30%;
+	height: 100%;
+	}
+	.reduce-quantity{
+	position: relative;
+	width: auto;
+	height: 20px;
+	font-size: 24px;
+	color: #CCCCCC;
+	text-align: right;
+	margin-top: 12px;
+	}
+	.recharge-quantity{
+	position: relative;
+	width: auto;
+	height: 20px;
+	font-size: 24px;
+	color: #6C91FE;
+	text-align: right;
+	margin-top: 12px;
+	}
+	.balance{
+	position: relative;
+	width: auto;
+	height: 20px;
+	font-size: 13px;
+	color: #CCCCCC;
+	text-align: right;
+	margin-top: 5px;
+	}
+	.back_to_top{
+	position: fixed;
+	bottom:60px;
+	right: 30px;
+	border:1px solid #888;
+	border-radius: 20px;
+	color:#FF625F;
+	}
+	.bottom-font{
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 50px;
+	font-size: 15px;
+	color: #CCCCCC;
+	text-align: center;
+	line-height: 50px;
+	}

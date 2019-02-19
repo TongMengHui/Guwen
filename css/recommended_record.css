@@ -1,0 +1,138 @@
+	.mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active {
+    color: #333333;
+    border-bottom: 2px solid #F16466;
+    background: 0 0;
+	}
+	.mui-segmented-control{
+    font-size: 14px;
+    }
+    .mui-segmented-control.mui-scroll-wrapper .mui-scroll {
+    width: 100%;
+    /*height: 45px;*/
+	}
+	.mui-segmented-control.mui-scroll-wrapper .mui-control-item {
+	color: #666666;
+    display: inline-block;
+    width: 50%;
+    float: left;
+    border-right: 1px solid #EEEEEE;
+	}
+	.mui-segmented-control .mui-control-item {
+    line-height: 36px;
+    overflow: inherit; 
+    text-align: center;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+	}
+	.horizontal-line{
+	width: 100%;
+	height: 5px;
+	background-color: #EEEEEE;
+	}
+	.registration-record-list-item{
+	width: 100%;
+	height: 75px;
+	border-bottom: 1px solid #EEEEEE;
+	}
+	.registration-record-content{
+	width: 90%;
+	height: 100%;
+	margin-left: 5%;
+	}
+	.reward-record-list-item{
+	width: 100%;
+	height: 75px;
+	border-bottom: 1px solid #EEEEEE;
+	}
+	.reward-record-content{
+	width: 90%;
+	height: 100%;
+	margin-left: 5%;
+	}
+	.avatar{
+	position: relative;
+	float: left;
+	width: 41px;
+	height: 41px;
+	border-radius: 50px;
+	margin-top: 16px;
+	}
+	.avatar-img{
+	height: 100%;
+	width: 100%;
+	border-radius: 50px;
+	}
+	.info-content{
+	position: relative;
+	float: left;
+	width: 50%;
+	height: 100%;
+	margin-left: 10px;
+	}
+	.name-orderbtn-content{
+	position: relative;
+	width: 100%;
+	height: 22px;
+	margin-top: 12px;
+	}
+	.name{
+	position: relative;
+	float: left;
+	width: auto;
+	height: 100%;
+	font-size: 16px;
+	color: #666666;
+	}
+	.orderbtn{
+	position: relative;
+	float: left;
+	width: auto;
+	height: 100%;
+	padding: 1px 4px;
+	margin-left: 5px;
+	font-size: 14px;
+	color: #CCCCCC;
+	border-radius: 25px;
+	border: 1px solid #EEEEEE;
+	}
+	.phone-number{
+	position: relative;
+	width: 100%;
+	height: 20px;
+	font-size: 13px;
+	color: #CCCCCC;
+	margin-top: 5px;
+	}
+	.quantity-date-content{
+	position: relative;
+	float: right;
+	width: 30%;
+	height: 100%;
+	}
+	.quantity{
+	position: relative;
+	width: auto;
+	height: 20px;
+	font-size: 16px;
+	color: #FE6466;
+	text-align: right;
+	margin-top: 12px;
+	}
+	.date{
+	position: relative;
+	width: 90%;
+	height: 20px;
+	font-size: 13px;
+	color: #CCCCCC;
+	text-align: right;
+	margin-top: 10px;
+	}
+	.invite-btn{
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	height: 50px;
+	font-size: 16px;
+	color: white;
+	background-color: #F16466;
+	}

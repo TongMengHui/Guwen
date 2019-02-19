@@ -1,0 +1,116 @@
+
+	.account-security-container{
+	position: relative;
+    height: 70px;
+    width: 100%;
+    border-top: 7px solid #EEEEEE;
+    border-bottom: 7px solid #EEEEEE;
+	}
+	.account-security-inside{
+	position: relative;
+	left: 4%;
+    height: 70px;
+    width: 92%;
+	}
+    .client-info-container{
+    position: relative;
+    top: 1px;
+    left: 4%;
+    height: 60px;
+    width: 92%;
+    border-bottom: 1px solid #EEEEEE;
+    /*background-color: #5E90FF;*/
+    }
+    .info-caption{
+    position: relative;
+    top: 20px;
+    float: left;
+    width: 25%;
+    height: 30px;
+    border: 0;
+    font-size: 16px;
+    color: #666666;
+    /*background-color: #6641E2;*/
+    }
+    .info-input{
+    position: relative;
+    top: 17px;
+    float: left;
+    width: 60%;
+    height: 30px;
+    border: 0;
+    font-size: 16px;
+    color: #999999;
+    line-height: 30px;
+    /*background-color: #4CD964;*/
+    }
+    .info-more-container{
+    position: relative;
+    top: 17px;
+    float: right;
+    width: 15%;
+    height: 30px;
+    background-color: white;
+    }
+    .info-more-font{
+    position: relative;
+    top: 5px;
+    float: right;
+    width: auto;
+    height: 20px;
+    font-size: 16px;
+    color: #CCCCCC;
+    }
+    .info-more-icon{
+    position: relative;
+    top: 5px;
+    float: right;
+    width: 15px;
+    height: 20px;
+    font-size: 16px;
+    color: #CCCCCC;
+    }
+    .info-more-icon .mui-icon{
+    font-size: 18px;
+    }
+	.mui-switch-blue.mui-active {
+    border: 2px solid #6C91FE;
+    background-color: #6991FE;
+	}
+	.mui-switch-mini {
+    width: 47px;
+    height: 29px;
+	}
+	.mui-switch .mui-switch-handle {
+    position: absolute;
+    z-index: 1;
+    top: -1px; 
+    right: -1px;
+    left: 1px;  
+    width: 26px;
+    height: 26px;
+    }
+    .horizontal-line{
+    height: 7px;
+    width: 100%;
+    background-color: #EEEEEE;
+    }
+    .drop-out-btn{
+    height: 60px;
+    width: 100%;
+    font-size: 18px;
+    color: #6C91FE;
+    border: 0;
+    border-radius: 0;
+    background-color: white;
+    }
+    .bottom-font{
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 50px;
+	font-size: 15px;
+	color: #CCCCCC;
+	text-align: center;
+	line-height: 50px;
+	}

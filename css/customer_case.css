@@ -1,0 +1,66 @@
+	.customer-case-container{
+	position: relative;
+	top: 15px;
+	left: 5%;
+	width: 90%;
+	height: 240px;
+	margin-bottom: 15px;
+	border-bottom: 1px solid #EEEEEE;
+	/*background-color: #59C9A5;*/
+	}
+	.case-img-container{
+	position: relative;
+	width: 100%;
+	height: 150px;
+	}
+	.case-img{
+	width: 100%;
+	height: 100%;
+	}
+	.case-title{
+	position: relative;
+	top: 10px;
+	width: 100%;
+	height: 20px;
+	font-size: 14px;
+	color: #333333;
+	/*background-color: #6991FE;*/
+	}
+	.case-attribute{
+	position: relative;
+	top: 10px;
+	width: 100%;
+	height: 20px;
+	font-size: 12px;
+	color: #999999;
+	/*background-color: #6991FE;*/
+	}
+	.case-time-edit-container{
+	position: relative;
+	top: 10px;
+	width: 100%;
+	height: 40px;
+	font-size: 12px;
+	color: #999999;
+	/*background-color: #6991FE;*/
+	}
+	.case-time{
+	position: relative;
+	float: left;
+	width: 70%;
+	height: 20px;
+	font-size: 14px;
+	color: #CCCCCC;
+	/*background-color: #8A6DE9;*/
+	}
+	.case-edit{
+	position: relative;
+	float: right;
+	width: 62px;
+	height: 25px;
+	font-size: 14px;
+	color: #6C91FE;
+	border-radius: 25px;
+	border: 1px solid #6C91FE;
+	padding-top: 2px;
+	}

@@ -1,0 +1,38 @@
+    	.application-amount{width:100%;background-color:#F5F5F9;text-align: center;padding:25px 0;}
+		.application-amount>span{display: block;}
+		.application-amount>span:nth-of-type(2){font-size:50px;color:#C1A069;font-weight: bold;}
+		.application-amount>span:nth-of-type(3){border:1px solid #CCCCCC;border-radius: 20px;padding:4px 0;width:35%;margin:10px auto;}
+		
+		.details{padding:15px;}
+		.details>div:not(:last-child){font-size:15px;border-bottom:1px solid #e4e4e4;padding-bottom:15px;}
+		.details>div:not(:last-child)>span{display: block;color:#666666;line-height: 30px;}
+		.details>div:not(:last-child)>span>span{color:#999999;}
+		
+		.details>div:nth-of-type(2){overflow: hidden;padding-top:10px;}
+		.details>div:nth-of-type(2) img{width:20px;height:20px;}
+		.details>div:nth-of-type(2)>span>i{margin-top:8px;}
+		.details>div:nth-of-type(2)>span>img{margin-top:6px;}
+		
+		.details>div:nth-of-type(3) img{width:65px;height:65px;}
+		.details>div:nth-of-type(3)>span{display: inline-block;margin-top:15px;}
+		.details>div:nth-of-type(3)>span>span{display: block;font-size:12px;color:#999999;text-align: center;}
+		
+		.progress-detail{padding:10px 0 20px 0;}
+		.progress-detail>div{overflow: hidden;margin-top:10px;}
+		.progress-detail>div>span{float:left;text-align: center;margin-left:15px;color:#999999;}
+		.progress-detail>div>span>span{display:block;}
+		.progress-detail>div>span>span:nth-of-type(2){font-size:12px;}
+		.progress-detail>div>span>span:nth-of-type(3){display:block;height:20px;width:1px;background-color:#999999;margin:8px auto;}
+		.progress-detail>div>div{margin-left:100px;width:68%;color:#999999;}
+		.progress-detail>div>div>span{color:#C1A069;}
+		
+		.progress-detail>div:nth-of-type(1)>div,.progress-detail>div:nth-of-type(1)>span>span:nth-of-type(1){color:#333333;}
+		.progress-detail>div:last-child>span>span:nth-of-type(3){display:none;}
+
+		.mark{width:0;height:0;position: fixed;top:70%;left:50%;}
+		.mui-popover .mui-popover-arrow:after {width: 0px;}
+		.dianpu-info{width: 100%;height: 100px;background-color: #EEEEEE;}
+    	.dianpu-title{width: 90%;height: 30px;margin-left: 5%;margin-top: 10px;margin-bottom: 10px;font-size: 14px;color: #999999;line-height: 40px;}
+    	.dianpu-yanzheng{width: 100%;height: 60px;background-color: white;}
+    	.yanzheng-content{width: 90%;height: 100%;margin-left:5% ;position: relative;}
+	

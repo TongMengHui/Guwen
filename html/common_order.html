@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<title>常规订单</title>
+	<link rel="stylesheet" href="../css/mui.css" />
+	<link rel="stylesheet" href="../css/common.css" />
+	<style type="text/css">
+		.o-item{
+			box-sizing: border-box;
+			padding: 10px;
+			background: #fff;
+			margin-bottom: 10px;
+		}
+		.o-header>div:nth-child(1) img{
+			width: 1.875rem;
+			height: 1.875rem;
+			border-radius: 50%;
+		}
+		.o-scroll-x{margin-top: 10px;}
+		.o-img{
+			width: 100px;
+			height: 100px;
+			flex-shrink: 0;
+		}
+		.o-img:nth-child(n+2){margin-left: 10px;}
+		.o-footer{margin-top: 10px;}
+		.o-btn{
+			border-radius: 20px;
+			padding: 2px 10px;
+		}
+	</style>
+</head>
+<body style="background-color: #EEEEEE;">
+	<div class="mui-bar mui-bar-nav mui-bar-transparent">
+		<span class="mui-icon mui-icon-back"></span>
+		<span class="mui-title">常规订单</span>
+	</div>
+	<div class="mui-iframe-wrapper" style="top:45px;bottom: 0px;">
+		<div class="mui-content mui-scroll-wrapper" id="common_order">
+			<div class="mui-scroll">
+				<ul>
+					<li class="o-item" v-for="order in List">
+						<div class="flex-row-between o-header">
+							<div class="flex-row-between">
+								<img src="../img/QQ.png" >
+								<span style="font-size: 0.875rem;margin-left: 0.625rem;">{{order.name}}</span>
+							</div>
+							<span>订单编号: <span style="color:#999;">{{order.order_no}}</span></span>
+						</div>
+						
+						<div class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted" style="height: 100px;margin-top: 10px;">
+							<div class="mui-scroll">
+								<img src="../img/ad1.png" class="o-img">
+								<img src="../img/a1.png" class="o-img">
+								<img src="../img/ad4.png" class="o-img">
+								<img src="../img/ad1.png" class="o-img">
+								<img src="../img/a1.png" class="o-img">
+								<img src="../img/ad4.png" class="o-img">
+								<img src="../img/ad1.png" class="o-img">
+								<img src="../img/a1.png" class="o-img">
+								<img src="../img/ad4.png" class="o-img">
+							</div>
+						</div>
+						
+						<div class="flex-row-between o-footer">
+							<span class="color-99">{{order.fsrq}}</span>
+							<button type="button" class="mui-btn mui-btn-warning mui-btn-outlined o-btn">订单详情</button>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<!-- <div class="c-footer">
+			佳居店员中心
+		</div> -->
+	</div>
+	
+</body>
+<script src="../js/mui.min.js"></script>
+<script src="../js/jquery-1.11.0.min.js"></script>
+<script src="../js/vue.min.js" type="text/javascript"></script>
+<script src="../js/util.js" type="text/javascript"></script>
+<script type="text/javascript" src="../js/icon-back.js" ></script>
+<script type="text/javascript" src="../js/back-to-top.js" ></script>
+<script type="text/javascript">
+	new Vue({
+		el:'#common_order',
+		data:{
+			List:[
+				{
+					name:'杰西',
+					src:'http://img0.imgtn.bdimg.com/it/u=3662028681,2807228479&fm=26&gp=0.jpg',
+					order_no:'CG0001254458',
+					pics:[
+					],
+					fsrq:'2018.06.18 14:35'
+				},
+				{
+					name:'大锤',
+					src:'http://img0.imgtn.bdimg.com/it/u=3662028681,2807228479&fm=26&gp=0.jpg',
+					order_no:'CG0001254458',
+					pics:[
+					],
+					fsrq:'2018.06.18 14:35'
+				},
+				{
+					name:'大锤',
+					src:'http://img0.imgtn.bdimg.com/it/u=3662028681,2807228479&fm=26&gp=0.jpg',
+					order_no:'CG0001254458',
+					pics:[
+					],
+					fsrq:'2018.06.18 14:35'
+				},
+				{
+					name:'大锤',
+					src:'http://img0.imgtn.bdimg.com/it/u=3662028681,2807228479&fm=26&gp=0.jpg',
+					order_no:'CG0001254458',
+					pics:[
+					],
+					fsrq:'2018.06.18 14:35'
+				},
+				{
+					name:'大锤',
+					src:'http://img0.imgtn.bdimg.com/it/u=3662028681,2807228479&fm=26&gp=0.jpg',
+					order_no:'CG0001254458',
+					pics:[
+					],
+					fsrq:'2018.06.18 14:35'
+				},
+				{
+					name:'大锤',
+					src:'http://img0.imgtn.bdimg.com/it/u=3662028681,2807228479&fm=26&gp=0.jpg',
+					order_no:'CG0001254458',
+					pics:[
+					],
+					fsrq:'2018.06.18 14:35'
+				},
+				{
+					name:'大锤1',
+					src:'http://img0.imgtn.bdimg.com/it/u=3662028681,2807228479&fm=26&gp=0.jpg',
+					order_no:'CG0001254458',
+					pics:[
+					],
+					fsrq:'2018.06.18 14:35'
+				},
+				{
+					name:'大锤2',
+					src:'http://img0.imgtn.bdimg.com/it/u=3662028681,2807228479&fm=26&gp=0.jpg',
+					order_no:'CG0001254458',
+					pics:[
+					],
+					fsrq:'2018.06.18 14:35'
+				},
+				{
+					name:'大锤3',
+					src:'http://img0.imgtn.bdimg.com/it/u=3662028681,2807228479&fm=26&gp=0.jpg',
+					order_no:'CG0001254458',
+					pics:[
+					],
+					fsrq:'2018.06.18 14:35'
+				},
+				{
+					name:'大锤4',
+					src:'http://img0.imgtn.bdimg.com/it/u=3662028681,2807228479&fm=26&gp=0.jpg',
+					order_no:'CG0001254458',
+					pics:[
+					],
+					fsrq:'2018.06.18 14:35'
+				},
+				{
+					name:'大锤5',
+					src:'http://img0.imgtn.bdimg.com/it/u=3662028681,2807228479&fm=26&gp=0.jpg',
+					order_no:'CG0001254458',
+					pics:[
+					],
+					fsrq:'2018.06.18 14:35'
+				}
+			]
+		},
+		methods:{
+			
+		},
+		mounted() {
+			pullRefresh('#common_order',function(cb){
+				var _self=this;
+				setTimeout(function(){
+					_self.List.splice(_self.List.length,0,{
+						name:'大锤4',
+						src:'http://img0.imgtn.bdimg.com/it/u=3662028681,2807228479&fm=26&gp=0.jpg',
+						order_no:'CG0001254458',
+						pics:[],
+						fsrq:'2018.06.18 14:35'
+					});
+					cb();
+				},2000);
+			}.bind(this));
+			//this.initScroll();
+			//this.pullRefresh();
+		}
+	});
+	
+</script>
+</html>

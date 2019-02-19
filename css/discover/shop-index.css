@@ -1,0 +1,63 @@
+html{-webkit-text-size-adjust: none;}
+		
+.mui-table-view.mui-grid-view .mui-table-view-cell{text-align: inherit;}
+
+.mui-bar>span{color:#ffffff;}
+.mui-bar>span:nth-of-type(2){right:40px;}
+.mui-bar>span:nth-of-type(3){right:15px;}
+
+.mui-content>img{width:100%;height:200px;}
+.shop-logo{position:relative;background:url(../../img/user/anli1.png);background-size:100% 200px;width:100%;height:200px;}
+.shop-logo>img{width:70px;height:70px;border:1px solid #cccccc;border-radius:50%;position:absolute;bottom:-15%;left:50%;transform: translateX(-50%);-webkit-transform: translateX(-50%);}
+.shop-logo span{display: block;}
+
+.shop-name{margin-top:40px;overflow: hidden;}
+.shop-name span{display: block;}
+.shop-name>span:nth-of-type(1){text-align: center;}
+.shop-name>div{float:left;width:33%;text-align: center;margin-top:20px;margin-bottom:20px;}
+.shop-name>div:nth-of-type(2){border-left:1px solid #f5f5f9;border-right:1px solid #f5f5f9;}
+.shop-name>div>span:nth-of-type(1){font-size:16px; color:#333333;}
+.shop-name>div>span:nth-of-type(2){font-size:12px;color:#999999;}
+
+.brand-introduction{padding-bottom:15px;}
+.brand-introduction>img{width:100%;height:150px;}
+.mui-ellipsis-3{display: -webkit-box;overflow: hidden;white-space: normal!important;text-overflow: ellipsis;word-wrap: break-word; -webkit-line-clamp: 3;-webkit-box-orient: vertical;}
+.inner{padding:10px;color:#999999;}
+
+.padding-10{padding-left:10px;padding-right:10px;}
+.discount-coupons>div:nth-of-type(2){background:url(../../img/user/yhq01.png) no-repeat;background-size:60px 78px;width:60px;height:78px;text-align: center;line-height: 78px;color:#ffffff;font-weight:bold;}
+.discount-coupons>div:nth-of-type(1){margin-top:10px;margin-bottom:10px;}
+.discount-coupons>div:nth-of-type(3){margin-left:75px;}
+.discount-coupons>div:nth-of-type(3)>p:nth-of-type(1){font-size:18px;}
+.discount-coupons>div:nth-of-type(3)>p:nth-of-type(3){font-size: 12px;margin-top:10px;}
+.brand-introduction>div:nth-of-type(3){position:fixed;right:10px;top:300px;z-index: 999;}
+.brand-introduction>div:nth-of-type(3)>img{width:50px;height:50px;}
+
+.product-recommendations>div:nth-of-type(1){padding:15px;}
+.product-recommendations ul{overflow: hidden;}
+.product-recommendations img{width:168px;height:168px;}
+.product-recommendations li{width:48%;}
+.product-recommendations li a{display:block;}
+.product-recommendations li p{color:#333333;}
+.product-recommendations li span:nth-of-type(1){display:block;font-size:11px;color:#999999;padding-top:4px;padding-bottom:6px;}
+.product-recommendations li span:nth-of-type(2){font-size:13px;color:#59C9A5;}
+.product-recommendations li span:nth-of-type(3){font-size:10px;color:#cccccc;border:1px solid #cccccc;border-radius:10px;padding:0px 6px;}
+
+.home-advisor>div:nth-of-type(2){margin-top:15px;}
+.home-advisor>div:nth-of-type(2)>div>div{text-align: center;width:150px;height:200px;border:1px solid #cccccc;float:left;margin-right:8px;}
+.home-advisor img{width:62px;height:62px;margin-top:20px;}
+.home-advisor>div:nth-of-type(2) span{display: block;}
+.home-advisor{padding:15px;}
+.home-advisor>div:nth-of-type(2)>div>div>span:nth-of-type(1){top:75px;color:#ffffff;background-color:#cccccc;border-radius:20px;width:36px;}
+.home-advisor>div:nth-of-type(2)>div>div>span:nth-of-type(2){margin-top:10px;}
+.home-advisor>div:nth-of-type(2)>div>div>span:last-child{margin:15px auto 0;border:1px solid #cccccc;border-radius:20px;width:90px;padding:5px 15px;}
+
+.popular-information{overflow: hidden;}
+.popular-information>div:nth-of-type(1){padding:15px;}
+.popular-information img{width:120px;height:85px;}
+.popular-information>div:nth-of-type(2) div{margin-left:135px;}
+.popular-information>div:nth-of-type(2) div>p+p{margin-top:15px;}
+
+.contact-way img{width:25px;height:25px;}
+.contact-way p{width:80%}
+.icon-dingwei{display: block;margin-top:-15px;}

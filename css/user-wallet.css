@@ -1,0 +1,30 @@
+.mui-bar-nav{background-color:#DDB87B;color:#ffffff;border: none;}
+.mui-table-view:after{height:0;}
+.assets{background-color:#ddb87b;color:#ffffff;overflow: hidden;}
+.assets>div:nth-of-type(1){text-align: center;margin-top:20px;}
+.assets>div:nth-of-type(1)>p:nth-of-type(1){font-size:50px;}
+.assets>div:nth-of-type(2){display: flex;justify-content: space-around;}
+.assets>div:nth-of-type(2)>div{text-align: center;padding-top:40px;}
+.assets>div:nth-of-type(2)>div>p:nth-of-type(1){font-size:25px;}
+.assets>div:nth-of-type(1)>p:nth-of-type(2),.assets>div:nth-of-type(2)>div>p:nth-of-type(2){font-size:15px;}
+
+.card{padding:15px;overflow: hidden;}
+.card img{width:40px;height:40px;}
+.card p:nth-of-type(1),.billing-details>ul div:nth-of-type(1)>span:nth-of-type(1){font-size:16px;color:#666666;}
+.card p:nth-of-type(2),.billing-details>ul div:nth-of-type(1)>span:nth-of-type(2){font-size:12px;color:#cccccc;margin-top: 5px;}
+.card span{font-size:14px;color:#DBB578;border:1px solid #DBB578;border-radius:20px;padding:7px 8px;margin-right:-8px;}
+.card>div{margin-left:6px;}
+
+.billing-details{padding-bottom:50px;}
+.billing-details>p{padding:15px;background-color:#F5F5F9;color:#999999;}
+.billing-details>ul span:nth-of-type(2){display: block;margin-top:4px;}
+.billing-details>ul div:nth-of-type(2)>span:nth-of-type(1){font-size:24px;}
+.billing-details li{padding-top:15px;padding-bottom:15px;}
+
+.increase{color:#DDB87B;}
+.reduce{color:#cccccc;}
+
+.mui-btn{border:none;}
+
+.mui-bar-tab{bottom:0;background-color:#D6AE70;width:100%;text-align: center;height:50px;line-height: 50px;}
+.mui-bar-tab p{color:#ffffff;font-size:18px;}

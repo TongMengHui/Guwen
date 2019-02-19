@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>注册-店员版</title>
+		<script src="../js/jquery-1.11.0.min.js"></script>
+		<script src="../js/mui.min.js"></script>
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../css/register.css" />
+
+	</head>
+
+	<body style="background-color: white;">
+		<header class="mui-bar mui-bar-nav mui-bar-nav-bg" style="background-color: white; box-shadow: none; border-bottom: 1px solid #CCCCCC;">
+			<span class="mui-icon mui-icon-back"></span>
+			<span class="mui-title" style="font-size: 18px; color: #333333;">用户注册</span>
+		</header>
+		<div class="mui-content" style="background-color: white;">
+			<div id="time-line-content">
+				<div id="line">
+					<div id="line-front"></div>
+					<div id="line-back"></div>
+				</div>
+				<div id="round-front"></div>
+				<div id="round-middle"></div>
+				<div id="round-back"></div>
+				<div id="font-front">选择身份</div>
+				<div id="font-middle">手机验证</div>
+				<div id="font-back">设置密码</div>
+			</div>
+			<div class="choice-content">
+				<div class="choice-title">请选择您的身份</div>
+				<div class="choice-job-content">
+					<div class="jiaju" id="div1" onclick="choised(this) , change(this.id)">
+						<div class="jiaju-img">
+							<img src="../img/femail.png" style="width: 109px; height: 109px; border-radius: 50%;" />
+						</div>
+						<div class="jiaju-info">
+							我是家居顾问
+						</div>
+						<div class="jiaju-info-type">
+							家居/建材店员
+						</div>
+						<img src="../img/choiced.png" class="jiaju-choiced-icon icon" style="display: none;" />
+					</div>
+					<div class="designer" id="div2" onclick="choised(this) , change(this.id)">
+						<div class="designer-img">
+							<img src="../img/male.png" style="width: 109px; height: 109px; border-radius: 50%;" />
+						</div>
+						<div class="designer-info">
+							我是设计顾问
+						</div>
+						<div class="designer-info-type">
+							家装设计师
+						</div>
+						<img src="../img/choiced.png" class="designer-choiced-icon icon" style="display: none;" />
+					</div>
+				</div>
+			</div>
+			<a href="register_phone.html" style="color: white;"><button type="button" class="next-btn" disabled="disabled">下一步</button></a>
+			<div class="font-bottom">
+				GO佳居顾问中心
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../js/jquery-1.11.0.min.js"></script>
+	<script type="text/javascript" src="../js/icon-back.js"></script>
+	<script type="text/javascript">
+		//选择后样式
+		function change(id_) {
+			//次id_为判断id_
+			var div = document.getElementById(id_);
+			div.style.boxShadow = "-moz-box-shadow:0px 1px 3px #999999, 0px 0px 3px #333333";
+			div.style.boxShadow = "0px 1px 3px #999999, 0px 0px 3px #333333;";
+			div.style.boxShadow = "0px 1px 3px #999999, 0px 0px 3px #333333";
+			var divs = document.getElementsByTagName("div");
+
+			for(var i = 0; i < divs.length; i++) {
+				var div_ = divs[i];
+				if(id_ != div_.id) {
+					div_.style.boxShadow = "none";
+				}
+			}
+		}
+	//下一步样式与可否点击变化
+		function choised(obj) {
+			$(".next-btn").css("background-color", "#6C91FE");
+			$(".next-btn").attr('disabled', false);
+			$(obj).children('img').css('display', 'block');
+			$(obj).siblings().children('img').css('display', 'none');
+		}
+	</script>
+
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<title>分期订单</title>
+	<link rel="stylesheet" href="../css/mui.css" />
+	<link rel="stylesheet" href="../css/common.css" />
+	<link rel="stylesheet" href="../css/install_order.css"/>
+	
+</head>
+<body style="background-color: #EEEEEE;">
+	<div class="mui-bar mui-bar-nav bg-white">
+		<span class="mui-icon mui-icon-back"></span>
+		<span class="mui-title">分期订单</span>
+	</div>
+	<div class="mui-iframe-wrapper" style="top:45px;bottom: 0px;">
+		<div class="mui-content mui-scroll-wrapper" id="install_order">
+			<div class="mui-scroll">
+				<ul class="list">
+					<li v-for="order in List">
+						<div>
+							<div>
+								<span class="color-66">订单编号：{{order.order_no}}</span>
+								<a href="install_order_details.html" class="color-99 mui-pull-right">
+									详情
+									<i class="mui-icon mui-icon-arrowright font-14"></i>
+								</a>
+							</div>
+							<div>
+								<span>客户姓名：{{order.name}}</span>
+								<span class="mui-pull-right">{{order.fsrq}}</span>
+							</div>
+						</div>
+						<div>
+							<div>
+								<img src="../img/ddzp.png" alt="" />
+								<img src="../img/dyhy.jpg" alt="" />
+								<img src="../img/dyhy.jpg" alt="" />
+								<img src="../img/dyhy.jpg" alt="" />
+								<img src="../img/dyhy.jpg" alt="" />
+							</div>
+							<div style="height: 15px;">
+								<span class="mui-pull-right">
+									可得佣金
+									<span style="font-size: 15px; color: #F1696B;">100元</span>
+								</span>
+								<span class="mui-pull-right" style="margin-right: 10px;">
+									申请金额
+									<span style="font-size: 15px; color: #6C91FE;">15,000元</span>
+								</span>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	
+</body>
+<script src="../js/mui.min.js"></script>
+<script src="../js/jquery-1.11.0.min.js"></script>
+<script src="../js/vue.min.js" type="text/javascript"></script>
+<script src="../js/util.js" type="text/javascript"></script>
+<script type="text/javascript" src="../js/icon-back.js" ></script>
+<script type="text/javascript" src="../js/back-to-top.js" ></script>
+<script src="../js/mui.min.js"></script>
+<script type="text/javascript">
+	new Vue({
+		el:'#install_order',
+		data:{
+			List:[
+				{
+					order_no:'GF2018091200067',
+					name:'楚留香',
+					fsrq:'2019-02-12 13:23'
+				},
+				{
+					order_no:'GF2018091200067',
+					name:'路人甲',
+					fsrq:'2019-02-12 13:23'
+				},
+				{
+					order_no:'GF2018091200067',
+					name:'路人甲',
+					fsrq:'2019-02-12 13:23'
+				},
+				{
+					order_no:'GF2018091200067',
+					name:'路人甲',
+					fsrq:'2019-02-12 13:23'
+				},
+				{
+					order_no:'GF2018091200067',
+					name:'路人甲',
+					fsrq:'2019-02-12 13:23'
+				},
+				{
+					order_no:'GF2018091200067',
+					name:'路人甲',
+					fsrq:'2019-02-12 13:23'
+				}
+			]
+		},
+		methods:{
+			
+		},
+		mounted(){
+			pullRefresh('#install_order',function(cb){
+				var _self=this;
+				setTimeout(function(){
+					_self.List.splice(_self.List.length,0,{
+						order_no:'GF2018091200067',
+						name:'花满楼',
+						fsrq:'2019-02-12 13:23'
+					});
+					cb();
+				},2000);
+			}.bind(this));
+		}
+	})
+</script>
+</html>

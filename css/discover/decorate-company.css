@@ -1,0 +1,110 @@
+html{-webkit-text-size-adjust: none;}
+		
+.mui-table-view.mui-grid-view .mui-table-view-cell{text-align: inherit;}
+
+.mui-bar>span{color:#ffffff;}
+.mui-bar>span:nth-of-type(2){right:40px;}
+.mui-bar>span:nth-of-type(3){right:15px;}
+
+.mui-content>img{width:100%;height:200px;}
+.shop-logo{position:relative;background:url(../../img/user/zxgsbanner.png);background-size:100% 200px;width:100%;height:200px;}
+.shop-logo>img{width:70px;height:70px;border:1px solid #cccccc;border-radius:50%;position:absolute;bottom:-15%;left:50%;transform: translateX(-50%);-webkit-transform: translateX(-50%);}
+.shop-logo span{display: block;}
+
+.shop-name{margin-top:40px;overflow: hidden;}
+.shop-name span{display: block;}
+.shop-name>span:nth-of-type(1){text-align: center;}
+.shop-name>div{float:left;width:33%;text-align: center;margin-top:20px;margin-bottom:20px;}
+.shop-name>div:nth-of-type(2){border-left:1px solid #f5f5f9;border-right:1px solid #f5f5f9;}
+.shop-name>div>span:nth-of-type(1){font-size:16px; color:#333333;}
+.shop-name>div>span:nth-of-type(2){font-size:12px;color:#999999;}
+
+.brand-introduction{padding-bottom:15px;}
+.brand-introduction>img{width:100%;height:150px;}
+.mui-ellipsis-3{display: -webkit-box;overflow: hidden;white-space: normal!important;text-overflow: ellipsis;word-wrap: break-word; -webkit-line-clamp: 3;-webkit-box-orient: vertical;}
+.inner{padding:10px;color:#999999;display: flex;flex-direction: row;justify-content: space-around;background-color:#F5F5F9;}
+.inner>div{width:170px;height:214px;background-color:#ffffff;text-align: center;}
+.inner img{width:50px;height:50px;margin-top:40px;}
+.inner p:nth-of-type(1){margin-top:20px;}
+.inner p:nth-of-type(2){margin-top:10px;}
+.inner p:nth-of-type(3){background-color:#E4E4E4;border-radius: 20px;padding:2px;width:60px;margin:20px auto 0;color:#666666;}
+
+.padding-10{padding-left:10px;padding-right:10px;}
+.discount-coupons>div:nth-of-type(2){background:url(../../img/user/yhq01.png) no-repeat;background-size:60px 78px;width:60px;height:78px;text-align: center;line-height: 78px;color:#ffffff;font-weight:bold;}
+.discount-coupons>div:nth-of-type(1){margin-top:10px;margin-bottom:10px;}
+.discount-coupons>div:nth-of-type(3){margin-left:75px;}
+.discount-coupons>div:nth-of-type(3)>p:nth-of-type(1){font-size:18px;}
+.discount-coupons>div:nth-of-type(3)>p:nth-of-type(3){font-size: 12px;margin-top:10px;}
+.brand-introduction>div:nth-of-type(3){position:fixed;right:10px;top:300px;z-index: 999;}
+.brand-introduction>div:nth-of-type(3)>img{width:50px;height:50px;}
+
+.product-recommendations>div:nth-of-type(1){padding:15px;}
+.product-recommendations ul{overflow: hidden;}
+.product-recommendations img{height:150px;width:100%;}
+.product-recommendations li a{display:block;}
+.product-recommendations li p{color:#333333;}
+.product-recommendations li span:nth-of-type(1){font-size:11px;color:#999999;padding-top:4px;padding-bottom:6px;}
+.product-recommendations li span:nth-of-type(2){font-size:12px;color:#999999;}
+
+.case-shows{margin-top:10px;}
+.case-shows div{padding-left:50px;}
+.case-shows>img{width:39px;height:39px;}
+
+
+.home-advisor>div:nth-of-type(2){margin-top:15px;}
+.home-advisor>div:nth-of-type(2)>div>div{text-align: center;width:150px;height:200px;border:1px solid #F5F5F9;float:left;margin-right:8px;}
+.home-advisor img{width:62px;height:62px;margin-top:20px;}
+.home-advisor>div:nth-of-type(2) span{display: block;}
+.home-advisor{padding:15px;}
+.home-advisor>div:nth-of-type(2)>div>div>span:nth-of-type(1){top:75px;color:#ffffff;background-color:#cccccc;border-radius:20px;width:36px;}
+.home-advisor>div:nth-of-type(2)>div>div>span:nth-of-type(2){margin-top:10px;}
+.home-advisor>div:nth-of-type(2)>div>div>span:last-child{margin:15px auto 0;border:1px solid #cccccc;border-radius:20px;width:90px;padding:5px 15px;}
+
+.popular-information{overflow: hidden;}
+.popular-information>div:nth-of-type(1){padding:15px;}
+.popular-information img{width:120px;height:85px;}
+.popular-information>div:nth-of-type(2) div{margin-left:135px;}
+.popular-information>div:nth-of-type(2) div>p+p{margin-top:15px;}
+
+.contact-way img{width:25px;height:25px;}
+.contact-way p{width:80%}
+
+.decorate-logo p{color:#cccccc;text-align: center;padding:15px;background-color:#f5f5f9;}
+
+.icon-dingwei{display: block;margin-top:-15px;}
+
+
+.mark{
+	width: 0px;
+	height: 0px;
+	position: fixed;
+	top: 70%;
+	left: 50%;
+}
+
+.mui-popover .mui-popover-arrow:after {
+	width: 0px;
+}
+		
+
+/*免费量房*/
+.free-room,.free-quotation{text-align: center;margin-top:15px;}
+.free-room>div:nth-of-type(1){position: relative;margin-top:20px;padding:0 15px;}
+.free-room>div:nth-of-type(1)>span{margin-right:5px;}
+.free-room>div:nth-of-type(1)>span>span:nth-of-type(1){display: inline-block;width:40px;height:40px;border:1px solid #cccccc;border-radius: 100%;text-align: center;line-height: 40px;}
+.free-room>div:nth-of-type(1) .mui-icon-arrowright{font-size:14px;}
+
+.free-room>div:nth-of-type(2),.free-quotation>div:nth-of-type(1){padding:15px;}
+.free-room>div:nth-of-type(2)>div,.free-quotation>div:nth-of-type(1)>div{overflow: hidden;width:80%;border:1px solid #e4e4e4;border-radius: 30px;padding:5px;margin:10px auto 0;}
+.free-room>div:nth-of-type(2)>div>input,.free-quotation>div:nth-of-type(1)>div>input{float:left;margin-left:10px;}
+.free-room>div:nth-of-type(2)>div>span,.free-quotation>div:nth-of-type(1)>div>span{float:right;margin-right:10px;margin-top:10px;color:#999999;font-size:14px;}
+
+.free-room>div:nth-of-type(3),.free-quotation>div:nth-of-type(2){padding:15px;width:78%;background-color:#59C9A5;margin:20px auto 15px;border-radius: 30px;}
+.free-room>div:nth-of-type(3)>p,.free-quotation>div:nth-of-type(2)>p{color:#ffffff;font-size:18px;}
+
+.mui-popover{width:370px;background-color:#ffffff;}
+
+::-webkit-input-placeholder{font-size: 15px;color:#999999;}
+
+.mui-popup-inner:after{height:0;}
+.mui-popup-button{color:#ffffff;}

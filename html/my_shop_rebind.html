@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>更换店铺</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<link href="../css/mui.min.css" rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" href="../css/my_shop_rebind.css"/>
+</head>
+<body style="background-color: #EEEEEE;">
+<header class="mui-bar mui-bar-nav mui-bar-nav-bg" style="background-color: white; box-shadow: none; border-bottom: 1px solid #CCCCCC;">
+	<span class="mui-icon mui-icon-back"></span>
+   	<font class="mui-title" style="font-size: 18px; color: #333333;">更换店铺</font>
+</header>
+<div class="mui-content" style="background-color: #EEEEEE;">
+	<div class="id-yanzheng">身份验证</div>
+	<div class="yanzheng-phonetest">
+		<div class="phonetest-content">
+			<div class="phone-content">
+				<div class="phone-info">手机号</div>
+				<div class="phone-number-input">
+					<input type="number" id="phone_number" placeholder="请输入手机号"/>
+				</div>		
+			</div>
+			<div class="test-content">
+				<div class="test-info">验证码</div>
+				<div class="test-code-input">
+					<input type="number" placeholder="请输入验证码"/>
+				</div>			
+				<input type="button" class="test-code-btn" value="获取验证码" onclick="sendCode(this), checkMobile(phone_number.value)"></input>		
+			</div>
+		</div>
+	</div>
+	<div class="hezuo-zhuangtai">
+		<div class="zhuangtai-title">
+			<font>请选择所在店铺与GO佳居网合作状态</font>
+		</div>
+		<div class="zhuangtai-xuanze">
+			<div class="mui-input-row mui-radio mui-left">
+				<label>认证店铺</label>
+				<input name="radio1" type="radio" checked="checked">
+			</div> 
+			<div class="mui-input-row mui-radio mui-left">
+				<label>暂未合作</label>
+				<input name="radio1" type="radio">
+			</div> 
+		</div>
+	</div>
+	<div class="dianpu-info">
+		<div class="dianpu-title">
+			<font>店铺信息</font>
+		</div>
+		<div class="dianpu-yanzheng">
+			<div class="yanzheng-content">
+				<div style="float: left; width: 70px; margin-top: 20px;">
+					<span style="font-size: 15px; color: #333333; ">店铺编号</span>
+				</div> 
+				<div class="dianpu-bianhao-input">
+					<input type="number" name="dianpu-bianhao" placeholder="请填写您所在的店铺编号"/>
+				</div>
+				<input type="button" value="验证"/>
+			</div>
+		</div>
+	</div>
+	
+	<div class="store-photo-content">
+		<div class="store-photo-caption">
+			<div style=" position: absolute; left: 0; height: 100%; width: 120px;">与门店合影照片</div>
+		</div>
+		<div class="photo-claim">请上传您与所在门店合影照片(需显示门头上LOGO)</div>
+		<div class="photo"><img src="../img/photo.png" style="width: 100%; height: 100%;"/></div>
+		<button class="upload">上传照片</button>
+	</div>
+	<a href="#"><button class="next-btn">确认更换</button></a>
+</div>
+</body>
+<script src="../js/mui.min.js"></script>
+<script type="text/javascript" src="../js/jquery-1.11.0.min.js" ></script>
+<script type="text/javascript" src="../js/icon-back.js" ></script>
+<script type="text/javascript">
+	mui.init()
+	var clock = '';
+ 	var nums = 60;
+ 	var btn;
+ 	function sendCode(thisBtn)
+ 	{ 
+ 		btn = thisBtn;
+ 		btn.disabled = true; //将按钮置为不可点击
+ 		btn.type.color="#cccccc"
+ 		btn.value = nums+'秒后重新获取';
+ 		clock = setInterval(doLoop, 1000); //一秒执行一次
+ 	}
+ 	function doLoop()
+ 	{
+ 		nums--;
+ 		if(nums > 0){
+  		btn.value = nums+'秒后重新获取';
+ 		}else{
+  		clearInterval(clock); //清除js定时器
+  		btn.disabled = false;
+  		btn.value = '获取验证码';
+  		nums = 60; //重置时间
+ 		}
+ 	}
+ 	function checkMobile(str) {
+    	if(str==""){
+        	alert("手机号不能为空！");
+    	}
+    	else{
+        	var re = /^1\d{10}$/     // 以1开始后面加10位数字
+        		if (re.test(str)==false) {
+            		alert("手机号格式错误！");
+        		}
+    	}
+	}	
+</script>
+</html>

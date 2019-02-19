@@ -1,0 +1,227 @@
+
+	.id-yanzheng{
+	height: 30px;
+	width: 90%;
+	margin-top: 10px;
+	margin-left: 5%;
+	font-size: 15px;
+	color: #999999;
+	}
+	.yanzheng-phonetest{
+	width: 100%;
+	height: 120px;
+	background-color: white;
+	}
+	.phonetest-content{
+    width: 90%;
+    height: 120px;
+    margin-left: 5%;
+    }
+    .phone-content{
+    width: 100%;
+    height: 60px;
+    border-bottom: 1px solid #EEEEEE;
+    }
+    .phone-info{
+    width: 60px;
+    float: left;
+    font-size: 15px;
+    color: #666666;
+    margin-top: 20px;
+    /*border: 1px solid #CCCCCC;*/
+    }
+    .phone-number-input{
+    float: left;
+    color: #999999;
+    padding: 0;
+    width: 150px;
+    height: 40px;
+    margin-top: 15px;
+    /*border: 1px solid #CCCCCC;*/
+    }
+    .phonetest-content input[type=number]{
+    height: 30px;
+    padding: 0;
+    border: 0;
+    font-size: 15px;
+	}
+	.test-content{
+    width: 100%;
+    height: 60px;
+    border-bottom: 1px solid #EEEEEE;
+    }
+    .test-info{
+    width: 60px;
+    float: left;
+    font-size: 15px;
+    color: #666666;
+    margin-top: 20px;
+    /*border: 1px solid #CCCCCC;*/
+    }
+    .test-code-input{
+    float: left;
+    color: #999999;
+    padding: 0;
+    width: 110px;
+    height: 40px;
+    margin-top: 15px;
+   /* border: 1px solid #CCCCCC;*/
+    }
+    .test-code-btn{
+    float: right;
+	margin-top: 18px;
+    }
+    .test-content input[type=button]{
+    padding: 3px 5px;
+   	color: #6C91FE;
+    font-size: 14px;
+    border-radius:20px;
+    border: 1px solid #6C91FE;
+	}
+	.test-content input[disabled]{
+	color: #999999;
+	border: 1px solid #CCCCCC;
+	}
+    .hezuo-zhuangtai{
+    width: 100%;
+    height: 90px;
+   /* border: 1px solid #CCCCCC;*/
+    }
+    .zhuangtai-title{
+    width: 90%;
+    height: 20px;
+    margin-left: 5%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #999999;
+    /*border: 1px solid #CCCCCC;*/
+    }
+    .zhuangtai-xuanze{
+    width: 100%;
+    height: 60px;
+    background-color: white;
+    }
+    .mui-input-row {
+    position: relative;
+    width: 110px;
+    float: left;
+    clear: none;
+    margin-top: 15px;
+	}
+	.mui-input-row label {
+	width: 110px;
+	font-size: 15px;
+    line-height: 1.1;
+    padding: 5px 5px;
+	}
+	.mui-checkbox input[type=checkbox]:before, .mui-radio input[type=radio]:before {   
+    font-size: 18px;
+    font-weight: 0;
+	} 
+	.mui-checkbox.mui-left label, .mui-radio.mui-left label {
+    padding-right: 0px;
+    padding-left: 45px;
+	}
+    .dianpu-info{
+    width: 100%;
+    height: 100px;
+    }
+    .dianpu-title{
+    width: 90%;
+    height: 20px;
+    margin-left: 5%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #999999;
+    /*border: 1px solid #CCCCCC;*/
+    }
+    .dianpu-yanzheng{
+    width: 100%;
+    height: 60px;
+    background-color: white;
+    }
+    .yanzheng-content{
+    width: 90%;
+    height: 100%;
+    margin-left:5% ;
+    position: relative;
+    /*border: 1px solid #CCCCCC;*/
+    }
+    .dianpu-bianhao-input{
+    float: left;
+    width: 170px;
+    height: 60px;
+    /*border: 1px solid #CCCCCC;*/
+    }
+    .dianpu-bianhao-input input[type=number]{
+    width: 170px;
+    padding-left: 0;
+    padding-right: 0;
+    margin-top: 10px;
+    font-size: 15px;
+    color: #999999;
+    border: 0;
+	}
+	.yanzheng-content input[type=button]{
+	width: 45px;
+	padding: 2px 0px;
+    float: right;
+    margin-top: 18px;
+   	color: #6C91FE;
+    font-size: 15px;
+    border-radius:20px;
+    border: 1px solid #6C91FE;
+	}
+	.store-photo-content{
+	position: relative;
+	top: 10px;
+	height: 382px;
+	width: 100%;
+	background-color: white;
+	}
+	.store-photo-caption{
+	width: 90%;
+	height: 20px;
+	font-size: 15px;
+	color: #333333;
+	margin-left: 5%;
+	position: relative;
+	top: 20px;
+	}
+	.photo-claim{
+	width: 90%;
+	height: 18px;
+	font-size: 12px;
+	color: #999999;
+	margin-left: 5%;
+	position: relative;
+	top: 25px;
+	}
+	.photo{
+	width: 90%;
+	height: 222px;
+	margin-left: 5%;
+	position: relative;
+	top: 35px;
+	}
+	.upload{
+	width: 90%;
+	height: 49px;
+	margin-left: 5%;
+	margin-top: 55px;
+	position: relative;
+	color: #6C91FE;
+	font-size: 16px;
+	border-radius: 25px;
+	border: 1px solid #6C91FE;
+	}
+	.next-btn{
+	width: 100%;
+	height: 50px;
+	font-size: 18px;
+	color: white;
+	border-top: 10px solid #EEEEEE;
+	background-color: #6C91FE;
+	}

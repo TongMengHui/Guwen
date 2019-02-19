@@ -1,0 +1,5 @@
+
+		.mui-content>div:nth-of-type(1){padding:15px;}
+		.mui-content>div:nth-of-type(1)>div+div{margin-top:30px;}
+		.mui-content>div:nth-of-type(1)>div>p{color:#666666;font-size:15px;line-height: 22px;}
+		.slogan{position: fixed;bottom:0;width:100%;}

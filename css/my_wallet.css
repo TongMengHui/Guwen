@@ -1,0 +1,45 @@
+
+	.mui-bar-nav {
+    background-color: white; 
+    color: #333333;
+    border: none;
+	}
+	.assets {
+    background: -webkit-linear-gradient(left,#9C96FF,#3F8CFE);
+    color: #ffffff;
+    overflow: hidden;
+	}
+	.assets>div:nth-of-type(2) {
+    display: flex;
+    justify-content: space-around;
+    height: 110px;
+	}
+	.horizontal-line{
+	position: absolute;
+	top: 170px;
+	height: 1px;
+	width: 100%;
+	background-color: #E4E4E4;
+	z-index: 2;
+	}
+	.vertical-line{
+	position: absolute;
+	left: 50%;
+	top: 170px;
+	height: 90px;
+	width: 1px;
+	background-color: #E4E4E4;
+	z-index: 2;
+	}
+	.card span {
+    color: #6991FE;
+    border: 1px solid #6991FE;   
+	}
+	.increase {
+    color: #6991FE;
+	}
+	.mui-bar-tab {   
+	border: 0;
+	border-radius: 0;
+    background-color: #6991FE;
+	}

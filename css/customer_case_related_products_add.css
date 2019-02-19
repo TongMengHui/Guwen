@@ -1,0 +1,174 @@
+
+	.classification-container{
+    position: relative;
+    width: 100%;
+    height: 40px;
+    font-size: 18px;
+    color: #666666;
+    background-color: white;	
+    border-bottom: 1px solid #EEEEEE;
+    }
+	.mui-table-view-cell{
+    float: left;
+    width: 50%;
+    height: 39px;
+    text-align: center;
+    background-color: white;
+    overflow: inherit;
+    z-index: 1;
+  /*  background-color: wheat;*/
+    }
+    .mui-table-view-cell:after{
+    background-color: white;
+    }
+    .mui-navigate-right{
+    height: 39px;
+    border-right: 1px solid #EEEEEE;
+    }
+    .mui-collapse-content{
+    height: 39px;
+    border-bottom: 1px solid #EEEEEE;
+    }
+    .product-info-container{
+    position: relative;
+    top: 0px;
+    width: 100%;
+    height: 95px;
+    border-bottom: 1px solid #EEEEEE;
+   /* background-color: #6C91FE;*/
+    }
+    .product-info-container-inside{
+    position: relative;
+    top: 15px;
+    left: 5%;
+    height: 65px;
+    width: 90%;
+   /* background-color: #8C70FF;*/
+    }
+    .product-pic{
+    position: relative;
+    float: left;
+    height: 65px;
+    width: 65px;
+    }
+    .product-introduction-container{
+    position: relative;
+    left: 15px;
+    float: left;
+    height: 65px;
+    width: 65%;
+   /* background-color: #6C91FE;*/
+    }	
+    .product-caption{
+    width: 100%;
+    height: 20px;
+    font-size: 14px;
+    color: #333333;
+   /* background-color: #4CD964;*/
+    }
+    .product-brand{
+    width: 100%;
+    height: 20px;
+    font-size: 11px;
+    color: #999999;
+  /*  background-color: #4CD964;*/
+    }
+    .product-price{
+    width: 100%;
+    height: 20px;
+    font-size: 14px;
+    color: #666666;
+   /* background-color: #4CD964;*/
+    }
+    .mui-checkbox, .mui-radio {
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    width: 24px;
+    height: 28px;
+    width: 28px;
+    border: 0;
+    padding: 0;
+	}
+	.mui-input-row {
+    clear: both;
+    overflow: hidden;
+	}
+	.mui-checkbox input[type=checkbox], .mui-radio input[type=radio] {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 0;
+    outline: 0!important;
+    background-color: transparent;
+    -webkit-appearance: none;
+	}
+    .unchecked-icon{
+    width: 100%;
+    height: 100%;
+    }
+    .bottom-btn-container{
+   	position: fixed;
+   	bottom: 0;
+    width: 100%;
+    height: 50px;
+    z-index: 0;
+    }
+    .add-btn{
+    position: relative;
+    float: left;
+    width: 70%;
+    height: 100%;
+    font-size: 16;
+    color: white;
+    border: 0;
+    border-radius: 0;
+    background-color: #333333;
+    }
+    .next-btn{
+    position: relative;
+    float: left;
+    width: 30%;
+    height: 100%;
+    font-size: 16;
+    color: white;
+    border: 0;
+    border-radius: 0;	
+    background-color: #6C91FE;
+    }
+    .basket-img{
+    position: absolute;
+    top: -15px;
+    left: 15px;
+    width: 50px;
+    height: 50px;
+    border: 5px solid #222222;
+    border-radius: 50px;
+    z-index: 1;
+    }
+    .checked-num{
+    position: absolute;
+    top: -15px;
+    left: 50px;
+    width: 20px;
+    height: 20px;
+    color: white;
+    font-size: 12px;
+    border-radius: 50px;
+   /* padding-top: -10px;*/
+    text-align: center;
+    background-color: #FF0000;
+    z-index: 2;
+    }
+    .back_to_top{
+	position: fixed;
+	bottom:60px;
+	right: 30px;
+	border:1px solid #888;
+	border-radius: 20px;
+	color:#FF625F;
+	z-index: 5;
+	}

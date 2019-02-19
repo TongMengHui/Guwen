@@ -1,0 +1,199 @@
+.bd-content{
+	position: relative;
+	width: 92%;
+	height: 258px;
+	margin-left: 4%;
+	margin-top: 15px;
+	border-radius: 10px;
+	background-color: white;
+	}
+	.bd-caption{
+	position: relative;
+	top: 20px;
+	width: 100%;
+	height: 20px;
+	font-size: 16px;
+	color: #999999;
+	}
+	.bd-avatar-status-content{
+	position: relative;
+	top: 30px;
+	height: 85px;
+	width: 100%;
+	}
+	.bd-avatar{
+	position: relative;
+	width: 80px;
+	height: 80px;
+	margin: 0 auto;
+	border-radius: 50px;
+	}
+	.bd-status{
+	position: relative;
+	top: -18px;
+	width: 56px;
+	height: 20px;
+	margin: 0 auto;
+	font-size: 14px;
+	color: #FFFFFF;
+	border-radius: 25px;
+	border: 1px solid #EEEEE;
+	background-color: #6991FE;
+	text-align: center;
+	}
+	.bd-name{
+	position: relative;
+	top: 30px;
+	width: 100%;
+	height: 20px;
+	font-size: 16px;
+	color: #666666;
+	text-align: center;
+	}
+	.bd-job-number{
+	position: relative;
+	top: 30px;
+	width: 100%;
+	height: 20px;
+	font-size: 13px;
+	color: #999999;
+	text-align: center;
+	}
+	.line{
+	position: relative;
+	top: 45px;
+	width: 100%;
+	height: 1px;
+	background-color: #EEEEEE;
+	}
+	.btn-content{
+	position: relative;
+	top: 60px;
+	left: 4%;
+	width: 92%;
+	height: 37px;
+	}
+	.complaint-btn{
+	position: relative;
+	float: left;
+	top: 1px;
+	width: 28%;
+	height: 35px;
+	font-size: 16px;
+	color: #CCCCCC;
+	border-radius: 25px;
+	border: 1px solid #EEEEEE;
+	background-color: white;
+	}
+	.online-contact-btn{
+	position: relative;
+	float: left;
+	top: 1px;
+	left: 2%;
+	width: 40%;
+	height: 35px;
+	font-size: 16px;
+	color: #CCCCCC;
+	border-radius: 25px;
+	border: 1px solid #EEEEEE;
+	background-color: white;
+	}
+	.phone-btn{
+	position: relative;
+	float: right;
+	top: 1px;
+	width: 28%;
+	height: 35px;
+	font-size: 16px;
+	color: #CCCCCC;
+	border-radius: 25px;
+	border: 1px solid #EEEEEE;
+	background-color: white;
+	}
+	.customer-server-content{
+	position: relative;
+	width: 92%;
+	height: 258px;
+	margin-left: 4%;
+	margin-top: 10px;
+	border-radius: 10px;
+	background-color: white;
+	}
+	.customer-server-caption{
+	position: relative;
+	top: 20px;
+	width: 100%;
+	height: 20px;
+	font-size: 16px;
+	color: #999999;
+	}
+	.customer-server-avatar-status-content{
+	position: relative;
+	top: 30px;
+	height: 85px;
+	width: 100%;
+	}
+	.customer-server-avatar{
+	position: relative;
+	width: 80px;
+	height: 80px;
+	margin: 0 auto;
+	border-radius: 50px;
+	}
+	.customer-server-status{
+	position: relative;
+	top: -18px;
+	width: 56px;
+	height: 20px;
+	margin: 0 auto;
+	font-size: 14px;
+	color: #FFFFFF;
+	border-radius: 25px;
+	border: 1px solid #EEEEE;
+	background-color: #6991FE;
+	text-align: center;
+	}
+	.customer-server-name{
+	position: relative;
+	top: 30px;
+	width: 100%;
+	height: 20px;
+	font-size: 16px;
+	color: #666666;
+	text-align: center;
+	}
+	.customer-server-job-number{
+	position: relative;
+	top: 30px;
+	width: 100%;
+	height: 20px;
+	font-size: 13px;
+	color: #999999;
+	text-align: center;
+	}
+	.icon-img{
+	width: 18px;
+	height: 18px;
+	margin-right: 5px;
+	}
+	.common-problem-btn{
+	position: relative;
+	left: 4%;
+	top: 15px;
+	width: 92%;
+	height: 60px;
+	font-size: 16px;
+	color: #6991FE;
+	border-radius: 10px;
+	border: 0;
+	background-color: white;
+	}
+	.bottom-font{
+	position: relative;
+	top: 25px;
+	width: 100%;
+	height: 35px;
+	font-size: 15px;
+	color: #CCCCCC;
+	text-align: center;
+	}

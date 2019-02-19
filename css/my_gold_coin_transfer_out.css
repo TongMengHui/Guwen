@@ -1,0 +1,199 @@
+
+	.gold-coins-info-container{
+	width: 100%;
+	height: 202px;
+	background: -webkit-linear-gradient(left,#9C96FF,#3F8CFE);
+	}
+	.caption{
+	position: relative;
+	top: 15px;
+	left: 4%;
+	width: 92%;
+	height: 20px;
+	font-size: 14px;
+	color: white;
+	/*background-color: #2AC845;*/
+	}
+	.coins-can-use-number{
+	position: relative;
+	top: 30px;
+	left: 4%;
+	width: 92%;
+	height: 50px;
+	color: white;
+	/*background-color: #2AC845;*/
+	border-bottom: 1px solid #E4E4E4;
+	}
+	.number{
+	position: relative;
+	top: 10px;
+	float: left;
+	width: auto;
+	height: 30px;
+	font-size: 36px;
+	/*background-color: wheat;*/
+	}
+	.transfer-out-btn{
+	position: relative;
+	top: 10px;
+	float: right;
+	width: 69px;
+	height: 30px;
+	font-size: 13px;
+	color: white;
+	padding: 0;
+	border-radius: 25px;	
+	border: 0;
+	background-color:transparent;
+	border: 1px solid #E4E4E4;
+	}
+	#line-container{
+	position: relative;
+	top: 30px;
+	left: 4%;
+	width: 92%;
+	height: 100px;
+	color: white;
+	/*background-color: wheat;*/
+	z-index: 1;
+	}
+	#line-container #line{
+    position:absolute;
+    top: 40px;
+    width:100%;
+    height:1px;
+	background-color: #EEEEEE;
+    z-index:2;
+    }
+	#line-container #round-dongjie{
+    position:absolute;
+    top:37px;
+    left:45px;
+    width:7px;
+    height:7px;
+	border-radius: 50px;
+	background-color: white;
+    z-index:3;
+    }
+   #line-container #round-total{
+    position:absolute;
+    top:37px;
+    right: 45px;
+    width:7px;
+    height:7px;
+	border-radius: 50px;
+	background-color: white;
+    z-index:3;
+    }
+    #line-container #dongjie-quantity{
+    position:absolute;
+    top:13px;
+    left:38px;
+    font-size: 12px;
+    color: #D0DEFF;
+    z-index:3;
+    }
+    #line-container #total-quantity{
+    position:absolute;
+    top:13px;
+    right:38px;
+    font-size: 12px;
+    color: #D0DEFF;
+    z-index:3;
+    }
+    #line-container #font-dongjie{
+    position:absolute;
+    top:52px;
+    left:26px;
+    font-size: 12px;
+    color: #D0DEFF;
+    z-index:3;
+    }
+    #line-container #font-total{
+    position:absolute;
+    top:52px;
+    right:26px;
+    font-size: 12px;
+    color: #D0DEFF;
+    z-index:3;
+    }
+    .touming{
+    position: relative;
+    top: -30px;
+    width: 100%;
+    height: 45px;
+    z-index: 4;
+    background-color: white;
+    opacity: 0.2;
+    }
+    .time-selection-container{
+    position: relative;
+    top: 0px;
+    left: 5%;
+    height: 60px;
+    width: 90%;
+    border-bottom: 1px solid #EEEEEE;
+   	background-color: white;
+    }
+    .time-caption{
+    position: relative;
+    top: 25px;
+    float: left;
+    width: 25%;
+    height: 30px;
+    border: 0;
+    font-size: 16px;
+    color: #666666;
+   /* background-color: #6641E2;*/
+    }
+    .time-input{
+    position: relative;
+    top: 22px;
+    float: left;
+    width: 60%;
+    height: 30px;
+    border: 0;
+    font-size: 16px;
+    color: #999999;
+    /*background-color: #4CD964;*/
+    }
+    .time-more-container{
+    position: relative;
+    top: 22px;
+    float: right;
+    width: 15%;
+    height: 30px;
+    background-color: white;
+    }
+    .time-more-font{
+    position: relative;
+    top: 5px;
+    float: right;
+    width: auto;
+    height: 20px;
+    font-size: 16px;
+    color: #CCCCCC;
+    }
+    .test-code-btn{
+    position: relative;
+    float: right;
+    }
+    .time-more-container input[type=button]{
+    padding: 3px 5px;
+   	color: #6C91FE;
+    font-size: 15px;
+    border-radius:20px;
+    border: 1px solid #6C91FE;
+	} 
+	.confirm-btn{
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 50px;
+	border: 0;
+	border-radius: 0;
+	font-size: 18px;
+	color: white;
+	background-color: #CCCCCC;
+	z-index: -1;
+	}   

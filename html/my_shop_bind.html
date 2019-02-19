@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>注册-店铺绑定</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<link href="../css/mui.min.css" rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" href="../css/my_shop_bind.css"/>
+</head>
+<body style="background-color: #EEEEEE;">
+<header class="mui-bar mui-bar-nav mui-bar-nav-bg" style="background-color: white; box-shadow: none; border-bottom: 1px solid #CCCCCC;">
+	<span class="mui-icon mui-icon-back"></span>
+   	<font class="mui-title" style="font-size: 18px; color: #333333;">店铺绑定</font>
+</header>
+<div class="mui-content" style="background-color: #EEEEEE;">
+	<div class="hezuo-zhuangtai">
+		<div class="zhuangtai-title">
+			<font>请选择所在店铺与GO佳居网合作状态</font>
+		</div>
+		<div class="zhuangtai-xuanze">
+			<div class="mui-input-row mui-radio mui-left">
+				<label>认证店铺</label>
+				<input name="radio1" type="radio" checked="checked">
+			</div> 
+			<div class="mui-input-row mui-radio mui-left">
+				<label>暂未合作</label>
+				<input name="radio1" type="radio">
+			</div> 
+		</div>
+	</div>
+	<div class="dianpu-info">
+		<div class="dianpu-title">
+			<font>店铺信息</font>
+		</div>
+		<div class="dianpu-yanzheng">
+			<div class="yanzheng-content">
+				<div style="float: left; width: 70px; margin-top: 20px;">
+					<span style="font-size: 15px; color: #333333; ">店铺编号</span>
+				</div> 
+				<div class="dianpu-bianhao-input">
+					<input type="number" name="dianpu-bianhao" placeholder="请填写您所在的店铺编号"/>
+				</div>
+				<input type="button" value="验证"/>
+			</div>
+		</div>
+	</div>
+	<div class="dianpu-xinxi" >
+		<div class="product-name-content">
+			<div class="product-name">商户名称：</div>
+			<div class="product-name-input">
+				<input type="text" placeholder="请填写您所经营品牌名称"/> 
+			</div>
+		</div>		
+		<div class="area-name-content">
+			<div class="area-name">所在地区：</div>
+			<div class="area-name-input">
+				<input type="text" id="area" placeholder="请填写您所在的地区"/> 
+			</div>
+		</div>		
+		<div class="mall-name-content">
+			<div class="mall-name">所在商场：</div>
+			<div class="mall-name-input">
+				<input type="text" id="mall" placeholder="请填写您所在的商场"/> 
+			</div>
+		</div>		
+	</div>
+	<div class="store-photo-content">
+		<div class="store-photo-caption">
+			<div style=" position: absolute; left: 0; height: 100%; width: 120px;">与门店合影照片</div>
+		</div>
+		<div class="photo-claim">请上传您与所在门店合影照片(需显示门头上LOGO)</div>
+		<div class="photo"><img src="../img/photo.png" style="width: 100%; height: 100%;"/></div>
+		<button class="upload">重新上传</button>
+	</div>
+	<a href="my_shop_review.html"><button class="next-btn">提交审核</button></a>
+</div>
+</body>
+<script src="../js/mui.min.js"></script>
+<script type="text/javascript" src="../js/jquery-1.11.0.min.js" ></script>
+<script type="text/javascript" src="../js/icon-back.js" ></script>
+<script type="text/javascript">
+	mui.init()
+		
+</script>
+</html>

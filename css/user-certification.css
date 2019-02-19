@@ -1,0 +1,13 @@
+.cl-fl{overflow: hidden;padding:20px 10px;}
+.handle{color:#999999;border:1px solid #999999;border-radius:20px;width:60px;height:30px;text-align: center;line-height: 30px;}
+
+.confirm-safe{height:40px;background-color:#F2F2F2;color:#CCCCCC;line-height: 40px;padding-left:20px;}
+
+.mui-media-body{font-size:16px;}
+.mui-media-body >p{font-size:12px;color:#999999}
+
+.mui-table-view-cell:after{left:0;right:0;}
+
+.active{border:1px solid #59C9A5;color:#59C9A5;}
+
+.mui-table-view-cell > a:not(.mui-btn){margin:0;padding:0;}

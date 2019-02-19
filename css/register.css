@@ -1,0 +1,221 @@
+	#time-line-content{
+    position:relative;
+    margin:0 auto;
+    width: 100%; 
+    height: 100px;
+    z-index: 0;
+    background-color: white;
+    }
+	#time-line-content #line{
+    position:absolute;
+    top: 45%;
+    left: 5%;
+    width:90%;
+    height:4%;
+    border-radius:5px;
+    z-index:1;
+    }
+    #time-line-content #line-front{
+    width: 50%;
+    height: 100%;
+    background-color: #EEEEEE;
+    border-radius:5px;
+    z-index:2;
+    float: left;
+    }
+    #time-line-content #line-back{
+    width: 50%;
+    height: 100%;
+    background-color: #EEEEEE;
+    border-radius:5px;
+    z-index:2;
+    float: left;
+    }
+	#time-line-content #round-front{
+    position:absolute;
+    top:37%;
+    left:20%;
+    width:20px;
+    height:20px;
+    border: 5px solid #6C91FE;
+	background-color: #FFFFFF;
+	border-radius: 50%;
+    z-index:3;
+    }
+    #time-line-content #round-middle{
+    position:absolute;
+    top:37%;
+    left:48%;
+    width:20px;
+    height:20px;
+    border: 5px solid #C8C7CC;
+	background-color: #FFFFFF;
+	border-radius: 50%;
+    z-index:3;
+    }
+     #time-line-content #round-back{
+    position:absolute;
+    top:37%;
+    left:75%;
+    width:20px;
+    height:20px;
+    border: 5px solid #C8C7CC;
+	background-color: #FFFFFF;
+	border-radius: 50%;
+    z-index:3;
+    }
+    #time-line-content #font-front{
+    position:absolute;
+    top:62%;
+    left:14%;
+    font-size: 15px;
+    color: #666666;
+    z-index:3;
+    }
+    #time-line-content #font-middle{
+    position:absolute;
+    top:62%;
+    left:42%;
+    font-size: 15px;
+    color: #CCCCCC;
+    z-index:3;
+    }
+    #time-line-content #font-back{
+    position:absolute;
+    top:62%;
+    left:69%;
+    font-size: 15px;
+    color: #CCCCCC;
+    z-index:3;
+    }
+    .choice-content{
+    width: 100%;
+    height: 300px;
+    /*border: 1px solid #CCCCCC;*/
+    }
+    .choice-title{
+    width: 80%;
+    height: 40px;
+    margin-left: 10%;
+    margin-top: 5% ;
+    font-size: 18px;
+    color: #999999;
+    text-align: center;
+   /* border: 1px solid #CCCCCC;*/
+    }
+    .choice-job-content{
+    width: 90%;
+    height: 200px;
+    margin-left: 5%;
+    text-align: center;
+    /*border: 1px solid #CCCCCC;*/
+    }
+    .choice-boxshadow{
+   	box-shadow: -moz-box-shadow:0px 1px 3px #999999, 0px 0px 3px #333333;
+    -webkit-box-shadow:0px 1px 3px #999999, 0px 0px 3px #333333; 
+    box-shadow:0px 1px 3px #999999, 0px 0px 3px #333333;
+    }
+    .jiaju{
+    position: relative;
+    float: left;
+    width: 46%;
+    height: 100%;
+    border: 1px solid #CCCCCC;
+    border-radius:10px;
+    }
+    .jiaju-img{
+    width: 80%;
+    height: 60%;
+    margin-left: 10%;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    /*border: 1px solid #CCCCCC;*/
+    }
+    .jiaju-info{
+    width: 90%;
+    height: 10%;
+    margin-left: 5%;
+    color: #666666;
+    font-size: 18px;
+    /*border: 1px solid #CCCCCC;*/
+    }
+    .jiaju-info-type{
+    width: 90%;
+    height: 10%;
+    margin-left: 5%;
+    font-size: 13px;
+    color: #999999;
+    /*border: 1px solid #CCCCCC;*/
+    }
+    .jiaju-choiced-icon{
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    width: 25px;
+    height: 25px;
+    border-radius: 50px; 
+    }
+    .designer{
+    position: relative;
+    float: left;
+    width: 46%;
+    height: 100%;
+    margin-left:8% ;
+    border: 1px solid #CCCCCC;
+    border-radius:10px;
+    }
+    .designer-img{
+    width: 80%;
+    height: 60%;
+    margin-left: 10%;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    /*border: 1px solid #CCCCCC;*/
+    }
+    .designer-info{
+    width: 90%;
+    height: 10%;
+    margin-left: 5%;
+    color: #666666;
+    font-size: 18px;
+   /* border: 1px solid #CCCCCC;*/
+    }
+    .designer-info-type{
+    width: 90%;
+    height: 15%;
+    margin-left: 5%;
+    font-size: 10px;
+    color: #999999;
+    font-size: 13px;
+    /*border: 1px solid #CCCCCC;*/
+    }
+    .designer-choiced-icon{
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    width: 25px;
+    height: 25px;
+    border-radius: 50px; 
+    }
+	.next-btn{
+	height: 40px;
+	width: 90%;
+	position: absolute;
+	left: 5%;
+	bottom: 60px;
+	background-color: #C8C7CC;
+	border-radius:20px;
+	border: none;
+	color: white;
+	font-size: 18px;
+	}
+	.font-bottom{
+	height: 20px;
+	width: 80%;
+	position: absolute;
+	bottom: 18px; 
+	left: 10%; 
+	color: #C8C7CC; 
+	font-size: 15px;
+	text-align: center;
+	}

@@ -1,0 +1,21 @@
+
+	.icon_content{
+	position: relative;
+	top: 120px;
+	width: 100%;
+	height: 126px;
+	text-align: center;
+	}
+	.icon{
+	width: 126px;
+	height: 126px;	
+	}
+	.font-caption{
+	position: relative;
+	top: 130px;
+	width: 100%;
+	height: 22px;
+	font-size: 18px;
+	color: #CCCCCC;
+	text-align: center;
+	}
