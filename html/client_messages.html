@@ -1,117 +1,153 @@
 <!doctype html>
 <html>
-<head>
-	<meta charset="UTF-8">
-	<title>客户留言-回复</title>
-	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-	<link href="../css/mui.min.css" rel="stylesheet" />
-	<link rel="stylesheet" type="text/css" href="../css/client_messages.css"/>
-	
-</head>
-<body style="background-color: white;">
-<header class="mui-bar mui-bar-nav mui-bar-nav-bg" style="background-color: white; box-shadow: none; border-bottom: 1px solid #EEEEEE;">
-	<span class="mui-icon mui-icon-back"></span>
-   	<font class="mui-title" style="font-size: 18px; color: #333333;">客户留言</font>
-</header>
-<div class="mui-content" style="background-color: white;">
-	<div class="leave-comments">
-		<div class="product-case-container">
-			<img src="../img/desk.png" class="product-case-img"/>
-			<div class="product-case-description">
-				本月新上架简美套房产品，需要的亲速来抢购，前十名到店客户有小礼物...
-			</div>
-		</div>
-		<div class="triangle_border_up"></div>
-		<div class="reply-container">
-			<div class="user-question-container">
-				<div class="user-question-title-container">
-					<img src="../img/touxiang9.png" class="user-avatar"/>				
-					<div class="name">用户昵称</div>
-					<div class="time">2012-12-08&nbsp;&nbsp;12:12</div>
-					<a href="#"><button class="btn">回复</button></a>
-				</div>		
-				<p class="user-question">亲，还有货吗，我想要棕色的还有没有,能不能到你店里看看</p>	
-			</div>
-	</div>
-	<div class="white-line"></div>
-	<div class="leave-comments">
-		<div class="product-case-container">
-			<img src="../img/desk.png" class="product-case-img"/>
-			<div class="product-case-description">
-				本月新上架简美套房产品，需要的亲速来抢购，前十名到店客户有小礼物...
-			</div>
-		</div>
-		<div class="triangle_border_up"></div>
-		<div class="reply-container">
-			<div class="user-question-container">
-				<div class="user-question-title-container">
-					<img src="../img/touxiang9.png" class="user-avatar"/>				
-					<div class="name">用户昵称</div>
-					<div class="time">2012-12-08&nbsp;&nbsp;12:12</div>
-					<a href="#"><button class="btn">回复</button></a>
-				</div>		
-				<p class="user-question">亲，还有货吗，我想要棕色的还有没有,能不能到你店里看看</p>	
-			</div>
-			<div class="waiter-reply-container" style="border-bottom: 0;">
-				<div class="waiter-avatar-container">
-					<a href="#"><img src="../img/touxiang6.png" class="waiter-avatar"/></a>
+	<head>
+		<meta charset="UTF-8">
+		<title>客户留言-回复</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<style type="text/css">
+			.m-header{
+				padding: 10px 0;
+			}
+			.m-item{
+				box-sizing: border-box;
+				padding: 0 10px;
+				background: #fff;
+				padding-bottom: 20px;
+			}
+			.m-header img{
+				width: 60px;
+				height: 60px;
+				flex-shrink: 0;
+			}
+			.m-header span{
+				flex-grow: 1;
+				margin-left: 10px;
+				font-size: 16px;
+			}
+			.m-body{
+				background: #efeff4;
+				border-radius: 5px;
+				position: relative;
+				box-sizing: border-box;
+				padding: 0 10px;
+				margin-top: 5px;
+			}
+			.m-body:before{
+				content: '';
+				position: absolute;
+				top:-14px;
+				left: 20px;
+				border-bottom: 7px solid #efeff4;
+				border-left: 7px solid transparent;
+				border-right: 7px solid transparent;
+				border-top: 7px solid transparent;
+			}
+			.m-c-row{
+				align-items: flex-start;
+				padding: 10px 0;
+			}
+			.m-c-row+.m-c-row{
+				border-top: 1px solid #d2d2d2;
+			}
+			.m-c-row img{
+				width: 40px;
+				height: 40px;
+				flex-shrink: 0;
+			}
+			.m-c-row>div{
+				flex-grow: 1;
+				margin-left: 10px;
+			}
+			.m-c-row .flex-row-between{
+				height: 40px;
+			}
+			.row-reverse{
+				flex-direction: row-reverse;
+			}
+			.row-reverse>div{
+				margin-left: 0;
+				margin-right: 10px;
+				text-align: right;
+			}
+		</style>
+	</head>
+	<body style="background-color: white;">
+		<header class="mui-bar mui-bar-nav mui-bar-nav-bg" style="background-color: white; box-shadow: none; border-bottom: 1px solid #EEEEEE;">
+			<span class="mui-icon mui-icon-back"></span>
+			<font class="mui-title" style="font-size: 18px; color: #333333;">客户留言</font>
+		</header>
+		<div class="mui-iframe-wrapper" style="top:45px;bottom: 0px;">
+			<div class="mui-content mui-scroll-wrapper" id="client_message">
+				<div class="mui-scroll">
+					<ul>
+						<li v-for="item in List" class="m-item">
+							<div class="flex-row-between m-header">
+								<img src="../img/al2.png" >
+								<span class="mui-ellipsis-2">{{item.title}}</span>
+							</div>
+							<ul class="m-body">
+								<li
+									class="flex-row-between m-c-row"
+									v-for="msg in item.msg"
+									:class="{'row-reverse':!!msg.lx}"
+								>
+									<img src="../img/QQ.png" >
+									<div>
+										<div class="flex-row-between" v-if="!msg.lx">
+											<div style="font-size: 16px;">
+												<span style="color:#666;">{{msg.name}}</span>
+												<span style="color:#999;">{{msg.fsrq}}</span>
+											</div>
+											<button
+												type="button"
+												class="mui-btn mui-btn-primary mui-btn-outlined"
+												style="padding: 2px 10px;border-radius: 20px;"
+											>回复</button>
+										</div>
+										<p style="font-size: 15px;">{{msg.ctx}}</p>
+										<p style="font-size: 12px;color: #ccc;" v-if="msg.lx">{{msg.fsrq}}</p>
+									</div>
+								</li>
+							</ul>
+						</li>
+					</ul>
 				</div>
-				<div class="replay-time-container">
-					<p class="waiter-reply-content">有的，您可以点我头像跟我私聊</p>				
-				</div>			
-				<div class="time-container">
-					2012-12-08&nbsp;&nbsp;12:12
-				</div>				
-			</div>
-	</div>
-	<div class="white-line"></div>
-	<div class="leave-comments">
-		<div class="product-case-container">
-			<img src="../img/desk.png" class="product-case-img"/>
-			<div class="product-case-description">
-				本月新上架简美套房产品，需要的亲速来抢购，前十名到店客户有小礼物...
 			</div>
 		</div>
-		<div class="triangle_border_up"></div>
-		<div class="reply-container">
-			<div class="user-question-container">
-				<div class="user-question-title-container">
-					<img src="../img/touxiang9.png" class="user-avatar"/>				
-					<div class="name">用户昵称</div>
-					<div class="time">2012-12-08&nbsp;&nbsp;12:12</div>
-					<a href="#"><button class="btn">回复</button></a>
-				</div>		
-				<p class="user-question">亲，还有货吗，我想要棕色的还有没有,能不能到你店里看看</p>	
-			</div>			
-			<div class="waiter-reply-container">
-				<div class="waiter-avatar-container">
-					<a href="#"><img src="../img/touxiang6.png" class="waiter-avatar"/></a>
-				</div>
-				<div class="replay-time-container">
-					<p class="waiter-reply-content">有的，您可以点我头像跟我私聊</p>				
-				</div>			
-				<div class="time-container">
-					2012-12-08&nbsp;&nbsp;12:12
-				</div>				
-			</div>
-			<div class="user-question-container">
-				<div class="user-question-title-container">
-					<img src="../img/touxiang9.png" class="user-avatar"/>				
-					<div class="name">用户昵称</div>
-					<div class="time">2012-12-08&nbsp;&nbsp;12:12</div>
-					<a href="#"><button class="btn">回复</button></a>
-				</div>		
-				<p class="user-question">好的</p>	
-			</div>
-		</div>		
-	</div>
-	<div class="white-line"></div>
-</div>
-</body>
-<script src="../js/mui.min.js"></script>
-<script type="text/javascript" src="../js/jquery-1.11.0.min.js" ></script>
-<script type="text/javascript" src="../js/icon-back.js" ></script>
-<script type="text/javascript">
-	mui.init()
-</script>
+	</body>
+	<script src="../js/mui.min.js"></script>
+	<script type="text/javascript" src="../js/jquery-1.11.0.min.js"></script>
+	<script src="../js/vue.min.js" type="text/javascript"></script>
+	<script src="../js/util.js" type="text/javascript"></script>
+	<script type="text/javascript" src="../js/icon-back.js"></script>
+	<script type="text/javascript">
+		new Vue({
+			el:'#client_message',
+			data:{
+				List:[
+					{
+						title:'GitHub标星3600：最会编故事的OpenAI语言模型，现已加入PyTorch BERT豪华阵容型，现已加入PyTorch BERT豪华阵容',
+						msg:[
+							{
+								name:'镇关西',
+								fsrq:'2018-09-12 12:23:23',
+								ctx:'楼主sb',
+								lx:0
+							},
+							{
+								fsrq:'2018-09-12 12:23:23',
+								ctx:'点我的头像开始和我私聊点我的头像开始和我私聊点我的头像开始和我私聊点我的头像开始和我私聊',
+								lx:1
+							}
+						]
+					}
+				]
+			},
+			mounted(){
+				
+			}
+		})
+	</script>
 </html>
