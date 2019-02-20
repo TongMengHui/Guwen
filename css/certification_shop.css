@@ -127,7 +127,7 @@
 	}
     .dianpu-info{
     width: 100%;
-    height: 100px;
+    height: 90px;
     }
     .dianpu-title{
     width: 90%;
@@ -178,11 +178,12 @@
 	}
 	.dianpu-xinxi{
 	position: relative;
-	height: 78px;
+	height: 72px;
 	width: 243px;
 	font-size: 15px;
 	color: #999999;
 	margin-left: 5%;
+	display: none;
 	/*border: 1px solid #6C91FE;*/
 	}
 	.product-name-content{
@@ -242,7 +243,7 @@
 	height: 100%;
 	/*border: 1px solid #6C91FE;*/
 	}
-	input[type=text]{
+	.item1 input[type=text]{
 	width: 166px;
 	height: 100%;
 	padding: 0;
@@ -304,3 +305,7 @@
 	border-top: 10px solid #EEEEEE;
 	background-color: #6C91FE;
 	}
+.item2{
+			display: none;
+		}
+		
