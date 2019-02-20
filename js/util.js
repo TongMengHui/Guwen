@@ -28,9 +28,67 @@ var $util={
 	},
 	//弹窗
 	dialog(options){
-		var __popup__=document.createElement('div');
-		__popup__.setAttribute('class','mui-popup');
-		document.body.appendChild(__popup__);
+		if(document.getElementsByClassName('c-dialog').length){
+			mui('.c-dialog')[0].style.display='flex';
+		}else{
+			var _opt=options||{};
+			var __node__=__createDialog__(_opt);
+			document.body.appendChild(__node__);
+		}
 	}
 }
 
+function __createDialog__(options){
+	var __popup__=document.createElement('div');
+	var __body__=document.createElement('div');
+	var __title__=document.createElement('div');
+	var __text__=document.createElement('textarea');
+	var __footer__=document.createElement('div');
+	var __btn1__=document.createElement('input');
+	var __btn2__=document.createElement('input');
+	
+	__title__.setAttribute('class','c-d-title');
+	__title__.innerText=options.title||'文本输入';
+	
+	__text__.setAttribute('rows',15);
+	__text__.setAttribute('placeholder',options.placeholder||'请输入文字...');
+	__text__.setAttribute('maxlength',options.max);
+	
+	__footer__.setAttribute('class','flex-row-between c-d-footer');
+	__btn1__.setAttribute('type','button');
+	__btn2__.setAttribute('type','button');
+	__btn1__.setAttribute('value','取消');
+	__btn2__.setAttribute('value','确认');
+	__btn1__.setAttribute('class','c-b-cancel');
+	__btn1__.addEventListener('touchend',function(){
+		if(options.cancel){
+			options.cancel();
+		}
+		__closeDialog__();
+	});
+	__btn2__.addEventListener('touchend',function(){
+		if(options.confirm){
+			var _ctx=__text__.value.trim();
+			if(!_ctx){
+				mui.toast('内容不可为空!');
+			}else{
+				options.confirm(_ctx);
+				__closeDialog__();
+			}
+		}
+	});
+	__footer__.appendChild(__btn1__);
+	__footer__.appendChild(__btn2__);
+	
+	__body__.appendChild(__title__);
+	__body__.appendChild(__text__);
+	__body__.appendChild(__footer__);
+	
+	__popup__.setAttribute('class','c-dialog');
+	__popup__.appendChild(__body__);
+	return __popup__;
+}
+
+function __closeDialog__(){
+	mui('.c-dialog')[0].style.display='none';
+}

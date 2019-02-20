@@ -181,7 +181,14 @@
 			},
 			methods:{
 				reply(obj){
-					$util.dialog();
+					$util.dialog({
+						title:'留言回复',
+						placeholder:'请输入留言(最多200字)...',
+						max:10,
+						confirm:function(ctx){
+							console.log(ctx)
+						}
+					});
 				}
 			},
 			mounted(){
