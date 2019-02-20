@@ -107,7 +107,7 @@
 			
 		},
 		mounted(){
-			pullRefresh('#install_order',function(cb){
+			$util.pullRefresh('#install_order',function(cb){
 				var _self=this;
 				setTimeout(function(){
 					_self.List.splice(_self.List.length,0,{

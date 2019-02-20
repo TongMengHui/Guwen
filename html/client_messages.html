@@ -15,6 +15,7 @@
 				padding: 0 10px;
 				background: #fff;
 				padding-bottom: 20px;
+				margin-top: 7px;
 			}
 			.m-header img{
 				width: 60px;
@@ -71,6 +72,9 @@
 				margin-right: 10px;
 				text-align: right;
 			}
+			.high-light{
+				color: #007AFF;
+			}
 		</style>
 	</head>
 	<body style="background-color: white;">
@@ -104,9 +108,10 @@
 												type="button"
 												class="mui-btn mui-btn-primary mui-btn-outlined"
 												style="padding: 2px 10px;border-radius: 20px;"
+												@click="reply(item)"
 											>回复</button>
 										</div>
-										<p style="font-size: 15px;">{{msg.ctx}}</p>
+										<p style="font-size: 15px;" :class="{'high-light':msg.lx}">{{msg.ctx}}</p>
 										<p style="font-size: 12px;color: #ccc;" v-if="msg.lx">{{msg.fsrq}}</p>
 									</div>
 								</li>
@@ -142,11 +147,69 @@
 								lx:1
 							}
 						]
+					},
+					{
+						title:'美方称中国法律要求企业配合窃密 外交部列4点事实回应',
+						msg:[
+							{
+								name:'镇关西',
+								fsrq:'2018-09-12 12:23:23',
+								ctx:'楼主sb',
+								lx:0
+							},
+							{
+								fsrq:'2018-09-12 12:23:23',
+								ctx:'点我的头像开始和我私聊点我的头像开始和我私聊点我的头像开始和我私聊点我的头像开始和我私聊',
+								lx:1
+							}
+						]
+					},
+					{
+						title:'那个疯狂烧钱的爱屋吉屋“死了”，官网、APP已停止运营',
+						msg:[
+							{
+								name:'镇关西',
+								fsrq:'2018-09-12 12:23:23',
+								ctx:'楼主sb',
+								lx:0
+							},
+							{
+								fsrq:'2018-09-12 12:23:23',
+								ctx:'点我的头像开始和我私聊点我的头像开始和我私聊点我的头像开始和我私聊点我的头像开始和我私聊',
+								lx:1
+							}
+						]
 					}
 				]
 			},
+			methods:{
+				reply(obj){
+					$util.dialog();
+				}
+			},
 			mounted(){
-				
+				var _self=this;
+				$util.pullRefresh('#client_message',function(cb){
+					setTimeout(function(){
+						_self.List.splice(_self.List.length,0,{
+							title:'如何挑战亚马逊和微软？谷歌再收购云数据迁移公司',
+							msg:[
+								{
+									name:'镇关西',
+									fsrq:'2018-09-12 12:23:23',
+									ctx:'楼主sb',
+									lx:0
+								},
+								{
+									fsrq:'2018-09-12 12:23:23',
+									ctx:'测试语言',
+									lx:1
+								}
+							]
+						});
+						cb();
+					},2000);
+				});
 			}
 		})
 	</script>
