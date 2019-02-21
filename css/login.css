@@ -59,7 +59,7 @@
     .mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active {
     color: #6C91FE;
     border-bottom: 3px solid #6C91FE;
-    width: 100%;
+    width: 50%;
 	}
 	
 	.mui-input-row label {

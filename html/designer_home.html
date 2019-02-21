@@ -393,9 +393,22 @@
 	//            分期订单数    常规订单数    案例点评数    客户留言数 
 	//            是否店铺绑定  是否实名认证  
 	//            签到
+	var token =
+		'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxODEzODg4ODg4OCIsImF1dGgiOiIiLCJ1c2VydHlwZSI6IlJPTEVfT1BFUkFUT1IiLCJleHAiOjE1NTA4MDAzMzJ9.8qf2Fuu18-9caLdZF_G6AgOirtjcepKOKWDfR6182NYXfY0xXk4pqTckrxi8LmLrwKmqFgOgK2_F6ufmB54tYw'
+	var name = $('.name').text()
+	var code_num = $('.code_num').text()
+	var visit_num = $('.visit_num').text()
+	var profit_num = $('.profit_num').text()
+	var fenqiNum = $('.fenqi-num').find('span').text()
+	var designNum = $('.design-num').find('span').text()
+	var id = '3'
+
+
 	mui.init(
 		islead(),
-		getmsg()
+		getMerchant(),
+		getHomeCases(),
+		getDesignCases()
 	)
 
 	// 弹出引导框
@@ -413,50 +426,46 @@
 		}
 	}
 
-	function getmsg() {
-		var id = '3'
-		// $util.http('/api/merchant-operators/3?id='+id, {
-		// 	dataType: 'json',
-		// 	type: 'get',
-		// 	success: function (res) {
-		// 		console.log(res)
-		// 	}
-		// })
-		
-		mui.ajax('http://39.98.77.177:8080/api/merchant-operators/3?id='+id, {
-				// data: {
-					
-				// },
-				dataType: 'json', //服务器返回json格式数据
-				type: 'get', //HTTP请求类型
-				timeout: 10000, //超时时间设置为10秒；
-				headers: {
-					'Content-Type': 'application/json'
-				},
-				success: function(data) {
-					//服务器返回响应，根据响应结果，分析是否登录成功；
-					console.log(data)
-				},
-				error: function(xhr, type, errorThrown) {
-					//异常处理；
-					// console.log(type);
-				}
-			});
+	// 获取顾问表接口(merchant_operator)
+	function getMerchant() {
+		$util.http('/api/merchant-operators/'+id, {
+			dataType: 'json',
+			type: 'get',
+			success: function (res) {
+				console.log(res)
+			}
+		})
 	}
+	
+	// 获取家居案例表接口(home_cases)
+	function getHomeCases() {
+		$util.http('/api/home-cases/'+id, {
+			dataType: 'json',
+			type: 'get',
+			success: function (res) {
+				console.log(res)
+			}
+		})
+	}
+	
+	// 获取设计案例表接口(design_cases)
+	function getDesignCases() {
+		$util.http('/api/design-cases/'+id, {
+			dataType: 'json',
+			type: 'get',
+			success: function (res) {
+				console.log(res)
+			}
+		})
+	}
+
 
 
 	var gallery = mui('.mui-slider');
 	gallery.slider({
 		interval: 3000 //自动轮播周期，若为0则不自动播放，默认为0；
 	});
-	var token =
-		'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxODEzODg4ODg4OCIsImF1dGgiOiIiLCJ1c2VydHlwZSI6IlJPTEVfT1BFUkFUT1IiLCJleHAiOjE1NTA4MDAzMzJ9.8qf2Fuu18-9caLdZF_G6AgOirtjcepKOKWDfR6182NYXfY0xXk4pqTckrxi8LmLrwKmqFgOgK2_F6ufmB54tYw'
-	var name = $('.name').text()
-	var code_num = $('.code_num').text()
-	var visit_num = $('.visit_num').text()
-	var profit_num = $('.profit_num').text()
-	var fenqiNum = $('.fenqi-num').find('span').text()
-	var designNum = $('.design-num').find('span').text()
+	
 
 </script>
 
