@@ -192,6 +192,19 @@
 				}
 			},
 			mounted(){
+				$util.http('/api/authenticate/merchantOperator',{
+					//data-请求参数
+					data:{
+						"username":"18138888888",
+						"password":"admin",
+						"rememberMe":true
+					},
+					type:'post',//默认post
+					success:function(res){
+						//在这里处理成功回调
+						//res表示返回的数据
+					}
+				});
 				var _self=this;
 				$util.pullRefresh('#client_message',function(cb){
 					setTimeout(function(){
