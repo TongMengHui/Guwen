@@ -192,14 +192,9 @@
 				}
 			},
 			mounted(){
-				$util.http('/api/authenticate/merchantOperator',{
+				$util.http('/api/merchant-operators?id=3',{
 					//data-请求参数
-					data:{
-						"username":"18138888888",
-						"password":"admin",
-						"rememberMe":true
-					},
-					type:'post',//默认post
+					type:'get',
 					success:function(res){
 						//在这里处理成功回调
 						//res表示返回的数据

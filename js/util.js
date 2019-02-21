@@ -77,12 +77,13 @@
 // 			fail:失败回调
 // 		}
 		http(url,options){
+			console.log(BASEURL+url)
 			mui.ajax(BASEURL+url,{
 				headers:{
 					'Content-Type':'application/json',
 					'id_token':window.__TOKEN__||''
 				},
-				data:options.data || {},
+				data:options.data,
 				dataType:'json',//服务器返回json格式数据
 				type:options.type || 'post',//HTTP请求类型
 				timeout:10000,//超时时间设置为10秒；
