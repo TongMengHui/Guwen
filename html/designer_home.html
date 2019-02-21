@@ -8,8 +8,8 @@
 		<link href="../css/mui.min.css" rel="stylesheet" />
 		<link href="../css/designer_home.css" rel="stylesheet" />
 	</head>
-<style>
-	.mui-popover .mui-popover-arrow:after {
+	<style>
+		.mui-popover .mui-popover-arrow:after {
 		width: 0px;
 	}
 	.popup{
@@ -66,9 +66,11 @@
 						<div class="code_name">顾问编号 <img src="../img/u829.png" /></div>
 						<div class="code_num">DY002116</div>
 					</div>
-				<a id="test">	<div class="bottom2">
-						<img src="../img/u2446.png" alt="" /> 签到
-					</div></a>
+					<a id="test">
+						<div class="bottom2">
+							<img src="../img/u2446.png" alt="" /> 签到
+						</div>
+					</a>
 				</div>
 				<div class="state">
 					<div class="state1">
@@ -327,9 +329,10 @@
 					</div>
 				</div>
 			</div>
-			
-			
+
+
 			<div id="div"></div>
+			<!-- 认证引导 -->
 			<div id="popover" class="mui-popover" style="height: 400px;min-width: 320px;">
 				<div class="mui-popover-arrow"></div>
 				<div>
@@ -340,31 +343,47 @@
 						<p>每做一笔分期订单都会有奖励金拿哦!</p>
 					</div>
 					<div class="pup_bar">
-						<a id="pup_bar1"><div class="pup_bar1">随便逛逛</div></a>
-						<a href="certification_real_name.html"><div class="pup_bar2">立即认证</div></a>
+						<a id="pup_bar1">
+							<div class="pup_bar1">随便逛逛</div>
+						</a>
+						<a href="certification_real_name.html">
+							<div class="pup_bar2">立即认证</div>
+						</a>
 					</div>
 				</div>
 			</div>
-			
+			<!-- 签到 -->
+
 	</body>
 	<script src="../js/mui.min.js"></script>
 	<script type="text/javascript" src="../js/jquery-1.11.0.min.js"></script>
 	<script type="text/javascript" src="../js/back-to-top.js"></script>
 	<script type="text/javascript">
+		// 页面参数:   个人信息  	   顾问编号    访问人次     总收益      分期订单数  
+		//            分期订单数    常规订单数  案例点评数    客户留言数 
+		//            是否店铺绑定  是否实名认证  
+		//            签到
 		mui.init()
+		function embedLoading(e) {
+			// 页面加载完成弹出认证框
+			mui("#popover").popover('toggle', document.getElementById("div"));
+				document.getElementById("pup_bar1").addEventListener("tap", function() {
+					mui("#popover").popover('toggle', document.getElementById("div"));
+				})
+		}
+		embedLoading()
 		var gallery = mui('.mui-slider');
 		gallery.slider({
 			interval: 3000 //自动轮播周期，若为0则不自动播放，默认为0；
 		});
-
-		document.getElementById("test").addEventListener("tap", function() {
-			//调用隐藏/显示弹出层
-			mui("#popover").popover('toggle', document.getElementById("div"));
-		})
+		//document.getElementById("test").addEventListener("tap", function() {
+		// 			//调用隐藏/显示弹出层
+		// 			mui("#popover").popover('toggle', document.getElementById("div"));
+		// 		})
 		
-	document.getElementById("pup_bar1").addEventListener("tap", function() {
-		mui("#popover").popover('toggle', document.getElementById("div"));
-	})
+
+		var token =
+			'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxODEzODg4ODg4OCIsImF1dGgiOiIiLCJ1c2VydHlwZSI6IlJPTEVfT1BFUkFUT1IiLCJleHAiOjE1NTA4MDAzMzJ9.8qf2Fuu18-9caLdZF_G6AgOirtjcepKOKWDfR6182NYXfY0xXk4pqTckrxi8LmLrwKmqFgOgK2_F6ufmB54tYw'
 	</script>
 
 </html>

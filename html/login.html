@@ -43,6 +43,7 @@
 								<div class="promt"></div>
 								<div class="mui-button-row">
 									<a href="designer_home.html"><button type="button" class="mui-btn-login" id="login">登录</button></a>
+									<!-- <button type="button" class="mui-btn-login" id="login">登录</button> -->
 									<a href="forgot_password_identity_verification.html"><span class="mui-forget">忘记密码？</span></a>
 								</div>
 							</form>
@@ -60,6 +61,7 @@
 								</div>
 								<div class="mui-button-row">
 									<a href="designer_home.html"><button type="button" class="mui-btn-login">登录</button></a>
+									<!-- <button type="button" class="mui-btn-login">登录</button> -->
 									<a href="forgot_password_identity_verification.html"><span class="mui-forget">忘记密码？</span></a>
 								</div>
 							</form>
@@ -91,10 +93,10 @@
 			var phoneNum = $('#phoneNum'),
 				code = $('#code')
 			var reg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
-			if(!reg.test(phoneNum.val())) {
+			if (!reg.test(phoneNum.val())) {
 				$('.promt').html('请输入正确的手机号码')
 				return false;
-			} else if(phoneNum.val() != '18915427612') {
+			} else if (phoneNum.val() != '18915427612') {
 				$('.promt').html('此手机未注册')
 			} else {
 				$('.promt').html('')
@@ -107,7 +109,7 @@
 		var countdown = 60;
 
 		function setTime(obj) {
-			if(countdown == 0) {
+			if (countdown == 0) {
 				obj.prop('disabled', false);
 				obj.text("重新获取");
 				countdown = 60; //60秒过后button上的文字初始化,计时器初始化;
@@ -124,10 +126,32 @@
 		$('#getCode').click(function() {
 			isPhoneNum()
 		})
-		
+		// 登录接口请求
 			
+			mui.ajax('http://39.98.77.177:8080/api/authenticate/merchantOperator', {
+				data: {
+					username: '18138888888',
+					password: 'admin',
+					rememberMe:true
+				},
+				dataType: 'json', //服务器返回json格式数据
+				type: 'post', //HTTP请求类型
+				timeout: 10000, //超时时间设置为10秒；
+				headers: {
+					'Content-Type': 'application/json',
+					'id_token':'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxODEzODg4ODg4OCIsImF1dGgiOiIiLCJ1c2VydHlwZSI6IlJPTEVfT1BFUkFUT1IiLCJleHAiOjE1NTA4MDAzMzJ9.8qf2Fuu18-9caLdZF_G6AgOirtjcepKOKWDfR6182NYXfY0xXk4pqTckrxi8LmLrwKmqFgOgK2_F6ufmB54tYw'
+				},
+				success: function(data) {
+					//服务器返回响应，根据响应结果，分析是否登录成功；
+					console.log(data)
+				},
+				error: function(xhr, type, errorThrown) {
+					//异常处理；
+					console.log(type);
+				}
+			});
 		
-	
+		
 	</script>
 
 </html>
