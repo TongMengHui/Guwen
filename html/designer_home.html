@@ -357,10 +357,11 @@
 	</body>
 	<script src="../js/mui.min.js"></script>
 	<script type="text/javascript" src="../js/jquery-1.11.0.min.js"></script>
+	<script type="text/javascript" src="../js/util.js"></script>
 	<script type="text/javascript" src="../js/back-to-top.js"></script>
 	<script type="text/javascript">
-		// 页面参数:   个人信息  	   顾问编号    访问人次     总收益      分期订单数  
-		//            分期订单数    常规订单数  案例点评数    客户留言数 
+		// 页面参数:   个人信息  	 顾问编号      访问人次     总收益      分期订单数  
+		//            分期订单数    常规订单数    案例点评数    客户留言数 
 		//            是否店铺绑定  是否实名认证  
 		//            签到
 		mui.init()
@@ -376,14 +377,15 @@
 		gallery.slider({
 			interval: 3000 //自动轮播周期，若为0则不自动播放，默认为0；
 		});
-		//document.getElementById("test").addEventListener("tap", function() {
-		// 			//调用隐藏/显示弹出层
-		// 			mui("#popover").popover('toggle', document.getElementById("div"));
-		// 		})
-		
-
 		var token =
-			'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxODEzODg4ODg4OCIsImF1dGgiOiIiLCJ1c2VydHlwZSI6IlJPTEVfT1BFUkFUT1IiLCJleHAiOjE1NTA4MDAzMzJ9.8qf2Fuu18-9caLdZF_G6AgOirtjcepKOKWDfR6182NYXfY0xXk4pqTckrxi8LmLrwKmqFgOgK2_F6ufmB54tYw'
+		'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxODEzODg4ODg4OCIsImF1dGgiOiIiLCJ1c2VydHlwZSI6IlJPTEVfT1BFUkFUT1IiLCJleHAiOjE1NTA4MDAzMzJ9.8qf2Fuu18-9caLdZF_G6AgOirtjcepKOKWDfR6182NYXfY0xXk4pqTckrxi8LmLrwKmqFgOgK2_F6ufmB54tYw'
+		var name = $('.name').text()
+		var code_num = $('.code_num').text()
+		var visit_num = $('.visit_num').text()
+		var profit_num = $('.profit_num').text()
+		var fenqiNum = $('.fenqi-num').find('span').text()
+		var designNum = $('.design-num').find('span').text()
+		
 	</script>
 
 </html>
