@@ -1,391 +1,463 @@
 <!doctype html>
 <html>
 
-	<head>
-		<meta charset="UTF-8">
-		<title>设计师首页</title>
-		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-		<link href="../css/mui.min.css" rel="stylesheet" />
-		<link href="../css/designer_home.css" rel="stylesheet" />
-	</head>
-	<style>
-		.mui-popover .mui-popover-arrow:after {
+<head>
+	<meta charset="UTF-8">
+	<title>设计师首页</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<link href="../css/mui.min.css" rel="stylesheet" />
+	<link href="../css/designer_home.css" rel="stylesheet" />
+</head>
+<style>
+	.mui-popover .mui-popover-arrow:after {
 		width: 0px;
 	}
-	.popup{
+
+	.popup {
 		position: absolute;
 		top: 40px;
 		text-align: center;
 		color: #fff;
 		width: 100%;
 	}
-	.popup h3{
+
+	.popup h3 {
 		font-size: 30px;
 	}
-	.popup p{
+
+	.popup p {
 		color: #fff;
 		margin-bottom: 0;
 		font-size: 14px;
 	}
-	.pup_bar{
+
+	.pup_bar {
 		height: 55px;
 		bottom: 0;
 		line-height: 55px;
 	}
-	.pup_bar1{
+
+	.pup_bar1 {
 		float: left;
 		width: 49%;
 		text-align: center;
 		color: rgb(204, 204, 204);
-		border-right:1px solid rgb(235, 235, 235);
+		border-right: 1px solid rgb(235, 235, 235);
 	}
-	.pup_bar2{
+
+	.pup_bar2 {
 		text-align: center;
 		color: rgb(113, 145, 255);
-		width:49%;
+		width: 49%;
 		margin-left: 49%;
 	}
 </style>
-	<body>
-		<div class="mui-content">
-			<div class="header">
-				<div class="top">
-					<div class="left">
-						<img class="person_pic" src="../img/u918.png" alt="" />
-						<span class="name">神小题</span>
-						<img class="sign" src="../img/u920.png" alt="" />
+
+<body>
+	<div class="mui-content">
+		<div class="header">
+			<div class="top">
+				<div class="left">
+					<img class="person_pic" src="../img/u918.png" alt="" />
+					<span class="name">神小题</span>
+					<img class="sign" src="../img/u920.png" alt="" />
+				</div>
+				<div class="right">
+					<img class="qr" src="../img/u2441.png" alt="" />
+					<img class="news" src="../img/u2188.png" alt="" />
+					<span class="news_num">12</span>
+				</div>
+			</div>
+			<div class="bottom">
+				<div class="bottom1">
+					<div class="code_name">顾问编号
+						<img src="../img/u829.png" />
 					</div>
-					<div class="right">
-						<img class="qr" src="../img/u2441.png" alt="" />
-						<img class="news" src="../img/u2188.png" alt="" />
-						<span class="news_num">12</span>
+					<div class="code_num">DY002116</div>
+				</div>
+				<a id="test">
+					<div class="bottom2">
+						<img src="../img/u2446.png" alt="" /> 签到
+					</div>
+				</a>
+			</div>
+			<div class="state">
+				<div class="state1">
+					<div class="visit">访问人次</div>
+					<div class="visit_num">168
+						<span>次</span>
 					</div>
 				</div>
-				<div class="bottom">
-					<div class="bottom1">
-						<div class="code_name">顾问编号 <img src="../img/u829.png" /></div>
-						<div class="code_num">DY002116</div>
-					</div>
-					<a id="test">
-						<div class="bottom2">
-							<img src="../img/u2446.png" alt="" /> 签到
-						</div>
-					</a>
-				</div>
-				<div class="state">
-					<div class="state1">
-						<div class="visit">访问人次</div>
-						<div class="visit_num">168<span>次</span></div>
-					</div>
-					<div class="state2">
-						<div class="profit">总共收益</div>
-						<div class="profit_num">5,800<span>元</span></div>
+				<div class="state2">
+					<div class="profit">总共收益</div>
+					<div class="profit_num">5,800
+						<span>元</span>
 					</div>
 				</div>
 			</div>
-			<div id="features-content">
-				<div id="line"></div>
-				<div id="line1"></div>
-				<div class="feature-fenqi-design" style="z-index: -10;">
-					<a href="install_order.html">
-						<div class="feature-fenqi">
-							<div class="fenqi-info">
-								<div class="fenqi-caption">分期订单</div>
-								<div class="fenqi-num">新增订单<span style="color: #6C91FE;">6</span>笔</div>
+		</div>
+		<div id="features-content">
+			<div id="line"></div>
+			<div id="line1"></div>
+			<div class="feature-fenqi-design" style="z-index: -10;">
+				<a href="install_order.html">
+					<div class="feature-fenqi">
+						<div class="fenqi-info">
+							<div class="fenqi-caption">分期订单</div>
+							<div class="fenqi-num">新增订单
+								<span style="color: #6C91FE;">6</span>笔</div>
+						</div>
+						<div class="fenqi-icon">
+							<img src="../img/fqdd.png" style="width: 100%; height: 100%; border: 0;" />
+						</div>
+					</div>
+				</a>
+				<a href="#">
+					<div class="feature-design">
+						<div class="design-info">
+							<div class="design-caption">常规订单</div>
+							<div class="design-num">新增订单
+								<span style="color: #6C91FE;">12</span>笔</div>
+						</div>
+						<div class="design-icon">
+							<img src="../img/sjyyd.png" style="width: 100%; height: 100%; border: 0;" />
+						</div>
+					</div>
+				</a>
+			</div>
+			<div class="feature-xyk-hb">
+				<a href="my_client.html">
+					<div class="feature-xyk">
+						<div class="xyk-info">
+							<div class="xyk-caption">我的客户</div>
+							<div class="xyk-num">把握每个客户</div>
+						</div>
+						<div class="xyk-icon">
+							<img src="../img/u2452.png" style="width: 100%; height: 100%; border: 0;" />
+						</div>
+					</div>
+				</a>
+				<a href="customer_case_none.html">
+					<div class="feature-hb">
+						<div class="hb-info">
+							<div class="hb-caption">发布案例</div>
+							<div class="hb-num">获得更多关注</div>
+						</div>
+						<div class="hb-icon">
+							<img src="../img/u2450.png" style="width: 100%; height: 100%; border: 0;" />
+						</div>
+					</div>
+				</a>
+			</div>
+		</div>
+		<div class="pic-lunbo">
+			<div class="mui-slider">
+				<div class="mui-slider-group mui-slider-loop">
+					<!--支持循环，需要重复图片节点-->
+					<div class="mui-slider-item mui-slider-item-duplicate">
+						<a href="#">
+							<img src="../img/ad4.png" />
+						</a>
+					</div>
+					<div class="mui-slider-item">
+						<a href="#">
+							<img src="../img/lb.png" class="pic" />
+						</a>
+					</div>
+					<div class="mui-slider-item">
+						<a href="#">
+							<img src="../img/a1.png" class="pic" />
+						</a>
+					</div>
+					<div class="mui-slider-item">
+						<a href="#">
+							<img src="../img/ad1.png" class="pic" />
+						</a>
+					</div>
+					<div class="mui-slider-item">
+						<a href="#">
+							<img src="../img/al2.png" class="pic" />
+						</a>
+					</div>
+					<div class="mui-slider-item">
+						<a href="#">
+							<img src="../img/ad4.png" class="pic" />
+						</a>
+					</div>
+					<!--支持循环，需要重复图片节点-->
+					<div class="mui-slider-item mui-slider-item-duplicate">
+						<a href="#">
+							<img src="../img/lb.png" />
+						</a>
+					</div>
+				</div>
+				<div class="mui-slider-indicator">
+					<div class="mui-indicator mui-active"></div>
+					<div class="mui-indicator"></div>
+					<div class="mui-indicator"></div>
+					<div class="mui-indicator"></div>
+					<div class="mui-indicator"></div>
+				</div>
+			</div>
+			<div id="menu-content">
+				<div id="mline1"></div>
+				<div id="mline2"></div>
+				<div id="mline3"></div>
+				<div id="mline4"></div>
+				<div id="mline5"></div>
+				<div class="menu-sgww-line">
+					<a href="customer_case.html">
+						<div class="menu-sjal">
+							<div class="sjal-icon">
+								<img src="../img/sjal.png" style="width: 23px; height: 100%;" />
 							</div>
-							<div class="fenqi-icon">
-								<img src="../img/fqdd.png" style="width: 100%; height: 100%; border: 0;" />
+							<div class="sjal-caption">
+								设计案例
+							</div>
+						</div>
+					</a>
+					<a href="personal_homepage.html">
+						<div class="menu-grzy">
+							<div class="grzy-icon">
+								<img src="../img/grzy.png" style="width: 23px; height: 100%;" />
+							</div>
+							<div class="grzy-caption">
+								个人主页
 							</div>
 						</div>
 					</a>
 					<a href="#">
-						<div class="feature-design">
-							<div class="design-info">
-								<div class="design-caption">常规订单</div>
-								<div class="design-num">新增订单<span style="color: #6C91FE;">12</span>笔</div>
+						<div class="menu-yhq">
+							<div class="yhq-icon">
+								<img src="../img/yhq.png" style="width: 23px; height: 100%;" />
 							</div>
-							<div class="design-icon">
-								<img src="../img/sjyyd.png" style="width: 100%; height: 100%; border: 0;" />
+							<div class="yhq-caption">
+								优惠券
+							</div>
+						</div>
+					</a>
+
+					<a href="my_wallet.html">
+						<div class="menu-wdqb">
+							<div class="wdqb-icon">
+								<img src="../img/wdqb.png" style="width: 23px; height: 100%;" />
+							</div>
+							<div class="wdqb-caption">
+								我的钱包
 							</div>
 						</div>
 					</a>
 				</div>
-				<div class="feature-xyk-hb">
-					<a href="my_client.html">
-						<div class="feature-xyk">
-							<div class="xyk-info">
-								<div class="xyk-caption">我的客户</div>
-								<div class="xyk-num">把握每个客户</div>
+				<div class="menu-ykws-line">
+					<a href="#">
+						<div class="menu-khdp">
+							<div class="khdp-icon">
+								<img src="../img/khdp.png" style="float: left; margin-left: 36%; width: 23px; height: 100%;" />
+								<div class="khdp-red"></div>
 							</div>
-							<div class="xyk-icon">
-								<img src="../img/u2452.png" style="width: 100%; height: 100%; border: 0;" />
-							</div>
-						</div>
-					</a>
-					<a href="customer_case_none.html">
-						<div class="feature-hb">
-							<div class="hb-info">
-								<div class="hb-caption">发布案例</div>
-								<div class="hb-num">获得更多关注</div>
-							</div>
-							<div class="hb-icon">
-								<img src="../img/u2450.png" style="width: 100%; height: 100%; border: 0;" />
+							<div class="khdp-caption">
+								案例点评
 							</div>
 						</div>
 					</a>
+					<a href="client_messages.html">
+						<div class="menu-khdp">
+							<div class="khdp-icon">
+								<img src="../img/u2098.png" style="float: left; margin-left: 36%; width: 23px; height: 100%;" />
+								<div class="khdp-red"></div>
+							</div>
+							<div class="khdp-caption">
+								客户留言
+							</div>
+						</div>
+					</a>
+					<a href="my_shop_unbound.html">
+						<div class="menu-wddp">
+							<div class="bubble-container">
+								<div class="bubble">
+									未绑定
+								</div>
+								<div class="triangle"></div>
+							</div>
+							<div class="wddp-icon">
+								<img src="../img/wddp.png" style="width: 23px; height: 100%;" />
+							</div>
+							<div class="wddp-caption">
+								我的店铺
+							</div>
+						</div>
+					</a>
+					<a href="real_name_certification.html">
+						<div class="menu-smrz">
+							<div class="bubble-container">
+								<div class="bubble">
+									未认证
+								</div>
+								<div class="triangle"></div>
+							</div>
+							<div class="smrz-icon">
+								<img src="../img/smrz.png" style="width: 23px; height: 100%;" />
+							</div>
+							<div class="smrz-caption">
+								实名认证
+							</div>
+						</div>
+					</a>
+				</div>
+				<div class="menu-bs-line">
+					<a href="recommend_friends.html">
+						<div class="menu-bzzx">
+							<div class="bzzx-icon">
+								<img src="../img/u2456.png" style="width: 23px; height: 100%;" />
+							</div>
+							<div class="bzzx-caption">
+								赢现金
+							</div>
+						</div>
+					</a>
+					<a href="help_center.html">
+						<div class="menu-bzzx">
+							<div class="bzzx-icon">
+								<img src="../img/bzzx.png" style="width: 23px; height: 100%;" />
+							</div>
+							<div class="bzzx-caption">
+								帮助中心
+							</div>
+						</div>
+					</a>
+					<a href="setting_center.html">
+						<div class="menu-szzx">
+							<div class="szzx-icon">
+								<img src="../img/szzx.png" style="width: 23px; height: 100%;" />
+							</div>
+							<div class="szzx-caption">
+								设置中心
+							</div>
+						</div>
+					</a>
+					<div class="menu-empty"></div>
 				</div>
 			</div>
-			<div class="pic-lunbo">
-				<div class="mui-slider">
-					<div class="mui-slider-group mui-slider-loop">
-						<!--支持循环，需要重复图片节点-->
-						<div class="mui-slider-item mui-slider-item-duplicate">
-							<a href="#"><img src="../img/ad4.png" /></a>
-						</div>
-						<div class="mui-slider-item">
-							<a href="#"><img src="../img/lb.png" class="pic" /></a>
-						</div>
-						<div class="mui-slider-item">
-							<a href="#"><img src="../img/a1.png" class="pic" /></a>
-						</div>
-						<div class="mui-slider-item">
-							<a href="#"><img src="../img/ad1.png" class="pic" /></a>
-						</div>
-						<div class="mui-slider-item">
-							<a href="#"><img src="../img/al2.png" class="pic" /></a>
-						</div>
-						<div class="mui-slider-item">
-							<a href="#"><img src="../img/ad4.png" class="pic" /></a>
-						</div>
-						<!--支持循环，需要重复图片节点-->
-						<div class="mui-slider-item mui-slider-item-duplicate">
-							<a href="#"><img src="../img/lb.png" /></a>
+			<a href="jiaju_university.html">
+				<div class="jiajudaxue-content">
+					<div class="jiajudaxue-icon-content">
+						<div class="jiajudaxue-icon">
+							<img src="../img/jjdx.png" style="width: 100%; height: 100%;" />
 						</div>
 					</div>
-					<div class="mui-slider-indicator">
-						<div class="mui-indicator mui-active"></div>
-						<div class="mui-indicator"></div>
-						<div class="mui-indicator"></div>
-						<div class="mui-indicator"></div>
-						<div class="mui-indicator"></div>
+					<div class="jiajudaxue-info">
+						<div class="jiajudaxue-caption">家居大学</div>
+						<div class="jiajudaxue-ask">怎样搞定消费者/怎么提升门店客流量？</div>
 					</div>
 				</div>
-				<div id="menu-content">
-					<div id="mline1"></div>
-					<div id="mline2"></div>
-					<div id="mline3"></div>
-					<div id="mline4"></div>
-					<div id="mline5"></div>
-					<div class="menu-sgww-line">
-						<a href="customer_case.html">
-							<div class="menu-sjal">
-								<div class="sjal-icon">
-									<img src="../img/sjal.png" style="width: 23px; height: 100%;" />
-								</div>
-								<div class="sjal-caption">
-									设计案例
-								</div>
-							</div>
-						</a>
-						<a href="personal_homepage.html">
-							<div class="menu-grzy">
-								<div class="grzy-icon">
-									<img src="../img/grzy.png" style="width: 23px; height: 100%;" />
-								</div>
-								<div class="grzy-caption">
-									个人主页
-								</div>
-							</div>
-						</a>
-						<a href="#">
-							<div class="menu-yhq">
-								<div class="yhq-icon">
-									<img src="../img/yhq.png" style="width: 23px; height: 100%;" />
-								</div>
-								<div class="yhq-caption">
-									优惠券
-								</div>
-							</div>
-						</a>
-
-						<a href="my_wallet.html">
-							<div class="menu-wdqb">
-								<div class="wdqb-icon">
-									<img src="../img/wdqb.png" style="width: 23px; height: 100%;" />
-								</div>
-								<div class="wdqb-caption">
-									我的钱包
-								</div>
-							</div>
-						</a>
-					</div>
-					<div class="menu-ykws-line">
-						<a href="#">
-							<div class="menu-khdp">
-								<div class="khdp-icon">
-									<img src="../img/khdp.png" style="float: left; margin-left: 36%; width: 23px; height: 100%;" />
-									<div class="khdp-red"></div>
-								</div>
-								<div class="khdp-caption">
-									案例点评
-								</div>
-							</div>
-						</a>
-						<a href="client_messages.html">
-							<div class="menu-khdp">
-								<div class="khdp-icon">
-									<img src="../img/u2098.png" style="float: left; margin-left: 36%; width: 23px; height: 100%;" />
-									<div class="khdp-red"></div>
-								</div>
-								<div class="khdp-caption">
-									客户留言
-								</div>
-							</div>
-						</a>
-						<a href="my_shop_unbound.html">
-							<div class="menu-wddp">
-								<div class="bubble-container">
-									<div class="bubble">
-										未绑定
-									</div>
-									<div class="triangle"></div>
-								</div>
-								<div class="wddp-icon">
-									<img src="../img/wddp.png" style="width: 23px; height: 100%;" />
-								</div>
-								<div class="wddp-caption">
-									我的店铺
-								</div>
-							</div>
-						</a>
-						<a href="real_name_certification.html">
-							<div class="menu-smrz">
-								<div class="bubble-container">
-									<div class="bubble">
-										未认证
-									</div>
-									<div class="triangle"></div>
-								</div>
-								<div class="smrz-icon">
-									<img src="../img/smrz.png" style="width: 23px; height: 100%;" />
-								</div>
-								<div class="smrz-caption">
-									实名认证
-								</div>
-							</div>
-						</a>
-					</div>
-					<div class="menu-bs-line">
-						<a href="recommend_friends.html">
-							<div class="menu-bzzx">
-								<div class="bzzx-icon">
-									<img src="../img/u2456.png" style="width: 23px; height: 100%;" />
-								</div>
-								<div class="bzzx-caption">
-									赢现金
-								</div>
-							</div>
-						</a>
-						<a href="help_center.html">
-							<div class="menu-bzzx">
-								<div class="bzzx-icon">
-									<img src="../img/bzzx.png" style="width: 23px; height: 100%;" />
-								</div>
-								<div class="bzzx-caption">
-									帮助中心
-								</div>
-							</div>
-						</a>
-						<a href="setting_center.html">
-							<div class="menu-szzx">
-								<div class="szzx-icon">
-									<img src="../img/szzx.png" style="width: 23px; height: 100%;" />
-								</div>
-								<div class="szzx-caption">
-									设置中心
-								</div>
-							</div>
-						</a>
-						<div class="menu-empty"></div>
-					</div>
-				</div>
-				<a href="jiaju_university.html">
-					<div class="jiajudaxue-content">
-						<div class="jiajudaxue-icon-content">
-							<div class="jiajudaxue-icon">
-								<img src="../img/jjdx.png" style="width: 100%; height: 100%;" />
-							</div>
-						</div>
-						<div class="jiajudaxue-info">
-							<div class="jiajudaxue-caption">家居大学</div>
-							<div class="jiajudaxue-ask">怎样搞定消费者/怎么提升门店客流量？</div>
-						</div>
-					</div>
-				</a>
-				<button class="back_to_top">回到顶部</button>
-				<div class="bottom-font">
-					<div class="font-position">
-						GO佳居顾问中心
-					</div>
+			</a>
+			<button class="back_to_top">回到顶部</button>
+			<div class="bottom-font">
+				<div class="font-position">
+					GO佳居顾问中心
 				</div>
 			</div>
+		</div>
 
 
-			<div id="div"></div>
-			<!-- 认证引导 -->
-			<div id="popover" class="mui-popover" style="height: 400px;min-width: 320px;">
-				<div class="mui-popover-arrow"></div>
-				<div>
-					<img src="../img/u934.png" alt="" style="min-width: 320px;height: 340px;">
-					<div class="popup">
-						<h3>恭喜你注册成功</h3>
-						<p>悄悄告诉你，成为认证顾问后</p>
-						<p>每做一笔分期订单都会有奖励金拿哦!</p>
-					</div>
-					<div class="pup_bar">
-						<a id="pup_bar1">
-							<div class="pup_bar1">随便逛逛</div>
-						</a>
-						<a href="certification_real_name.html">
-							<div class="pup_bar2">立即认证</div>
-						</a>
-					</div>
+		<div id="div"></div>
+		<!-- 认证引导 -->
+		<div id="popover" class="mui-popover" style="height: 400px;min-width: 320px;">
+			<div class="mui-popover-arrow"></div>
+			<div>
+				<img src="../img/u934.png" alt="" style="min-width: 320px;height: 340px;">
+				<div class="popup">
+					<h3>恭喜你注册成功</h3>
+					<p>悄悄告诉你，成为认证顾问后</p>
+					<p>每做一笔分期订单都会有奖励金拿哦!</p>
+				</div>
+				<div class="pup_bar">
+					<a id="pup_bar1">
+						<div class="pup_bar1">随便逛逛</div>
+					</a>
+					<a href="certification_real_name.html">
+						<div class="pup_bar2">立即认证</div>
+					</a>
 				</div>
 			</div>
-			<!-- 签到 -->
+		</div>
+		<!-- 签到 -->
 
-	</body>
-	<script src="../js/mui.min.js"></script>
-	<script type="text/javascript" src="../js/jquery-1.11.0.min.js"></script>
-	<script type="text/javascript" src="../js/util.js"></script>
-	<script type="text/javascript" src="../js/back-to-top.js"></script>
-	<script type="text/javascript">
-		// 页面参数:   个人信息  	 顾问编号      访问人次     总收益      分期订单数  
-		//            分期订单数    常规订单数    案例点评数    客户留言数 
-		//            是否店铺绑定  是否实名认证  
-		//            签到
-		mui.init()
-		function embedLoading(e) {
-			// 页面加载完成弹出认证框
+</body>
+<script src="../js/mui.min.js"></script>
+<script type="text/javascript" src="../js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="../js/util.js"></script>
+<script type="text/javascript" src="../js/back-to-top.js"></script>
+<script type="text/javascript">
+	// 页面参数:   个人信息  	 顾问编号      访问人次     总收益      分期订单数  
+	//            分期订单数    常规订单数    案例点评数    客户留言数 
+	//            是否店铺绑定  是否实名认证  
+	//            签到
+	mui.init(
+		islead(),
+		getmsg()
+	)
+
+	// 弹出引导框
+	function lead() {
+		mui("#popover").popover('toggle', document.getElementById("div"));
+		document.getElementById("pup_bar1").addEventListener("tap", function () {
 			mui("#popover").popover('toggle', document.getElementById("div"));
-				document.getElementById("pup_bar1").addEventListener("tap", function() {
-					mui("#popover").popover('toggle', document.getElementById("div"));
-				})
+		})
+	}
+
+	// 判断是否需要弹出引导框
+	function islead() {
+		if (true) {
+			lead()
 		}
-		embedLoading()
-		var gallery = mui('.mui-slider');
-		gallery.slider({
-			interval: 3000 //自动轮播周期，若为0则不自动播放，默认为0；
-		});
-		var token =
-		'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxODEzODg4ODg4OCIsImF1dGgiOiIiLCJ1c2VydHlwZSI6IlJPTEVfT1BFUkFUT1IiLCJleHAiOjE1NTA4MDAzMzJ9.8qf2Fuu18-9caLdZF_G6AgOirtjcepKOKWDfR6182NYXfY0xXk4pqTckrxi8LmLrwKmqFgOgK2_F6ufmB54tYw'
-		var name = $('.name').text()
-		var code_num = $('.code_num').text()
-		var visit_num = $('.visit_num').text()
-		var profit_num = $('.profit_num').text()
-		var fenqiNum = $('.fenqi-num').find('span').text()
-		var designNum = $('.design-num').find('span').text()
+	}
+
+	function getmsg() {
+		var id = '3'
+		// $util.http('/api/merchant-operators/3?id='+id, {
+		// 	dataType: 'json',
+		// 	type: 'get',
+		// 	success: function (res) {
+		// 		console.log(res)
+		// 	}
+		// })
 		
-	</script>
+		mui.ajax('http://39.98.77.177:8080/api/merchant-operators/3?id='+id, {
+				// data: {
+					
+				// },
+				dataType: 'json', //服务器返回json格式数据
+				type: 'get', //HTTP请求类型
+				timeout: 10000, //超时时间设置为10秒；
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				success: function(data) {
+					//服务器返回响应，根据响应结果，分析是否登录成功；
+					console.log(data)
+				},
+				error: function(xhr, type, errorThrown) {
+					//异常处理；
+					// console.log(type);
+				}
+			});
+	}
+
+
+	var gallery = mui('.mui-slider');
+	gallery.slider({
+		interval: 3000 //自动轮播周期，若为0则不自动播放，默认为0；
+	});
+	var token =
+		'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxODEzODg4ODg4OCIsImF1dGgiOiIiLCJ1c2VydHlwZSI6IlJPTEVfT1BFUkFUT1IiLCJleHAiOjE1NTA4MDAzMzJ9.8qf2Fuu18-9caLdZF_G6AgOirtjcepKOKWDfR6182NYXfY0xXk4pqTckrxi8LmLrwKmqFgOgK2_F6ufmB54tYw'
+	var name = $('.name').text()
+	var code_num = $('.code_num').text()
+	var visit_num = $('.visit_num').text()
+	var profit_num = $('.profit_num').text()
+	var fenqiNum = $('.fenqi-num').find('span').text()
+	var designNum = $('.design-num').find('span').text()
+
+</script>
 
 </html>
