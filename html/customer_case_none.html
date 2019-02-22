@@ -12,7 +12,7 @@
 	<span class="mui-icon mui-icon-back"></span>
    	<font class="mui-title" style="font-size: 18px; color: #333333;">客户案例</font>
 </header>
-<div class="mui-content" style="background-color: white;">
+<div class="mui-content" id="none" style="background-color: white;">
 	<div class="icon_content">
 		<img src="../img/zwdd.png" class="icon"/>
 	</div>
@@ -32,6 +32,18 @@
 <script type="text/javascript" src="../js/icon-back.js" ></script>
 <script src="../js/util.js"></script>
 <script type="text/javascript">
-	mui.init()
+	mui.init(
+		getDesignCase()
+	)
+	// 设计案例接口(design case)
+	function getDesignCase() {
+		$util.http('/api/design-cases', {
+			dataType: 'json',
+			type: 'get',
+			success: function (res) {
+				console.log(res)
+			}
+		})
+	}
 </script>
 </html>

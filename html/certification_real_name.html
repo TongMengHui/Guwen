@@ -1,85 +1,223 @@
 <!doctype html>
 <html>
+
 <head>
 	<meta charset="UTF-8">
 	<title>认证流程-实名验证-店员版</title>
 	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 	<link href="../css/mui.min.css" rel="stylesheet" />
-	<link href="../css/iconfont.css" rel="stylesheet"/>
-	<link rel="stylesheet" type="text/css" href="../css/certification_real_name.css"/>
+	<link href="../css/iconfont.css" rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" href="../css/certification_real_name.css" />
 </head>
+
 <body style="background-color: #EEEEEE;">
-<header class="mui-bar mui-bar-nav mui-bar-nav-bg" style="background-color: white; box-shadow: none; border-bottom: 1px solid #CCCCCC;">
-	<span class="mui-icon mui-icon-back"></span>
-   	<span class="mui-title" style="font-size: 18px; color: #333333;">实名认证</span>
-</header>
-<div class="mui-content" style="background-color: #EEEEEE;">
-	<div id="time-line-content">
-		<div id="line">
-			<div id="line-front"></div>
-			<div id="line-back"></div> 
-		</div> 
-		<div id="round-front">
-			<img src="../img/rz.png" style="width: 100%; height: 100%;"/>
+	<header class="mui-bar mui-bar-nav mui-bar-nav-bg" style="background-color: white; box-shadow: none; border-bottom: 1px solid #CCCCCC;">
+		<span class="mui-icon mui-icon-back"></span>
+		<span class="mui-title" style="font-size: 18px; color: #333333;">实名认证</span>
+	</header>
+	<div class="mui-content" style="background-color: #EEEEEE;">
+		<div id="time-line-content">
+			<div id="line">
+				<div id="line-front"></div>
+				<div id="line-back"></div>
+			</div>
+			<div id="round-front">
+				<img src="../img/rz.png" style="width: 100%; height: 100%;" />
+			</div>
+			<div id="round-middle">
+				<img src="../img/dianpu1.png" style="width: 100%; height: 100%;" />
+			</div>
+			<div id="round-back">
+				<img src="../img/shenhe1.png" style="width: 100%; height: 100%;" />
+			</div>
+			<div id="font-front">实名认证</div>
+			<div id="font-middle">门店绑定</div>
+			<div id="font-back">提交审核</div>
 		</div>
-		<div id="round-middle">
-			<img src="../img/dianpu1.png" style="width: 100%; height: 100%;"/>
+
+		<div class="info">
+			<p>上传身份证用于确保您的账户安全，本平台将严格保护您的个人信息安全！</p>
 		</div>
-		<div id="round-back">
-			<img src="../img/shenhe1.png" style="width: 100%; height: 100%;"/>
+		<div class="sfz-front">
+			<div style="margin-top: 30px; width: 100%;">
+				<img id="face" src="../img/sfzzm.png" style="width: 149px; height: 106px;" />
+			</div>
+			<span style="font-size: 16px;">点击上传身份证
+				<span style="color: #007AFF;">人像面</span>
+			</span>
 		</div>
-		<div id="font-front">实名认证</div>
-		<div id="font-middle">门店绑定</div>
-		<div id="font-back">提交审核</div>
-	</div>
-	
-	<div class="info">
-		<p>上传身份证用于确保您的账户安全，本平台将严格保护您的个人信息安全！</p>
-	</div>
-	<div class="sfz-front">
-		<div style="margin-top: 30px; width: 100%;">
-			<img src="../img/sfzzm.png" style="width: 149px; height: 106px;" onclick="showPop();"/> 
+		<div class="sfz-back">
+			<div style="margin-top: 30px; width: 100%;">
+				<img id="con" src="../img/sfzbm.png" style="width: 149px; height: 106px;" onclick="showPop();" />
+			</div>
+			<span style="font-size: 16px;">点击上传身份证
+				<span style="color: #007AFF;">国徽面</span>
+			</span>
 		</div>
-		<span style="font-size: 16px;">点击上传身份证<span style="color: #007AFF;">人像面</span></span>
-	</div>
-	<div class="sfz-back">
-		<div style="margin-top: 30px; width: 100%;">
-			<img src="../img/sfzbm.png" style="width: 149px; height: 106px;" onclick="showPop();"/>
+		<div style="margin-top: 60px;">
+			<a href="certification_shop.html">
+				<button class="bottom-btn">确认提交</button>
+			</a>
 		</div>
-		<span style="font-size: 16px;">点击上传身份证<span style="color: #007AFF;">国徽面</span></span>
 	</div>
-	<div style="margin-top: 60px;">
-	<a href="certification_shop.html">
-		<button  class="bottom-btn">确认提交</button>	
-	</a> 
-	</div>
-</div>
-<div id="sheet1" class="mui-popover mui-popover-bottom mui-popover-action ">
-    <!-- 可选择菜单 -->
-    <ul class="mui-table-view">
-      <li class="mui-table-view-cell">
-        <a href="#">拍照</a>
-      </li>
-      <li class="mui-table-view-cell">
-        <a href="#">从相册选取</a>
-      </li>
-    </ul>
-    <!-- 取消菜单 -->
-    <ul class="mui-table-view">
-      <li class="mui-table-view-cell">
-        <a href="#sheet1">取消</a>
-      </li>
-    </ul>
-</div>
 </body>
 <script src="../js/mui.min.js"></script>
-<script type="text/javascript" src="../js/jquery-1.11.0.min.js" ></script>
-<script type="text/javascript" src="../js/icon-back.js" ></script>
+<script type="text/javascript" src="../js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="../js/icon-back.js"></script>
 <script src="../js/util.js"></script>
 <script type="text/javascript">
-	mui.init()
-	function showPop(){
-    mui('#sheet1').popover('toggle');
+	mui.init(submit())
+	function showPop() {
+		mui('#sheet1').popover('toggle');
 	}
+	// 提交
+	function submit(){
+		var faceSrc = $('#face').attr('src'),
+			conSrc = $('#con').attr('src')
+		if(faceSrc != "../img/sfzzm.png" && conSrc != "../img/sfzbm.png"){
+			$('.bottom-btn').css('background','#007AFF')
+			mui.openWindow('certification_shop.html','certification_shop',{})
+		}
+	}
+	// 选择照相机还是相册
+	document.getElementById('face').addEventListener('tap', function () {
+		if (mui.os.plus) {
+			var buttonTit = [{
+				title: "拍照"
+			}, {
+				title: "从手机相册选择"
+			}];
+
+			plus.nativeUI.actionSheet({
+				title: "上传图片",
+				cancel: "取消",
+				buttons: buttonTit
+			}, function (b) { /*actionSheet 按钮点击事件*/
+				switch (b.index) {
+					case 0:
+						break;
+					case 1:
+						getImage1(); /*拍照*/
+						break;
+					case 2:
+						galleryImg1();/*打开相册*/
+						break;
+					default:
+						break;
+				}
+			})
+		}
+	}, false);
+
+	// 拍照获取图片
+	function getImage1() {
+		var c = plus.camera.getCamera();
+		c.captureImage(function (e) {
+			plus.io.resolveLocalFileSystemURL(e, function (entry) {
+				var imgSrc = entry.toLocalURL() + "?version=" + new Date().getTime(); //拿到图片路径
+				// 其他操作,比如预览展示
+				$('#face').attr('src', imgSrc)
+			}, function (e) {
+				console.log("读取拍照文件错误：" + e.message);
+			});
+		}, function (s) {
+			console.log("error" + s);
+		}, {
+				filename: "_doc/camera/"
+			})
+	}
+
+	// 从相册中选择图片 
+	function galleryImg1() {
+		// 从相册中选择图片
+		plus.gallery.pick(function (e) {
+			for (var i in e.files) {
+				var fileSrc = e.files[i];
+				// 其他操作,比如预览展示
+				$('#face').attr('src', fileSrc)
+			}
+		}, function (e) {
+			console.log("取消选择图片");
+		}, {
+				filter: "image",
+				multiple: true,
+				maximum: 1,
+				system: false,
+				onmaxed: function () {
+					plus.nativeUI.alert('最多只能选择1张图片');
+				}
+			});
+	}
+// 选择照相机还是相册
+document.getElementById('con').addEventListener('tap', function () {
+		if (mui.os.plus) {
+			var buttonTit = [{
+				title: "拍照"
+			}, {
+				title: "从手机相册选择"
+			}];
+
+			plus.nativeUI.actionSheet({
+				title: "上传图片",
+				cancel: "取消",
+				buttons: buttonTit
+			}, function (b) { /*actionSheet 按钮点击事件*/
+				switch (b.index) {
+					case 0:
+						break;
+					case 1:
+						getImage(); /*拍照*/
+						break;
+					case 2:
+						galleryImg();/*打开相册*/
+						break;
+					default:
+						break;
+				}
+			})
+		}
+	}, false);
+
+	// 拍照获取图片
+	function getImage() {
+		var c = plus.camera.getCamera();
+		c.captureImage(function (e) {
+			plus.io.resolveLocalFileSystemURL(e, function (entry) {
+				var imgSrc = entry.toLocalURL() + "?version=" + new Date().getTime(); //拿到图片路径
+				// 其他操作,比如预览展示
+				$('#con').attr('src', imgSrc)
+			}, function (e) {
+				console.log("读取拍照文件错误：" + e.message);
+			});
+		}, function (s) {
+			console.log("error" + s);
+		}, {
+				filename: "_doc/camera/"
+			})
+	}
+
+	// 从相册中选择图片 
+	function galleryImg() {
+		// 从相册中选择图片
+		plus.gallery.pick(function (e) {
+			for (var i in e.files) {
+				var fileSrc = e.files[i];
+				// 其他操作,比如预览展示
+				$('#con').attr('src', fileSrc)
+			}
+		}, function (e) {
+			console.log("取消选择图片");
+		}, {
+				filter: "image",
+				multiple: true,
+				maximum: 1,
+				system: false,
+				onmaxed: function () {
+					plus.nativeUI.alert('最多只能选择1张图片');
+				}
+			});
+	}
+
 </script>
+
 </html>

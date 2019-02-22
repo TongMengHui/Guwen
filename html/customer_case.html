@@ -5,6 +5,7 @@
 	<title>客户案例-完成</title>
 	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 	<link href="../css/mui.min.css" rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" href="../css/customer_case_none.css"/>
 	<link rel="stylesheet" type="text/css" href="../css/customer_case.css"/>
 </head>
 <body style="background-color: white;">
@@ -12,7 +13,7 @@
 	<span class="mui-icon mui-icon-back"></span>
    	<span class="mui-title" style="font-size: 18px; color: #333333;">客户案例</span>
 </header>
-<div class="mui-content" style="background-color: white;">
+<div class="mui-content" id="mui-content1" style="background-color: white;">
 	<div class="customer-case-container">
 		<div class="case-img-container">
 			<img src="../img/case.png" class="case-img"/>
@@ -30,32 +31,58 @@
 			<a href="customer_case_edit.html"><button class="case-edit">编辑</button></a>
 		</div>
 	</div>
-	<div class="customer-case-container">
-		<div class="case-img-container">
-			<img src="../img/case.png" class="case-img"/>
-		</div>
-		<div class="case-title">
-			<span>苏州小安设计-橡树湾-北欧简约明亮设计实拍图</span>
-		</div>
-		<div class="case-attribute">
-			<span>90m&sup2;&nbsp;/&nbsp;三居&nbsp;/&nbsp;北欧&nbsp;&nbsp;&nbsp;&nbsp;相城区橡树湾</span>
-		</div>
-		<div class="case-time-edit-container">
-			<div class="case-time">
-				<span>2018.08.16&nbsp;&nbsp;11:43</span>
-			</div>
-			<a href="customer_case_edit.html"><button class="case-edit">编辑</button></a>
-		</div>
-	</div>
 	
 </div>	
+<div class="mui-content" id="mui-content2" style="background-color: white;">
+	<div class="icon_content">
+		<img src="../img/zwdd.png" class="icon"/>
+	</div>
+	<div class="font-caption">
+		暂未发布任何案例
+	</div>
+	<div class="publish-btn-content">
+		<a href="customer_case_attribute.html"><button class="publish-btn">立即发布</button></a>
+	</div>
+	<div class="bottom_font">
+		GO佳居店员中心
+	</div>
+</div>
 </body>
 <script src="../js/mui.min.js"></script>
 <script type="text/javascript" src="../js/jquery-1.11.0.min.js" ></script>
 <script type="text/javascript" src="../js/icon-back.js" ></script>
 <script src="../js/util.js"></script>
 <script type="text/javascript">
-	mui.init()
-	
+	mui.init(
+		getDesignCase()
+	)
+	// 是否有案例
+	function haveCase(obj){
+		if(obj){
+			$('#mui-content1').css('display','block')
+			$('#mui-content2').css('display','none')
+		}else{
+			$('#mui-content1').css('display','none')
+			$('#mui-content2').css('display','block')
+		}
+	}
+	// 循环案例
+	function cirCular(obj){
+		for(var i = 0; i < obj.length; i++){
+			console.log(obj[i])
+			$('.case-title').find('span').text(obj[i].casesName+'-'+obj[i].customerCommunity)
+		}
+	}
+	// 设计案例接口(design case)
+	function getDesignCase() {
+		$util.http('/api/design-cases', {
+			dataType: 'json',
+			type: 'get',
+			success: function (res) {
+				haveCase(res)
+				cirCular(res)
+			}
+		})
+	}
 </script>
 </html>

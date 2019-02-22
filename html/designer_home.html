@@ -393,8 +393,6 @@
 	//            分期订单数    常规订单数    案例点评数    客户留言数 
 	//            是否店铺绑定  是否实名认证  
 	//            签到
-	var token =
-		'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxODEzODg4ODg4OCIsImF1dGgiOiIiLCJ1c2VydHlwZSI6IlJPTEVfT1BFUkFUT1IiLCJleHAiOjE1NTA4MDAzMzJ9.8qf2Fuu18-9caLdZF_G6AgOirtjcepKOKWDfR6182NYXfY0xXk4pqTckrxi8LmLrwKmqFgOgK2_F6ufmB54tYw'
 	var name = $('.name').text()
 	var code_num = $('.code_num').text()
 	var visit_num = $('.visit_num').text()
@@ -408,7 +406,7 @@
 		getHomeCases(),
 		getDesignCases()
 	)
-
+	
 	// 弹出引导框
 	function lead() {
 		mui("#popover").popover('toggle', document.getElementById("div"));
