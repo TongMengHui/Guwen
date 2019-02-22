@@ -167,15 +167,14 @@
 			},
 			dataType: 'json', //服务器返回json格式数据
 			type: 'post', //HTTP请求类型
-			timeout: 10000, //超时时间设置为10秒；
+			timeout: 10000, //超时时间设置为10秒
 			headers: {
 				'Content-Type': 'application/json',
-				'id_token': 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxODEzODg4ODg4OCIsImF1dGgiOiIiLCJ1c2VydHlwZSI6IlJPTEVfT1BFUkFUT1IiLCJleHAiOjE1NTA4MDAzMzJ9.8qf2Fuu18-9caLdZF_G6AgOirtjcepKOKWDfR6182NYXfY0xXk4pqTckrxi8LmLrwKmqFgOgK2_F6ufmB54tYw'
 			},
 			success: function (data) {
 				//服务器返回响应，根据响应结果，分析是否登录成功；
 				console.log(data)
-				window.__TOKEN__ = data
+				 localStorage.setItem('token',data.id_token)
 				mui.openWindow(
 					'designer_home.html',
 					'designer_home',

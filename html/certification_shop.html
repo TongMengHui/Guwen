@@ -245,17 +245,18 @@ function galleryImg(){
     plus.gallery.pick( function(e){
     	for(var i in e.files){
 	    	var fileSrc = e.files[i];
-            // 其他操作,比如预览展示
+			// 其他操作,比如预览展示
+			$('#img').attr('src',fileSrc)
     	}
     }, function ( e ) {
     	console.log( "取消选择图片" );
     },{
     	filter: "image",
     	multiple: true,
-    	maximum: 5,
+    	maximum: 1,
     	system: false,
     	onmaxed: function() {
-    		plus.nativeUI.alert('最多只能选择5张图片');
+    		plus.nativeUI.alert('最多只能选择1张图片');
     	}
     });
 }

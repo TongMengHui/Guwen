@@ -274,7 +274,7 @@
 					<a href="my_shop_unbound.html">
 						<div class="menu-wddp">
 							<div class="bubble-container">
-								<div class="bubble">
+								<div class="bubble" id="bind">
 									未绑定
 								</div>
 								<div class="triangle"></div>
@@ -290,7 +290,7 @@
 					<a href="real_name_certification.html">
 						<div class="menu-smrz">
 							<div class="bubble-container">
-								<div class="bubble">
+								<div class="bubble" id="renzheng">
 									未认证
 								</div>
 								<div class="triangle"></div>
@@ -402,10 +402,8 @@
 	var fenqiNum = $('.fenqi-num').find('span').text()
 	var designNum = $('.design-num').find('span').text()
 	var id = '3'
-
-
+	var token = localStorage.getItem('token')
 	mui.init(
-		islead(),
 		getMerchant(),
 		getHomeCases(),
 		getDesignCases()
@@ -420,12 +418,23 @@
 	}
 
 	// 判断是否需要弹出引导框
-	function islead() {
-		if (true) {
+	function islead(obj) {
+		if (obj == ''||obj == null) {
 			lead()
+			// 是否实名认证
+			$('#renzheng').html('未认证')
+		}else{
+			$('#renzheng').html('已认证')
 		}
 	}
-
+	// 判断是否绑定店铺
+	function isbind(obj){
+		if(obj != 1){
+			$('#bind').html('未绑定')
+		}else{
+			$('#bind').html('已绑定')
+		}
+	}
 	// 获取顾问表接口(merchant_operator)
 	function getMerchant() {
 		$util.http('/api/merchant-operators/'+id, {
@@ -433,10 +442,15 @@
 			type: 'get',
 			success: function (res) {
 				console.log(res)
+				$('.person_pic').attr('src',res.avatar)  
+				$('.visit_num').text(res.viewNum)
+				islead(res.operatorIdentityNo)
+				isbind(res.applyStatus)
 			}
 		})
 	}
 	
+
 	// 获取家居案例表接口(home_cases)
 	function getHomeCases() {
 		$util.http('/api/home-cases/'+id, {
@@ -447,7 +461,7 @@
 			}
 		})
 	}
-	
+
 	// 获取设计案例表接口(design_cases)
 	function getDesignCases() {
 		$util.http('/api/design-cases/'+id, {
@@ -465,7 +479,7 @@
 	gallery.slider({
 		interval: 3000 //自动轮播周期，若为0则不自动播放，默认为0；
 	});
-	
+
 
 </script>
 

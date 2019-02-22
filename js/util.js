@@ -4,7 +4,7 @@
 // })(mui);
 
 (function(){
-			
+	var token = localStorage.getItem('token')
 	mui('.mui-scroll-wrapper').scroll({
 		deceleration: 0.0005 //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
 	});
@@ -79,7 +79,7 @@
 			mui.ajax(BASEURL+url,{
 				headers:{
 					'Content-Type':'application/json',
-					'id_token':window.__TOKEN__||''
+					'Authorization': 'Bearer ' + token || ''
 				},
 				data:options.data,
 				dataType:'json',//服务器返回json格式数据
