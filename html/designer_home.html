@@ -137,7 +137,7 @@
 						</div>
 					</div>
 				</a>
-				<a href="customer_case_none.html">
+				<a href="customer_case.html">
 					<div class="feature-hb">
 						<div class="hb-info">
 							<div class="hb-caption">发布案例</div>
@@ -399,7 +399,7 @@
 	var profit_num = $('.profit_num').text()
 	var fenqiNum = $('.fenqi-num').find('span').text()
 	var designNum = $('.design-num').find('span').text()
-	var id = '3'
+	var id = localStorage.getItem('id')
 	var token = localStorage.getItem('token')
 	mui.init(
 		getMerchant(),

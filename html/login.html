@@ -151,7 +151,6 @@
 	function clickBtn(){
 		$('.mui-btn-login').on('tap',function(){
 			getLogin()
-			
 		})
 	}
 	// 登录接口请求
@@ -173,13 +172,13 @@
 			},
 			success: function (data) {
 				//服务器返回响应，根据响应结果，分析是否登录成功；
-				console.log(data)
 				 localStorage.setItem('token',data.id_token)
 				mui.openWindow(
 					'designer_home.html',
 					'designer_home',
 					{}
 				)
+				getMerId()
 			},
 			error: function (xhr, type, errorThrown) {
 				//异常处理；
@@ -187,7 +186,16 @@
 			}
 		});
 	}
-
+	// 获取顾问id接口
+	function getMerId() {
+		$util.http('/api/account', {
+			dataType: 'json',
+			type: 'get',
+			success: function (res) {
+				localStorage.setItem('id',res.id)
+			}
+		})
+	}
 </script>
 
 </html>

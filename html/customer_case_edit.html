@@ -1,306 +1,440 @@
 <!doctype html>
 <html>
-<head>
-	<meta charset="UTF-8">
-	<title>客户案例-案例编辑</title>
-	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-	<link href="../css/mui.min.css" rel="stylesheet" />
-	<link rel="stylesheet" type="text/css" href="../css/customer_case_edit.css"/>
-</head>
-<body style="background-color: white;">
-<header class="mui-bar mui-bar-nav mui-bar-nav-bg" style="background-color: white; box-shadow: none; border-bottom: 1px solid #EEEEEE;">
-	<span class="mui-icon mui-icon-back"></span>
-   	<font class="mui-title" style="font-size: 18px; color: #333333;">案例编辑</font>
-</header>
-<div class="mui-content" style="background-color: white;">
-	<div class="case-info-container">
-		<div class="info-caption">
-			房屋户型：
-		</div>
-		<input class="info-input" placeholder="三室"/>
-		<div class="info-more-container">				
-			<div class="info-more-icon">
-				<span class="mui-icon mui-icon-arrowright"></span>
-			</div> 
-			<div class="info-more-font">选择</div> 
-		</div>
-	</div>
-	<div class="case-info-container">
-		<div class="info-caption">
-			房屋面积：
-		</div>
-		<input class="info-input" placeholder="100-120m&sup2;"/>
-		<div class="info-more-container">				
-			<div class="info-more-icon">
-				<span class="mui-icon mui-icon-arrowright"></span>
-			</div> 
-			<div class="info-more-font">选择</div> 
-		</div>
-	</div>
-	<div class="case-info-container">
-		<div class="info-caption">
-			装修风格：
-		</div>
-		<input class="info-input" placeholder="北欧"/>
-		<div class="info-more-container">				
-			<div class="info-more-icon">
-				<span class="mui-icon mui-icon-arrowright"></span>
-			</div> 
-			<div class="info-more-font">选择</div> 
-		</div>
-	</div>
-	<div class="horizontal-line"></div>
-	<div class="case-name">
-		<div class="case-name-caption">
-			案例名称
-		</div>
-		<div class="case-name-input-content">
-			<input class="case-name-input" placeholder="请填写案例名称"/>
-			<img src="../img/pen.png" class="case-name-icon"/>
-		</div>
-	</div>
-	<div class="case-image">
-		<div class="case-image-caption">
-			案例形象图
-		</div>
-		<div class="case-image-content">
-			<div class="case-image-album" onclick="showPop();">
-				<img src="../img/album.png" class="case-image-icon" />
-			</div>
-			<div class="case-image-album-caption">
-				点击上传案例形象图
-			</div>
-		</div>
-	</div>
-	<div class="case-description">
-		<div class="case-description-caption">
-			案例描述
-		</div>
-		<div class="case-description-input-content">	
-			<textarea class="case-description-input" id="case-description" placeholder="请填写对该案例的描述（不超过200个字）"></textarea>
-			<img src="../img/pen.png" class="case-description-icon"/>
-		</div>
-	</div>
-	<div class="batch-case-image">
-		<div class="batch-case-image-caption">
-			上传案例图片
-			<a href="#"><button class="case-add-btn" id="product-case">添加</button></a>
-		</div>				
-	</div>
-	<div class="edit-case">
-		<div id="case-pic">
-			<img src="../img/dgybanner.png" style="width: 100%; height: 100%;"/>
-			<a href="#"><button id="edit-function-change">修改</button> </a>
-			<a href="#"><button id="edit-function-delete"><span class="mui-icon mui-icon-trash"></span></button> </a>
-		</div>
-		<div class="edit-content">
-			<input class="prompt-input" placeholder="添加图片名称"/>
-			<div class="edit-icon-content">				
-				<div class="edit-icon-icon">
-					<span class="mui-icon mui-icon-arrowright"></span>
-				</div> 
-				<div class="edit-icon-font">编辑</div> 
-			</div>
-		</div>
-		<div class="edit-content">
-			<input class="prompt-input" placeholder="添加图片描述（不超过200个字）"/>
-			<div class="edit-icon-content">				
-				<div class="edit-icon-icon">
-					<span class="mui-icon mui-icon-arrowright"></span>
-				</div> 
-				<div class="edit-icon-font">编辑</div> 
-			</div>
-		</div>
-	</div>
-	<div class="edit-case">
-		<div id="case-pic">
-			<img src="../img/dgybanner.png" style="width: 100%; height: 100%;"/>
-			<a href="#"><button id="edit-function-change">修改</button> </a>
-			<a href="#"><button id="edit-function-delete"><span class="mui-icon mui-icon-trash"></span></button> </a>
-		</div>
-		<div class="edit-content">
-			<input class="prompt-input" placeholder="添加图片名称"/>
-			<div class="edit-icon-content">				
-				<div class="edit-icon-icon">
-					<span class="mui-icon mui-icon-arrowright"></span>
-				</div> 
-				<div class="edit-icon-font">编辑</div> 
-			</div>
-		</div>
-		<div class="edit-content">
-			<input class="prompt-input" placeholder="添加图片描述（不超过200个字）"/>
-			<div class="edit-icon-content">				
-				<div class="edit-icon-icon">
-					<span class="mui-icon mui-icon-arrowright"></span>
-				</div> 
-				<div class="edit-icon-font">编辑</div> 
-			</div>
-		</div>
-	</div>
-	<div class="edit-case">
-		<div id="case-pic">
-			<img src="../img/dgybanner.png" style="width: 100%; height: 100%;"/>
-			<a href="#"><button id="edit-function-change">修改</button> </a>
-			<a href="#"><button id="edit-function-delete"><span class="mui-icon mui-icon-trash"></span></button> </a>
-		</div>
-		<div class="edit-content">
-			<input class="prompt-input" placeholder="添加图片名称"/>
-			<div class="edit-icon-content">				
-				<div class="edit-icon-icon">
-					<span class="mui-icon mui-icon-arrowright"></span>
-				</div> 
-				<div class="edit-icon-font">编辑</div> 
-			</div>
-		</div>
-		<div class="edit-content">
-			<input class="prompt-input" placeholder="添加图片描述（不超过200个字）"/>
-			<div class="edit-icon-content">				
-				<div class="edit-icon-icon">
-					<span class="mui-icon mui-icon-arrowright"></span>
-				</div> 
-				<div class="edit-icon-font">编辑</div> 
-			</div>
-		</div>
-	</div>
-	<div class="related-products-caption">
-		关联产品
-		<a href="#"><button class="case-add-btn" id="related-product">添加</button></a>
-	</div>
-	<div class="product-info-container">
-		<div class="product-info-container-inside">
-			<img src="../img/desk.png" class="product-pic"/>
-			<div class="product-introduction-container">
-				<div class="product-caption">
-					MADISON现代简约客厅边桌
+	<head>
+		<meta charset="UTF-8">
+		<title>客户案例-案例编辑</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../css/mui.picker.css">
+		<link rel="stylesheet" href="../css/mui.poppicker.css">
+		<link rel="stylesheet" type="text/css" href="../css/mui.dtpicker.css" />
+		<link rel="stylesheet" type="text/css" href="../css/customer_case_edit.css" />
+	</head>
+	<body style="background-color: white;">
+		<header class="mui-bar mui-bar-nav mui-bar-nav-bg" style="background-color: white; box-shadow: none; border-bottom: 1px solid #EEEEEE;">
+			<span class="mui-icon mui-icon-back"></span>
+			<font class="mui-title" style="font-size: 18px; color: #333333;">案例编辑</font>
+		</header>
+		<div class="mui-content" style="background-color: white;">
+			<div class="case-info-container">
+				<div class="info-caption">
+					房屋户型：
 				</div>
-				<div class="product-brand">
-					FENDI CASA 芬迪
-				</div>
-				<div class="product-price">
-					￥5480-6480
+				<input class="info-input" id="info-input" placeholder="三室" />
+				<div class="info-more-container">
+					<div class="info-more-icon">
+						<span class="mui-icon mui-icon-arrowright"></span>
+					</div>
+					<div class="info-more-font" id="info-more-font">选择</div>
 				</div>
 			</div>
-			<button class="delete-icon"><span class="mui-icon mui-icon-trash"></span></button>
-		</div>
-	</div>
-	<div class="product-info-container">
-		<div class="product-info-container-inside">
-			<img src="../img/desk1.png" class="product-pic"/>
-			<div class="product-introduction-container">
-				<div class="product-caption">
-					MADISON现代简约客厅边桌
+			<div class="case-info-container">
+				<div class="info-caption">
+					房屋面积：
 				</div>
-				<div class="product-brand">
-					FENDI CASA 芬迪
-				</div>
-				<div class="product-price">
-					￥5480-6480
+				<input class="info-input" id="info-input1" placeholder="100-120m&sup2;" />
+				<div class="info-more-container">
+					<div class="info-more-icon">
+						<span class="mui-icon mui-icon-arrowright"></span>
+					</div>
+					<div class="info-more-font" id="info-more-font1">选择</div>
 				</div>
 			</div>
-			<button class="delete-icon"><span class="mui-icon mui-icon-trash"></span></button>
-		</div>
-	</div>
-	<div class="product-info-container">
-		<div class="product-info-container-inside">
-			<img src="../img/desk2.png" class="product-pic"/>
-			<div class="product-introduction-container">
-				<div class="product-caption">
-					MADISON现代简约客厅边桌
+			<div class="case-info-container">
+				<div class="info-caption">
+					装修风格：
 				</div>
-				<div class="product-brand">
-					FENDI CASA 芬迪
-				</div>
-				<div class="product-price">
-					￥5480-6480
+				<input class="info-input" id="info-input2" placeholder="北欧" />
+				<div class="info-more-container">
+					<div class="info-more-icon">
+						<span class="mui-icon mui-icon-arrowright"></span>
+					</div>
+					<div class="info-more-font" id="info-more-font2">选择</div>
 				</div>
 			</div>
-			<button class="delete-icon"><span class="mui-icon mui-icon-trash"></span></button>
+			<div class="horizontal-line"></div>
+			<div class="case-name">
+				<div class="case-name-caption">
+					案例名称
+				</div>
+				<div class="case-name-input-content">
+					<input class="case-name-input" placeholder="请填写案例名称" />
+					<img src="../img/pen.png" class="case-name-icon" />
+				</div>
+			</div>
+			<div class="case-image">
+				<div class="case-image-caption">
+					案例形象图
+				</div>
+				<div class="case-image-content">
+					<div class="case-image-album" onclick="showPop();">
+						<img src="../img/album.png" class="case-image-icon" />
+					</div>
+					<div class="case-image-album-caption">
+						点击上传案例形象图
+					</div>
+				</div>
+			</div>
+			<div class="case-description">
+				<div class="case-description-caption">
+					案例描述
+				</div>
+				<div class="case-description-input-content">
+					<textarea class="case-description-input" id="case-description" placeholder="请填写对该案例的描述（不超过200个字）"></textarea>
+					<img src="../img/pen.png" class="case-description-icon" />
+				</div>
+			</div>
+			<div class="batch-case-image">
+				<div class="batch-case-image-caption">
+					上传案例图片
+					<a href="#"><button class="case-add-btn" id="product-case">添加</button></a>
+				</div>
+			</div>
+			<div class="edit-case">
+				<div id="case-pic">
+					<img src="../img/dgybanner.png" style="width: 100%; height: 100%;" />
+					<a href="#"><button id="edit-function-change">修改</button> </a>
+					<a href="#"><button id="edit-function-delete"><span class="mui-icon mui-icon-trash"></span></button> </a>
+				</div>
+				<div class="edit-content">
+					<input class="prompt-input" placeholder="添加图片名称" />
+					<div class="edit-icon-content">
+						<div class="edit-icon-icon">
+							<span class="mui-icon mui-icon-arrowright"></span>
+						</div>
+						<div class="edit-icon-font">编辑</div>
+					</div>
+				</div>
+				<div class="edit-content">
+					<input class="prompt-input" placeholder="添加图片描述（不超过200个字）" />
+					<div class="edit-icon-content">
+						<div class="edit-icon-icon">
+							<span class="mui-icon mui-icon-arrowright"></span>
+						</div>
+						<div class="edit-icon-font">编辑</div>
+					</div>
+				</div>
+			</div>
+			<div class="edit-case">
+				<div id="case-pic">
+					<img src="../img/dgybanner.png" style="width: 100%; height: 100%;" />
+					<a href="#"><button id="edit-function-change">修改</button> </a>
+					<a href="#"><button id="edit-function-delete"><span class="mui-icon mui-icon-trash"></span></button> </a>
+				</div>
+				<div class="edit-content">
+					<input class="prompt-input" placeholder="添加图片名称" />
+					<div class="edit-icon-content">
+						<div class="edit-icon-icon">
+							<span class="mui-icon mui-icon-arrowright"></span>
+						</div>
+						<div class="edit-icon-font">编辑</div>
+					</div>
+				</div>
+				<div class="edit-content">
+					<input class="prompt-input" placeholder="添加图片描述（不超过200个字）" />
+					<div class="edit-icon-content">
+						<div class="edit-icon-icon">
+							<span class="mui-icon mui-icon-arrowright"></span>
+						</div>
+						<div class="edit-icon-font">编辑</div>
+					</div>
+				</div>
+			</div>
+			<div class="edit-case">
+				<div id="case-pic">
+					<img src="../img/dgybanner.png" style="width: 100%; height: 100%;" />
+					<a href="#"><button id="edit-function-change">修改</button> </a>
+					<a href="#"><button id="edit-function-delete"><span class="mui-icon mui-icon-trash"></span></button> </a>
+				</div>
+				<div class="edit-content">
+					<input class="prompt-input" placeholder="添加图片名称" />
+					<div class="edit-icon-content">
+						<div class="edit-icon-icon">
+							<span class="mui-icon mui-icon-arrowright"></span>
+						</div>
+						<div class="edit-icon-font">编辑</div>
+					</div>
+				</div>
+				<div class="edit-content">
+					<input class="prompt-input" placeholder="添加图片描述（不超过200个字）" />
+					<div class="edit-icon-content">
+						<div class="edit-icon-icon">
+							<span class="mui-icon mui-icon-arrowright"></span>
+						</div>
+						<div class="edit-icon-font">编辑</div>
+					</div>
+				</div>
+			</div>
+			<div class="related-products-caption">
+				关联产品
+				<a href="customer_case_related_products_add.html"><button class="case-add-btn" id="related-product">添加</button></a>
+			</div>
+			<div class="product-info-container">
+				<div class="product-info-container-inside">
+					<img src="../img/desk.png" class="product-pic" />
+					<div class="product-introduction-container">
+						<div class="product-caption">
+							MADISON现代简约客厅边桌
+						</div>
+						<div class="product-brand">
+							FENDI CASA 芬迪
+						</div>
+						<div class="product-price">
+							￥5480-6480
+						</div>
+					</div>
+					<button class="delete-icon"><span class="mui-icon mui-icon-trash"></span></button>
+				</div>
+			</div>
+			<div class="product-info-container">
+				<div class="product-info-container-inside">
+					<img src="../img/desk1.png" class="product-pic" />
+					<div class="product-introduction-container">
+						<div class="product-caption">
+							MADISON现代简约客厅边桌
+						</div>
+						<div class="product-brand">
+							FENDI CASA 芬迪
+						</div>
+						<div class="product-price">
+							￥5480-6480
+						</div>
+					</div>
+					<button class="delete-icon"><span class="mui-icon mui-icon-trash"></span></button>
+				</div>
+			</div>
+			<div class="product-info-container">
+				<div class="product-info-container-inside">
+					<img src="../img/desk2.png" class="product-pic" />
+					<div class="product-introduction-container">
+						<div class="product-caption">
+							MADISON现代简约客厅边桌
+						</div>
+						<div class="product-brand">
+							FENDI CASA 芬迪
+						</div>
+						<div class="product-price">
+							￥5480-6480
+						</div>
+					</div>
+					<button class="delete-icon"><span class="mui-icon mui-icon-trash"></span></button>
+				</div>
+			</div>
+			<div class="customer-information-caption">
+				客户信息
+			</div>
+			<div class="client-info-container">
+				<div class="info-caption">
+					用户姓名：
+				</div>
+				<input class="info-input" placeholder="请填写用户真实姓名" />
+			</div>
+			<div class="client-info-container">
+				<div class="info-caption">
+					性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别：&nbsp;
+				</div>
+				<input class="info-input" placeholder="先生" />
+				<div class="info-more-container">
+					<div class="info-more-icon">
+						<span class="mui-icon mui-icon-arrowright"></span>
+					</div>
+					<div class="info-more-font">选择</div>
+				</div>
+			</div>
+			<div class="client-info-container">
+				<div class="info-caption">
+					手机号码：
+				</div>
+				<input class="info-input" placeholder="请填写客户手机号码" />
+				<div class="info-more-container">
+					<div class="info-more-font">非必填</div>
+				</div>
+			</div>
+			<div class="client-info-container">
+				<div class="info-caption">
+					所在地：&nbsp;&nbsp;&nbsp;
+				</div>
+				<input class="info-input" placeholder="选择客户住宅所在地" />
+				<div class="info-more-container">
+					<div class="info-more-icon">
+						<span class="mui-icon mui-icon-arrowright"></span>
+					</div>
+					<div class="info-more-font">选择</div>
+				</div>
+			</div>
+			<div class="client-info-container">
+				<div class="info-caption">
+					所属小区：
+				</div>
+				<input class="info-input" placeholder="请选择所属小区" />
+				<div class="info-more-container">
+					<div class="info-more-icon">
+						<span class="mui-icon mui-icon-arrowright"></span>
+					</div>
+					<div class="info-more-font">选择</div>
+				</div>
+			</div>
+			<div class="publish-btn-container">
+				<a href="客户案例-完成.html"><button type="submit" class="publish-btn">发布</button></a>
+			</div>
+			<div id="sheet1" class="mui-popover mui-popover-bottom mui-popover-action ">
+				<!-- 可选择菜单 -->
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell" id="photo">
+						<a href="#">拍照</a>
+					</li>
+					<li class="mui-table-view-cell" id="photo1">
+						<a href="#">从相册选取</a>
+					</li>
+				</ul>
+				<!-- 取消菜单 -->
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell">
+						<a href="#sheet1">取消</a>
+					</li>
+				</ul>
+			</div>
 		</div>
-	</div>
-	<div class="customer-information-caption">
-		客户信息
-	</div>
-	<div class="client-info-container">
-		<div class="info-caption">
-			用户姓名：
-		</div>
-		<input class="info-input" placeholder="请填写用户真实姓名"/>
-	</div>
-	<div class="client-info-container">
-		<div class="info-caption">
-			性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别：&nbsp;
-		</div>
-		<input class="info-input" placeholder="先生"/>
-		<div class="info-more-container">				
-			<div class="info-more-icon">
-				<span class="mui-icon mui-icon-arrowright"></span>
-			</div> 
-			<div class="info-more-font">选择</div> 
-		</div>
-	</div>
-	<div class="client-info-container">
-		<div class="info-caption">
-			手机号码：
-		</div>
-		<input class="info-input" placeholder="请填写客户手机号码"/>
-		<div class="info-more-container">							
-			<div class="info-more-font">非必填</div> 
-		</div>
-	</div>
-	<div class="client-info-container">
-		<div class="info-caption">
-			所在地：&nbsp;&nbsp;&nbsp;
-		</div>
-		<input class="info-input" placeholder="选择客户住宅所在地"/>
-		<div class="info-more-container">				
-			<div class="info-more-icon">
-				<span class="mui-icon mui-icon-arrowright"></span>
-			</div> 
-			<div class="info-more-font">选择</div> 
-		</div>
-	</div>
-	<div class="client-info-container">
-		<div class="info-caption">
-			所属小区：
-		</div>
-		<input class="info-input" placeholder="请选择所属小区"/>
-		<div class="info-more-container">				
-			<div class="info-more-icon">
-				<span class="mui-icon mui-icon-arrowright"></span>
-			</div> 
-			<div class="info-more-font">选择</div> 
-		</div>
-	</div>
-	<div class="publish-btn-container">
-		<a href="客户案例-完成.html"><button type="submit" class="publish-btn">发布</button></a>
-	</div>
-	<div id="sheet1" class="mui-popover mui-popover-bottom mui-popover-action ">
-    	<!-- 可选择菜单 -->
-    	<ul class="mui-table-view">
-      		<li class="mui-table-view-cell">
-     			<a href="#">拍照</a>
-     		</li>
-    		<li class="mui-table-view-cell">
-      			<a href="#">从相册选取</a>
-     		</li>
-   	 	</ul>
-    	<!-- 取消菜单 -->
-    	<ul class="mui-table-view">
-      		<li class="mui-table-view-cell">
-        		<a href="#sheet1">取消</a>
-      		</li>
-    	</ul>
-	</div>
-</div>
-</body>
-<script src="../js/mui.min.js"></script>
-<script type="text/javascript" src="../js/jquery-1.11.0.min.js" ></script>
-<script type="text/javascript" src="../js/icon-back.js" ></script>
-<script src="../js/util.js"></script>
-<script type="text/javascript">
-	mui.init()
-	function showPop(){
-    mui('#sheet1').popover('toggle');
-	}
-</script>
+	</body>
+	<script src="../js/mui.min.js"></script>
+	<script type="text/javascript" src="../js/jquery-1.11.0.min.js"></script>
+	<script type="text/javascript" src="../js/icon-back.js"></script>
+	<script type="text/javascript" src="../js/mui.picker.js"></script>
+	<script type="text/javascript" src="../js/mui.dtpicker.js"></script>
+	<script type="text/javascript" src="../js/mui.poppicker.js"></script>
+	<script type="text/javascript">
+		mui.init()
+
+		function showPop() {
+			mui('#sheet1').popover('toggle');
+		}
+		// 房屋户型选择
+		$('#info-more-font').click(function() {
+			var picker = new mui.PopPicker();
+			picker.setData([{
+				value: '1',
+				text: '一居室'
+			}, {
+				value: '2',
+				text: '两居室'
+			}, {
+				value: '3',
+				text: '三居室'
+			}, {
+				value: '4',
+				text: '四居室'
+			}, {
+				value: '5',
+				text: '复式'
+			}, {
+				value: '4',
+				text: '别墅'
+			}]);
+			picker.show(function(selectItems) {
+				$("#info-input").val(selectItems[0].text)
+			})
+		})
+		// 房屋面积选择
+		$('#info-more-font1').click(function() {
+			var picker = new mui.PopPicker();
+			picker.setData([{
+				value: '1',
+				text: '100-120m&sup2'
+			}, {
+				value: '2',
+				text: '100-120m&sup2'
+			}, {
+				value: '3',
+				text: '100-120m&sup2'
+			}, {
+				value: '4',
+				text: '100-120m&sup2'
+			}]);
+			picker.show(function(selectItems) {
+				$("#info-input1").val(selectItems[0].text)
+			})
+		})
+		// 房屋面积选择
+		$('#info-more-font2').click(function() {
+			var picker = new mui.PopPicker();
+			picker.setData([{
+				value: '1',
+				text: '欧式'
+			}, {
+				value: '2',
+				text: '北欧'
+			}, {
+				value: '3',
+				text: '北欧'
+			}, {
+				value: '4',
+				text: '北欧'
+			}]);
+			picker.show(function(selectItems) {
+				$("#info-input2").val(selectItems[0].text)
+			})
+		})
+		// 照片上传 从文件夹选择
+		$('#photo').click(function(){
+			galleryImg()
+		})
+		//拍照 
+		function getImage() {
+			var c = plus.camera.getCamera();
+			c.captureImage(function(e) {
+				plus.io.resolveLocalFileSystemURL(e, function(entry) {
+					var s = entry.toLocalURL() + "?version=" + new Date().getTime();
+					uploadHead(s); /*上传图片*/
+				}, function(e) {
+					console.log("读取拍照文件错误：" + e.message);
+				});
+			}, function(s) {
+				console.log("error" + s);
+			}, {
+				filename: "_doc/head.png"
+			})
+		}
+		//本地相册选择 
+		function galleryImg() {
+			plus.gallery.pick(function(a) {
+				plus.io.resolveLocalFileSystemURL(a, function(entry) {
+					plus.io.resolveLocalFileSystemURL("_doc/", function(root) {
+						root.getFile("head.png", {}, function(file) {
+							//文件已存在 
+							file.remove(function() {
+								console.log("file remove success");
+								entry.copyTo(root, 'head.png', function(e) {
+										var e = e.fullPath + "?version=" + new Date().getTime();
+										uploadHead(e); /*上传图片*/
+										//变更大图预览的src 
+										//目前仅有一张图片，暂时如此处理，后续需要通过标准组件实现 
+									},
+									function(e) {
+										console.log('copy image fail:' + e.message);
+									});
+							}, function() {
+								console.log("delete image fail:" + e.message);
+							});
+						}, function() {
+							//文件不存在 
+							entry.copyTo(root, 'head.png', function(e) {
+									var path = e.fullPath + "?version=" + new Date().getTime();
+									uploadHead(path); /*上传图片*/
+								},
+								function(e) {
+									console.log('copy image fail:' + e.message);
+								});
+						});
+					}, function(e) {
+						console.log("get _www folder fail");
+					})
+				}, function(e) {
+					console.log("读取拍照文件错误：" + e.message);
+				});
+			}, function(a) {}, {
+				filter: "image"
+			})
+		};
+		
+	</script>
 </html>
