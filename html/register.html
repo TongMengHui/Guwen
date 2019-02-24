@@ -33,7 +33,7 @@
 			<div class="choice-content">
 				<div class="choice-title">请选择您的身份</div>
 				<div class="choice-job-content">
-					<div class="jiaju" id="div1" onclick="choised(this) , change(this.id)">
+					<div class="jiaju" id="div1" OperatorType="1">
 						<div class="jiaju-img">
 							<img src="../img/femail.png" style="width: 109px; height: 109px; border-radius: 50%;" />
 						</div>
@@ -45,7 +45,7 @@
 						</div>
 						<img src="../img/choiced.png" class="jiaju-choiced-icon icon" style="display: none;" />
 					</div>
-					<div class="designer" id="div2" onclick="choised(this) , change(this.id)">
+					<div class="designer" id="div2" OperatorType="2">
 						<div class="designer-img">
 							<img src="../img/male.png" style="width: 109px; height: 109px; border-radius: 50%;" />
 						</div>
@@ -69,6 +69,15 @@
 	<script type="text/javascript" src="../js/icon-back.js"></script>
 	<script src="../js/util.js"></script>
 	<script type="text/javascript">
+	// 点击
+	var OperatorType = 0
+	$('.choice-job-content').children('div').on('tap',function(){
+		choised(this)
+		change(this.id)	
+		OperatorType = $(this).attr('OperatorType')
+		console.log(OperatorType)
+	})
+	console.log(OperatorType)
 		//选择后样式
 		function change(id_) {
 			//次id_为判断id_
@@ -77,7 +86,6 @@
 			div.style.boxShadow = "0px 1px 3px #999999, 0px 0px 3px #333333;";
 			div.style.boxShadow = "0px 1px 3px #999999, 0px 0px 3px #333333";
 			var divs = document.getElementsByTagName("div");
-
 			for(var i = 0; i < divs.length; i++) {
 				var div_ = divs[i];
 				if(id_ != div_.id) {
@@ -86,12 +94,16 @@
 			}
 		}
 	//下一步样式与可否点击变化
+	
 		function choised(obj) {
 			$(".next-btn").css("background-color", "#6C91FE");
 			$(".next-btn").attr('disabled', false);
 			$(obj).children('img').css('display', 'block');
 			$(obj).siblings().children('img').css('display', 'none');
 		}
+		
+
+		
 	</script>
 
 </html>
