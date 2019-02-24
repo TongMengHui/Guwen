@@ -172,12 +172,7 @@
 			},
 			success: function (data) {
 				//服务器返回响应，根据响应结果，分析是否登录成功；
-				 localStorage.setItem('token',data.id_token)
-				mui.openWindow(
-					'designer_home.html',
-					'designer_home',
-					{}
-				)
+				localStorage.setItem('token',data.id_token)
 				getMerId()
 			},
 			error: function (xhr, type, errorThrown) {
@@ -193,6 +188,11 @@
 			type: 'get',
 			success: function (res) {
 				localStorage.setItem('id',res.id)
+				mui.openWindow(
+					'designer_home.html',
+					'designer_home',
+					{}
+				)
 			}
 		})
 	}
