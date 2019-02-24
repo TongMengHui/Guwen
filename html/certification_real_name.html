@@ -66,17 +66,20 @@
 <script type="text/javascript" src="../js/icon-back.js"></script>
 <script src="../js/util.js"></script>
 <script type="text/javascript">
-	mui.init(submit())
+	mui.init(
+		submit(),
+		token()
+		)
 	function showPop() {
 		mui('#sheet1').popover('toggle');
 	}
 	// 提交
-	function submit(){
+	function submit() {
 		var faceSrc = $('#face').attr('src'),
 			conSrc = $('#con').attr('src')
-		if(faceSrc != "../img/sfzzm.png" && conSrc != "../img/sfzbm.png"){
-			$('.bottom-btn').css('background','#007AFF')
-			mui.openWindow('certification_shop.html','certification_shop',{})
+		if (faceSrc != "../img/sfzzm.png" && conSrc != "../img/sfzbm.png") {
+			$('.bottom-btn').css('background', '#007AFF')
+			mui.openWindow('certification_shop.html', 'certification_shop', {})
 		}
 	}
 	// 选择照相机还是相册
@@ -148,8 +151,8 @@
 				}
 			});
 	}
-// 选择照相机还是相册
-document.getElementById('con').addEventListener('tap', function () {
+	// 选择照相机还是相册
+	document.getElementById('con').addEventListener('tap', function () {
 		if (mui.os.plus) {
 			var buttonTit = [{
 				title: "拍照"
@@ -216,6 +219,56 @@ document.getElementById('con').addEventListener('tap', function () {
 					plus.nativeUI.alert('最多只能选择1张图片');
 				}
 			});
+	}
+	// 获取百度Access Token   https://aip.baidubce.com/oauth/2.0/token?grant_type=client_credentials&client_id=Wj7Dsjm4EYPgvMoKS8dIpWMh&client_secret=fKN3rMiaOgYTkMpNosGwCF79U4xN0g5P
+	
+	function token() {
+		mui.ajax('https://aip.baidubce.com/oauth/2.0/token?grant_type=client_credentials&client_id=SWMHsmWFhTCQcFNHBMFtbFgj&client_secret=Zq8x1HtaBga9ktSSXOpGkRHy1F2fc2mU', {
+			data: {
+				// 'grant_type': 'client_credentials',
+				// 'client_id': 'Wj7Dsjm4EYPgvMoKS8dIpWMh',
+				// 'client_secret': 'fKN3rMiaOgYTkMpNosGwCF79U4xN0g5P'
+			},
+			dataType: 'json', //服务器返回json格式数据
+			type: 'post', //HTTP请求类型
+			timeout: 10000, //超时时间设置为10秒
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			success: function (data) {
+				//服务器返回响应，根据响应结果，分析是否登录成功；
+				console.log(data)
+			},
+			error: function (xhr, type, errorThrown) {
+				//异常处理；
+				console.log(type);
+			}
+		});
+	}
+	// 调取身份证识别的接口
+	function recognition() {
+		mui.ajax('https://aip.baidubce.com/rest/2.0/ocr/v1/idcard', {
+			data: {
+				id_card_side,
+				detect_direction,
+				image,
+				detect_risk
+			},
+			dataType: 'json', //服务器返回json格式数据
+			type: 'post', //HTTP请求类型
+			timeout: 10000, //超时时间设置为10秒
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			success: function (data) {
+				//服务器返回响应，根据响应结果，分析是否登录成功；
+				console.log(data)
+			},
+			error: function (xhr, type, errorThrown) {
+				//异常处理；
+				console.log(type);
+			}
+		});
 	}
 
 </script>
