@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>认证流程-实名验证-店员版</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<link href="../css/mui.min.css" rel="stylesheet" />
+	<link href="../css/iconfont.css" rel="stylesheet" />
+	<style>
+		html,body{
+			height: 100%;
+			background: #fff;
+		}
+		.top{
+			height: 281px;
+			width: 100%;
+			position: relative;
+		}
+		.head_img{
+			height: 100px;
+			width: 100px;
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			margin: auto;
+			border-radius: 50%;
+			background: #fff;
+		}
+		.head_img #head{
+			height: 55px;
+			width: 50px;
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			margin: auto;
+		}
+		.head_img #size{
+			height: 15px;
+			width: 17.5px;
+			position: absolute;
+			right: 20px;
+			bottom: 23px;
+		}
+		.top p{
+			position: absolute;
+			bottom: 40px;
+			left: 50%;
+			transform: translateX(-50%);
+			color: rgb(153, 153, 153);
+			font-size: 18px;
+		}
+			.people-pic input{
+			width:70%;
+			border: none;
+			height: 30px;
+			font-size: 15px;
+		}
+		.people-pic{
+			width:80%;
+			height: 35px;
+			margin: auto;
+			color:rgb(51, 51, 51);
+			border-bottom: 1px solid rgb(235,235,235);
+			margin-bottom: 10px;
+			margin-top: 10px;
+			font-size: 15px;
+		}
+	</style>
+</head>
+
+<body>
+	<header class="mui-bar mui-bar-nav mui-bar-nav-bg" style="background-color: white; box-shadow: none; border-bottom: 1px solid #CCCCCC;">
+		<span class="mui-icon mui-icon-back"></span>
+		<span class="mui-title" style="font-size: 18px; color: #333333;">实名认证</span>
+	</header>
+	<div class="top" style="background-color: #EEEEEE;">
+		<div class="head_img">
+			<img id="head" src="../img/u8393.png" alt="">
+			<img id="size" src="../img/u8395.png" alt="">
+		</div>
+		<p>已认证</p>
+	</div>
+	<div class="people-pic">
+		<label>真实姓名:</label>
+		<input type="text" >
+	</div>
+	<div class="people-pic">
+		<label>身份证号:</label>
+		<input type="text" >
+	</div>
+	
+</body>
+<script src="../js/mui.min.js"></script>
+<script type="text/javascript" src="../js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="../js/icon-back.js"></script>
+<script src="../js/util.js"></script>
+
+</html>
