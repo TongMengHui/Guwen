@@ -58,6 +58,8 @@
 	var clock = '';
  	var nums = 60;
  	var btn;
+	var OperatorType = localStorage.getItem('OperatorType')
+	console.log(OperatorType)
  	function sendCode(thisBtn)
  	{ 
  		btn = thisBtn;
@@ -90,5 +92,19 @@
     	}
 	}
 
+
+// 获取注册接口
+function register(){
+	$util.http('api/registerOperator', {
+			data:{
+
+			},
+			dataType: 'json',
+			type: 'post',
+			success: function (res) {
+				
+			}
+		})
+}
 </script>
 </html>

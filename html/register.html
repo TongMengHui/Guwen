@@ -70,14 +70,15 @@
 	<script src="../js/util.js"></script>
 	<script type="text/javascript">
 	// 点击
-	var OperatorType = 0
+	
 	$('.choice-job-content').children('div').on('tap',function(){
+		
 		choised(this)
 		change(this.id)	
-		OperatorType = $(this).attr('OperatorType')
+		var OperatorType  = $(this).attr('OperatorType')
 		console.log(OperatorType)
+		localStorage.setItem('OperatorType',OperatorType)
 	})
-	console.log(OperatorType)
 		//选择后样式
 		function change(id_) {
 			//次id_为判断id_
