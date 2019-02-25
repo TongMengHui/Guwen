@@ -1,184 +1,224 @@
 <!doctype html>
 <html>
-<head>
-	<meta charset="UTF-8">
-	<title>实名验证-店员版</title>
-	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-	<link href="../css/mui.min.css" rel="stylesheet" />
-	<link href="../css/iconfont.css" rel="stylesheet"/>
-	<link rel="stylesheet" href="../css/certification_review.css" />
-	<link rel="stylesheet" type="text/css" href="../css/real_name_certification.css"/>
-</head>
-<body style="background-color: #EEEEEE;">
-<header class="mui-bar mui-bar-nav mui-bar-nav-bg" style="background-color: white; box-shadow: none; border-bottom: 1px solid #CCCCCC; box-shadow: 0 5px 5px #DDDDDD;">
-	<span class="mui-icon mui-icon-back"></span>
-   	<span class="mui-title" style="font-size: 18px; color: #333333;">实名认证</span>
-</header>
-<div class="mui-content" style="background-color: #EEEEEE;">
-	<div class="info">
-		<p>上传身份证用于确保您的账户安全，本平台将严格保护您的个人信息安全！</p>
-	</div>
-	<div class="sfz-front">
-		<div style="margin-top: 30px; width: 100%;">
-			<img id="face" src="../img/sfzzm.png" style="width: 149px; height: 106px;"/> 
-		</div>
-		<span style="font-size: 16px;">点击上传身份证<span style="color: #007AFF;">人像面</span></span>
-	</div>
-	<div class="sfz-back">
-		<div style="margin-top: 30px; width: 100%;">
-			<img id="con" src="../img/sfzbm.png" style="width: 149px; height: 106px;"/>
-		</div>
-		<span style="font-size: 16px;">点击上传身份证<span style="color: #007AFF;">国徽面</span></span>
-	</div>
-	<button type="submit" style="width: 100%; height: 50px; position: absolute; bottom: 0; background-color: #CCCCCC; font-size: 18px; color:white; ">确认提交</button>
-</div>
+	<head>
+		<meta charset="UTF-8">
+		<title>实名验证-店员版</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link href="../css/iconfont.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../css/certification_review.css" />
+		<link rel="stylesheet" type="text/css" href="../css/real_name_certification.css" />
+		<style>
+			.people-pic input{
+		width:70%;
+		border: none;
+		height: 30px;
+		font-size: 15px;
+	}
+	.people-pic{
+		width:80%;
+		height: 35px;
+		margin: auto;
+		color:rgb(51, 51, 51);
+		border-bottom: 1px solid #ccc;
+		margin-bottom: 10px;
+		margin-top: 10px;
+		font-size: 15px;
+	}
+	.peopleNum{
+		background: #fff;
+		width: 90%;
+		margin: auto;
+		padding: 10px 0;
+		margin-top: 10px;
+	}
+	</style>
+	</head>
+	<body style="background-color: #EEEEEE;">
+		<header class="mui-bar mui-bar-nav mui-bar-nav-bg" style="background-color: white; box-shadow: none; border-bottom: 1px solid #CCCCCC; box-shadow: 0 5px 5px #DDDDDD;">
+			<span class="mui-icon mui-icon-back"></span>
+			<span class="mui-title" style="font-size: 18px; color: #333333;">实名认证</span>
+		</header>
+		<div class="mui-content" style="background-color: #EEEEEE;">
+			<div class="info">
+				<p>上传身份证用于确保您的账户安全，本平台将严格保护您的个人信息安全！</p>
+			</div>
+			<div class="sfz-front">
+				<div style="margin-top: 15px; width: 100%;">
+					<img id="face" src="../img/sfzzm.png" style="width: 149px; height: 106px;" />
+				</div>
+				<span style="font-size: 12px;">点击上传身份证<span style="color: #007AFF;">人像面</span></span>
 
-</body>
-<script src="../js/mui.min.js"></script>
-<script type="text/javascript" src="../js/jquery-1.11.0.min.js" ></script>
-<script type="text/javascript" src="../js/icon-back.js" ></script>
-<script src="../js/util.js"></script>
-<script type="text/javascript">
-	mui.init()
-	// 选择照相机还是相册
-	document.getElementById('face').addEventListener('tap', function () {
-		if (mui.os.plus) {
-			var buttonTit = [{
-				title: "拍照"
+			</div>
+			<div class="sfz-back">
+				<div style="margin-top: 15px; width: 100%;">
+					<img id="con" src="../img/sfzbm.png" style="width: 149px; height: 106px;" />
+				</div>
+				<span style="font-size: 12px;">点击上传身份证<span style="color: #007AFF;">国徽面</span></span>
+			</div>
+			<button type="submit" style="width: 100%; height: 50px; position: absolute; bottom: 0; background-color: #CCCCCC; font-size: 18px; color:white; ">确认提交</button>
+		</div>
+		<div class="peopleNum">
+			<div class="people-pic">
+				<label>真实姓名:</label>
+				<input type="text" placeholder="请输入姓名">
+			</div>
+			<div class="people-pic">
+				<label>身份证号:</label>
+				<input type="text" placeholder="请输入身份证号">
+			</div>
+			<div class="people-pic">
+				<label>现住住址:</label>
+				<input type="text" placeholder="请输入地址">
+			</div>
+		</div>
+	</body>
+	<script src="../js/mui.min.js"></script>
+	<script type="text/javascript" src="../js/jquery-1.11.0.min.js"></script>
+	<script type="text/javascript" src="../js/icon-back.js"></script>
+	<script src="../js/util.js"></script>
+	<script type="text/javascript">
+		mui.init()
+		// 选择照相机还是相册
+		document.getElementById('face').addEventListener('tap', function() {
+			if (mui.os.plus) {
+				var buttonTit = [{
+					title: "拍照"
+				}, {
+					title: "从手机相册选择"
+				}];
+
+				plus.nativeUI.actionSheet({
+					title: "上传图片",
+					cancel: "取消",
+					buttons: buttonTit
+				}, function(b) { /*actionSheet 按钮点击事件*/
+					switch (b.index) {
+						case 0:
+							break;
+						case 1:
+							getImage1(); /*拍照*/
+							break;
+						case 2:
+							galleryImg1(); /*打开相册*/
+							break;
+						default:
+							break;
+					}
+				})
+			}
+		}, false);
+
+		// 拍照获取图片
+		function getImage1() {
+			var c = plus.camera.getCamera();
+			c.captureImage(function(e) {
+				plus.io.resolveLocalFileSystemURL(e, function(entry) {
+					var imgSrc = entry.toLocalURL() + "?version=" + new Date().getTime(); //拿到图片路径
+					// 其他操作,比如预览展示
+					$('#face').attr('src', imgSrc)
+				}, function(e) {
+					console.log("读取拍照文件错误：" + e.message);
+				});
+			}, function(s) {
+				console.log("error" + s);
 			}, {
-				title: "从手机相册选择"
-			}];
-	
-			plus.nativeUI.actionSheet({
-				title: "上传图片",
-				cancel: "取消",
-				buttons: buttonTit
-			}, function (b) { /*actionSheet 按钮点击事件*/
-				switch (b.index) {
-					case 0:
-						break;
-					case 1:
-						getImage1(); /*拍照*/
-						break;
-					case 2:
-						galleryImg1();/*打开相册*/
-						break;
-					default:
-						break;
-				}
-			})
-		}
-	}, false);
-	
-	// 拍照获取图片
-	function getImage1() {
-		var c = plus.camera.getCamera();
-		c.captureImage(function (e) {
-			plus.io.resolveLocalFileSystemURL(e, function (entry) {
-				var imgSrc = entry.toLocalURL() + "?version=" + new Date().getTime(); //拿到图片路径
-				// 其他操作,比如预览展示
-				$('#face').attr('src', imgSrc)
-			}, function (e) {
-				console.log("读取拍照文件错误：" + e.message);
-			});
-		}, function (s) {
-			console.log("error" + s);
-		}, {
 				filename: "_doc/camera/"
 			})
-	}
-	
-	// 从相册中选择图片 
-	function galleryImg1() {
-		// 从相册中选择图片
-		plus.gallery.pick(function (e) {
-			for (var i in e.files) {
-				var fileSrc = e.files[i];
-				// 其他操作,比如预览展示
-				$('#face').attr('src', fileSrc)
-			}
-		}, function (e) {
-			console.log("取消选择图片");
-		}, {
+		}
+
+		// 从相册中选择图片 
+		function galleryImg1() {
+			// 从相册中选择图片
+			plus.gallery.pick(function(e) {
+				for (var i in e.files) {
+					var fileSrc = e.files[i];
+					// 其他操作,比如预览展示
+					$('#face').attr('src', fileSrc)
+				}
+			}, function(e) {
+				console.log("取消选择图片");
+			}, {
 				filter: "image",
 				multiple: true,
 				maximum: 1,
 				system: false,
-				onmaxed: function () {
+				onmaxed: function() {
 					plus.nativeUI.alert('最多只能选择1张图片');
 				}
 			});
-	}
-	// 选择照相机还是相册
-	document.getElementById('con').addEventListener('tap', function () {
-		if (mui.os.plus) {
-			var buttonTit = [{
-				title: "拍照"
-			}, {
-				title: "从手机相册选择"
-			}];
-	
-			plus.nativeUI.actionSheet({
-				title: "上传图片",
-				cancel: "取消",
-				buttons: buttonTit
-			}, function (b) { /*actionSheet 按钮点击事件*/
-				switch (b.index) {
-					case 0:
-						break;
-					case 1:
-						getImage(); /*拍照*/
-						break;
-					case 2:
-						galleryImg();/*打开相册*/
-						break;
-					default:
-						break;
-				}
-			})
 		}
-	}, false);
-	
-	// 拍照获取图片
-	function getImage() {
-		var c = plus.camera.getCamera();
-		c.captureImage(function (e) {
-			plus.io.resolveLocalFileSystemURL(e, function (entry) {
-				var imgSrc = entry.toLocalURL() + "?version=" + new Date().getTime(); //拿到图片路径
-				// 其他操作,比如预览展示
-				$('#con').attr('src', imgSrc)
-			}, function (e) {
-				console.log("读取拍照文件错误：" + e.message);
-			});
-		}, function (s) {
-			console.log("error" + s);
-		}, {
+		// 选择照相机还是相册
+		document.getElementById('con').addEventListener('tap', function() {
+			if (mui.os.plus) {
+				var buttonTit = [{
+					title: "拍照"
+				}, {
+					title: "从手机相册选择"
+				}];
+
+				plus.nativeUI.actionSheet({
+					title: "上传图片",
+					cancel: "取消",
+					buttons: buttonTit
+				}, function(b) { /*actionSheet 按钮点击事件*/
+					switch (b.index) {
+						case 0:
+							break;
+						case 1:
+							getImage(); /*拍照*/
+							break;
+						case 2:
+							galleryImg(); /*打开相册*/
+							break;
+						default:
+							break;
+					}
+				})
+			}
+		}, false);
+
+		// 拍照获取图片
+		function getImage() {
+			var c = plus.camera.getCamera();
+			c.captureImage(function(e) {
+				plus.io.resolveLocalFileSystemURL(e, function(entry) {
+					var imgSrc = entry.toLocalURL() + "?version=" + new Date().getTime(); //拿到图片路径
+					// 其他操作,比如预览展示
+					$('#con').attr('src', imgSrc)
+
+				}, function(e) {
+					console.log("读取拍照文件错误：" + e.message);
+				});
+			}, function(s) {
+				console.log("error" + s);
+			}, {
 				filename: "_doc/camera/"
 			})
-	}
-	
-	// 从相册中选择图片 
-	function galleryImg() {
-		// 从相册中选择图片
-		plus.gallery.pick(function (e) {
-			console.log(e)
-			for (var i in e.files) {
-				var fileSrc = e.files[i];
-				// 其他操作,比如预览展示
-				$('#con').attr('src', fileSrc)
-			}
-		}, function (e) {
-			console.log("取消选择图片");
-		}, {
+		}
+
+		// 从相册中选择图片 
+		function galleryImg() {
+			// 从相册中选择图片
+			plus.gallery.pick(function(e) {
+				console.log(e)
+				for (var i in e.files) {
+					var fileSrc = e.files[i];
+					// 其他操作,比如预览展示
+					$('#con').attr('src', fileSrc)
+				}
+			}, function(e) {
+				console.log("取消选择图片");
+			}, {
 				filter: "image",
 				multiple: true,
 				maximum: 1,
 				system: false,
-				onmaxed: function () {
+				onmaxed: function() {
 					plus.nativeUI.alert('最多只能选择1张图片');
 				}
 			});
-	}
-	console.log($('#con').attr('src'))
-</script>
+		}
+		console.log($('#con').attr('src'))
+	</script>
 </html>

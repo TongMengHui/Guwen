@@ -9,7 +9,7 @@
    	/*border: 1px solid #CCCCCC;*/
    	}
    	.sfz-front{
-   	height: 190px;
+		padding: 5px;
    	width: 90%;
    	margin-left: 5%;
    	margin-top: 10px;
@@ -18,7 +18,7 @@
    	border: 1px solid #EEEEEE;
    	}
    	.sfz-back{
-   	height: 190px;
+		   padding: 5px;
    	width: 90%;
    	margin-left: 5%;
    	margin-top: 10px;

@@ -158,6 +158,7 @@
 	function getLogin() {
 		var username = $('#phonenum2').val()
 		var password = $('#password').val()
+		
 		mui.ajax('http://39.98.77.177:8080/api/authenticate/merchantOperator', {
 			data: {
 				username: username,
