@@ -84,6 +84,7 @@
 		</header>
 		<div class="mui-iframe-wrapper" style="top:45px;bottom: 0px;">
 			<div class="mui-content mui-scroll-wrapper" id="client_message">
+				<a href="common_order.html" target="_self">gogogogo</a>
 				<div class="mui-scroll">
 					<ul>
 						<li v-for="item in List" class="m-item">
@@ -192,14 +193,14 @@
 				}
 			},
 			mounted(){
-				$util.http('/api/merchant-operators?id=3',{
-					//data-请求参数
-					type:'get',
-					success:function(res){
-						//在这里处理成功回调
-						//res表示返回的数据
-					}
-				});
+// 				$util.http('/api/merchant-operators?id=3',{
+// 					//data-请求参数
+// 					type:'get',
+// 					success:function(res){
+// 						//在这里处理成功回调
+// 						//res表示返回的数据
+// 					}
+// 				});
 				var _self=this;
 				$util.pullRefresh('#client_message',function(cb){
 					setTimeout(function(){

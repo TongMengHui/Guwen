@@ -166,7 +166,8 @@
 <script type="text/javascript">
 	mui.init()
 	function showPop(){
-    mui('#sheet1').popover('toggle');
+		console.log(mui.os)
+		//mui('#sheet1').popover('toggle');
 	}
     $("#case-description").on("input propertychange", function () {
         var $this = $(this),
