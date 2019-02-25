@@ -131,6 +131,7 @@
 	function galleryImg1() {
 		// 从相册中选择图片
 		plus.gallery.pick(function (e) {
+			console.log(e)
 			for (var i in e.files) {
 				var fileSrc = e.files[i];
 				// 其他操作,比如预览展示
