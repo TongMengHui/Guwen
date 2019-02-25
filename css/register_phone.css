@@ -117,7 +117,8 @@
     margin-top: 25px;
     /*border: 1px solid #CCCCCC;*/
     }
-    input[type=number]{
+    input[type=number],
+    #yanzheng_number{
     height: 30px;
     padding: 0;
     border: 0;
