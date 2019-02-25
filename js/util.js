@@ -105,7 +105,7 @@
 		},
 		//上传图片至七牛
 		uploadToQiniu: function(filepath,callback) {
-			var filename = src.substring(src.lastIndexOf('/') + 1);
+			var filename = filepath.substring(filepath.lastIndexOf('/') + 1);
 			this.http('/api/getQiNiuToken?key=' + filename + '&bucketName=testimage', {
 				type: 'get',
 				success: function(data) {
