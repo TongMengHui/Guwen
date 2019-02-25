@@ -109,7 +109,7 @@
 		}
 	}, false);
 
-	// 拍照获取图片
+	// 拍照获取图片  人像面
 	function getImage1() {
 		var c = plus.camera.getCamera();
 		c.captureImage(function (e) {
@@ -117,6 +117,7 @@
 				var imgSrc = entry.toLocalURL() + "?version=" + new Date().getTime(); //拿到图片路径
 				// 其他操作,比如预览展示
 				$('#face').attr('src', imgSrc)
+				 localStorage.setItem('front',imgSrc)
 			}, function (e) {
 				console.log("读取拍照文件错误：" + e.message);
 			});
@@ -127,7 +128,7 @@
 			})
 	}
 
-	// 从相册中选择图片 
+	// 从相册中选择图片 人像面
 	function galleryImg1() {
 		// 从相册中选择图片
 		plus.gallery.pick(function (e) {
@@ -136,6 +137,7 @@
 				var fileSrc = e.files[i];
 				// 其他操作,比如预览展示
 				$('#face').attr('src', fileSrc)
+				localStorage.setItem('front',fileSrc)
 			}
 		}, function (e) {
 			console.log("取消选择图片");
@@ -179,7 +181,7 @@
 		}
 	}, false);
 
-	// 拍照获取图片
+	// 拍照获取图片 国徽面
 	function getImage() {
 		var c = plus.camera.getCamera();
 		c.captureImage(function (e) {
@@ -187,7 +189,7 @@
 				var imgSrc = entry.toLocalURL() + "?version=" + new Date().getTime(); //拿到图片路径
 				// 其他操作,比如预览展示
 				$('#con').attr('src', imgSrc)
-				getBase64(imgSrc)
+				localStorage.setItem('back',imgSrc)
 			}, function (e) {
 				console.log("读取拍照文件错误：" + e.message);
 			});
@@ -198,7 +200,7 @@
 			})
 	}
 
-	// 从相册中选择图片 
+	// 从相册中选择图片 国徽面
 	function galleryImg() {
 		// 从相册中选择图片
 		plus.gallery.pick(function (e) {
@@ -206,6 +208,9 @@
 				var fileSrc = e.files[i];
 				// 其他操作,比如预览展示
 				$('#con').attr('src', fileSrc)
+				plus.storage.setItem('back',fileSrc)
+				
+				
 			}
 		}, function (e) {
 			console.log("取消选择图片");
@@ -219,6 +224,41 @@
 				}
 			});
 	}
+	
+	
+	
+	var front = localStorage.getItem('front')
+	var back  = localStorage.getItem('back')
+	function getBase64(imgUrl) {
+	  window.URL = window.URL || window.webkitURL;
+	  var xhr = new XMLHttpRequest();
+	  xhr.open("get", imgUrl, true);
+	  // 至关重要
+	  xhr.responseType = "blob";
+	  xhr.onload = function () {
+	    if (this.status == 200) {
+	      //得到一个blob对象
+	      var blob = this.response;
+	      console.log("blob", blob)
+	      // 至关重要
+	      let oFileReader = new FileReader();
+	      oFileReader.onloadend = function (e) {
+	        let base64 = e.target.result;
+	        console.log("方式一》》》》》》》》》", base64)
+	      };
+	      oFileReader.readAsDataURL(blob);
+	      //====为了在页面显示图片，可以删除====
+	      var img = document.createElement("img");
+	      img.onload = function (e) {
+	        window.URL.revokeObjectURL(img.src); // 清除释放
+	      };
+		  let src = window.URL.createObjectURL(blob);
+	    }
+	  }
+	  xhr.send();
+	}
+	
+	
 	// 获取百度Access Token   https://aip.baidubce.com/oauth/2.0/token?grant_type=client_credentials&client_id=Wj7Dsjm4EYPgvMoKS8dIpWMh&client_secret=fKN3rMiaOgYTkMpNosGwCF79U4xN0g5P
 	
 	function token() {
@@ -270,34 +310,7 @@
 		});
 	}
 	
-    function getBase64(imgUrl) {
-      window.URL = window.URL || window.webkitURL;
-      var xhr = new XMLHttpRequest();
-      xhr.open("get", imgUrl, true);
-      // 至关重要
-      xhr.responseType = "blob";
-      xhr.onload = function () {
-        if (this.status == 200) {
-          //得到一个blob对象
-          var blob = this.response;
-          console.log("blob", blob)
-          // 至关重要
-          let oFileReader = new FileReader();
-          oFileReader.onloadend = function (e) {
-            let base64 = e.target.result;
-            console.log("方式一》》》》》》》》》", base64)
-          };
-          oFileReader.readAsDataURL(blob);
-          //====为了在页面显示图片，可以删除====
-          var img = document.createElement("img");
-          img.onload = function (e) {
-            window.URL.revokeObjectURL(img.src); // 清除释放
-          };
-		  let src = window.URL.createObjectURL(blob);
-        }
-      }
-      xhr.send();
-	}
+    
 	
 </script>
 
