@@ -173,6 +173,7 @@
 			success: function (data) {
 				//服务器返回响应，根据响应结果，分析是否登录成功；
 				localStorage.setItem('token',data.id_token)
+				console.log(data)
 				getMerId()
 			},
 			error: function (xhr, type, errorThrown) {

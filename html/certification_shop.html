@@ -212,9 +212,9 @@
 	// 2019022000003
 	// 商户店铺表接口(merchant_store_info)
 	function  merchant(){
-		var id = $('#code').val()
-		console.log(id)
-		$util.http('/api/merchant-store-infos/'+id, {
+		var storecode = $('#code').val()
+		console.log(storecode)
+		$util.http('/api/merchant-store-storecode/'+storecode, {
 			dataType: 'json',
 			type: 'get',
 			success: function (res) {

@@ -43,7 +43,7 @@
 			</div>
 			<div class="next-content">
 				<!-- <a href="register_password.html"> -->
-					<!-- <button class="next-btn">下一步</button> -->
+				<!-- <button class="next-btn">下一步</button> -->
 				<!-- </a> -->
 				<button class="next-btn">注册</button>
 				<a href="login.html">
@@ -61,38 +61,61 @@
 <script type="text/javascript" src="../js/icon-back.js"></script>
 <script src="../js/util.js"></script>
 <script type="text/javascript">
+
 	mui.init(
 		nextBtn()
 	)
-	
-	var testCode = $('.test-code-btn').val()
-	var phoneNumber = $('#phone_number').val()
-	var OperatorType = localStorage.getItem('OperatorType')
-	function nextBtn(){
-		$('.next-btn').on('tap',function(){
+	function nextBtn() {
+		$('.next-btn').on('tap', function () {
 			register()
 		})
 	}
-	
 
+	// 手机号格式
+	function phoneNum(obj){
+		var p = /^[1][3,4,5,7,8][0-9]{9}$/;
+		if(obj == ''){
+			mui.toast('手机号为空')
+		}else if(p.test(obj) == false){
+			mui.toast('请输入正确手机号')
+		}
+	}
+	function istestCode(str){
+		var d = /^[\x01-\xfe]{8,20}$/
+		if(str == ''){
+			mui.toast('请输入密码')
+		}else if(d.test(str) == false){
+			mui.toast('密码为8-20位')
+		}
+	}
 	// 获取注册接口
 	function register() {
-		var testCode = $('.test-code-btn').val()
-	var phoneNumber = $('#phone_number').val()
-	var OperatorType = localStorage.getItem('OperatorType')
-		$util.http('/api/registerOperator', {
+		var testCode = $('#yanzheng_number').val()
+		var phoneNumber = $('#phone_number').val()
+		var OperatorType = localStorage.getItem('OperatorType')	
+		phoneNum(phoneNumber)
+		istestCode(testCode)
+		mui.ajax('http://39.98.77.177:8080/api/registerOperator', {
 			data: {
 				"operatorMobile": phoneNumber,
 				"operatorType": OperatorType,
 				"password": testCode,
 				"status": true
 			},
-			dataType: 'json',
-			type: 'post',
-			success: function (res) {
-				console.log(res)
+			dataType: 'json', //服务器返回json格式数据
+			type: 'post', //HTTP请求类型
+			timeout: 10000, //超时时间设置为10秒
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			success: function (data) {
+				console.log(data)
+			},
+			error: function (xhr, type, errorThrown) {
+				//异常处理；
+				console.log(type);
 			}
-		})
+		});
 	}
 </script>
 
