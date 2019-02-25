@@ -3,12 +3,14 @@
 // 	return $util;
 // })(mui);
 
-(function () {
-	var token = localStorage.getItem('token')
+(function() {
+	var token = localStorage.getItem('token') ||
+		'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxODEzODg4ODg4OCIsImF1dGgiOiJST0xFX09QRVJBVE9SIiwidXNlcnR5cGUiOiJST0xFX09QRVJBVE9SIiwiZXhwIjoxNTUzNjY0OTM0fQ.HYhAYymyvjPSPx0wUDzAufcikm5-71M2dBu_I9YH4O567IYEPX_dQKv9w4kNU920WKaxCX9qVtJuFYLBS1cARQ'
 	mui('.mui-scroll-wrapper').scroll({
 		deceleration: 0.0005 //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
 	});
 	var BASEURL = 'http://39.98.77.177:8080';
+
 	function __createDialog__(options) {
 		var __popup__ = document.createElement('div');
 		var __body__ = document.createElement('div');
@@ -31,13 +33,13 @@
 		__btn1__.setAttribute('value', '取消');
 		__btn2__.setAttribute('value', '确认');
 		__btn1__.setAttribute('class', 'c-b-cancel');
-		__btn1__.addEventListener('touchend', function () {
+		__btn1__.addEventListener('touchend', function() {
 			if (options.cancel) {
 				options.cancel();
 			}
 			__closeDialog__();
 		});
-		__btn2__.addEventListener('touchend', function () {
+		__btn2__.addEventListener('touchend', function() {
 			if (options.confirm) {
 				var _ctx = __text__.value.trim();
 				if (!_ctx) {
@@ -75,21 +77,22 @@
 		// 			fail:失败回调
 		// 		}
 		http(url, options) {
+			console.log(BASEURL + url)
 			mui.ajax(BASEURL + url, {
 				headers: {
 					'Content-Type': 'application/json',
-					'Authorization': 'Bearer ' + token || ''
+					'Authorization': 'Bearer ' + token || '',
 				},
 				data: options.data,
-				dataType: 'json',//服务器返回json格式数据
-				type: options.type || 'post',//HTTP请求类型
-				timeout: 10000,//超时时间设置为10秒；
-				success: function (data) {
+				dataType: 'json', //服务器返回json格式数据
+				type: options.type || 'post', //HTTP请求类型
+				timeout: 10000, //超时时间设置为10秒；
+				success: function(data) {
 					if (options.success)
 						options.success(data)
 				},
-				error: function (xhr, type, errorThrown) {
-					console.log(xhr)
+				error: function(xhr, type, errorThrown) {
+					console.log(xhr.status)
 					if (xhr.status == '401') {
 						//需要重新登陆
 					} else {
@@ -100,18 +103,43 @@
 				}
 			});
 		},
+		//上传图片至七牛
+		uploadToQiniu: function(filepath,callback) {
+			var filename = src.substring(src.lastIndexOf('/') + 1);
+			this.http('/api/getQiNiuToken?key=' + filename + '&bucketName=testimage', {
+				type: 'get',
+				success: function(data) {
+					var url = "http://upload.qiniu.com/"; 
+					var uploader = plus.uploader.createUpload(url,{},function(up,state){  
+						if( state==200 ) {
+							//这是文件名  真实的文件url未返回 需要手动添加前缀
+							var filename=JSON.parse(up.responseText).key;
+							if(callback)
+								callback('http://pmwf46ayp.bkt.clouddn.com/'+filename);
+						}
+						else  
+							console.log("上传失败 - ",state);  
+					});  
+					
+					uploader.addData("key",filename);  
+					uploader.addData("token",data.token);  
+					uploader.addFile(filepath,{"key":"file"});      // 固定值，千万不要改！！！！！！  
+					uploader.start();  
+				}
+			});
+		},
 		//上啦加载
-		pullRefresh: function (dom, callback) {
+		pullRefresh: function(dom, callback) {
 			mui.init({
 				pullRefresh: {
-					container: dom,//下拉刷新容器标识，querySelector能定位的css选择器均可，比如：id、.class等
+					container: dom, //下拉刷新容器标识，querySelector能定位的css选择器均可，比如：id、.class等
 					up: {
-						height: 50,//可选.默认50.触发上拉加载拖动距离
-						auto: false,//可选,默认false.自动上拉加载一次
-						contentrefresh: "正在加载...",//可选，正在加载状态时，上拉加载控件上显示的标题内容
-						contentnomore: '没有更多数据了',//可选，请求完毕若没有更多数据时显示的提醒内容；
-						callback: function () {
-							callback(function () {
+						height: 50, //可选.默认50.触发上拉加载拖动距离
+						auto: false, //可选,默认false.自动上拉加载一次
+						contentrefresh: "正在加载...", //可选，正在加载状态时，上拉加载控件上显示的标题内容
+						contentnomore: '没有更多数据了', //可选，请求完毕若没有更多数据时显示的提醒内容；
+						callback: function() {
+							callback(function() {
 								this.endPullupToRefresh(false);
 							}.bind(this));
 							//this.endPullupToRefresh(false);
@@ -132,5 +160,3 @@
 		}
 	}
 })();
-
-

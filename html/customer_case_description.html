@@ -40,6 +40,7 @@
 			<div id="test">
 				asas
 			</div>
+			<img id="img">
 			<div class="case-name">
 				<div class="case-name-caption">
 					案例名称
@@ -238,40 +239,11 @@
 		}
 		
 		function getQiniuToken(src){
-			var filename=src.substring(src.lastIndexOf('/')+1);
-			
-			$util.http('/api/getQiNiuToken?key='+filename+'&bucketName=testimage',{
-				type:'get',
-				success:function(data){
-					uploadToQiniu(data.token,src,filename);
-				}
+			$util.uploadToQiniu(src,function(imgPath){
+				//imgPath--完整的url
 			});
 		}
 		
-		function uploadToQiniu(token,filepath,filename){
-			var url = "http://upload.qiniu.com/"; 
-			var uploader = plus.uploader.createUpload(url,{},function(up,state){  
-				if( state==200 ) {
-					//这是文件名  真实的文件url未返回 需要手动添加前缀
-					var filename=JSON.parse(up.responseText).key;
-				}
-				else  
-					console.log("上传失败 - ",state);  
-			});  
-
-			uploader.addData("key",filename);  
-			uploader.addData("token",token);  
-			uploader.addFile(filepath,{"key":"file"});      // 固定值，千万不要改！！！！！！  
-			uploader.start();  
-// 			var observable = qiniu.upload(filepath, filename, token, {}, {});
-// 			var subscription = observable.subscribe({
-// 				next(){},
-// 				error(err){},
-// 				complete(res){
-// 					$('#test').text(JSON.stringify((res)))
-// 				}
-// 			});
-		}
 		
 		$("#case-description").on("input propertychange", function() {
 			var $this = $(this),
