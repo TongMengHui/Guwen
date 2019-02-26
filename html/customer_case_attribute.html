@@ -1,117 +1,138 @@
 <!doctype html>
 <html>
+
 <head>
 	<meta charset="UTF-8">
 	<title>客户案例-案例属性</title>
 	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 	<script src="../js/jquery-1.11.0.min.js"></script>
 	<link href="../css/mui.min.css" rel="stylesheet" />
-	<link rel="stylesheet" type="text/css" href="../css/customer_case_attribute.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/customer_case_attribute.css" />
 </head>
+
 <body style="background-color: white;">
-<header class="mui-bar mui-bar-nav mui-bar-nav-bg" style="background-color: white; box-shadow: none; border-bottom: 1px solid #EEEEEE;">
-	<span class="mui-icon mui-icon-back"></span>
-   	<span class="mui-title" style="font-size: 18px; color: #333333;">发布案例</span>
-</header>
-<div class="mui-content" style="background-color: white;">
-	<div id="time-line-content">
-		<div id="line">
-			<div id="line-front"></div>
-			<div id="line-middle"></div>
-			<div id="line-back"></div> 
+	<header class="mui-bar mui-bar-nav mui-bar-nav-bg" style="background-color: white; box-shadow: none; border-bottom: 1px solid #EEEEEE;">
+		<span class="mui-icon mui-icon-back"></span>
+		<span class="mui-title" style="font-size: 18px; color: #333333;">发布案例</span>
+	</header>
+	<div class="mui-content" style="background-color: white;">
+		<div id="time-line-content">
+			<div id="line">
+				<div id="line-front"></div>
+				<div id="line-middle"></div>
+				<div id="line-back"></div>
+			</div>
+			<div id="round-attribute">
+				<img src="../img/attribute.png" style="width: 100%; height: 100%;" />
+			</div>
+			<div id="round-description">
+				<img src="../img/description1.png" style="width: 100%; height: 100%;" />
+			</div>
+			<div id="round-relate-products">
+				<img src="../img/relate-products1.png" style="width: 100%; height: 100%;" />
+			</div>
+			<div id="round-customer-information">
+				<img src="../img/customer-information1.png" style="width: 100%; height: 100%;" />
+			</div>
+			<div id="font-attribute">案例属性</div>
+			<div id="font-description">案例描述</div>
+			<div id="font-relate-products">关联产品</div>
+			<div id="font-customer-information">客户信息</div>
 		</div>
-		<div id="round-attribute">
-			<img src="../img/attribute.png" style="width: 100%; height: 100%;"/>
+		<div class="caption-content">
+			<div class="caption">
+				房屋户型
+			</div>
 		</div>
-		<div id="round-description">
-			<img src="../img/description1.png" style="width: 100%; height: 100%;"/>
+		<div class="house-type-content">
+			<div class="house-type-select">
+				<div class="house-type-radio aa">一居室</div>
+				<div class="house-type-radio">两居室</div>
+				<div class="house-type-radio">三居室</div>
+				<div class="house-type-radio">四居室</div>
+				<div class="house-type-radio">复式</div>
+				<div class="house-type-radio">别墅</div>
+			</div>
 		</div>
-		<div id="round-relate-products">
-			<img src="../img/relate-products1.png" style="width: 100%; height: 100%;"/>
+		<div class="caption-content">
+			<div class="caption">
+				居室
+			</div>
 		</div>
-		<div id="round-customer-information">
-			<img src="../img/customer-information1.png" style="width: 100%; height: 100%;"/>
+		<div class="house-area-content">
+			<div class="house-area-select">
+				<div class="house-area-radio bb">卧房</div>
+				<div class="house-area-radio">客厅</div>
+				<div class="house-area-radio">卫生间</div>
+				<div class="house-area-radio">书房</div>
+				<div class="house-area-radio">厨房</div>
+				<div class="house-area-radio">玄关</div>
+			</div>
 		</div>
-		<div id="font-attribute">案例属性</div>
-		<div id="font-description">案例描述</div>
-		<div id="font-relate-products">关联产品</div>
-		<div id="font-customer-information">客户信息</div>
+		<div class="caption-content">
+			<div class="caption">
+				装修风格
+			</div>
+		</div>
+		<div class="decoration-style-content">
+			<div class="decoration-style-select">
+				<div class="decoration-style-radio cc">欧式</div>
+				<div class="decoration-style-radio">美式</div>
+				<div class="decoration-style-radio">法式</div>
+				<div class="decoration-style-radio">意大利</div>
+				<div class="decoration-style-radio">北欧</div>
+				<div class="decoration-style-radio">轻奢</div>
+				<div class="decoration-style-radio">现代</div>
+				<div class="decoration-style-radio">后现代</div>
+				<div class="decoration-style-radio">中式</div>
+				<div class="decoration-style-radio">韩式</div>
+				<div class="decoration-style-radio">日式</div>
+				<div class="decoration-style-radio">田园</div>
+				<div class="decoration-style-radio">地中海</div>
+				<div class="decoration-style-radio">新中式</div>
+				<div class="decoration-style-radio">新古典</div>
+				<div class="decoration-style-radio">混搭</div>
+			</div>
+		</div>
+		<div class="next-btn-content">
+			<!-- <a href="customer_case_description.html"> -->
+			<button class="next-btn">下一步</button>
+			<!-- </a> -->
+		</div>
 	</div>
-	<div class="caption-content">
-		<div class="caption">
-			房屋户型
-		</div>	
-	</div>
-	<div class="house-type-content">
-		<div class="house-type-select">
-			<div class="house-type-radio" onclick="choised(this)">一居室</div>
-			<div class="house-type-radio" onclick="choised(this)">两居室</div>
-			<div class="house-type-radio" onclick="choised(this)">三居室</div>
-			<div class="house-type-radio" onclick="choised(this)">四居室</div>
-			<div class="house-type-radio" onclick="choised(this)">复式</div>
-			<div class="house-type-radio" onclick="choised(this)">别墅</div>
-		</div>
-	</div>
-	<div class="caption-content">
-		<div class="caption">
-			房屋面积
-		</div>	
-	</div>	
-	<div class="house-area-content">
-		<div class="house-area-select">
-			<div class="house-area-radio" onclick="choised(this)">60m&sup2;以下</div>
-			<div class="house-area-radio" onclick="choised(this)">60-80m&sup2;</div>
-			<div class="house-area-radio" onclick="choised(this)">80-100m&sup2;</div>
-			<div class="house-area-radio" onclick="choised(this)">100-120m&sup2;</div>
-			<div class="house-area-radio" onclick="choised(this)">120-150m&sup2;</div>
-			<div class="house-area-radio" onclick="choised(this)">150m&sup2;以上</div>
-		</div>
-	</div>
-	<div class="caption-content">
-		<div class="caption">
-			装修风格
-		</div>	
-	</div>
-	<div class="decoration-style-content">
-		<div class="decoration-style-select">
-			<div class="decoration-style-radio" onclick="choised(this)">欧式</div>
-			<div class="decoration-style-radio" onclick="choised(this)">美式</div>
-			<div class="decoration-style-radio" onclick="choised(this)">法式</div>
-			<div class="decoration-style-radio" onclick="choised(this)">意大利</div>
-			<div class="decoration-style-radio" onclick="choised(this)">北欧</div>
-			<div class="decoration-style-radio" onclick="choised(this)">轻奢</div>
-			<div class="decoration-style-radio" onclick="choised(this)">现代</div>
-			<div class="decoration-style-radio" onclick="choised(this)">后现代</div>
-			<div class="decoration-style-radio" onclick="choised(this)">中式</div>
-			<div class="decoration-style-radio" onclick="choised(this)">韩式</div>
-			<div class="decoration-style-radio" onclick="choised(this)">日式</div>
-			<div class="decoration-style-radio" onclick="choised(this)">田园</div>
-			<div class="decoration-style-radio" onclick="choised(this)">地中海</div>
-			<div class="decoration-style-radio" onclick="choised(this)">新中式</div>
-			<div class="decoration-style-radio" onclick="choised(this)">新古典</div>
-			<div class="decoration-style-radio" onclick="choised(this)">混搭</div>
-		</div>
-	</div>
-	<div class="next-btn-content">
-		<a href="customer_case_description.html"><button class="next-btn" disabled="disabled">下一步</button></a>
-	</div>
-</div>
 </body>
 <script src="../js/mui.min.js"></script>
-<script type="text/javascript" src="../js/jquery-1.11.0.min.js" ></script>
-<script type="text/javascript" src="../js/icon-back.js" ></script>
+<script type="text/javascript" src="../js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="../js/icon-back.js"></script>
 <script src="../js/util.js"></script>
 <script type="text/javascript">
 	mui.init()
-	function choised(obj)
-	{
-		$(".next-btn").css("background-color","#6C91FE");
-		$(".next-btn").attr('disabled',false);
-		$(obj).css({'background-color':'#6991FE','color':'white'});
-		$(obj).siblings().css({'background-color':'#EEEEEE','color':'#666666'}); 
-		console.log($('.house-type-select').find(obj).text(), 
-		$('.house-area-select').find(obj).text(), 
-		$('.decoration-style-select').find(obj).text())
-	} 
+	$('.house-type-radio').on('tap',function(){
+		$(this).addClass('aa')
+		$(this).siblings().removeClass('aa')
+	})
+	$('.house-area-radio').on('tap',function(){
+		$(this).addClass('bb')
+		$(this).siblings().removeClass('bb')
+	})
+	$('.decoration-style-radio').on('tap',function(){
+		$(this).addClass('cc')
+		$(this).siblings().removeClass('cc')
+	})
+	$('.next-btn').on('tap',function(){
+		var roomNum = $('.aa').text(),
+			room = $('.bb').text(),
+			style = $('.cc').text()
+			console.log(room)
+			localStorage.setItem('roomNum',roomNum)
+			localStorage.setItem('room',room)
+			localStorage.setItem('style',style)			
+			mui.openWindow(
+					'customer_case_description.html',
+					'customer_case_description',
+					{}
+				)
+	})
 </script>
+
 </html>

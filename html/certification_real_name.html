@@ -67,18 +67,7 @@
 <script src="../js/util.js"></script>
 <script type="text/javascript">
 	mui.init(
-		submit(),
-		token()
 		)
-	// 提交
-	function submit() {
-		var faceSrc = $('#face').attr('src'),
-			conSrc = $('#con').attr('src')
-		if (faceSrc != "../img/sfzzm.png" && conSrc != "../img/sfzbm.png") {
-			$('.bottom-btn').css('background', '#007AFF')
-			mui.openWindow('certification_shop.html', 'certification_shop', {})
-		}
-	}
 	// 选择照相机还是相册
 	document.getElementById('face').addEventListener('tap', function () {
 		if (mui.os.plus) {
@@ -222,91 +211,39 @@
 				}
 			});
 	}
-	
-	
-	
+	function getQiniuToken(src) {
+		$util.uploadToQiniu(src, function (imgPath) {
+			// 完整的url
+			console.log(imgPath)
+			localStorage.setItem('imgPath', imgPath)
+		})
+	}
 	var front = localStorage.getItem('front')
-	var back  = localStorage.getItem('back')
-	function getBase64(imgUrl) {
-	  window.URL = window.URL || window.webkitURL;
-	  var xhr = new XMLHttpRequest();
-	  xhr.open("get", imgUrl, true);
-	  // 至关重要
-	  xhr.responseType = "blob";
-	  xhr.onload = function () {
-	    if (this.status == 200) {
-	      //得到一个blob对象
-	      var blob = this.response;
-	      console.log("blob", blob)
-	      // 至关重要
-	      let oFileReader = new FileReader();
-	      oFileReader.onloadend = function (e) {
-	        let base64 = e.target.result;
-	        console.log("方式一》》》》》》》》》", base64)
-	      };
-	      oFileReader.readAsDataURL(blob);
-	      //====为了在页面显示图片，可以删除====
-	      var img = document.createElement("img");
-	      img.onload = function (e) {
-	        window.URL.revokeObjectURL(img.src); // 清除释放
-	      };
-		  let src = window.URL.createObjectURL(blob);
-	    }
-	  }
-	  xhr.send();
-	}
+	var back = localStorage.getItem('back')
+
+	$('#submit').on('tap', function () {
+		var realName = $('#realName').val()
+		var realId = $('#realId').val()
+		var realAddress = $('#realAddress').val()
+		localStorage.setItem('realName',realName)
+		localStorage.setItem('realId',realId)	
+			if(front==''){
+						mui.toast('请上传正面照')
+					}else if(back==''){
+						mui.toast('请上传反面照')
+					}else if(realName == '' || realName=='' || realId == '' ){
+						mui.toast('请填写身份信息')				
+					}else(
+						getQiniuToken(front),
+						getQiniuToken(back),
+						$('.bottom-btn').css('background', '#007AFF'),
+							mui.openWindow('certification_shop.html', 'certification_shop', {})
+					)
+	})
 	
 	
-	// 获取百度Access Token   https://aip.baidubce.com/oauth/2.0/token?grant_type=client_credentials&client_id=Wj7Dsjm4EYPgvMoKS8dIpWMh&client_secret=fKN3rMiaOgYTkMpNosGwCF79U4xN0g5P
 	
-	function token() {
-		mui.ajax('https://aip.baidubce.com/oauth/2.0/token?grant_type=client_credentials&client_id=SWMHsmWFhTCQcFNHBMFtbFgj&client_secret=Zq8x1HtaBga9ktSSXOpGkRHy1F2fc2mU', {
-			data: {
-				// 'grant_type': 'client_credentials',
-				// 'client_id': 'Wj7Dsjm4EYPgvMoKS8dIpWMh',
-				// 'client_secret': 'fKN3rMiaOgYTkMpNosGwCF79U4xN0g5P'
-			},
-			dataType: 'json', //服务器返回json格式数据
-			type: 'post', //HTTP请求类型
-			timeout: 10000, //超时时间设置为10秒
-			headers: {
-				'Content-Type': 'application/json'
-			},
-			success: function (data) {
-				//服务器返回响应，根据响应结果，分析是否登录成功；
-				console.log(data.access_token)
-				var token = data.access_token
-			},
-			error: function (xhr, type, errorThrown) {
-				//异常处理；
-				console.log(type);
-			}
-		});
-	}
-	// 调取身份证识别的接口
-	function recognition(font,token) {
-		mui.ajax('https://aip.baidubce.com/rest/2.0/ocr/v1/idcard', {
-			data: {
-				
-				
-			},
-			dataType: 'json', //服务器返回json格式数据
-			type: 'post', //HTTP请求类型
-			timeout: 10000, //超时时间设置为10秒
-			headers: {
-				'Content-Type': 'application/json',
-				'access_token':token
-			},
-			success: function (data) {
-				//服务器返回响应，根据响应结果，分析是否登录成功；
-				console.log(data)
-			},
-			error: function (xhr, type, errorThrown) {
-				//异常处理；
-				console.log(type);
-			}
-		});
-	}
+	
 	
     
 	

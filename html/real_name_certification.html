@@ -88,7 +88,9 @@
 <script src="../js/util.js"></script>
 <script type="text/javascript">
 
-	mui.init()
+	mui.init(
+	gettoken()
+	)
 	// 选择照相机还是相册
 	document.getElementById('face').addEventListener('tap', function () {
 		if (mui.os.plus) {
@@ -265,6 +267,26 @@
 						)
 					)
 	})
+	
+	// 身份证识别获取token接口
+	function gettoken(){
+		mui.ajax('https://aip.baidubce.com/oauth/2.0/token?grant_type=client_credentials&client_id=si1BHysKB2bd1285n5sfpCBO&client_secret=P0FoaXPNz9wgEHYHps49ociwrnH53wuO', {
+			
+			dataType: 'json', //服务器返回json格式数据
+			type: 'post', //HTTP请求类型
+			timeout: 10000, //超时时间设置为10秒
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			success: function (data) {
+				console.log(data)
+			},
+			error: function (xhr, type, errorThrown) {
+				//异常处理；
+				console.log(type);
+			}
+		});
+	}
 	
 </script>
 

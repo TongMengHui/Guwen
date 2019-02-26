@@ -73,23 +73,23 @@
 			getDesignCase: function () {
 				var self = this
 				id=this.id
-				$util.http('/api/design-cases', {
+				$util.http('/api/home-cases-operator/?operatorId='+id, {
 					dataType: 'json',
 					type: 'get',
 					success: function (res) {
 						self.List = res
 						console.log(self.List)
-						self.haveCase()
+						self.haveCase(res)
 					}
 				})
 			},
 			// 是否有案例
 			haveCase: function (obj) {
 				if (obj) {
-					$('#mui-content1').css('display', 'block !important')
+					$('#mui-content1').css('display', 'block')
 					$('#mui-content2').css('display', 'none')
 				} else {
-					$('#mui-content1').css('display', 'none')
+					$('#mui-content1').css('display', 'none !important')
 					$('#mui-content2').css('display', 'block')
 				}
 			}

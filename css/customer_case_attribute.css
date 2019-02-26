@@ -145,7 +145,7 @@
     .house-type-radio{
     position: relative;
     float: left;
-    width: 75px;
+    width: 23%;
     height: 40px;
     font-size: 15px;
     color: #666666;
@@ -154,7 +154,7 @@
     padding-top: 10px;
     text-align: center;
     margin-top: 10px;
-    margin-right: 10px;
+    margin-right: 2%;
     background-color: #EEEEEE;
     }
     .house-area-content{
@@ -172,7 +172,7 @@
     .house-area-radio{
     position: relative;
     float: left;
-    width: 103px;
+    width: 30%;
     height: 40px;
     font-size: 15px;
     color: #666666;
@@ -181,7 +181,7 @@
     padding-top: 10px;
     text-align: center;
     margin-top: 10px;
-    margin-right: 10px;
+    margin-right: 3%;
     background-color: #EEEEEE;
     }
     .decoration-style-content{
@@ -200,7 +200,7 @@
     .decoration-style-radio{
     position: relative;
     float: left;
-    width: 75px;
+    width: 23%;
     height: 40px;
     font-size: 15px;
     color: #666666;
@@ -209,7 +209,7 @@
     padding-top: 10px;
     text-align: center;
     margin-top: 10px;
-    margin-right: 10px;
+    margin-right: 2%;
     background-color: #EEEEEE;
     }
     .next-btn-content{
@@ -229,5 +229,9 @@
     border: 0;
     margin-top: 50px;
     margin-bottom: 20px;
-    background-color: #DDDDDD;
+    background-color: #6C91FE;
+    }
+    .aa,.bb,.cc{
+        background: #6C91FE;
+        color: #fff;
     }

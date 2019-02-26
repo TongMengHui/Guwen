@@ -445,7 +445,8 @@
 				$('.visit_num').text(res.viewNum)
 				localStorage.setItem('realId',res.operatorIdentityNo)
 				localStorage.setItem('realName',res.operatorName)	
-				localStorage.setItem('applyStatus',res.applyStatus)											
+				localStorage.setItem('applyStatus',res.applyStatus)	
+				localStorage.setItem('operatorCode',res.operatorCode)																									
 				islead(res.operatorIdentityNo)
 				isbind(res.applyStatus)
 			}
@@ -481,56 +482,55 @@
 		interval: 3000 //自动轮播周期，若为0则不自动播放，默认为0；
 	});
 
-	$('.menu-smrz').on('tap', function () {
-		var realId = localStorage.getItem('realId')
-		var realName = localStorage.getItem('realName')
-		if (realId) {
-			
-			mui.openWindow(
-				'real_message.html',
-				'real_message',
-				{}
-			)
+	// $('.menu-smrz').on('tap', function () {
+	// 	var realId = localStorage.getItem('realId')
+	// 	var realName = localStorage.getItem('realName')
+	// 	if (realId) {
+	// 		mui.openWindow(
+	// 			'real_message.html',
+	// 			'real_message',
+	// 			{}
+	// 		)
 		
-		} else  {
+	// 	} else  {
 			mui.openWindow(
 				'real_name_certification.html',
 				'real_name_certification',
 				{}
 			)
 			
-		}
+		// }
 
 	})
 	// 判断
 	$('.menu-wddp').on('tap', function () {
 		var applyStatus =  localStorage.getItem('applyStatus')
-		// if(applyStatus == 1){
-		// 	mui.openWindow(
-		// 		'my_shop_bind_success.html',
-		// 		'my_shop_bind_success',
-		// 		{}
-		// 	)
-		// }else if(applyStatus == 0){
-		// 	mui.openWindow(
-		// 		'my_shop_review.html',
-		// 		'my_shop_review',
-		// 		{}
-		// 	)
-		// }else if(applyStatus == 2){
-		// 	// 被拒绝无此页面
-		// }else if(applyStatus == 3){
-		// 	mui.openWindow(
-		// 		'my_shop_unbound.html',
-		// 		'my_shop_unbound',
-		// 		{}
-		// 	)
-		// }
-		mui.openWindow(
+		if(applyStatus == 1){
+			mui.openWindow(
+				'my_shop_bind_success.html',
+				'my_shop_bind_success',
+				{}
+			)
+		}else if(applyStatus == 0){
+			mui.openWindow(
+				'my_shop_review.html',
+				'my_shop_review',
+				{}
+			)
+		}else if(applyStatus == 2){
+			// 被拒绝无此页面
+		}else if(applyStatus == 3){
+			mui.openWindow(
 				'my_shop_unbound.html',
 				'my_shop_unbound',
 				{}
 			)
+		}
+		// mui.openWindow(
+		// 		'my_shop_unbound.html',
+		// 		'my_shop_unbound',
+		// 		{}
+		// 	)
 	})
 </script>
 
