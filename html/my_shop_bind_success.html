@@ -21,7 +21,7 @@
 		</div>
 		<div class="under-review-caption">
 			<center>
-				您所绑定的店铺信息正在审核中
+				恭喜您已与该店铺成功绑定
 			</center>
 		</div>
 	</div>
@@ -72,7 +72,9 @@
 <script type="text/javascript" src="../js/icon-back.js" ></script>
 <script src="../js/util.js"></script>
 <script type="text/javascript">
-	mui.init()
+	mui.init(
+		getMerchant()
+	)
 	document.getElementById("untied").addEventListener('tap', function() {
     	var btnArray = ['取消', '确定'];
     	mui.confirm('是否确定与当前店铺解绑',' ',new Array('取消','确定'),function(e){
@@ -82,5 +84,21 @@
    				mui.toast('取消');}
 		});
 	});
+	
+	// 获取顾问表接口(merchant_operator)
+	function getMerchant() {
+		var id = localStorage.getItem('id')
+		$util.http('/api/merchant-operators/' + id, {
+			dataType: 'json',
+			type: 'get',
+			success: function (res) {
+				console.log(res)
+				localStorage.setItem('operatorCode',res.operatorCode)
+				$('.shop-code').find('center').text(res.operatorCode)
+			}
+		})
+	}
+
+
 </script>
 </html>

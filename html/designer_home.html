@@ -271,7 +271,7 @@
 							</div>
 						</div>
 					</a>
-					<a href="my_shop_unbound.html">
+					<!-- <a href="my_shop_unbound.html"> -->
 						<div class="menu-wddp">
 							<div class="bubble-container">
 								<div class="bubble" id="bind">
@@ -286,23 +286,23 @@
 								我的店铺
 							</div>
 						</div>
-					</a>
-					<a href="real_name_certification.html">
-						<div class="menu-smrz">
-							<div class="bubble-container">
-								<div class="bubble" id="renzheng">
-									未认证
-								</div>
-								<div class="triangle"></div>
+					<!-- </a> -->
+					<!-- <a href="real_name_certification.html"> -->
+					<div class="menu-smrz">
+						<div class="bubble-container">
+							<div class="bubble" id="renzheng">
+								未认证
 							</div>
-							<div class="smrz-icon">
-								<img src="../img/smrz.png" style="width: 23px; height: 100%;" />
-							</div>
-							<div class="smrz-caption">
-								实名认证
-							</div>
+							<div class="triangle"></div>
 						</div>
-					</a>
+						<div class="smrz-icon">
+							<img src="../img/smrz.png" style="width: 23px; height: 100%;" />
+						</div>
+						<div class="smrz-caption">
+							实名认证
+						</div>
+					</div>
+					<!-- </a> -->
 				</div>
 				<div class="menu-bs-line">
 					<a href="recommend_friends.html">
@@ -403,10 +403,11 @@
 	var token = localStorage.getItem('token')
 	mui.init(
 		getMerchant(),
-// 		getHomeCases(),
-// 		getDesignCases()
+		// isid()
+		// 		getHomeCases(),
+		// 		getDesignCases()
 	)
-	
+
 	// 弹出引导框
 	function lead() {
 		mui("#popover").popover('toggle', document.getElementById("div"));
@@ -417,41 +418,44 @@
 
 	// 判断是否需要弹出引导框
 	function islead(obj) {
-		if (obj == ''||obj == null) {
+		if (obj == '' || obj == null) {
 			lead()
 			// 是否实名认证
 			$('#renzheng').html('未认证')
-		}else{
+		} else {
 			$('#renzheng').html('已认证')
 		}
 	}
 	// 判断是否绑定店铺
-	function isbind(obj){
-		if(obj != 1){
-			$('#bind').html('未绑定')
-		}else{
+	function isbind(obj) {
+		 if(obj == 1) {
 			$('#bind').html('已绑定')
+		}else{
+			$('#bind').html('未绑定')
 		}
 	}
 	// 获取顾问表接口(merchant_operator)
 	function getMerchant() {
-		$util.http('/api/merchant-operators/'+id, {
+		$util.http('/api/merchant-operators/' + id, {
 			dataType: 'json',
 			type: 'get',
 			success: function (res) {
 				console.log(res)
-				$('.person_pic').attr('src',res.avatar)  
+				$('.person_pic').attr('src', res.avatar)
 				$('.visit_num').text(res.viewNum)
+				localStorage.setItem('realId',res.operatorIdentityNo)
+				localStorage.setItem('realName',res.operatorName)	
+				localStorage.setItem('applyStatus',res.applyStatus)											
 				islead(res.operatorIdentityNo)
 				isbind(res.applyStatus)
 			}
 		})
 	}
-	
+
 
 	// 获取家居案例表接口(home_cases)
 	function getHomeCases() {
-		$util.http('/api/home-cases/'+id, {
+		$util.http('/api/home-cases/' + id, {
 			dataType: 'json',
 			type: 'get',
 			success: function (res) {
@@ -462,7 +466,7 @@
 
 	// 获取设计案例表接口(design_cases)
 	function getDesignCases() {
-		$util.http('/api/design-cases/'+id, {
+		$util.http('/api/design-cases/' + id, {
 			dataType: 'json',
 			type: 'get',
 			success: function (res) {
@@ -472,13 +476,62 @@
 	}
 
 
-
 	var gallery = mui('.mui-slider');
 	gallery.slider({
 		interval: 3000 //自动轮播周期，若为0则不自动播放，默认为0；
 	});
 
+	$('.menu-smrz').on('tap', function () {
+		var realId = localStorage.getItem('realId')
+		var realName = localStorage.getItem('realName')
+		if (realId) {
+			
+			mui.openWindow(
+				'real_message.html',
+				'real_message',
+				{}
+			)
+		
+		} else  {
+			mui.openWindow(
+				'real_name_certification.html',
+				'real_name_certification',
+				{}
+			)
+			
+		}
 
+	})
+	// 判断
+	$('.menu-wddp').on('tap', function () {
+		var applyStatus =  localStorage.getItem('applyStatus')
+		// if(applyStatus == 1){
+		// 	mui.openWindow(
+		// 		'my_shop_bind_success.html',
+		// 		'my_shop_bind_success',
+		// 		{}
+		// 	)
+		// }else if(applyStatus == 0){
+		// 	mui.openWindow(
+		// 		'my_shop_review.html',
+		// 		'my_shop_review',
+		// 		{}
+		// 	)
+		// }else if(applyStatus == 2){
+		// 	// 被拒绝无此页面
+		// }else if(applyStatus == 3){
+		// 	mui.openWindow(
+		// 		'my_shop_unbound.html',
+		// 		'my_shop_unbound',
+		// 		{}
+		// 	)
+		// }
+		mui.openWindow(
+				'my_shop_unbound.html',
+				'my_shop_unbound',
+				{}
+			)
+	})
 </script>
 
 </html>

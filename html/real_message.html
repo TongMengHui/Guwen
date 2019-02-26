@@ -8,16 +8,19 @@
 	<link href="../css/mui.min.css" rel="stylesheet" />
 	<link href="../css/iconfont.css" rel="stylesheet" />
 	<style>
-		html,body{
+		html,
+		body {
 			height: 100%;
 			background: #fff;
 		}
-		.top{
+
+		.top {
 			height: 281px;
 			width: 100%;
 			position: relative;
 		}
-		.head_img{
+
+		.head_img {
 			height: 100px;
 			width: 100px;
 			position: absolute;
@@ -29,7 +32,8 @@
 			border-radius: 50%;
 			background: #fff;
 		}
-		.head_img #head{
+
+		.head_img #head {
 			height: 55px;
 			width: 50px;
 			position: absolute;
@@ -39,14 +43,16 @@
 			right: 0;
 			margin: auto;
 		}
-		.head_img #size{
+
+		.head_img #size {
 			height: 15px;
 			width: 17.5px;
 			position: absolute;
 			right: 20px;
 			bottom: 23px;
 		}
-		.top p{
+
+		.top p {
 			position: absolute;
 			bottom: 40px;
 			left: 50%;
@@ -54,18 +60,20 @@
 			color: rgb(153, 153, 153);
 			font-size: 18px;
 		}
-			.people-pic input{
-			width:70%;
+
+		.people-pic input {
+			width: 70%;
 			border: none;
 			height: 30px;
 			font-size: 15px;
 		}
-		.people-pic{
-			width:80%;
+
+		.people-pic {
+			width: 80%;
 			height: 35px;
 			margin: auto;
-			color:rgb(51, 51, 51);
-			border-bottom: 1px solid rgb(235,235,235);
+			color: rgb(51, 51, 51);
+			border-bottom: 1px solid rgb(235, 235, 235);
 			margin-bottom: 10px;
 			margin-top: 10px;
 			font-size: 15px;
@@ -87,17 +95,29 @@
 	</div>
 	<div class="people-pic">
 		<label>真实姓名:</label>
-		<input type="text" >
+		<input id="realName" type="text">
 	</div>
 	<div class="people-pic">
 		<label>身份证号:</label>
-		<input type="text" >
+		<input id="realId" type="text">
 	</div>
-	
+
 </body>
 <script src="../js/mui.min.js"></script>
 <script type="text/javascript" src="../js/jquery-1.11.0.min.js"></script>
 <script type="text/javascript" src="../js/icon-back.js"></script>
 <script src="../js/util.js"></script>
+<script>
+	mui.init()
+	var realName = localStorage.getItem('realName')
+	var realId = localStorage.getItem('realId')
+		$('#realName').val(realName)
+		$('#realId').val(realId)	
+			console.log(realId)
+	
+
+
+
+</script>
 
 </html>

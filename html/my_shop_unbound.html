@@ -1,43 +1,65 @@
 <!doctype html>
 <html>
+
 <head>
 	<meta charset="UTF-8">
 	<title>我的店铺</title>
 	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 	<link href="../css/mui.min.css" rel="stylesheet" />
-	<link rel="stylesheet" type="text/css" href="../css/my_shop_unbound.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/my_shop_unbound.css" />
 </head>
+
 <body style="background-color: white;">
-<header class="mui-bar mui-bar-nav mui-bar-nav-bg" style="background-color: white; box-shadow: none; border-bottom: 1px solid #CCCCCC;">
-	<span class="mui-icon mui-icon-back"></span>
-   	<font class="mui-title" style="font-size: 18px; color: #333333;">我的店铺</font>
-</header>
-<div class="mui-content" style="background-color: white;">
-	<div class="unbound-icon">
-		<img src="../img/wbd.png" style="height: 100%; width: 60px;"/>
+	<header class="mui-bar mui-bar-nav mui-bar-nav-bg" style="background-color: white; box-shadow: none; border-bottom: 1px solid #CCCCCC;">
+		<span class="mui-icon mui-icon-back"></span>
+		<font class="mui-title" style="font-size: 18px; color: #333333;">我的店铺</font>
+	</header>
+	<div class="mui-content" style="background-color: white;">
+		<div class="unbound-icon">
+			<img src="../img/wbd.png" style="height: 100%; width: 60px;" />
+		</div>
+		<div class="prompt-text">
+			您还未与任何门店绑定
+		</div>
+		<div class="binding-btn-content">
+			<button class="binding-btn" id="bind-immediately">立即绑定</button>
+		</div>
 	</div>
-	<div class="prompt-text">
-		您还未与任何门店绑定
-	</div>
-	<div class="binding-btn-content">
-		<button class="binding-btn" id="bind-immediately">立即绑定</button>
-	</div>
-</div>
 </body>
 <script src="../js/mui.min.js"></script>
-<script type="text/javascript" src="../js/jquery-1.11.0.min.js" ></script>
-<script type="text/javascript" src="../js/icon-back.js" ></script>
+<script type="text/javascript" src="../js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="../js/icon-back.js"></script>
 <script src="../js/util.js"></script>
 <script type="text/javascript">
-	mui.init()
-	document.getElementById("bind-immediately").addEventListener('tap', function() {
-    	var btnArray = ['取消', '去认证'];
-    	mui.confirm('绑定前您还需要实名认证哦！',' ',new Array('取消','去认证'),function(e){
-   			if(e.index == 1){
-   				self.location='certification_real_name.html'; }
-   			else{
-   				mui.toast('取消');}
-		});
-	});
+	mui.init(
+		isReal()
+	)
+
+	// 先判断是否实名认证
+	function isReal() {
+		var realId = localStorage.getItem('realId')
+		if (realId) {
+			document.getElementById("bind-immediately").addEventListener('tap', function () {
+				mui.openWindow(
+					'my_shop_bind.html',
+					'my_shop_bind',
+					{}
+				)
+			})
+		} else {
+			document.getElementById("bind-immediately").addEventListener('tap', function () {
+				var btnArray = ['取消', '去认证'];
+				mui.confirm('绑定前您还需要实名认证哦！', ' ', new Array('取消', '去认证'), function (e) {
+					if (e.index == 1) {
+						self.location = 'certification_real_name.html';
+					}
+					else {
+						mui.toast('取消');
+					}
+				});
+			});
+		}
+	}
 </script>
+
 </html>
