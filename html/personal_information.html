@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh">
+
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,9 +8,10 @@
 	<title>个人信息</title>
 	<link rel="stylesheet" href="../css/mui.css" />
 	<link rel="stylesheet" href="../css/common.css" />
-	<link rel="stylesheet" type="text/css" href="../css/user-infomation.css"/>
-	<link rel="stylesheet" type="text/css" href="../css/personal_information.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/user-infomation.css" />
+	<link rel="stylesheet" type="text/css" href="../css/personal_information.css" />
 </head>
+
 <body>
 	<!--头部信息-->
 	<div class="information-image">
@@ -20,17 +22,19 @@
 		</div>
 		<!--进度条-->
 		<div>
-			<p>信息完整度31%</p>
+			<!-- <p>信息完整度31%</p>
 			<div id="progress" class="mui-progressbar mui-progressbar-green ">
 				<span></span>
-			</div>
+			</div> -->
 		</div>
 		<!--头像ID-->
 		<div>
 			<div class="touxiang-wrap">
-				<img src="../img/touxiang.png" alt="头像" class="touxiang position"/>
+				<img src="../img/touxiang.png" alt="头像" class="touxiang position" id="avatar_img" onclick="avatar_change.click()" />
+				<input id="avatar_change" type="file" onchange="chooseAvatar(this)" style="display:none">
+				<!-- <img src="../img/avatar.png" class="avatar-img" id="avatar_img" onclick="avatar_change.click()" /> -->
 			</div>
-			<div> 
+			<div>
 				<p>设置头像</p>
 				<p>个人编码:GO201820123</p>
 			</div>
@@ -43,81 +47,82 @@
 		</li>
 		<li class="mui-table-view-cell ">
 			真实姓名：
-			<input type="text"/>	
+			<input type="text" />
 			<span class="choose position-top">去认证</span>
 			<span class="mui-icon mui-icon-arrowright arrowright"></span>
 		</li>
 		<li class="mui-table-view-cell ">
 			身份证号：
-			<input type="text" />	
+			<input type="text" />
 			<span class="choose position-top">去认证</span>
 			<span class="mui-icon mui-icon-arrowright arrowright"></span>
 		</li>
 		<li class="mui-table-view-cell ">
 			性&nbsp&nbsp&nbsp&nbsp别：
-			<input type="text" placeholder="保密" />	
+			<input type="text" placeholder="保密" />
 			<span class="choose position-top">选择</span>
 			<span class="mui-icon mui-icon-arrowright arrowright"></span>
 		</li>
 		<li class="mui-table-view-cell ">
 			出生日期：
-			<input type="text" placeholder="请选择您的出生日期" />	
+			<input type="text" placeholder="请选择您的出生日期" />
 			<span class="choose position-top">选择</span>
 			<span class="mui-icon mui-icon-arrowright arrowright"></span>
 		</li>
 		<li class="mui-table-view-cell ">
 			手&nbsp&nbsp&nbsp&nbsp机：
-			<input type="text" placeholder="138516230132" />	
+			<input type="text" placeholder="138516230132" />
 			<span class="choose position-top">修改</span>
 			<span class="mui-icon mui-icon-arrowright arrowright"></span>
 		</li>
 		<li class="mui-table-view-cell ">
 			邮&nbsp&nbsp&nbsp&nbsp箱：
-			<input type="text" placeholder="请绑定您的常用邮箱" />	
+			<input type="text" placeholder="请绑定您的常用邮箱" id="operatorEmail"  />
 			<span class="choose position-top">绑定</span>
 			<span class="mui-icon mui-icon-arrowright arrowright"></span>
 		</li>
-	</ul >
-		
-	<ul class="mui-table-view border ">
-		<li class="mui-table-view-cell">
-			所在城市：
-			<input type="text" placeholder="请选择您所在的城市"/>
-			<span class="mui-icon mui-icon-arrowdown arrowright "></span>
-		</li>
-		<li class="mui-table-view-cell">
-			街道地址：
-			<input type="text" placeholder="请输入您的详细地址" />
-		</li>		
 	</ul>
-	<ul class="mui-table-view border">		
-		<li class="mui-table-view-cell ">
+
+	<ul class="mui-table-view border ">
+		<!-- <li class="mui-table-view-cell">
+			所在城市：
+			<input type="text" placeholder="请选择您所在的城市" />
+			<span class="mui-icon mui-icon-arrowdown arrowright "></span>
+		</li> -->
+		<li class="mui-table-view-cell">
+			详细地址：
+			<input type="text" placeholder="请输入您的详细地址" />
+		</li>
+	</ul>
+	<ul class="mui-table-view border">
+		<!-- <li class="mui-table-view-cell ">
 			我的职业：
-			<input type="text" placeholder="家居顾问" />	
+			<input type="text" placeholder="家居顾问" />
 			<span class="choose position-top">选择</span>
 			<span class="mui-icon mui-icon-arrowright arrowright"></span>
-		</li>
+		</li> -->
 		<li class="mui-table-view-cell ">
 			从业年限：
-			<input type="text" placeholder="请选择从业年限" />	
+			<input type="text" placeholder="请选择从业年限" />
 			<span class="choose position-top">选择</span>
 			<span class="mui-icon mui-icon-arrowright arrowright"></span>
-		</li>		
-		<li class="mui-table-view-cell ">
+		</li>
+		<!-- <li class="mui-table-view-cell ">
 			单位名称：
-			<input type="text" placeholder="暂未绑定" />	
+			<input type="text" placeholder="暂未绑定" />
 			<span class="choose position-top">绑定</span>
 			<span class="mui-icon mui-icon-arrowright arrowright"></span>
-		</li>
+		</li> -->
 		<li class="mui-table-view-cell ">
-			个人描述：<br/>
+			个人描述：
+			<br/>
 			<!--<input type="text" placeholder="138516230132" />-->
-			<textarea style="width: 100%; height: 120px; border: 0;" placeholder="请填写自我介绍，让客户更了解你" ></textarea>
-			
+			<textarea style="width: 100%; height: 120px; border: 0;" placeholder="请填写自我介绍，让客户更了解你"></textarea>
+
 		</li>
-	</ul >
+	</ul>
 	<ul class="mui-table-view border ">
-		<li class="mui-table-view-cell">			
+		<li class="mui-table-view-cell">
 			<input type="text" style="color: #CCCCCC;" placeholder="推荐人 昵称(推荐码)" />
 		</li>
 	</ul>
@@ -130,6 +135,71 @@
 <script type="text/javascript" src="../js/mui.min.js"></script>
 <script src="../js/util.js"></script>
 <script type="text/javascript">
-	mui("#progress").progressbar({progress:31}).show();
+	mui.init()
+	// mui("#progress").progressbar({ progress: 31 }).show();
+	// 设置头像
+	function chooseAvatar(file) {
+		var file = file.files[0];
+		var reader = new FileReader();
+		reader.readAsDataURL(file);
+		reader.onload = function () {
+			var img = document.getElementById('avatar_img');
+			img.src = this.result
+			var avatar = img.src
+			getQiniuToken(avatar)
+		};
+	}
+
+	function getQiniuToken(src) {
+		$util.uploadToQiniu(src, function (imgPath) {
+			// 完整的url
+			console.log(imgPath)
+			localStorage.setItem(src, imgPath)
+		})
+	}
+	// 个人信息的接口
+	function postmerchant() {
+		//所缺少字段    出生日期    从业年限
+		var operatorCode = localStorage.getItem('operatorCode'),
+			Operator_type = localStorage.getItem('Operator_type'),
+			avatar = localStorage.getItem('avatar'),                   //个人头像
+			operatorName = localStorage.getItem('operatorName'),	//真实姓名
+			operatorIdentityNo = localStorage.getItem('operatorIdentityNo'),
+			sex,     //性别
+			operatorMobile =   localStorage.getItem('operatorMobile'),   //手机
+			operatorEmail,          										//邮箱
+			operatorAddress,                                             //家庭住址
+			personalSignature                                            //个性签名
+		$util.http('/api/merchant-operators', {
+			data: {
+				id: '1',                                     //顾问id
+				operatorCode: operatorCode,					//顾问编号
+				operatorType: Operator_type,					//顾问身份类型
+				operatorName: '丁磊',	                       //真实姓名
+				operatorIdentityNo: '321282199402041035',     //身份证号码
+				registerAgreement: 'Y',						 //平台注册协议
+				status: true,                                 //是否激活
+				password: "admin",                            //登陆密码
+				operatorMobile: "18915427612",                //手机号码
+				avatar,                                        //个人头像
+				operatorEmail,                                 //邮箱
+				operatorAddress                                //家庭住址
+			},
+			dataType: 'json',
+			type: 'post',
+			success: function (res) {
+				console.log(res)
+			}
+		})
+	}
+
+	// 保存
+	$('.submit').on('tap',function(){
+		postmerchant()
+	})
+
+
+
 </script>
+
 </html>

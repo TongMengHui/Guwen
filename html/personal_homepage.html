@@ -6,6 +6,13 @@
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<link href="../css/mui.min.css" rel="stylesheet" />
 		<link rel="stylesheet" href="../css/personal_homepage.css" />
+		<style>
+			a::after{
+				content: '';
+				display: block;
+				clear: both;
+			}
+		</style>
 	</head>
 	<body style="background-color: white;">
 		<header class="mui-bar mui-bar-nav mui-bar-nav-bg" style="background-color: white; box-shadow: none;">
@@ -113,7 +120,7 @@
 					<img src="../img/dianzan.png" class="icon-img" />
 				</div>
 				<div class="features-info-detail" id="address">
-					案例点评（8）
+					案例点评（8）   
 				</div>
 				<a href="#">
 					<div class="features-info-more">
@@ -138,7 +145,7 @@
 	<script src="../js/util.js"></script>
 	<script type="text/javascript">
 		mui.init()
-
+		// 头像
 		function chooseAvatar(file) {
 			var file = file.files[0];
 			var reader = new FileReader();
@@ -146,9 +153,10 @@
 			reader.onload = function() {
 				var img = document.getElementById('avatar_img');
 				img.src = this.result
+				console.log(img.src)
 			};
 		}
-
+	// 主页形象图
 		function chooseBg(file) {
 			var file = file.files[0];
 			var reader = new FileReader();
@@ -156,11 +164,60 @@
 			reader.onload = function() {
 				var img = document.getElementById('bg');
 				img.src = this.result
+				console.log(img.src)
 			};
 			var modify_btn = document.getElementById('modify-btn')
 			modify_btn.style.display = 'block';
 			var camera = document.getElementById('camera-content');
 			camera.style.display = 'none';
 		}
+
+		function getQiniuToken(src) {
+		$util.uploadToQiniu(src, function (imgPath) {
+			// 完整的url
+			console.log(imgPath)
+			localStorage.setItem(src, imgPath)
+		})
+	}
+// 个人信息的接口
+	function postmerchant() {
+		//所缺少字段    出生日期    从业年限
+		var operatorCode = localStorage.getItem('operatorCode'),
+			Operator_type = localStorage.getItem('Operator_type'),
+			avatar = localStorage.getItem('avatar'),                   //个人头像
+			operatorName = localStorage.getItem('operatorName'),	//真实姓名
+			operatorIdentityNo = localStorage.getItem('operatorIdentityNo'),
+			sex,     //性别
+			operatorMobile =   localStorage.getItem('operatorMobile'),   //手机
+			operatorEmail,          										//邮箱
+			operatorAddress,                                             //家庭住址
+			personalSignature                                            //个性签名
+		$util.http('/api/merchant-operators', {
+			data: {
+				id: '1',                                     //顾问id
+				operatorCode: operatorCode,					//顾问编号
+				operatorType: Operator_type,					//顾问身份类型
+				operatorName: '丁磊',	                       //真实姓名
+				operatorIdentityNo: '321282199402041035',     //身份证号码
+				registerAgreement: 'Y',						 //平台注册协议
+				status: true,                                 //是否激活
+				password: "admin",                            //登陆密码
+				operatorMobile: "18915427612",                //手机号码
+
+
+				avatar,                                        //个人头像
+				operatorEmail,                                 //邮箱
+				operatorAddress                                //家庭住址
+			},
+			dataType: 'json',
+			type: 'post',
+			success: function (res) {
+				console.log(res)
+			}
+		})
+	}
+	// 取信息
+
+
 	</script>
 </html>

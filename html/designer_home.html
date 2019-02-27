@@ -483,23 +483,23 @@
 	});
 
 	$('.menu-smrz').on('tap', function () {
-	// 	var realId = localStorage.getItem('realId')
-	// 	var realName = localStorage.getItem('realName')
-	// 	if (realId) {
-	// 		mui.openWindow(
-	// 			'real_message.html',
-	// 			'real_message',
-	// 			{}
-	// 		)
+		var realId = localStorage.getItem('realId')
+		var realName = localStorage.getItem('realName')
+		if (realId) {
+			mui.openWindow(
+				'real_message.html',
+				'real_message',
+				{}
+			)
 		
-	// 	} else  {
+		} else  {
 			mui.openWindow(
 				'real_name_certification.html',
 				'real_name_certification',
 				{}
 			)
 			
-		// }
+		}
 
 	})
 	// 判断

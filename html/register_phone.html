@@ -95,9 +95,8 @@
 		var OperatorType = localStorage.getItem('OperatorType')	
 		phoneNum(phoneNumber)
 		istestCode(testCode)
-		console.log(testCode)
-		console.log(phoneNumber)
-		console.log(OperatorType)		
+		localStorage.setItem('operatorMobile',phoneNumber)	
+		localStorage.setItem('password',testCode)
 		mui.ajax('http://39.98.77.177:8080/api/registerOperator', {
 			data: {
 				"operatorMobile": phoneNumber,
