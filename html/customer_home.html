@@ -137,7 +137,7 @@
 						</div>
 					</div>
 				</a>
-				<a href="customer_case_none0.html">
+				<a href="customer_case_none.html">
 					<div class="feature-hb">
 						<div class="hb-info">
 							<div class="hb-caption">发布案例</div>
@@ -206,13 +206,13 @@
 				<div id="mline4"></div>
 				<div id="mline5"></div>
 				<div class="menu-sgww-line">
-					<a href="customer_case0.html">
+					<a href="customer_case.html">
 						<div class="menu-sjal">
 							<div class="sjal-icon">
 								<img src="../img/sjal.png" style="width: 23px; height: 100%;" />
 							</div>
 							<div class="sjal-caption">
-								设计案例
+								客户案例
 							</div>
 						</div>
 					</a>
@@ -483,23 +483,22 @@
 	});
 
 	$('.menu-smrz').on('tap', function () {
-	// 	var realId = localStorage.getItem('realId')
-	// 	var realName = localStorage.getItem('realName')
-	// 	if (realId) {
-	// 		mui.openWindow(
-	// 			'real_message.html',
-	// 			'real_message',
-	// 			{}
-	// 		)
-		
-	// 	} else  {
+		var realId = localStorage.getItem('realId')
+		var realName = localStorage.getItem('realName')
+		if (realId) {
+			mui.openWindow(
+				'real_message.html',
+				'real_message',
+				{}
+			)
+		} else  {
 			mui.openWindow(
 				'real_name_certification.html',
 				'real_name_certification',
 				{}
 			)
 			
-		// }
+		}
 
 	})
 	// 判断
@@ -518,7 +517,7 @@
 				{}
 			)
 		}else if(applyStatus == 2){
-			// 被拒绝无此页面
+			// 无被拒绝页面
 		}else if(applyStatus == 3){
 			mui.openWindow(
 				'my_shop_unbound.html',

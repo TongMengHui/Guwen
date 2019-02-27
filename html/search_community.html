@@ -1,79 +1,88 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-		<title>搜索小区</title>
-		<link href="../css/mui.min.css" rel="stylesheet" />
-		<link rel="stylesheet" href="../css/common.css">
-		<link rel="stylesheet" type="text/css" href="../css/search_community.css" />
-	</head>
-	<body style="background-color: white;">
-		<header class="mui-bar mui-bar-nav mui-bar-nav-bg" style="background-color: white; box-shadow: none;">
-			<span class="mui-icon mui-icon-back"></span>
-			<h1 class="mui-title" style="color: #333333;">搜索小区</h1>
-		</header>
-		<div class="mui-content" style="background-color: white;">
-			<div class="search-content">
-				<div class="search-input">
-					<input class="search-input1" type="text" placeholder="请搜索小区">
-				</div>
-				<div class="search-icon">
-					<span class="mui-icon mui-icon-search"></span>
-				</div>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<title>搜索小区</title>
+	<link href="../css/mui.min.css" rel="stylesheet" />
+	<link rel="stylesheet" href="../css/common.css">
+	<link rel="stylesheet" type="text/css" href="../css/search_community.css" />
+</head>
+
+<body style="background-color: white;">
+	<header class="mui-bar mui-bar-nav mui-bar-nav-bg" style="background-color: white; box-shadow: none;">
+		<span class="mui-icon mui-icon-back"></span>
+		<h1 class="mui-title" style="color: #333333;">搜索小区</h1>
+	</header>
+	<div class="mui-content" style="background-color: white;">
+		<div class="search-content">
+			<div class="search-input">
+				<input class="search-input1" type="text" placeholder="请搜索小区">
 			</div>
-			<ul class="where-list">
-
-			</ul>
+			<div class="search-icon">
+				<span class="mui-icon mui-icon-search"></span>
+			</div>
 		</div>
-	</body>
-	<script src="../js/mui.min.js"></script>
-	<script type="text/javascript" src="../js/jquery-1.11.0.min.js"></script>
-	<script type="text/javascript" src="../js/icon-back.js"></script>
-	<script src="../js/util.js"></script>
-	<script type="text/javascript">
-		mui.init()
+		<ul class="where-list">
 
-		var whereList = mui('.where-list')[0]
-		var searchIcon = mui('.search-icon')[0]
-		// 通过接口获取小区数据 插入小区
-		for (var i = 0; i < 10; i++) {
-			whereList.innerHTML +=
-				`<li class="where-city" wherename="康桥丽都">
+		</ul>
+	</div>
+</body>
+<script src="../js/mui.min.js"></script>
+<script type="text/javascript" src="../js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="../js/icon-back.js"></script>
+<script src="../js/util.js"></script>
+<script type="text/javascript">
+	mui.init()
+
+	var whereList = mui('.where-list')[0]
+	var searchIcon = mui('.search-icon')[0]
+	// 通过接口获取小区数据 插入小区
+	for (var i = 0; i < 10; i++) {
+		whereList.innerHTML +=
+			`<li class="where-city" wherename="康桥丽都">
 							<div class="where-city-prompt1">康桥丽都</div>
 							<div class="where-city-prompt2">
 								<button class="btn-yes">确定</button>
 							</div>
 						</li>`
-		}
-		<!-- 点击放入input框内 -->
-		$('.where-city').on('click',function(){
-			console.log($(this).attr('wherename'))
-			$('.search-input1').val($(this).attr('wherename')) 
+	}
+	//  点击放入input框内
+	$('.where-city').on('click', function () {
+		console.log($(this).attr('wherename'))
+		$('.search-input1').val($(this).attr('wherename'))
+		$('.where-city').hide()
+		// localStorage.setItem('customerVillage',$(this).attr('wherename'))
+		// mui.openWindow(
+		// 	'customer_case_customerInformation.html',
+		// 	'customer_case_customerInformation',
+		// 	{}
+		// )
+	})
+
+	//  input框值与数据库的值对比 
+	function searchVillage() {
+		var searchVal = mui('.search-input input')[0].value
+		var whereCity = mui('.where-city')
+		console.log(searchVal)
+		if (searchVal == '') {
 			$('.where-city').hide()
-		})
-		
-		<!-- input框值与数据库的值对比 -->
-		function searchVillage() {
-			var searchVal = mui('.search-input input')[0].value
-			var whereCity = mui('.where-city')
-			console.log(searchVal)
-			if (searchVal == '') {
-				$('.where-city').hide()
-			} else {
-				whereCity.each(function() {
-					var wherename = $(this).attr('wherename')
-					if (wherename.indexOf(searchVal) != -1) {
-						$(this).show()
-					} else {
-						$(this).hide()
-					}
-				})
-			}
+		} else {
+			whereCity.each(function () {
+				var wherename = $(this).attr('wherename')
+				if (wherename.indexOf(searchVal) != -1) {
+					$(this).show()
+				} else {
+					$(this).hide()
+				}
+			})
 		}
-		<!-- input框值与数据对比 -->
-		$('.search-input input').bind('input propertychange', function() {
-			searchVillage();
-		});
-	</script>
+	}
+	//  input框值与数据对比 
+	$('.search-input input').bind('input propertychange', function () {
+		searchVillage();
+	});
+</script>
+
 </html>

@@ -210,7 +210,7 @@
 			success: function (res) {
 				console.log(res)	
 				localStorage.setItem('Operator_type',res.operatorType)	
-																										
+				ishomepage()																					
 			}
 		})
 	}
@@ -219,8 +219,8 @@
 		Operator_type = localStorage.getItem('Operator_type')	
 		if(Operator_type == 1){
 			mui.openWindow(
-					'customer_home2.html',
-					'customer_home2',
+					'customer_home.html',
+					'customer_home',
 					{}
 				)
 		}else if(Operator_type == 2){

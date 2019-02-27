@@ -69,11 +69,11 @@
 			id:localStorage.getItem('id')
 		},
 		methods: {
-			// 设计案例接口(design case)
+			// 顾问案例接口(design case)
 			getDesignCase: function () {
 				var self = this
 				id=this.id
-				$util.http('/api/design-cases-operator/?operatorId='+id, {
+				$util.http('/api/home-cases-operator/?operatorId='+id, {
 					dataType: 'json',
 					type: 'get',
 					success: function (res) {

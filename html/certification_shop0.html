@@ -1,0 +1,318 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>注册-门店绑定</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<link href="../css/mui.min.css" rel="stylesheet" />
+	<link rel="stylesheet" href="../css/mui.picker.css">
+	<link rel="stylesheet" href="../css/mui.poppicker.css">
+	<link rel="stylesheet" type="text/css" href="../css/certification_not_cooperation.css" />
+	<link rel="stylesheet" type="text/css" href="../css/certification_shop.css" />
+
+</head>
+
+<body style="background-color: #EEEEEE;">
+	<header class="mui-bar mui-bar-nav mui-bar-nav-bg" style="background-color: white; box-shadow: none; border-bottom: 1px solid #CCCCCC;">
+		<span class="mui-icon mui-icon-back"></span>
+		<font class="mui-title" style="font-size: 18px; color: #333333;">绑定店铺</font>
+	</header>
+	<div class="mui-content" style="background-color: #EEEEEE;">
+		<div id="time-line-content">
+			<div id="line">
+				<div id="line-front"></div>
+				<div id="line-back"></div>
+			</div>
+			<div id="round-front">
+				<img src="../img/rz.png" style="width: 100%; height: 100%;" />
+			</div>
+			<div id="round-middle">
+				<img src="../img/dianpu.png" style="width: 100%; height: 100%;" />
+			</div>
+			<div id="round-back">
+				<img src="../img/shenhe1.png" style="width: 100%; height: 100%;" />
+			</div>
+			<div id="font-front">实名认证</div>
+			<div id="font-middle">门店绑定</div>
+			<div id="font-back">提交审核</div>
+		</div>
+		<div class="hezuo-zhuangtai">
+			<div class="zhuangtai-title">
+				<font>请选择所在店铺与GO佳居网合作状态</font>
+			</div>
+			<div class="zhuangtai-xuanze">
+				<div class="mui-input-row mui-radio mui-left">
+					<label>认证店铺</label>
+					<input name="radio1" type="radio" checked="checked" onclick="checkRadio1()">
+				</div>
+				<div class="mui-input-row mui-radio mui-left">
+					<label>暂未合作</label>
+					<input name="radio1" type="radio" onclick="checkRadio2()">
+				</div>
+			</div>
+		</div>
+		<div class="item1">
+			<div class="dianpu-info">
+				<div class="dianpu-title">
+					<font>店铺信息</font>
+				</div>
+				<div class="dianpu-yanzheng">
+					<div class="yanzheng-content">
+						<div style="float: left; width: 70px; margin-top: 20px;">
+							<span style="font-size: 15px; color: #333333; ">店铺编号</span>
+						</div>
+						<div class="dianpu-bianhao-input">
+							<input id="code" type="number" name="dianpu-bianhao" placeholder="请填写您所在的店铺编号" />
+						</div>
+						<input id="prove" type="button" value="验证" />
+					</div>
+				</div>
+			</div>
+			<div class="dianpu-xinxi">
+				<div class="product-name-content">
+					<div class="product-name">商户名称：</div>
+					<div class="product-name-input">
+						<input type="text" id="product" placeholder="请填写您所经营品牌名称" />
+					</div>
+				</div>
+				<div class="area-name-content">
+					<div class="area-name">所在地区：</div>
+					<div class="area-name-input">
+						<input type="text" id="area" placeholder="请填写您所在的地区" />
+					</div>
+				</div>
+				<div class="mall-name-content">
+					<div class="mall-name">所在商场：</div>
+					<div class="mall-name-input">
+						<input type="text" id="mall" placeholder="请填写您所在的商场" />
+					</div>
+				</div>
+			</div>
+			<div class="store-photo-content">
+				<div class="store-photo-caption">
+					<div style=" position: absolute; left: 0; height: 100%; width: 120px;">与门店合影照片</div>
+				</div>
+				<div class="photo-claim">请上传您与所在门店合影照片(需显示门头上LOGO)</div>
+				<div class="photo">
+					<img id="img" src="../img/photo.png" style="width: 100%; height: 100%;" />
+				</div>
+				<button class="upload" id="upload">上传照片</button>
+			</div>
+			<a href="certification_review.html">
+				<button class="next-btn" id="nextBtn1">下一步</button>
+			</a>
+		</div>
+		<div class="item2">
+			<div class="store-info">
+				<div class="store-caption">店铺信息</div>
+				<div class="store-info-content">
+					<div class="store-name-content">
+						<div class="store-name">店铺名称</div>
+						<div class="store-name-input">
+							<input type="text" id="storeName" placeholder="请填写您所在的店铺名称" />
+						</div>
+					</div>
+					<div class="store-area-content">
+						<div class="store-area">所在地区</div>
+						<div class="store-area-input">
+							<input class="store-area-input1" id="storeArea" type="text" placeholder="请填写您所在店铺的区域" />
+						</div>
+						<div class="area-choice">
+							选择
+							<span class="mui-icon mui-icon-arrowright"  style="font-size: 15px;float:right;margin-top:2px;"></span>
+						</div>
+					</div>
+					<div class="store-address-content">
+						<div class="store-address">详细地址</div>
+						<div class="store-address-input">
+							<input type="text" id="storeAddress" placeholder="如街道或所在卖场的名称" />
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="principal-info">
+				<div class="principal-caption-content">
+					<div class="principal-caption">店铺负责人信息</div>
+					<div class="optional">(选填)</div>
+				</div>
+				<div class="principal-content">
+					<div class="principal-name-content">
+						<div class="principal-name">负责人姓名</div>
+						<div class="principal-name-input">
+							<input type="text" id="principalName" placeholder="请输入负责人真实姓名" />
+						</div>
+					</div>
+					<div class="principal-phone-content">
+						<div class="principal-phone">负责人手机</div>
+						<div class="principal-phone-input">
+							<input type="text" id="principalPhone" placeholder="请输入负责人手机号码" />
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="red-envelope-content">
+				<div class="red-envelope">
+					<img src="../img/red_envelope.png" style="width: 100%; height: 100%;" />
+				</div>
+				<div class="red-envelope-caption-content">
+					<div class="red-envelope-description">
+						店铺认证红包
+						<p style="font-size: 12px; color: #999999;">推荐的店铺通过认证后你将获得红包奖励哦!</p>
+					</div>
+				</div>
+			</div>
+			<div class="next-btn-content">
+				<a href="certification_review.html">
+					<button class="next-btn" id="nextBtn2">下一步</button>
+				</a>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="../js/mui.min.js"></script>
+<script type="text/javascript" src="../js/jquery-1.11.0.min.js"></script>
+<script src="../js/mui.picker.min.js"></script>
+<script type="text/javascript" src="../js/icon-back.js"></script>
+<script src="../js/util.js"></script>
+<script type="text/javascript">
+
+	var storeName = $('#storeName').val()
+	var storeArea = $('#storeArea').val()
+	var storeAddress = $('#storeAddress').val()
+	var principalName = $('#principalName').val()
+	var principalPhone = $('#principalPhone').val()
+	mui.init(
+		
+	)
+	function checkRadio1() {
+		$('.item1').show()
+		$('.item2').hide()
+	}
+	function checkRadio2() {
+		$('.item1').hide()
+		$('.item2').show()
+	}
+	// 选择地址
+	$('.area-choice').on('tap', function () {
+		var picker = new mui.PopPicker();
+		picker.setData([{
+			value: '0',
+			text: '苏州'
+		},
+		{
+			value: '1',
+			text: '南京'
+		}]);
+		picker.show(function (selectItems) {
+			console.log(selectItems)
+			$('.store-area-input1').val(selectItems[0].text)
+		})
+	})
+
+	// 验证店铺
+		$('#prove').on('tap',function(){
+			merchant()
+		})
+	// 2019022000003
+	// 商户店铺表接口(merchant_store_info)
+	function  merchant(){
+		var storecode = $('#code').val()
+		console.log(storecode)
+		$util.http('/api/merchant-store-storeCode/?storeCode='+storecode, {
+			dataType: 'json',
+			type: 'get',
+			success: function (res) {
+				console.log(res)
+				$('.dianpu-xinxi').css('display','block')
+				$('#product').val(res.storeName)
+				$('#area').val(res.storeAddress)
+				$('#mall').val(res.storeCommunity)
+			}
+		})
+	}
+
+
+	// 选择照相机还是相册
+	document.getElementById('upload').addEventListener('tap', function () {
+		if (mui.os.plus) {
+			var buttonTit = [{
+				title: "拍照"
+			}, {
+				title: "从手机相册选择"
+			}];
+
+			plus.nativeUI.actionSheet({
+				title: "上传图片",
+				cancel: "取消",
+				buttons: buttonTit
+			}, function (b) { /*actionSheet 按钮点击事件*/
+				switch (b.index) {
+					case 0:
+						break;
+					case 1:
+						getImage(); /*拍照*/
+						break;
+					case 2:
+						galleryImg();/*打开相册*/
+						break;
+					default:
+						break;
+				}
+			})
+		}
+	}, false);
+
+	// 拍照获取图片
+	function getImage() {
+		var c = plus.camera.getCamera();
+		c.captureImage(function (e) {
+			plus.io.resolveLocalFileSystemURL(e, function (entry) {
+				var imgSrc = entry.toLocalURL() + "?version=" + new Date().getTime(); //拿到图片路径
+				// 其他操作,比如预览展示
+				$('#img').attr('src',imgSrc)
+				getQiniuToken(src)
+			}, function (e) {
+				console.log("读取拍照文件错误：" + e.message);
+			});
+		}, function (s) {
+			console.log("error" + s);
+		}, {
+				filename: "_doc/camera/"
+			})
+	}
+
+	// 从相册中选择图片 
+	function galleryImg() {
+		// 从相册中选择图片
+		plus.gallery.pick(function (e) {
+			for (var i in e.files) {
+				var fileSrc = e.files[i];
+				// 其他操作,比如预览展示
+				$('#img').attr('src',fileSrc)
+				getQiniuToken(src)
+			}
+		}, function (e) {
+			console.log("取消选择图片");
+		}, {
+				filter: "image",
+				multiple: true,
+				maximum: 1,
+				system: false,
+				onmaxed: function () {
+					plus.nativeUI.alert('最多只能选择1张图片');
+				}
+			});
+	}
+	function getQiniuToken(src) {
+		$util.uploadToQiniu(src, function (imgPath) {
+			// 完整的url
+			console.log(imgPath)
+			localStorage.setItem('doorImage',imgPath)
+		})
+	}
+
+
+</script>
+
+</html>
