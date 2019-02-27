@@ -163,9 +163,9 @@
 				</div>
 			</div>
 			<div class="next-btn-content">
-				<a href="certification_review.html">
+				<!-- <a href="certification_review.html"> -->
 					<button class="next-btn" id="nextBtn2">下一步</button>
-				</a>
+				<!-- </a> -->
 			</div>
 		</div>
 	</div>
@@ -228,6 +228,7 @@
 				$('#product').val(res.storeName)
 				$('#area').val(res.storeAddress)
 				$('#mall').val(res.storeCommunity)
+				localStorage.setItem('storeid',res.id)
 			}
 		})
 	}
@@ -307,10 +308,42 @@
 	function getQiniuToken(src) {
 		$util.uploadToQiniu(src, function (imgPath) {
 			// 完整的url
-			console.log(imgPath)
 			localStorage.setItem('doorImage',imgPath)
 		})
 	}
+
+	// 调取上传店铺的接口
+	function uppic(){
+		var dooeImage = localStorage.getItem('doorImage')
+		$util.http('/api/merchant-operators', {
+			data:{
+				id :'1',                                      //id
+				operatorIdentityObverse:front,   			//身份证正面照
+				operatorIdentityReverse:back,				//身份证反面照
+				operatorCode:operatorCode,					//顾问编号
+				operatorType:Operator_type,					//顾问身份类型
+				operatorName: '丁磊',	                       //真实姓名
+				operatorIdentityNo:'321282199402041035',     //身份证号码
+				registerAgreement:'Y',						 //平台注册协议
+				status:true,                                 //是否激活
+				password:"admin",                            //登陆密码
+				operatorMobile:"18915427612",                 //手机号码
+				merStoreInfoId:'3',                           //店铺id
+				applyStatus:'0',                             //申请店铺绑定的状态
+				doorImage:dooeImage,                          //门店合影照
+			},
+			dataType: 'json',
+			type: 'post',
+			success: function (res) {
+					console.log(res)																		
+			}
+		})
+	}
+
+	// 点击下一步
+	$('#nextBtn1').on('tap',function(){
+		uppic()
+	})
 
 
 </script>
