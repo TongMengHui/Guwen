@@ -39,7 +39,7 @@
 			<p>上传身份证用于确保您的账户安全，本平台将严格保护您的个人信息安全！</p>
 		</div>
 		<div class="sfz-front">
-			<div style="margin-top: 30px; width: 100%;">
+			<div style="margin-top: 15px; width: 100%;">
 				<img id="face" src="../img/sfzzm.png" style="width: 149px; height: 106px;" />
 			</div>
 			<span style="font-size: 16px;">点击上传身份证
@@ -47,17 +47,31 @@
 			</span>
 		</div>
 		<div class="sfz-back">
-			<div style="margin-top: 30px; width: 100%;">
+			<div style="margin-top: 15px; width: 100%;">
 				<img id="con" src="../img/sfzbm.png" style="width: 149px; height: 106px;" />
 			</div>
 			<span style="font-size: 16px;">点击上传身份证
 				<span style="color: #007AFF;">国徽面</span>
 			</span>
 		</div>
+		<div class="peopleNum">
+			<div class="people-pic">
+				<label>真实姓名:</label>
+				<input type="text" id="operatorName" placeholder="请输入姓名">
+			</div>
+			<div class="people-pic">
+				<label>身份证号:</label>
+				<input type="text" id="operatorIdentityNo" placeholder="请输入身份证号">
+			</div>
+			<div class="people-pic">
+				<label>现住住址:</label>
+				<input type="text" id="realAddress" placeholder="请输入地址">
+			</div>
+		</div>
 		<div style="margin-top: 60px;">
-			<a href="certification_shop.html">
-				<button class="bottom-btn">确认提交</button>
-			</a>
+			<!-- <a href="certification_shop.html"> -->
+			<button class="bottom-btn">确认提交</button>
+			<!-- </a> -->
 		</div>
 	</div>
 </body>
@@ -67,7 +81,7 @@
 <script src="../js/util.js"></script>
 <script type="text/javascript">
 	mui.init(
-		)
+	)
 	// 选择照相机还是相册
 	document.getElementById('face').addEventListener('tap', function () {
 		if (mui.os.plus) {
@@ -106,7 +120,7 @@
 				var imgSrc = entry.toLocalURL() + "?version=" + new Date().getTime(); //拿到图片路径
 				// 其他操作,比如预览展示
 				$('#face').attr('src', imgSrc)
-				 localStorage.setItem('front',imgSrc)
+				localStorage.setItem('front', imgSrc)
 			}, function (e) {
 				console.log("读取拍照文件错误：" + e.message);
 			});
@@ -126,7 +140,7 @@
 				var fileSrc = e.files[i];
 				// 其他操作,比如预览展示
 				$('#face').attr('src', fileSrc)
-				localStorage.setItem('front',fileSrc)
+				localStorage.setItem('front', fileSrc)
 			}
 		}, function (e) {
 			console.log("取消选择图片");
@@ -178,7 +192,7 @@
 				var imgSrc = entry.toLocalURL() + "?version=" + new Date().getTime(); //拿到图片路径
 				// 其他操作,比如预览展示
 				$('#con').attr('src', imgSrc)
-				localStorage.setItem('back',imgSrc)
+				localStorage.setItem('back', imgSrc)
 			}, function (e) {
 				console.log("读取拍照文件错误：" + e.message);
 			});
@@ -197,7 +211,7 @@
 				var fileSrc = e.files[i];
 				// 其他操作,比如预览展示
 				$('#con').attr('src', fileSrc)
-				localStorage.setItem('back',fileSrc)
+				localStorage.setItem('back', fileSrc)
 			}
 		}, function (e) {
 			console.log("取消选择图片");
@@ -222,31 +236,68 @@
 	var back = localStorage.getItem('back')
 
 	$('#submit').on('tap', function () {
-		var realName = $('#realName').val()
-		var realId = $('#realId').val()
+		var operatorName = $('#operatorName').val()
+		var operatorIdentityNo = $('#operatorIdentityNo').val()
 		var realAddress = $('#realAddress').val()
-		localStorage.setItem('realName',realName)
-		localStorage.setItem('realId',realId)	
-			if(front==''){
-						mui.toast('请上传正面照')
-					}else if(back==''){
-						mui.toast('请上传反面照')
-					}else if(realName == '' || realName=='' || realId == '' ){
-						mui.toast('请填写身份信息')				
-					}else(
-						getQiniuToken(front),
-						getQiniuToken(back),
-						$('.bottom-btn').css('background', '#007AFF'),
-							mui.openWindow('certification_shop.html', 'certification_shop', {})
-					)
+		localStorage.setItem('operatorName', operatorName)
+		localStorage.setItem('operatorIdentityNo', operatorIdentityNo)
+		if (front == '') {
+			mui.toast('请上传正面照')
+		} else if (back == '') {
+			mui.toast('请上传反面照')
+		} else if (operatorName == '' || operatorName == '' || operatorIdentityNo == '') {
+			mui.toast('请填写身份信息')
+		} else (
+			getQiniuToken(front),
+			getQiniuToken(back),
+			$('.bottom-btn').css('background', '#007AFF'),
+			postmerchant(),
+			mui.openWindow('certification_shop.html', 'certification_shop', {})
+		)
+
+
 	})
-	
-	
-	
-	
-	
-    
-	
+
+	// 上传身份证信息接口
+	function postmerchant(){
+		var front = localStorage.getItem('front')
+		var back = localStorage.getItem('back')		
+		var operatorCode = localStorage.getItem('operatorCode')	,
+		   operatorType = localStorage.getItem('operatorType'),
+			operatorName = $('#operatorName').val(),
+			id = localStorage.getItem('id'),
+			operatorIdentityNo = localStorage.getItem('operatorIdentityNo'),
+			password = localStorage.getItem('password'),
+			operatorMobile = localStorage.getItem('operatorMobile'),
+			operatorAddress = $('#realAddress').val()
+		$util.http('/api/merchant-operators', {
+			data:{
+				id :id,                                      //id
+				operatorIdentityObverse:front,   			//身份证正面照
+				operatorIdentityReverse:back,				//身份证反面照
+				operatorCode:operatorCode,					//顾问编号
+				operatorType:operatorType,					//顾问身份类型
+				operatorName: operatorName,	                       //真实姓名
+				operatorIdentityNo:operatorIdentityNo,     //身份证号码
+				registerAgreement:'Y',						 //平台注册协议
+				status:true,                                 //是否激活
+				password:password,                            //登陆密码
+				operatorMobile:operatorMobile,                 //手机号码
+				operatorAddress:operatorAddress                //居住地址
+			},
+			dataType: 'json',
+			type: 'post',
+			success: function (res) {
+				console.log(res)																						
+			}
+		})
+	}
+
+
+
+
+
+
 </script>
 
 </html>

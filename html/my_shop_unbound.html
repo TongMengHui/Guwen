@@ -11,7 +11,7 @@
 
 <body style="background-color: white;">
 	<header class="mui-bar mui-bar-nav mui-bar-nav-bg" style="background-color: white; box-shadow: none; border-bottom: 1px solid #CCCCCC;">
-		<span class="mui-icon mui-icon-back"></span>
+		<span class="mui-icon mui-icon-back" onClick="javascript :history.back(-1);"></span>
 		<font class="mui-title" style="font-size: 18px; color: #333333;">我的店铺</font>
 	</header>
 	<div class="mui-content" style="background-color: white;">
@@ -31,22 +31,15 @@
 <script type="text/javascript" src="../js/icon-back.js"></script>
 <script src="../js/util.js"></script>
 <script type="text/javascript">
+var operatorIdentityNo =  localStorage.getItem('operatorIdentityNo')
 	mui.init(
+
 		isReal()
 	)
 
 	// 先判断是否实名认证
 	function isReal() {
-		var realId = localStorage.getItem('realId')
-		if (realId) {
-			document.getElementById("bind-immediately").addEventListener('tap', function () {
-				mui.openWindow(
-					'my_shop_bind.html',
-					'my_shop_bind',
-					{}
-				)
-			})
-		} else {
+		if (operatorIdentityNo == null) {
 			document.getElementById("bind-immediately").addEventListener('tap', function () {
 				var btnArray = ['取消', '去认证'];
 				mui.confirm('绑定前您还需要实名认证哦！', ' ', new Array('取消', '去认证'), function (e) {
@@ -58,6 +51,15 @@
 					}
 				});
 			});
+			
+		} else {
+			document.getElementById("bind-immediately").addEventListener('tap', function () {
+				mui.openWindow(
+					'my_shop_bind.html',
+					'my_shop_bind',
+					{}
+				)
+			})
 		}
 	}
 </script>

@@ -95,26 +95,36 @@
 	</div>
 	<div class="people-pic">
 		<label>真实姓名:</label>
-		<input id="realName" type="text">
+		<input id="operatorName" type="text">
 	</div>
 	<div class="people-pic">
 		<label>身份证号:</label>
-		<input id="realId" type="text">
+		<input id="operatorIdentityNo" type="text">
 	</div>
 
 </body>
 <script src="../js/mui.min.js"></script>
 <script type="text/javascript" src="../js/jquery-1.11.0.min.js"></script>
-<script type="text/javascript" src="../js/icon-back.js"></script>
+<!-- <script type="text/javascript" src="../js/icon-back.js"></script> -->
 <script src="../js/util.js"></script>
 <script>
 	mui.init()
-	var realName = localStorage.getItem('realName')
-	var realId = localStorage.getItem('realId')
-		$('#realName').val(realName)
-		$('#realId').val(realId)	
-			console.log(realId)
 	
+	var operatorName = localStorage.getItem('operatorName')
+	var operatorIdentityNo = localStorage.getItem('operatorIdentityNo')
+	$('#operatorName').val(operatorName)
+	$('#operatorIdentityNo').val(operatorIdentityNo)
+	console.log(operatorIdentityNo)
+	$('.mui-icon-back').on('tap', function () {
+		operatorName = localStorage.setItem('operatorName',operatorName)
+	    operatorIdentityNo = localStorage.setItem('operatorIdentityNo',operatorIdentityNo)
+		operatorType = localStorage.getItem('operatorType')
+		mui.openWindow(
+					'designer_home.html',
+					'designer_home',
+					{}
+				)
+	})
 
 
 

@@ -92,7 +92,7 @@
 	function register() {
 		var testCode = $('#yanzheng_number').val()
 		var phoneNumber = $('#phone_number').val()
-		var OperatorType = localStorage.getItem('OperatorType')	
+		var operatorType = localStorage.getItem('operatorType')	
 		phoneNum(phoneNumber)
 		istestCode(testCode)
 		localStorage.setItem('operatorMobile',phoneNumber)	
@@ -100,7 +100,7 @@
 		mui.ajax('http://39.98.77.177:8080/api/registerOperator', {
 			data: {
 				"operatorMobile": phoneNumber,
-				"operatorType": OperatorType,
+				"operatorType": operatorType,
 				"password": testCode,
 				"status": true
 			},

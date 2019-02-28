@@ -106,8 +106,9 @@
 <script src="./../js/jquery-1.11.0.min.js"></script>
 <script src="../js/util.js"></script>
 <script type="text/javascript" charset="utf-8">
-	
+	var id ,username,password
 	mui.init(
+		clearStorage(),
 		clickBtn()
 	);
 	//检验手机号
@@ -157,9 +158,10 @@
 	// 登录接口请求
 	
 	function getLogin() {
-		var username = $('#phonenum2').val()
-		var password = $('#password').val()
-		
+		 username = $('#phonenum2').val()
+		 password = $('#password').val()
+		localStorage.setItem('operatorMobile',username)
+		localStorage.setItem('password',password)		
 		mui.ajax('http://39.98.77.177:8080/api/authenticate/merchantOperator', {
 			data: {
 				username: username,
@@ -177,7 +179,7 @@
 				localStorage.setItem('token',data.id_token)
 				console.log(data)
 				getMerId()
-				getMerchant()
+				
 			},
 			error: function (xhr, type, errorThrown) {
 				//异常处理；
@@ -192,44 +194,43 @@
 			type: 'get',
 			success: function (res) {
 				localStorage.setItem('id',res.id)
-				
-				// mui.openWindow(
-				// 	'designer_home.html',
-				// 	'designer_home',
-				// 	{}
-				// )
+				id = res.id
+				getMerchant()
 			}
 		})
 	}
 	// 获取顾问表接口(merchant_operator)
 	function getMerchant() {
-		var id = localStorage.getItem('id')
 		$util.http('/api/merchant-operators/' + id, {
 			dataType: 'json',
 			type: 'get',
 			success: function (res) {
 				console.log(res)	
-				localStorage.setItem('Operator_type',res.operatorType)	
+				localStorage.setItem('operatorType',res.operatorType)	
 				ishomepage()																					
 			}
 		})
 	}
 	// 判断需要跳家居顾问主页还是设计顾问主页  1为家居顾问  2为设计顾问
 	function ishomepage(){
-		Operator_type = localStorage.getItem('Operator_type')	
-		if(Operator_type == 1){
+		operatorType = localStorage.getItem('operatorType')	
+		if(operatorType == 1){
 			mui.openWindow(
 					'customer_home.html',
 					'customer_home',
 					{}
 				)
-		}else if(Operator_type == 2){
+		}else if(operatorType == 2){
 			mui.openWindow(
 					'designer_home.html',
 					'designer_home',
 					{}
 				)
 		}
+	}
+	// 清楚缓存
+	function clearStorage(){
+		localStorage.clear()
 	}
 </script>
 

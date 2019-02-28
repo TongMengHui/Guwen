@@ -39,7 +39,7 @@
 			<p>上传身份证用于确保您的账户安全，本平台将严格保护您的个人信息安全！</p>
 		</div>
 		<div class="sfz-front">
-			<div style="margin-top: 30px; width: 100%;">
+			<div style="margin-top: 15px; width: 100%;">
 				<img id="face" src="../img/sfzzm.png" style="width: 149px; height: 106px;" />
 			</div>
 			<span style="font-size: 16px;">点击上传身份证
@@ -47,12 +47,26 @@
 			</span>
 		</div>
 		<div class="sfz-back">
-			<div style="margin-top: 30px; width: 100%;">
+			<div style="margin-top: 15px; width: 100%;">
 				<img id="con" src="../img/sfzbm.png" style="width: 149px; height: 106px;" />
 			</div>
 			<span style="font-size: 16px;">点击上传身份证
 				<span style="color: #007AFF;">国徽面</span>
 			</span>
+		</div>
+		<div class="peopleNum">
+			<div class="people-pic">
+				<label>真实姓名:</label>
+				<input type="text" id="operatorName" placeholder="请输入姓名">
+			</div>
+			<div class="people-pic">
+				<label>身份证号:</label>
+				<input type="text" id="operatorIdentityNo" placeholder="请输入身份证号">
+			</div>
+			<div class="people-pic">
+				<label>现住住址:</label>
+				<input type="text" id="realAddress" placeholder="请输入地址">
+			</div>
 		</div>
 		<div style="margin-top: 60px;">
 			<!-- <a href="certification_shop.html"> -->
@@ -222,16 +236,16 @@
 	var back = localStorage.getItem('back')
 
 	$('#submit').on('tap', function () {
-		var realName = $('#realName').val()
-		var realId = $('#realId').val()
+		var operatorName = $('#operatorName').val()
+		var operatorIdentityNo = $('#operatorIdentityNo').val()
 		var realAddress = $('#realAddress').val()
-		localStorage.setItem('realName', realName)
-		localStorage.setItem('realId', realId)
+		localStorage.setItem('operatorName', operatorName)
+		localStorage.setItem('operatorIdentityNo', operatorIdentityNo)
 		if (front == '') {
 			mui.toast('请上传正面照')
 		} else if (back == '') {
 			mui.toast('请上传反面照')
-		} else if (realName == '' || realName == '' || realId == '') {
+		} else if (operatorName == '' || operatorName == '' || operatorIdentityNo == '') {
 			mui.toast('请填写身份信息')
 		} else (
 			getQiniuToken(front),
@@ -249,20 +263,27 @@
 		var front = localStorage.getItem('front')
 		var back = localStorage.getItem('back')		
 		var operatorCode = localStorage.getItem('operatorCode')	,
-			Operator_type = localStorage.getItem('Operator_type')
+			operatorType = localStorage.getItem('operatorType'),
+			operatorName = $('#operatorName').val(),
+			id = localStorage.getItem('id'),
+			operatorIdentityNo = $('#operatorIdentityNo').val(),
+			password = localStorage.getItem('password'),
+			operatorMobile = localStorage.getItem('operatorMobile'),
+			operatorAddress = $('#realAddress').val()
 		$util.http('/api/merchant-operators', {
 			data:{
-				id :'1',                                      //id
+				id :id,                                      //id
 				operatorIdentityObverse:front,   			//身份证正面照
 				operatorIdentityReverse:back,				//身份证反面照
 				operatorCode:operatorCode,					//顾问编号
-				operatorType:Operator_type,					//顾问身份类型
-				operatorName: '丁磊',	                       //真实姓名
-				operatorIdentityNo:'321282199402041035',     //身份证号码
+				operatorType:operatorType,					//顾问身份类型
+				operatorName: operatorName,	                       //真实姓名
+				operatorIdentityNo:operatorIdentityNo,     //身份证号码
 				registerAgreement:'Y',						 //平台注册协议
 				status:true,                                 //是否激活
-				password:"admin",                            //登陆密码
-				operatorMobile:"18915427612"                 //手机号码
+				password:password,                            //登陆密码
+				operatorMobile:operatorMobile,                 //手机号码
+				operatorAddress:operatorAddress
 			},
 			dataType: 'json',
 			type: 'post',

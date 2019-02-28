@@ -399,15 +399,15 @@
 	var profit_num = $('.profit_num').text()
 	var fenqiNum = $('.fenqi-num').find('span').text()
 	var designNum = $('.design-num').find('span').text()
-	var id = localStorage.getItem('id')
-	var token = localStorage.getItem('token')
+	var operatorName, operatorIdentityNo, token,id ,applyStatus
 	mui.init(
 		getMerchant(),
-		// isid()
-		// 		getHomeCases(),
-		// 		getDesignCases()
+		token = localStorage.getItem('token'),
+		id = localStorage.getItem('id'),
+		applyStatus = localStorage.getItem('applyStatus'),
+		islead()
 	)
-
+	lead()
 	// 弹出引导框
 	function lead() {
 		mui("#popover").popover('toggle', document.getElementById("div"));
@@ -417,18 +417,20 @@
 	}
 
 	// 判断是否需要弹出引导框
-	function islead(obj) {
-		if (obj == '' || obj == null) {
-			lead()
-			// 是否实名认证
+	function islead() {
+		 operatorIdentityNo = localStorage.getItem('operatorIdentityNo')
+		if (operatorIdentityNo == 'null'||operatorIdentityNo == ''||!operatorIdentityNo) {
+			isbind()
 			$('#renzheng').html('未认证')
 		} else {
+			
 			$('#renzheng').html('已认证')
 		}
 	}
 	// 判断是否绑定店铺
-	function isbind(obj) {
-		 if(obj == 1) {
+	function isbind() {
+		 applyStatus = localStorage.getItem('applyStatus')		
+		 if(applyStatus == 1) {
 			$('#bind').html('已绑定')
 		}else{
 			$('#bind').html('未绑定')
@@ -443,8 +445,8 @@
 				console.log(res)
 				$('.person_pic').attr('src', res.avatar)
 				$('.visit_num').text(res.viewNum)
-				localStorage.setItem('realId',res.operatorIdentityNo)
-				localStorage.setItem('realName',res.operatorName)	
+				localStorage.setItem('operatorIdentityNo',res.operatorIdentityNo)
+				localStorage.setItem('operatorName',res.operatorName)	
 				localStorage.setItem('applyStatus',res.applyStatus)	
 				localStorage.setItem('operatorCode',res.operatorCode)																									
 				islead(res.operatorIdentityNo)
@@ -483,18 +485,18 @@
 	});
 
 	$('.menu-smrz').on('tap', function () {
-		var realId = localStorage.getItem('realId')
-		var realName = localStorage.getItem('realName')
-		if (realId) {
+		 operatorIdentityNo = localStorage.getItem('operatorIdentityNo')
+		 operatorName = localStorage.getItem('operatorName')
+		if (operatorIdentityNo== 'null'||operatorIdentityNo == ''||!operatorIdentityNo) {
 			mui.openWindow(
-				'real_message.html',
-				'real_message',
+				'real_name_certification.html',
+				'real_name_certification',
 				{}
 			)
 		} else  {
 			mui.openWindow(
-				'real_name_certification.html',
-				'real_name_certification',
+				'real_message.html',
+				'real_message',
 				{}
 			)
 			
@@ -503,7 +505,7 @@
 	})
 	// 判断
 	$('.menu-wddp').on('tap', function () {
-		var applyStatus =  localStorage.getItem('applyStatus')
+		 applyStatus =  localStorage.getItem('applyStatus')
 		if(applyStatus == 1){
 			mui.openWindow(
 				'my_shop_bind_success.html',
@@ -517,8 +519,8 @@
 				{}
 			)
 		}else if(applyStatus == 2){
-			// 无被拒绝页面
-		}else if(applyStatus == 3){
+			// 被拒绝无此页面
+		}else if(applyStatus == 3||applyStatus == 'null'){
 			mui.openWindow(
 				'my_shop_unbound.html',
 				'my_shop_unbound',

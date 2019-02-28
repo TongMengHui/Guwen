@@ -91,24 +91,24 @@
 			<div class="info-caption">
 				所属小区：
 			</div>
-			<input class="info-input" id="customerVillage" placeholder="请选择所属小区" />
+			<input class="info-input" id="customerVillage" placeholder="请输入所住小区" />
 			<!-- <a href="search_community.html"> -->
-			<div class="info-more-container" id="gosearch">
+			<!-- <div class="info-more-container" id="gosearch">
 				<div class="info-more-icon">
 					<span class="mui-icon mui-icon-arrowright"></span>
 				</div>
 				<div class="info-more-font">选择</div>
-			</div>
+			</div> -->
 			<!-- </a> -->
 		</div>
-		<a href="customer_case.html">
+		<!-- <a href="customer_case.html"> -->
 			<button class="publish-btn">发布</button>
-		</a>
+		<!-- </a> -->
 
 </body>
 
 
-<div id="search" style="background-color: white; position:fixed;top:0;width:100%; height:100%;display:none;">
+<!-- <div id="search" style="background-color: white; position:fixed;top:0;width:100%; height:100%;display:none;">
 	<header class="mui-bar mui-bar-nav mui-bar-nav-bg" style="background-color: white; box-shadow: none;">
 		<span class="mui-icon mui-icon-back" id="back"></span>
 		<h1 class="mui-title" style="color: #333333;">搜索小区</h1>
@@ -126,7 +126,7 @@
 
 		</ul>
 	</div>
-</div>
+</div> -->
 <script src="../js/mui.min.js"></script>
 <script type="text/javascript" src="../js/jquery-1.11.0.min.js"></script>
 <script src="../js/mui.picker.js"></script>
@@ -206,64 +206,65 @@
 		})
 	})
 
-	//gosearch
-	$('#gosearch').on('tap', function () {
-		$('#search').show()
-	})
+	// //gosearch
+	// $('#gosearch').on('tap', function () {
+	// 	$('#search').show()
+	// })
 
 
-	// 搜索小区
-	var whereList = mui('.where-list')[0]
-	var searchIcon = mui('.search-icon')[0]
-	// 通过接口获取小区数据 插入小区
-	for (var i = 0; i < 10; i++) {
-		whereList.innerHTML +=
-			`<li class="where-city" wherename="康桥丽都">
-							<div class="where-city-prompt1">康桥丽都</div>
-							<div class="where-city-prompt2">
-								<button class="btn-yes">确定</button>
-							</div>
-						</li>`
-	}
-	//  点击放入input框内
-	$('.where-city').on('click', function () {
-		console.log($(this).attr('wherename'))
-		$('.search-input1').val($(this).attr('wherename'))
-		$('.where-city').hide()
-		$('#customerVillage').val($('.search-input1').val())
-		$('#search').hide()
-	})
-	// 点击back
-	$('.mui-icon-search').on('tap', function () {
-		$('#search').hide()
-	})
-	//  input框值与数据库的值对比 
-	function searchVillage() {
-		var searchVal = mui('.search-input input')[0].value
-		var whereCity = mui('.where-city')
-		console.log(searchVal)
-		if (searchVal == '') {
-			$('.where-city').hide()
-		} else {
-			whereCity.each(function () {
-				var wherename = $(this).attr('wherename')
-				if (wherename.indexOf(searchVal) != -1) {
-					$(this).show()
-				} else {
-					$(this).hide()
-				}
-			})
-		}
-	}
-	//  input框值与数据对比 
-	$('.search-input input').bind('input propertychange', function () {
-		searchVillage();
-	});
+	// // 搜索小区
+	// var whereList = mui('.where-list')[0]
+	// var searchIcon = mui('.search-icon')[0]
+	// // 通过接口获取小区数据 插入小区
+	// for (var i = 0; i < 10; i++) {
+	// 	whereList.innerHTML +=
+	// 		`<li class="where-city" wherename="康桥丽都">
+	// 						<div class="where-city-prompt1">康桥丽都</div>
+	// 						<div class="where-city-prompt2">
+	// 							<button class="btn-yes">确定</button>
+	// 						</div>
+	// 					</li>`
+	// }
+	// //  点击放入input框内
+	// $('.where-city').on('click', function () {
+	// 	console.log($(this).attr('wherename'))
+	// 	$('.search-input1').val($(this).attr('wherename'))
+	// 	$('.where-city').hide()
+	// 	$('#customerVillage').val($('.search-input1').val())
+	// 	$('#search').hide()
+	// })
+	// // 点击back
+	// $('.mui-icon-search').on('tap', function () {
+	// 	$('#search').hide()
+	// })
+	// //  input框值与数据库的值对比 
+	// function searchVillage() {
+	// 	var searchVal = mui('.search-input input')[0].value
+	// 	var whereCity = mui('.where-city')
+	// 	console.log(searchVal)
+	// 	if (searchVal == '') {
+	// 		$('.where-city').hide()
+	// 	} else {
+	// 		whereCity.each(function () {
+	// 			var wherename = $(this).attr('wherename')
+	// 			if (wherename.indexOf(searchVal) != -1) {
+	// 				$(this).show()
+	// 			} else {
+	// 				$(this).hide()
+	// 			}
+	// 		})
+	// 	}
+	// }
+	// //  input框值与数据对比 
+	// $('.search-input input').bind('input propertychange', function () {
+	// 	searchVillage();
+	// });
 
 
 	// 获取家居案例的接口
 	$(".publish-btn").on('tap', function () {
-		var operatorId = localStorage.getItem('id'),
+		var id = localStorage.getItem('id'),
+		operatorId = localStorage.getItem('id'),
 			customerName = $('#customerName').val(),
 			customerSex = $('#customerSex').val(),
 			customerMobile = $('#customerMobile').val(),
@@ -272,27 +273,47 @@
 			casesName = localStorage.getItem('casesName'),
 			casesImage = localStorage.getItem('casesImage'),
 			casesDesc = localStorage.getItem('casesDesc'),
-			customerProvince = customer_Province,
+			customerProvince = customerProvince,                                      //省市县填code
 			customerCity = customerCity,
-			customerArea = customerArea
+			customerArea = customerArea,
+			customerAddress
 		$util.http('/api/home-cases', {
 			data: {
-				operatorId,
-				customerName,
-				customerSex,
-				customerMobile,
-				customerVillage,
-				casesName,
-				casesImage,
-				casesDesc,
-				customerProvince,
-				customerCity,
-				customerArea
+				storeId:storeId,															 //店铺id
+				operatorId:operatorId,															//顾问id
+				status:true,                           	                                   //状态
+				casesName:casesName,                                                   //案例名称
+				customerName:customerName,                                                       //客户名字
+				customerSex:1,                                                             //性别
+				customerMobile:customerMobile,                                              //手机
+				customerVillage:customerVillage,                                                //地址
+				casesImage:casesImage,                    //图片
+				casesDesc:casesDesc,                                                           //案例描述
+				customerProvince:customerProvince,                                                //省
+				customerCity:customerCity,														//市
+				customerArea:customerArea,														//区
+				customerAddress:'江苏省苏州市星湖街财富大厦飞翔花园'                          //街道
 			},
+			// data:{
+			// 	"storeId":3,
+			// 	"operatorId":"5",
+			// 	"status":true,
+			// 	"casesName":"法式书房案例",
+			// 	"customerName":"笑笑",
+			// 	"customerSex":"1",
+			// 	"customerMobile":"18915427612",
+			// 	"customerVillage":"飞翔花园",
+			// 	"casesImage":"http://pn985cm2z.bkt.clouddn.com/xx5.jpg",
+			// 	"casesDesc":"11",
+			// 	"customerProvince":"江苏省",
+			// 	"customerCity":"苏州市",
+			// 	"customerArea":"吴中区",
+			// 	"customerAddress":"江苏省苏州市星湖街财富大厦飞翔花园"
+			// 	},
 			dataType: 'json',
 			type: 'post',
 			success: function (res) {
-
+				console.log(res)
 			}
 		})
 	})

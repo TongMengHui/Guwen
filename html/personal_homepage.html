@@ -183,7 +183,7 @@
 	function postmerchant() {
 		//所缺少字段    出生日期    从业年限
 		var operatorCode = localStorage.getItem('operatorCode'),
-			Operator_type = localStorage.getItem('Operator_type'),
+		operatorType = localStorage.getItem('operatorType'),
 			avatar = localStorage.getItem('avatar'),                   //个人头像
 			operatorName = localStorage.getItem('operatorName'),	//真实姓名
 			operatorIdentityNo = localStorage.getItem('operatorIdentityNo'),
@@ -196,7 +196,7 @@
 			data: {
 				id: '1',                                     //顾问id
 				operatorCode: operatorCode,					//顾问编号
-				operatorType: Operator_type,					//顾问身份类型
+				operatorType: operatorType,					//顾问身份类型
 				operatorName: '丁磊',	                       //真实姓名
 				operatorIdentityNo: '321282199402041035',     //身份证号码
 				registerAgreement: 'Y',						 //平台注册协议

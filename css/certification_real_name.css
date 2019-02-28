@@ -94,7 +94,7 @@
    	/*border: 1px solid #CCCCCC;*/
    	}
    	.sfz-front{
-   	height: 190px;
+   	height: 150px;
    	width: 90%;
    	margin-left: 5%;
    	margin-top: 10px;
@@ -103,7 +103,7 @@
    	border: 1px solid #EEEEEE;
    	}
    	.sfz-back{
-   	height: 190px;
+   	height: 150px;
    	width: 90%;
    	margin-left: 5%;
    	margin-top: 10px;
@@ -135,3 +135,28 @@
 	.mui-popover.mui-popover-action .mui-table-view .mui-table-view-cell:after {
 	height: 0;	
 	}
+    .people-pic input {
+        width: 70%;
+        border: none;
+        height: 30px;
+        font-size: 15px;
+    }
+
+    .people-pic {
+        width: 80%;
+        height: 35px;
+        margin: auto;
+        color: rgb(51, 51, 51);
+        border-bottom: 1px solid #ccc;
+        margin-bottom: 10px;
+        margin-top: 10px;
+        font-size: 15px;
+    }
+
+    .peopleNum {
+        background: #fff;
+        width: 90%;
+        margin: auto;
+        padding: 10px 0;
+        margin-top: 10px;
+    }
