@@ -304,38 +304,30 @@
 			operatorMobile = localStorage.getItem('operatorMobile'),
 			id = localStorage.getItem('id'),
 			merStoreinfoId = localStorage.getItem('merStoreinfoId'),
-			operatorType = localStorage.getItem('operatorType')
-		applyStatus = 0,
-			front = localStorage.getItem('front'),
-			back = localStorage.getItem('back')
-		// console.log('id:'+id)
-		// console.log("operatorCode:"+operatorCode)
-		// console.log("operatorType:"+operatorType)
-		// console.log("operatorName:"+operatorName)
-		// console.log("operatorIdentityNo:"+operatorIdentityNo)
-		// console.log("password:"+password)
-		// console.log("operatorMobile:"+operatorMobile)
-		// console.log("applyStatus:"+applyStatus)	
+			operatorType = localStorage.getItem('operatorType'),
+			applyStatus = 0
+			localStorage.setItem('applyStatus',applyStatus)
 		$util.http('/api/merchant-operators', {
-
 			data: {
-				id: '2',                                                   	//id
-				operatorCode: 'GW201902200002',								//顾问编号
-				operatorType: '2',											//顾问身份类型
-				operatorName: '蔡盛盛',	                       			  //真实姓名
-				operatorIdentityNo: '320111111111111112',     				//身份证号码
-				registerAgreement: 'Y',						 				//平台注册协议
-				status: true,                                 				//是否激活
-				password: 'admin',                            				//登陆密码
-				operatorMobile: "18139999999",                 				//手机号码
-				merStoreinfoId: 1,                  						//店铺id
-				applyStatus: 0,                             				//申请店铺绑定的状态
-				doorImage: 'http://pn985cm2z.bkt.clouddn.com/xx5.jpg'       //门店合影照
+				id :id,                                      //id
+				operatorCode:operatorCode,					//顾问编号
+				operatorType:operatorType,					//顾问身份类型
+				operatorName: operatorName,	                	//真实姓名
+				operatorIdentityNo:operatorIdentityNo,     	//身份证号码
+				registerAgreement:'Y',						 //平台注册协议
+				status:true,                                 //是否激活
+				password:password,                            //登陆密码
+				operatorMobile:operatorMobile,                 //手机号码
+				merStoreinfoId:merStoreinfoId,                  //店铺id
+				applyStatus:applyStatus,                             //申请店铺绑定的状态
+				doorImage:doorImage                    //门店合影照
 			},
 			dataType: 'json',
-			type: 'post',
+			type: 'put',
 			success: function (res) {
 				console.log(res)
+				localStorage.setItem('merchantStoreInfoId',res.id)
+				localStorage.setItem('merchantStoreInfoName',res.storeName)				
 				mui.openWindow(
 					'certification_review.html',
 					'certification_review',

@@ -228,7 +228,7 @@
 				$('#product').val(res.storeName)
 				$('#area').val(res.storeAddress)
 				$('#mall').val(res.storeCommunity)
-				localStorage.setItem('merStoreinfoId',res.id)
+				localStorage.setItem('merStoreinfoId',res.merStoreinfoId)
 			}
 		})
 	}
@@ -314,7 +314,7 @@
 
 	// 调取上传店铺的接口
 	function uppic(){
-		var dooeImage = localStorage.getItem('doorImage')
+		var doorImage = localStorage.getItem('doorImage')
 		var operatorCode = localStorage.getItem('operatorCode'),
 			operatorName = localStorage.getItem('operatorName'),
 			operatorIdentityNo = localStorage.getItem('operatorIdentityNo')	,
@@ -322,15 +322,13 @@
 			operatorMobile = localStorage.getItem('operatorMobile'),
 			id = localStorage.getItem('id'),
 			merStoreinfoId = localStorage.getItem('merStoreinfoId'),
-			applyStatus = 0,
-			front = localStorage.getItem('front'),
-			back = localStorage.getItem('back')	,
-			operatorType = localStorage.getItem('operatorType')
+			operatorType = localStorage.getItem('operatorType'),
+			applyStatus = 0
+			localStorage.setItem('applyStatus',applyStatus)
+			
 		$util.http('/api/merchant-operators', {
 			data:{
 				id :id,                                      //id
-				operatorIdentityObverse:front,   			//身份证正面照
-				operatorIdentityReverse:back,				//身份证反面照
 				operatorCode:operatorCode,					//顾问编号
 				operatorType:operatorType,					//顾问身份类型
 				operatorName: operatorName,	                       //真实姓名
@@ -340,12 +338,14 @@
 				password:password,                            //登陆密码
 				operatorMobile:operatorMobile,                 //手机号码
 				merStoreinfoId:merStoreinfoId,                  //店铺id
-				applyStatus:'0',                             //申请店铺绑定的状态
-				doorImage:doorImage,                          //门店合影照
+				applyStatus:applyStatus,                             //申请店铺绑定的状态
+				doorImage:doorImage                          //门店合影照
 			},
 			dataType: 'json',
-			type: 'post',
+			type: 'put',
 			success: function (res) {
+				localStorage.setItem('merchantStoreInfoId',res.id)
+				localStorage.setItem('merchantStoreInfoName',res.storeName)	
 					mui.openwindow(
 						'certification_review.html',
 						'certification_review',

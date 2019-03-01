@@ -75,7 +75,7 @@
 				<img src="../img/pen.png" class="case-description-icon" />
 			</div>
 		</div>
-		<!-- <div class="batch-case-image">
+		<div class="batch-case-image">
 				<div class="batch-case-image-caption">
 					上传案例图片
 				</div>
@@ -83,19 +83,19 @@
 			<div class="edit-case">
 				<div id="case-pic">
 					<img src="../img/dgybanner.png" style="width: 100%; height: 100%;" />
-					<a href="#"><button id="edit-function-change">修改</button> </a>
-					<a href="#"><button id="edit-function-delete"><span class="mui-icon mui-icon-trash"></span></button> </a>
+					<button id="edit-function-change">修改</button> 
+					<button id="edit-function-delete"><span class="mui-icon mui-icon-trash"></span></button> 
 				</div>
 				<div class="edit-content">
 					<input class="prompt-input" placeholder="添加图片名称" />
-					<a href="customer_case_description_imageName.html">
+					<!-- <a href="customer_case_description_imageName.html"> -->
 						<div class="edit-icon-content">
 							<div class="edit-icon-icon">
 								<span class="mui-icon mui-icon-arrowright"></span>
 							</div>
 							<div class="edit-icon-font">编辑</div>
 						</div>
-					</a>
+					<!-- </a> -->
 				</div>
 				<div class="edit-content">
 					<input class="prompt-input" placeholder="添加图片描述（不超过200个字）" />
@@ -107,7 +107,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="edit-case">
+			<!-- <div class="edit-case">
 				<div id="case-pic">
 					<img src="../img/dgybanner.png" style="width: 100%; height: 100%;" />
 					<a href="#"><button id="edit-function-change">修改</button> </a>
@@ -133,8 +133,8 @@
 						<div class="edit-icon-font">编辑</div>
 					</div>
 				</div>
-			</div>
-			<div class="batch-case-image-content">
+			</div> -->
+			<!-- <div class="batch-case-image-content">
 				<div class="batch-case-image-album">
 					<img src="../img/anli.png" class="batch-case-image-icon" />
 				</div>
@@ -157,7 +157,7 @@
 	mui.init()
 
 
-	
+	var casesImage = ''
 	$('.case-image-content').on('tap', function () {
 		if (mui.os.plus) {
 			var buttonTit = [{
@@ -231,6 +231,7 @@
 		$util.uploadToQiniu(src, function (imgPath) {
 			//imgPath--完整的url
 			localStorage.setItem('casesImage',imgPath)
+			casesImage = imgPath
 		});
 	}
 
@@ -252,7 +253,20 @@
 		var casesName = $('.case-name-input').val()
 		var casesDesc = $('#case-description').val()
 		localStorage.setItem('casesName',casesName)
-		localStorage.setItem('casesDesc',casesDesc)		
+		localStorage.setItem('casesDesc',casesDesc)
+		if(casesName == '')	{
+			mui.toast('请填写案例名称')
+		}else if(casesDesc == ''){
+			mui.toast('请填写案例描述')
+		}else if(casesImage == ''){
+			mui.toast('请上传案例形象图')
+		}else{
+			mui.openWindow(
+					'customer_case_related_products_none.html',
+					'customer_case_related_products_none',
+					{}
+				)
+		}
 	})
 		
 			

@@ -1,80 +1,120 @@
 <!doctype html>
 <html>
+
 <head>
 	<meta charset="UTF-8">
 	<title>我的店铺-申请解绑</title>
 	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 	<link href="../css/mui.min.css" rel="stylesheet" />
-	<link rel="stylesheet" type="text/css" href="../css/my_shop_bind_release.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/my_shop_bind_release.css" />
 </head>
+
 <body>
-<header class="mui-bar mui-bar-nav mui-bar-nav-bg" style="background-color: white; box-shadow: none; border-bottom: 1px solid #CCCCCC;">
-	<span class="mui-icon mui-icon-back"></span>
-   	<font class="mui-title" style="font-size: 18px; color: #333333;">我的店铺</font>
-</header>
-<div class="mui-content">
-	<div class="under-review">
-		<div class="under-review-icon">
-			<center>
-				<img src="../img/wbd.png" style="height: 100%; width: 80px;"/>
-			</center>
-		</div>
-		<div class="under-review-caption">
-			<center>
-				店铺解绑申请中,请等待店铺确认
-			</center>
-		</div>
-		<div class="under-review-wait">
-			<center>
-				或<font style="color: #6C91FE;">47小时49分49秒后</font>自动解绑
-			</center>
-		</div>
-	</div>
-	<div class="shop-info">
-		<div class="shop-logo-content">
-			<div class="shop-logo">
-				<img src="../img/pplogo2.png" style="width: 100%; height: 100%;"/>
-			</div>
-		</div>
-		<div class="shop-area">
-			<center>
-				美克美家园区店
-			</center>
-		</div>
-		<div class="shop-code-caption">
-			<center>
-				店铺编码
-			</center>
-		</div>
-		<div class="shop-code">
-			<center>
-				002116
-			</center>
-		</div>
-		<div class="shop-level-content">
-			<div class="shop-level">
+	<header class="mui-bar mui-bar-nav mui-bar-nav-bg" style="background-color: white; box-shadow: none; border-bottom: 1px solid #CCCCCC;">
+		<span class="mui-icon mui-icon-back"></span>
+		<font class="mui-title" style="font-size: 18px; color: #333333;">我的店铺</font>
+	</header>
+	<div class="mui-content">
+		<div class="under-review">
+			<div class="under-review-icon">
 				<center>
-				    GO佳居钻石店铺
-				</center>				
+					<img src="../img/wbd.png" style="height: 100%; width: 80px;" />
+				</center>
+			</div>
+			<div class="under-review-caption">
+				<center>
+					店铺解绑申请中,请等待店铺确认
+				</center>
+			</div>
+			<div class="under-review-wait">
+				<center>
+					或
+					<font id="font" style="color: #6C91FE;">47小时49分49秒后</font>自动解绑
+				</center>
 			</div>
 		</div>
+		<div class="shop-info">
+			<div class="shop-logo-content">
+				<div class="shop-logo">
+					<img src="../img/pplogo2.png" style="width: 100%; height: 100%;" />
+				</div>
+			</div>
+			<div class="shop-area">
+				<center>
+					美克美家园区店
+				</center>
+			</div>
+			<div class="shop-code-caption">
+				<center>
+					店铺编码
+				</center>
+			</div>
+			<div class="shop-code">
+				<center>
+					002116
+				</center>
+			</div>
+			<div class="shop-level-content">
+				<div class="shop-level">
+					<center>
+						GO佳居钻石店铺
+					</center>
+				</div>
+			</div>
+		</div>
+		<div class="unbind-application-btn-content">
+			<a href="#">
+				<button type="submit" class="unbind-application-btn">
+					取消解绑申请
+				</button>
+			</a>
+		</div>
 	</div>
-	<div class="unbind-application-btn-content">
-		<a href="#">
-		<button type="submit" class="unbind-application-btn">
-			取消解绑申请
-		</button>
-		</a>
-	</div>
-</div>	
 </body>
 <script src="../js/mui.min.js"></script>
-<script type="text/javascript" src="../js/jquery-1.11.0.min.js" ></script>
-<script type="text/javascript" src="../js/icon-back.js" ></script>
+<script type="text/javascript" src="../js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="../js/icon-back.js"></script>
 <script src="../js/util.js"></script>
 <script type="text/javascript">
-	mui.init()
+	var lastModifiedDate,t1
+	mui.init(
+		changeTime()
+	)
 	var operatorCode = localStorage.getItem('operatorCode')
 	$('.shop-code').find('center').text(operatorCode)
+
+	function changeTime() {
+		lastModifiedDate = localStorage.getItem('lastModifiedDate')
+		var d = new Date(lastModifiedDate)
+		year = d.getFullYear(),
+			month = d.getMonth() + 1 >= 10 ? d.getMonth() + 1 : '0' + (d.getMonth() + 1)
+		date = d.getDate() >= 10 ? d.getDate() : '0' + d.getDate()
+		hours = d.getHours() >= 10 ? d.getHours() : '0' + d.getHours()
+		minutes = d.getMinutes() >= 10 ? d.getMinutes() : '0' + d.getMinutes()
+		seconds = d.getSeconds() >= 10 ? d.getSeconds() : '0' + d.getSeconds()
+		t1 = year + '/' + month + '/' + date + ' ' + hours + ':' + minutes + ':' + seconds
+	}
+
+
+	function timeFn(d1) {//di作为一个变量传进来
+		var dateBegin = new Date(d1.replace(/-/g, "/"));//将-转化为/，使用new Date
+		var dateEnd = new Date();//获取当前时间
+		var dateDiff = dateEnd.getTime() - dateBegin.getTime();//时间差的毫秒数
+		var dayDiff = Math.floor(dateDiff / (24 * 3600 * 1000));//计算出相差天数
+		var leave1 = dateDiff % (24 * 3600 * 1000)    //计算天数后剩余的毫秒数
+		var hours = Math.floor(leave1 / (3600 * 1000))//计算出小时数
+		//计算相差分钟数
+		var leave2 = leave1 % (3600 * 1000)    //计算小时数后剩余的毫秒数
+		var minutes = Math.floor(leave2 / (60 * 1000))//计算相差分钟数
+		//计算相差秒数
+		var leave3 = leave2 % (60 * 1000)      //计算分钟数后剩余的毫秒数
+		var seconds = Math.round(leave3 / 1000)
+		console.log(" 相差 " + dayDiff + "天 " + hours + "小时 " + minutes + "分钟" + seconds + "秒")
+		console.log(dateDiff + "时间差的毫秒数", dayDiff + "计算出相差天数", leave1 + "计算天数后剩余的毫秒数"
+			, hours + "计算出小时数", minutes + "计算相差分钟数", seconds + "计算相差秒数");  
+		$('#font').html(dayDiff+"天"+hours+"时"+minutes+"分"+seconds+"秒后")
+	}
+	timeFn(t1);
 </script>
+
 </html>

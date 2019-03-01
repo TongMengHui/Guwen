@@ -42,10 +42,7 @@
 				<input type="button" class="test-code-btn" value="获取验证码"></input>
 			</div>
 			<div class="next-content">
-				<!-- <a href="register_password.html"> -->
-				<!-- <button class="next-btn">下一步</button> -->
-				<!-- </a> -->
-				<button class="next-btn">注册</button>
+				<button class="next-btn" id="nextBtn">下一步</button>
 				<a href="login.html">
 					<span class="had">已有账号立即登录</span>
 				</a>
@@ -63,65 +60,106 @@
 <script type="text/javascript">
 
 	mui.init(
-		nextBtn()
-	)
-	function nextBtn() {
-		$('.next-btn').on('tap', function () {
-			register()
-		})
-	}
 
+	)
+	var phoneNumber, checkCode
+	// 点击下一步
+	$('#nextBtn').on('tap', function () {
+		var textCode = $('#yanzheng_number').val()
+		checkCode = localStorage.getItem('checkCode')
+		if (textCode == '') {
+			mui.toast('请输入验证码')
+		} else if (textCode != checkCode) {
+			mui.toast('验证码不正确')
+		}else if(textCode == checkCode&&textCode != ''){
+			mui.openWindow(
+					'register_password.html',
+					'register_password',
+					{}
+				)
+		}
+	})
+
+	// 点击获取验证码
+	$('.test-code-btn').on('tap', function () {
+		
+		yanzhengma()
+	})
 	// 手机号格式
-	function phoneNum(obj){
+	function phoneNum(obj) {
 		var p = /^[1][3,4,5,7,8][0-9]{9}$/;
-		if(obj == ''){
+		if (obj == '') {
 			mui.toast('手机号为空')
-		}else if(p.test(obj) == false){
+		} else if (p.test(obj) == false) {
 			mui.toast('请输入正确手机号')
 		}
 	}
-	function istestCode(str){
-		var d = /^[\x01-\xfe]{8,20}$/
-		if(str == ''){
-			mui.toast('请输入密码')
-		}else if(d.test(str) == false){
-			mui.toast('密码为8-20位')
-		}
-	}
-	// 获取注册接口
-	function register() {
-		var testCode = $('#yanzheng_number').val()
-		var phoneNumber = $('#phone_number').val()
-		var operatorType = localStorage.getItem('operatorType')	
+	// function istestCode(str) {
+	// 	var d = /^[\x01-\xfe]{8,20}$/
+	// 	if (str == '') {
+	// 		mui.toast('请输入密码')
+	// 	} else if (d.test(str) == false) {
+	// 		mui.toast('密码为8-20位')
+	// 	}
+	// }
+	
+	// 获取密码注册接口
+	// function register() {
+	// 	var testCode = $('#yanzheng_number').val()
+	// 	phoneNumber = $('#phone_number').val()
+	// 	var operatorType = localStorage.getItem('operatorType')
+	// 	phoneNum(phoneNumber)
+	// 	ischeckCode(testCode)
+	// 	localStorage.setItem('operatorMobile', phoneNumber)
+	// 	// localStorage.setItem('password', testCode)
+	// 	mui.ajax('http://39.98.77.177:8080/api/registerOperator', {
+	// 		data: {
+	// 			"operatorMobile": phoneNumber,
+	// 			"operatorType": operatorType,
+	// 			"password": testCode,
+	// 			"status": true
+	// 		},
+	// 		dataType: 'json', //服务器返回json格式数据
+	// 		type: 'post', //HTTP请求类型
+	// 		timeout: 10000, //超时时间设置为10秒
+	// 		headers: {
+	// 			'Content-Type': 'application/json',
+	// 		},
+	// 		success: function (data) {
+	// 			console.log(data)
+	// 			mui.openWindow(
+	// 				'login.html',
+	// 				'login',
+	// 				{}
+	// 			)
+	// 		},
+	// 		error: function (xhr, type, errorThrown) {
+	// 			//异常处理；
+	// 		}
+	// 	});
+	// }
+
+	// 获取验证码接口
+	function yanzhengma() {
+		phoneNumber = $('#phone_number').val()
+		localStorage.setItem('phoneNumber',phoneNumber)
 		phoneNum(phoneNumber)
-		istestCode(testCode)
-		localStorage.setItem('operatorMobile',phoneNumber)	
-		localStorage.setItem('password',testCode)
-		mui.ajax('http://39.98.77.177:8080/api/registerOperator', {
-			data: {
-				"operatorMobile": phoneNumber,
-				"operatorType": operatorType,
-				"password": testCode,
-				"status": true
-			},
+		mui.ajax('http://39.98.77.177:8080/api/sendCheckCode?mobile=' + phoneNumber, {
 			dataType: 'json', //服务器返回json格式数据
-			type: 'post', //HTTP请求类型
+			type: 'get', //HTTP请求类型
 			timeout: 10000, //超时时间设置为10秒
 			headers: {
-				'Content-Type': 'application/json',
+				'Content-Type': 'application/json'
 			},
 			success: function (data) {
+				checkCode = data.checkCode
+				localStorage.setItem('checkCode',checkCode)
 				console.log(data)
-				mui.openWindow(
-					'login.html',
-					'login',
-					{}
-				)
 			},
 			error: function (xhr, type, errorThrown) {
 				//异常处理；
-				
-				
+
+
 			}
 		});
 	}

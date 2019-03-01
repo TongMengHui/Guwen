@@ -401,9 +401,10 @@
 	var designNum = $('.design-num').find('span').text()
 	var operatorName, operatorIdentityNo, token,id 
 	mui.init(
-		getMerchant(),
 		token = localStorage.getItem('token'),
 		id = localStorage.getItem('id'),
+		getMerchant(),
+		merStoreinfo(),
 		islead(),
 		isbind()
 	)
@@ -438,7 +439,7 @@
 	}
 	// 获取顾问表接口(merchant_operator)
 	function getMerchant() {
-		$util.http('/api/merchant-operators/' + id, {
+		$util.http('/api/merchant-operators/'+ id, {
 			dataType: 'json',
 			type: 'get',
 			success: function (res) {
@@ -446,26 +447,29 @@
 				$('.person_pic').attr('src', res.avatar)
 				$('.visit_num').text(res.viewNum)
 				localStorage.setItem('operatorIdentityNo',res.operatorIdentityNo)
-				localStorage.setItem('operatorName',res.operatorName)	
-				localStorage.setItem('applyStatus',res.applyStatus)	
-				localStorage.setItem('operatorCode',res.operatorCode)																									
+				localStorage.setItem('operatorName',res.operatorName)	          
+				localStorage.setItem('applyStatus',res.applyStatus)	       
+				localStorage.setItem('operatorCode',res.operatorCode)	
+				localStorage.setItem('merchantStoreInfoId',res.merStoreinfoId)
 				islead(res.operatorIdentityNo)
 				isbind(res.applyStatus)
+				localStorage.setItem('applyStatus',applyStatus)
 			}
 		})
 	}
-
-
-	// 获取家居案例表接口(home_cases)
-	function getHomeCases() {
-		$util.http('/api/home-cases/' + id, {
+   //获取店铺merchant_store_info  
+   function merStoreinfo() {
+		var merStoreinfoId = localStorage.getItem('merchantStoreInfoId')
+		$util.http('/api/merchant-store-infos/'+ merStoreinfoId, {
 			dataType: 'json',
 			type: 'get',
 			success: function (res) {
 				console.log(res)
+				localStorage.setItem('merchantStoreInfoName',res.storeName)
 			}
 		})
 	}
+	
 
 	// 获取设计案例表接口(design_cases)
 	function getDesignCases() {

@@ -399,7 +399,7 @@
 	var profit_num = $('.profit_num').text()
 	var fenqiNum = $('.fenqi-num').find('span').text()
 	var designNum = $('.design-num').find('span').text()
-	var operatorName, operatorIdentityNo, token,id ,applyStatus
+	var operatorName, operatorIdentityNo, token,id ,applyStatus,merStoreinfoId
 	mui.init(
 		getMerchant(),
 		token = localStorage.getItem('token'),
@@ -427,7 +427,7 @@
 			$('#renzheng').html('已认证')
 		}
 	}
-	// 判断是否绑定店铺
+	// 判断绑定店铺是否成功的首页显示
 	function isbind() {
 		 applyStatus = localStorage.getItem('applyStatus')		
 		 if(applyStatus == 1) {
@@ -438,7 +438,7 @@
 	}
 	// 获取顾问表接口(merchant_operator)
 	function getMerchant() {
-		$util.http('/api/merchant-operators/' + id, {
+		$util.http('/api/merchant-operators/'+ id, {
 			dataType: 'json',
 			type: 'get',
 			success: function (res) {
@@ -448,9 +448,11 @@
 				localStorage.setItem('operatorIdentityNo',res.operatorIdentityNo)
 				localStorage.setItem('operatorName',res.operatorName)	
 				localStorage.setItem('applyStatus',res.applyStatus)	
-				localStorage.setItem('operatorCode',res.operatorCode)																									
+				localStorage.setItem('operatorCode',res.operatorCode)	
+				localStorage.setItem('merchantStoreInfoId',res.id)																									
 				islead(res.operatorIdentityNo)
 				isbind(res.applyStatus)
+				localStorage.setItem('applyStatus',applyStatus)
 			}
 		})
 	}
@@ -459,17 +461,6 @@
 	// 获取家居案例表接口(home_cases)
 	function getHomeCases() {
 		$util.http('/api/home-cases/' + id, {
-			dataType: 'json',
-			type: 'get',
-			success: function (res) {
-				console.log(res)
-			}
-		})
-	}
-
-	// 获取设计案例表接口(design_cases)
-	function getDesignCases() {
-		$util.http('/api/design-cases/' + id, {
 			dataType: 'json',
 			type: 'get',
 			success: function (res) {
@@ -503,24 +494,25 @@
 		}
 
 	})
-	// 判断
+	// 判断绑定店铺要跳到哪个页面
+	
 	$('.menu-wddp').on('tap', function () {
 		 applyStatus =  localStorage.getItem('applyStatus')
-		if(applyStatus == 1){
+		if(applyStatus == 1){                                              //成功
 			mui.openWindow(
 				'my_shop_bind_success.html',
 				'my_shop_bind_success',
 				{}
 			)
-		}else if(applyStatus == 0){
+		}else if(applyStatus == 0){                                        //待审核
 			mui.openWindow(
 				'my_shop_review.html',
 				'my_shop_review',
 				{}
 			)
-		}else if(applyStatus == 2){
+		}else if(applyStatus == 2){                                        //被拒绝
 			// 被拒绝无此页面
-		}else if(applyStatus == 3||applyStatus == 'null'){
+		}else if(applyStatus == 3||applyStatus == 'null'){                 //没申请
 			mui.openWindow(
 				'my_shop_unbound.html',
 				'my_shop_unbound',
