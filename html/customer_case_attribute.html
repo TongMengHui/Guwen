@@ -15,7 +15,7 @@
 		<span class="mui-icon mui-icon-back"></span>
 		<span class="mui-title" style="font-size: 18px; color: #333333;">发布案例</span>
 	</header>
-	<div class="mui-content" style="background-color: white;">
+	<div class="mui-content" style="background-color: white;" id="case_attribute">
 		<div id="time-line-content">
 			<div id="line">
 				<div id="line-front"></div>
@@ -41,98 +41,109 @@
 		</div>
 		<div class="caption-content">
 			<div class="caption">
-				房屋户型
-			</div>
-		</div>
-		<div class="house-type-content">
-			<div class="house-type-select">
-				<div class="house-type-radio aa">一居室</div>
-				<div class="house-type-radio">两居室</div>
-				<div class="house-type-radio">三居室</div>
-				<div class="house-type-radio">四居室</div>
-				<div class="house-type-radio">复式</div>
-				<div class="house-type-radio">别墅</div>
-			</div>
-		</div>
-		<div class="caption-content">
-			<div class="caption">
 				居室
 			</div>
 		</div>
-		<div class="house-area-content">
-			<div class="house-area-select">
-				<div class="house-area-radio bb">卧房</div>
-				<div class="house-area-radio">客厅</div>
-				<div class="house-area-radio">卫生间</div>
-				<div class="house-area-radio">书房</div>
-				<div class="house-area-radio">厨房</div>
-				<div class="house-area-radio">玄关</div>
-			</div>
+		<div class="house-content">
+			<div
+				class="house-btn"
+				v-for="tag in js_attr"
+				:key="tag.id"
+				:class="{'house-btn-select':form.location==tag.entryCode}"
+				@click="form.location=tag.entryCode"
+			>{{tag.entryDesc}}</div>
 		</div>
 		<div class="caption-content">
 			<div class="caption">
 				装修风格
 			</div>
 		</div>
-		<div class="decoration-style-content">
-			<div class="decoration-style-select">
-				<div class="decoration-style-radio cc">欧式</div>
-				<div class="decoration-style-radio">美式</div>
-				<div class="decoration-style-radio">法式</div>
-				<div class="decoration-style-radio">意大利</div>
-				<div class="decoration-style-radio">北欧</div>
-				<div class="decoration-style-radio">轻奢</div>
-				<div class="decoration-style-radio">现代</div>
-				<div class="decoration-style-radio">后现代</div>
-				<div class="decoration-style-radio">中式</div>
-				<div class="decoration-style-radio">韩式</div>
-				<div class="decoration-style-radio">日式</div>
-				<div class="decoration-style-radio">田园</div>
-				<div class="decoration-style-radio">地中海</div>
-				<div class="decoration-style-radio">新中式</div>
-				<div class="decoration-style-radio">新古典</div>
-				<div class="decoration-style-radio">混搭</div>
-			</div>
+		<div class="house-content">
+			<div
+				class="house-btn"
+				v-for="tag in fg_attr"
+				:key="tag.id"
+				:class="{'house-btn-select':form.renovating_style==tag.entryCode}"
+				@click="form.renovating_style=tag.entryCode"
+			>{{tag.entryDesc}}</div>
 		</div>
 		<div class="next-btn-content">
-			<!-- <a href="customer_case_description.html"> -->
-			<button class="next-btn">下一步</button>
-			<!-- </a> -->
+			<button class="next-btn" @touchend="next">下一步</button>
 		</div>
 	</div>
 </body>
 <script src="../js/mui.min.js"></script>
 <script type="text/javascript" src="../js/jquery-1.11.0.min.js"></script>
 <script type="text/javascript" src="../js/icon-back.js"></script>
+<script src="../js/vue.min.js"></script>
 <script src="../js/util.js"></script>
 <script type="text/javascript">
-	mui.init()
-	$('.house-type-radio').on('tap',function(){
-		$(this).addClass('aa')
-		$(this).siblings().removeClass('aa')
+	new Vue({
+		el:'#case_attribute',
+		data:{
+			js_attr:[],//居室属性
+			fg_attr:[],//风格属性
+			form:{
+				id:'',
+				location:'',//居室,
+				renovating_style:'',//装修风格
+				cases_name: '',
+				cases_image: '',
+				cases_desc: '',
+				cases_renderings:[],
+				customer_name:'',
+				customer_sex:'',
+				customer_mobile:'',
+				customer_Province:'',
+				customer_City:'',
+				customer_Area:'',
+				customer_village:'',
+				customer_ADDRESS:''
+			}
+		},
+		methods:{
+			//获取属性
+			getAttribute(lx){
+				var _self=this;
+				$util.http('/api/system-code-types/active/'+lx,{
+					type:'get',
+					success:function(res){
+						if(lx=='roomType'){
+							_self.js_attr=res;
+						}
+						if(lx=='styleType'){
+							_self.fg_attr=res;
+						}
+					}
+				})
+			},
+			//下一步
+			next(){
+				localStorage.setItem('case',JSON.stringify(this.form));
+				mui.openWindow(
+						'customer_case_description.html',
+						'customer_case_description',
+						{}
+					)
+			}
+		},
+		mounted(){
+			this.getAttribute('roomType');
+			this.getAttribute('styleType');
+		}
 	})
-	$('.house-area-radio').on('tap',function(){
-		$(this).addClass('bb')
-		$(this).siblings().removeClass('bb')
-	})
-	$('.decoration-style-radio').on('tap',function(){
-		$(this).addClass('cc')
-		$(this).siblings().removeClass('cc')
-	})
-	$('.next-btn').on('tap',function(){
-		var roomNum = $('.aa').text(),
-			room = $('.bb').text(),
-			style = $('.cc').text()
-			console.log(room)
-			localStorage.setItem('roomNum',roomNum)
-			localStorage.setItem('room',room)
-			localStorage.setItem('style',style)			
-			mui.openWindow(
-					'customer_case_description.html',
-					'customer_case_description',
-					{}
-				)
-	})
+// 	mui.init()
+// 	
+// 	$('.next-btn').on('tap',function(){
+// 		var roomNum = $('.aa').text(),
+// 			room = $('.bb').text(),
+// 			style = $('.cc').text()
+// 			console.log(room)
+// 			localStorage.setItem('roomNum',roomNum)
+// 			localStorage.setItem('room',room)
+// 			localStorage.setItem('style',style)			
+
+// 	})
 </script>
 
 </html>

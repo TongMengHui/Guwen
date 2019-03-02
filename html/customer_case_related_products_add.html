@@ -1,51 +1,102 @@
 <!doctype html>
 <html>
-<head>
-	<meta charset="UTF-8">
-	<title>客户案例-关联产品-发布案例</title>
-	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-	<link href="../css/mui.min.css" rel="stylesheet" />
-	<link rel="stylesheet" type="text/css" href="../css/customer_case_related_products_add.css"/>
-</head>
-<body style="background-color: white;">
-<header class="mui-bar mui-bar-nav mui-bar-nav-bg" style="background-color: white; box-shadow: none; border-bottom: 1px solid #EEEEEE;">
-	<span class="mui-icon mui-icon-back"></span>
-   	<span class="mui-title" style="font-size: 18px; color: #333333;">选择关联产品</span>
-</header>
-<div class="mui-content" style="background-color: white;">	
-	<div class="classification-container">
-		<div class="mui-table-view-cell mui-collapse" id="primary-classification">
-        	<a class="mui-navigate-right" href="#">一级分类</a>
-        	<div class="mui-collapse-content" >
-            	<p>一级分类子内容1</p>
-        	</div>
-        	<div class="mui-collapse-content">
-         	   <p>一级分类子内容2</p>
-        	</div>
-      	  	<div class="mui-collapse-content">
-           	 	<p>一级分类子内容3</p>
-        	</div>
-        	<div class="mui-collapse-content">
-            	<p>一级分类子内容4</p>
-        	</div>
-    	</div> 
-		<div class="mui-table-view-cell mui-collapse" id="secondary-classification">
-        	<a class="mui-navigate-right" href="#">二级分类</a>
-        	<div class="mui-collapse-content" >
-            	<p>二级分类子内容1</p>
-        	</div>
-        	<div class="mui-collapse-content" >
-            	<p>二级分类子内容2</p>
-        	</div>
-      	  	<div class="mui-collapse-content" >
-            	<p>二级分类子内容3</p>
-        	</div>
-        	<div class="mui-collapse-content" >
-            	<p>二级分类子内容4</p>
-        	</div>
-    	</div>
-	</div>
-	<div class="product-info-container">
+	<head>
+		<meta charset="UTF-8">
+		<title>客户案例-关联产品-发布案例</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../css/customer_case_related_products_add.css" />
+	</head>
+	<body style="background-color: white;">
+		<header class="mui-bar mui-bar-nav mui-bar-nav-bg" style="background-color: white; box-shadow: none; border-bottom: 1px solid #EEEEEE;">
+			<span class="mui-icon mui-icon-back"></span>
+			<span class="mui-title" style="font-size: 18px; color: #333333;">选择关联产品</span>
+		</header>
+		<div class="mui-iframe-wrapper" style="top:45px;bottom: 0px;" id="product">
+			<div class="mui-content mui-scroll-wrapper" id="p_list">
+				<div class="mui-scroll">
+					<ul style="background: #fff;">
+					    <li class="product-info-container">
+							<div class="product-info-container-inside">
+								<img src="../img/desk.png" class="product-pic"/>
+								<div class="product-introduction-container">
+									<div class="product-caption">
+										MADISON现代简约客厅边桌
+									</div>
+									<div class="product-brand">
+										FENDI CASA 芬迪
+									</div>
+									<div class="product-price">
+										￥5480-6480
+									</div>
+								</div>
+								<div class="mui-input-row mui-checkbox" onclick="num()">  		
+									<input name="checkbox1" value="Item1" type="checkbox">
+								</div>
+							</div>
+						</li>
+						<li class="product-info-container">
+							<div class="product-info-container-inside">
+								<img src="../img/desk.png" class="product-pic"/>
+								<div class="product-introduction-container">
+									<div class="product-caption">
+										MADISON现代简约客厅边桌
+									</div>
+									<div class="product-brand">
+										FENDI CASA 芬迪
+									</div>
+									<div class="product-price">
+										￥5480-6480
+									</div>
+								</div>
+								<div class="mui-input-row mui-checkbox" onclick="num()">  		
+									<input name="checkbox1" value="Item1" type="checkbox">
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+
+		</div>
+	</body>
+	<script src="../js/mui.min.js"></script>
+	<script type="text/javascript" src="../js/jquery-1.11.0.min.js"></script>
+	<script src="../js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="../js/icon-back.js"></script>
+	<script type="text/javascript" src="../js/back-to-top.js"></script>
+	<script src="../js/util.js"></script>
+	<script type="text/javascript">
+		new Vue({
+			el:'#product',
+			data:{
+				List:[],
+				storeId:0
+			},
+			methods:{
+				getList(){
+					$util.http('/api/mer-store-productsByStoreId/'+this.storeId,{
+						type:'get',
+						success:function(res){
+							console.log(res)
+						}
+					})
+				}
+			},
+			mounted(){
+				this.storeId=localStorage.getItem('merchantStoreInfoId')||2;
+				this.getList();
+				$util.pullRefresh('#p_list',function(cb){
+					var _self=this;
+					
+				}.bind(this));
+			}
+		})
+	</script>
+</html>
+<!-- <div class="product-info-container">
 		<div class="product-info-container-inside">
 			<img src="../img/desk.png" class="product-pic"/>
 			<div class="product-introduction-container">
@@ -63,123 +114,10 @@
   				<input name="checkbox1" value="Item1" type="checkbox">
 			</div>
 		</div>
-	</div>
-	<div class="product-info-container">
-		<div class="product-info-container-inside">
-			<img src="../img/desk.png" class="product-pic"/>
-			<div class="product-introduction-container">
-				<div class="product-caption">
-					MADISON现代简约客厅边桌
-				</div>
-				<div class="product-brand">
-					FENDI CASA 芬迪
-				</div>
-				<div class="product-price">
-					￥5480-6480
-				</div>
-			</div>
-			<div class="mui-input-row mui-checkbox" onclick="num()">  		
-  				<input name="checkbox1" value="Item2" type="checkbox">
-			</div>
-		</div>
-	</div>
-	<div class="product-info-container">
-		<div class="product-info-container-inside">
-			<img src="../img/desk.png" class="product-pic"/>
-			<div class="product-introduction-container">
-				<div class="product-caption">
-					MADISON现代简约客厅边桌
-				</div>
-				<div class="product-brand">
-					FENDI CASA 芬迪
-				</div>
-				<div class="product-price">
-					￥5480-6480
-				</div>
-			</div>
-			<div class="mui-input-row mui-checkbox" onclick="num()">  		
-  				<input name="checkbox1" value="Item2" type="checkbox">
-			</div>
-		</div>
-	</div>
-	<div class="product-info-container">
-		<div class="product-info-container-inside">
-			<img src="../img/desk.png" class="product-pic"/>
-			<div class="product-introduction-container">
-				<div class="product-caption">
-					MADISON现代简约客厅边桌
-				</div>
-				<div class="product-brand">
-					FENDI CASA 芬迪
-				</div>
-				<div class="product-price">
-					￥5480-6480
-				</div>
-			</div>
-			<div class="mui-input-row mui-checkbox" onclick="num()">  		
-  				<input name="checkbox1" value="Item2" type="checkbox">
-			</div>
-		</div>
-	</div>
-	<div class="product-info-container">
-		<div class="product-info-container-inside">
-			<img src="../img/desk.png" class="product-pic"/>
-			<div class="product-introduction-container">
-				<div class="product-caption">
-					MADISON现代简约客厅边桌
-				</div>
-				<div class="product-brand">
-					FENDI CASA 芬迪
-				</div>
-				<div class="product-price">
-					￥5480-6480
-				</div>
-			</div>
-			<div class="mui-input-row mui-checkbox" onclick="num()">  		
-  				<input name="checkbox1" value="Item3" type="checkbox">
-			</div>
-		</div>
-	</div>
-	<div class="product-info-container">
-		<div class="product-info-container-inside">
-			<img src="../img/desk.png" class="product-pic"/>
-			<div class="product-introduction-container">
-				<div class="product-caption">
-					MADISON现代简约客厅边桌
-				</div>
-				<div class="product-brand">
-					FENDI CASA 芬迪
-				</div>
-				<div class="product-price">
-					￥5480-6480
-				</div>
-			</div>
-			<div class="mui-input-row mui-checkbox" onclick="num()">  		
-  				<input name="checkbox1" value="Item4" type="checkbox">
-			</div>
-		</div>
-	</div>
-	<div class="product-info-container">
-		<div class="product-info-container-inside">
-			<img src="../img/desk.png" class="product-pic"/>
-			<div class="product-introduction-container">
-				<div class="product-caption">
-					MADISON现代简约客厅边桌
-				</div>
-				<div class="product-brand">
-					FENDI CASA 芬迪
-				</div>
-				<div class="product-price">
-					￥5480-6480
-				</div>
-			</div>
-			<div class="mui-input-row mui-checkbox" onclick="num()">  		
-  				<input name="checkbox1" value="Item5" type="checkbox">
-			</div>
-		</div>
-	</div>
-	<div>
-	<button class="back_to_top">回到顶部</button>
+	</div> -->
+	
+
+	<!-- <button class="back_to_top">回到顶部</button>
 	<div style="margin-top: 70px;">
 		<div class="bottom-btn-container">
 			<button class="add-btn" id="btn-nn">添加关联产品</button>
@@ -191,31 +129,4 @@
 				0
 			</div>
 		</div>
-	</div>
-</div>
-</body>
-<script src="../js/mui.min.js"></script>
-<script type="text/javascript" src="../js/jquery-1.11.0.min.js" ></script>
-<script type="text/javascript" src="../js/icon-back.js" ></script>
-<script type="text/javascript" src="../js/back-to-top.js" ></script>
-<script src="../js/util.js"></script>
-<script type="text/javascript">
-	mui.init()
-	function num()
-   	{
-   		var num = 0;
-   		var checkx = document.getElementsByName("checkbox1");
-   		var nn = document.getElementById("checked-number");
-   		var btn_nn = document.getElementById("btn-nn");
-   		for (var i=0; i< checkx.length; i++)
-   		{
-   			if(checkx[i].checked)
-   			{
-   				num++;
-   			}
-   		}
-   		nn.innerText = num;
-   		btn_nn.innerHTML = "已选择"+num+"款产品";
-   	}
-</script>
-</html>
+	</div> -->

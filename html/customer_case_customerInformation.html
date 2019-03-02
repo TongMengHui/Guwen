@@ -41,186 +41,192 @@
 			<div id="font-relate-products">关联产品</div>
 			<div id="font-customer-information">客户信息</div>
 		</div>
-		<div class="products-caption">
-			客户信息
-		</div>
-		<div class="client-info-container">
-			<div class="info-caption">
-				用户姓名：
+		<div id="customer">
+			<div class="client-info-container">
+				<div class="info-caption">
+					客户姓名：
+				</div>
+				<input class="info-input" id="customerName" placeholder="请填写用户真实姓名" v-model.trim="form.customer_name"/>
 			</div>
-			<input class="info-input" id="customerName" placeholder="请填写用户真实姓名" />
-		</div>
-		<div class="client-info-container">
-			<div class="info-caption">
-				性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别：
-			</div>
-			<input class="info-input" id="customerSex" placeholder="先生" />
-			<a href="#">
-				<div class="info-more-container">
-					<div class="info-more-icon">
-						<span class="mui-icon mui-icon-arrowright"></span>
+			<div class="client-info-container">
+				<div class="info-caption">
+					性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别：
+				</div>
+				<div style="display: inline-block;line-height: 60px;color:#999;">
+					{{form.customer_sex===''?'请选择性别':form.customer_sex=='1'?'男':'女'}}
+				</div>
+				<a href="#">
+					<div class="info-more-container" @touchend="openSexPicker">
+						<div class="info-more-icon">
+							<span class="mui-icon mui-icon-arrowright"></span>
+						</div>
+						<div class="info-more-font">选择</div>
 					</div>
-					<div class="info-more-font">选择</div>
+				</a>
+			</div>
+			<div class="client-info-container">
+				<div class="info-caption">
+					手机号码：
 				</div>
-			</a>
-		</div>
-		<div class="client-info-container">
-			<div class="info-caption">
-				手机号码：
-			</div>
-			<input class="info-input" id="customerMobile" placeholder="请填写客户手机号码" />
-			<div class="info-more-container">
-				<div class="info-more-font">非必填</div>
-			</div>
-		</div>
-		<div class="client-info-container">
-			<div class="info-caption">
-				所在地：
-			</div>
-			<input class="info-input" id="area" placeholder="选择客户住宅所在地" />
-			<a href="#">
+				<input class="info-input" id="customerMobile" placeholder="请填写客户手机号码" v-model.trim="form.customer_mobile"/>
 				<div class="info-more-container">
-					<div class="info-more-icon">
-						<span class="mui-icon mui-icon-arrowright"></span>
-					</div>
-					<div class="info-more-font">选择</div>
+					<div class="info-more-font">非必填</div>
 				</div>
-			</a>
-		</div>
-		<div class="client-info-container">
-			<div class="info-caption">
-				所属小区：
 			</div>
-			<input class="info-input" id="customerVillage" placeholder="请输入所住小区" />
-			<!-- <a href="search_community.html"> -->
-			<!-- <div class="info-more-container" id="gosearch">
-				<div class="info-more-icon">
-					<span class="mui-icon mui-icon-arrowright"></span>
+			<div class="client-info-container">
+				<div class="info-caption">
+					所在地：
 				</div>
-				<div class="info-more-font">选择</div>
-			</div> -->
-			<!-- </a> -->
+				<div style="display: inline-block;line-height: 60px;color:#999;">
+					{{form.customer_Province===''?'请选择所在地':form.customer_Province+'-'+form.customer_City+'-'+form.customer_Area}}
+				</div>
+				<a href="#">
+					<div class="info-more-container" @touchend="openAdPicker">
+						<div class="info-more-icon">
+							<span class="mui-icon mui-icon-arrowright"></span>
+						</div>
+						<div class="info-more-font">选择</div>
+					</div>
+				</a>
+			</div>
+			<div class="client-info-container">
+				<div class="info-caption">
+					所属小区：
+				</div>
+				<input class="info-input" id="customerVillage" placeholder="请输入所住小区" v-model.trim="form.customer_village"/>
+			</div>
+			<button class="publish-btn" @touchend="release">发布</button>
 		</div>
-		<!-- <a href="customer_case.html"> -->
-			<button class="publish-btn">发布</button>
-		<!-- </a> -->
 
 </body>
-
-
-<!-- <div id="search" style="background-color: white; position:fixed;top:0;width:100%; height:100%;display:none;">
-	<header class="mui-bar mui-bar-nav mui-bar-nav-bg" style="background-color: white; box-shadow: none;">
-		<span class="mui-icon mui-icon-back" id="back"></span>
-		<h1 class="mui-title" style="color: #333333;">搜索小区</h1>
-	</header>
-	<div class="mui-content" style="background-color: white;">
-		<div class="search-content">
-			<div class="search-input">
-				<input class="search-input1" type="text" placeholder="请搜索小区">
-			</div>
-			<div class="search-icon">
-				<span class="mui-icon mui-icon-search"></span>
-			</div>
-		</div>
-		<ul class="where-list">
-
-		</ul>
-	</div>
-</div> -->
 <script src="../js/mui.min.js"></script>
 <script type="text/javascript" src="../js/jquery-1.11.0.min.js"></script>
+<script src="../js/vue.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="../js/mui.picker.js"></script>
 <script src="../js/mui.poppicker.js"></script>
 <script type="text/javascript" src="../js/icon-back.js"></script>
 <script src="../js/util.js"></script>
 <script src="../js/city_data.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
-	mui.init(
-	)
-	var infoMore = mui('.info-more-font')
-	var infoInput = mui('.info-input')
-
-
-	// 选择性别
-	infoMore[0].addEventListener('tap', function () {
-		var picker = new mui.PopPicker();
-		picker.setData([{
-			value: '0',
-			text: '先生'
-		},
-		{
-			value: '1',
-			text: '女士'
-		}]);
-		picker.show(function (selectItems) {
-			console.log(selectItems)
-			infoInput[1].value = selectItems[0].text
-		})
-	})
-	//
-	infoMore[2].addEventListener('tap',function(){
-		$util.showAdPicker(__CITY__,function(selectItems){
-			console.log(selectItems)
-		});
-	})
-	
-
-	// 获取家居案例的接口
-	$(".publish-btn").on('tap', function () {
-		var id = localStorage.getItem('id'),
-		operatorId = localStorage.getItem('id'),
-			customerName = $('#customerName').val(),
-			customerSex = $('#customerSex').val(),
-			customerMobile = $('#customerMobile').val(),
-			area = $('#area').val(),
-			customerVillage = $('#customerVillage').val(),
-			casesName = localStorage.getItem('casesName'),
-			casesImage = localStorage.getItem('casesImage'),
-			casesDesc = localStorage.getItem('casesDesc'),
-			customerProvince = customerProvince,                                      //省市县填code
-			customerCity = customerCity,
-			customerArea = customerArea,
-			customerAddress
-		$util.http('/api/home-cases', {
-			data: {
-				storeId:storeId,															 //店铺id
-				operatorId:operatorId,															//顾问id
-				status:true,                           	                                   //状态
-				casesName:casesName,                                                   //案例名称
-				customerName:customerName,                                                       //客户名字
-				customerSex:1,                                                             //性别
-				customerMobile:customerMobile,                                              //手机
-				customerVillage:customerVillage,                                                //地址
-				casesImage:casesImage,                    //图片
-				casesDesc:casesDesc,                                                           //案例描述
-				customerProvince:customerProvince,                                                //省
-				customerCity:customerCity,														//市
-				customerArea:customerArea,														//区
-				customerAddress:'江苏省苏州市星湖街财富大厦飞翔花园'                          //街道
-			},
-			// data:{
-			// 	"storeId":3,
-			// 	"operatorId":"5",
-			// 	"status":true,
-			// 	"casesName":"法式书房案例",
-			// 	"customerName":"笑笑",
-			// 	"customerSex":"1",
-			// 	"customerMobile":"18915427612",
-			// 	"customerVillage":"飞翔花园",
-			// 	"casesImage":"http://pn985cm2z.bkt.clouddn.com/xx5.jpg",
-			// 	"casesDesc":"11",
-			// 	"customerProvince":"江苏省",
-			// 	"customerCity":"苏州市",
-			// 	"customerArea":"吴中区",
-			// 	"customerAddress":"江苏省苏州市星湖街财富大厦飞翔花园"
-			// 	},
-			dataType: 'json',
-			type: 'post',
-			success: function (res) {
-				console.log(res)
+	new Vue({
+		el:'#customer',
+		data:{
+			form:{
+				customer_name:'',
+				customer_sex:'',
+				customer_mobile:'',
+				customer_Province:'',
+				customer_City:'',
+				customer_Area:'',
+				customer_village:'',
+				customer_ADDRESS:''
 			}
-		})
-	})
+		},
+		methods:{
+			openAdPicker(){
+				var _self=this;
+				$util.showAdPicker(__CITY__,function(sel){
+					_self.form.customer_Province=sel[0].text;
+					_self.form.customer_City=sel[1].text;
+					_self.form.customer_Area=sel[2].text;
+				});
+			},
+			openSexPicker(){
+				var _self=this;
+				var picker = new mui.PopPicker();
+				picker.setData([{
+					value: '0',
+					text: '女'
+				},
+				{
+					value: '1',
+					text: '男'
+				}]);
+				picker.show(function (selectItems) {
+					_self.form.customer_sex=selectItems[0].value;
+				});
+			},
+			release(){
+				if(!this.form.customer_name){
+					mui.toast('客户姓名不可为空');
+					return;
+				}
+				if(!this.form.customer_Province){
+					mui.toast('案例所在地不可为空');
+					return;
+				}
+				if(!this.form.customer_village){
+					mui.toast('案例所在小区不可为空');
+					return;
+				}
+				console.log(this.form)
+			}
+		},
+		mounted(){
+			var _case=JSON.parse(localStorage.getItem('case'));
+			for(var key in _case){
+				this.form[key]=_case[key];
+			}
+		}
+	});
+// 	mui.init(
+// 	)
+// 	var infoMore = mui('.info-more-font')
+// 	var infoInput = mui('.info-input')
+// 
+// 
+// 	// 选择性别
+// 	infoMore[0].addEventListener('tap', function () {
+
+// 	})
+// 	//
+// 	infoMore[2].addEventListener('tap',function(){
+// 		$util.showAdPicker(__CITY__,function(selectItems){
+// 			console.log(selectItems)
+// 		});
+// 	})
+// 	
+// 
+// 	// 获取家居案例的接口
+// 	$(".publish-btn").on('tap', function () {
+// 		var id = localStorage.getItem('id'),
+// 		operatorId = localStorage.getItem('id'),
+// 			customerName = $('#customerName').val(),
+// 			customerSex = $('#customerSex').val(),
+// 			customerMobile = $('#customerMobile').val(),
+// 			area = $('#area').val(),
+// 			customerVillage = $('#customerVillage').val(),
+// 			casesName = localStorage.getItem('casesName'),
+// 			casesImage = localStorage.getItem('casesImage'),
+// 			casesDesc = localStorage.getItem('casesDesc'),
+// 			customerProvince = customerProvince,                                      //省市县填code
+// 			customerCity = customerCity,
+// 			customerArea = customerArea,
+// 			customerAddress
+// 		$util.http('/api/home-cases', {
+// 			data: {
+// 				storeId:storeId,															 //店铺id
+// 				operatorId:operatorId,															//顾问id
+// 				status:true,                           	                                   //状态
+// 				casesName:casesName,                                                   //案例名称
+// 				customerName:customerName,                                                       //客户名字
+// 				customerSex:1,                                                             //性别
+// 				customerMobile:customerMobile,                                              //手机
+// 				customerVillage:customerVillage,                                                //地址
+// 				casesImage:casesImage,                    //图片
+// 				casesDesc:casesDesc,                                                           //案例描述
+// 				customerProvince:customerProvince,                                                //省
+// 				customerCity:customerCity,														//市
+// 				customerArea:customerArea,														//区
+// 				customerAddress:'江苏省苏州市星湖街财富大厦飞翔花园'                          //街道
+// 			},
+// 			dataType: 'json',
+// 			type: 'post',
+// 			success: function (res) {
+// 				console.log(res)
+// 			}
+// 		})
+// 	})
 	
 	//$util.showAdPicker(__CITY__);
 </script>

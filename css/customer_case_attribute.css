@@ -158,31 +158,13 @@
     background-color: #EEEEEE;
     }
     .house-area-content{
-    position: relative;
-    width: 100%;
-    height: 130px;
+
     }
     .house-area-select{
-    position: relative;
-    left: 5%;
-    top: 10px;
-    width: 91%;
-    height: 102px;
+
     }
     .house-area-radio{
-    position: relative;
-    float: left;
-    width: 30%;
-    height: 40px;
-    font-size: 15px;
-    color: #666666;
-    border-radius: 25px;
-    border: 0;
-    padding-top: 10px;
-    text-align: center;
-    margin-top: 10px;
-    margin-right: 3%;
-    background-color: #EEEEEE;
+
     }
     .decoration-style-content{
      position: relative;
@@ -235,3 +217,35 @@
         background: #6C91FE;
         color: #fff;
     }
+	
+	
+	.house-content{
+		width: 100%;
+		height: auto;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: flex-start;
+		overflow: hidden;
+		box-sizing: border-box;
+		padding:0 5% 15px 5%;
+		
+	}
+	.house-btn{
+		width: 30%;
+		line-height:30px;
+		color: #999;
+		background: #efefef;
+		text-align: center;
+		border-radius: 30px;
+		font-size: 14px;
+		margin-top: 15px;
+		margin-left: 5%;
+		box-sizing: border-box;
+	}
+	.house-btn:nth-child(3n+1){
+		margin-left: 0;
+	}
+	.house-btn-select{
+		color:#fff;
+		background: #4597f1;
+	}
