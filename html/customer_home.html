@@ -414,12 +414,12 @@
 			mui("#popover").popover('toggle', document.getElementById("div"));
 		})
 	}
-	lead()
+	
 	// 判断是否需要弹出引导框
 	function islead() {
 		 operatorIdentityNo = localStorage.getItem('operatorIdentityNo')
 		if (operatorIdentityNo == 'null'||operatorIdentityNo == ''||!operatorIdentityNo) {
-			
+			lead()
 			$('#renzheng').html('未认证')
 		} else {
 			
