@@ -453,6 +453,7 @@
 				isbind(res.applyStatus)
 				localStorage.setItem('applyStatus',applyStatus)
 				merStoreinfo()
+				productsBy()
 			}
 		})
 	}
@@ -470,16 +471,16 @@
 	}
 	
   	// 根据storeid调用店铺
-	// function productsBy(){
-	// 	var merStoreinfoId = localStorage.getItem('merchantStoreInfoId')
-	// 	$util.http('/api/query/mer-store-productsByStoreId'+ merStoreinfoId, {
-	// 		dataType: 'json',
-	// 		type: 'get',
-	// 		success: function (res) {
-	// 			console.log(res)
-	// 		}
-	// 	})
-	// }
+	function productsBy(){
+		var merStoreinfoId = localStorage.getItem('merchantStoreInfoId')
+		$util.http('/api/query/mer-store-productsByStoreId'+ merStoreinfoId, {
+			dataType: 'json',
+			type: 'get',
+			success: function (res) {
+				console.log(res)
+			}
+		})
+	}
 	// 获取家居案例表接口(home_cases)
 	function getHomeCases() {
 		$util.http('/api/home-cases/' + id, {
