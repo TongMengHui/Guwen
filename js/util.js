@@ -81,7 +81,7 @@
 			mui.ajax(BASEURL + url, {
 				headers: {
 					'Content-Type': 'application/json',
-					'Authorization': 'Bearer ' + token || '',
+					'Authorization': 'Bearer ' + token || ''
 				},
 				data: options.data,
 				dataType: 'json', //服务器返回json格式数据
