@@ -103,28 +103,59 @@
 				}
 			});
 		},
+		
+		dataURLtoBlob:  function(dataurl) {
+			var arr = dataurl.split(',');
+			var mime = arr[0].match(/:(.*?);/)[1];// 获取文件类型
+			var bstr = atob(arr[1].replace(/\s/g, ''));//获取数据
+			var n = bstr.length;
+			var u8arr = new Uint8Array(n);//8 位无符号整数值的类型化数组
+			while (n--) {
+				u8arr[n] = bstr.charCodeAt(n);//返回指定位置的字符的 Unicode编码 赋给数组指定位置
+			}
+			return new Blob([u8arr], {type: mime});//值，类型
+
+		},
 		//上传图片至七牛
 		uploadToQiniu: function(filepath,callback) {
+			var _self=this;
 			var filename = filepath.substring(filepath.lastIndexOf('/') + 1);
 			this.http('/api/getQiNiuToken?key=' + filename + '&bucketName=testimage', {
 				type: 'get',
 				success: function(data) {
-					var url = "http://upload.qiniu.com/"; 
-					var uploader = plus.uploader.createUpload(url,{},function(up,state){  
-						if( state==200 ) {
-							//这是文件名  真实的文件url未返回 需要手动添加前缀
-							var filename=JSON.parse(up.responseText).key;
-							if(callback)
-								callback('http://pmwf46ayp.bkt.clouddn.com/'+filename);
-						}
-						else  
-							console.log("上传失败 - ",state);  
-					});  
-					
-					uploader.addData("key",filename);  
-					uploader.addData("token",data.token);  
-					uploader.addFile(filepath,{"key":"file"});      // 固定值，千万不要改！！！！！！  
-					uploader.start();  
+					plus.io.resolveLocalFileSystemURL(filepath,function(entry){
+						entry.file(function(file){
+							var reader=new plus.io.FileReader();
+							reader.readAsDataURL(file);
+							reader.onloadend=function(e){
+								var blob=_self.dataURLtoBlob(e.target.result);
+								var obs=qiniu.upload(blob,filename,data.token);
+								obs.subscribe({
+									complete:function(img){
+										if(callback)
+											callback('http://pmwf46ayp.bkt.clouddn.com/'+img.key);
+									}
+								})
+							}
+
+						});
+					});
+// 					var url = "http://upload.qiniu.com/"; 
+// 					var uploader = plus.uploader.createUpload(url,{},function(up,state){  
+// 						if( state==200 ) {
+// 							//这是文件名  真实的文件url未返回 需要手动添加前缀
+// 							var filename=JSON.parse(up.responseText).key;
+// 							if(callback)
+// 								callback('http://pmwf46ayp.bkt.clouddn.com/'+filename);
+// 						}
+// 						else  
+// 							console.log("上传失败 - ",state);  
+// 					});  
+// 					
+// 					uploader.addData("key",filename);  
+// 					uploader.addData("token",data.token);  
+// 					uploader.addFile(filepath,{"key":"file"});      // 固定值，千万不要改！！！！！！  
+// 					uploader.start();  
 				}
 			});
 		},
