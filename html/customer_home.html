@@ -401,13 +401,12 @@
 	var designNum = $('.design-num').find('span').text()
 	var operatorName, operatorIdentityNo, token,id ,applyStatus,merStoreinfoId
 	mui.init(
-		getMerchant(),
 		token = localStorage.getItem('token'),
 		id = localStorage.getItem('id'),
-		applyStatus = localStorage.getItem('applyStatus'),
-		islead()
+		getMerchant(),
+		islead(),
+		isbind()
 	)
-	lead()
 	// 弹出引导框
 	function lead() {
 		mui("#popover").popover('toggle', document.getElementById("div"));
@@ -415,12 +414,12 @@
 			mui("#popover").popover('toggle', document.getElementById("div"));
 		})
 	}
-
+	lead()
 	// 判断是否需要弹出引导框
 	function islead() {
 		 operatorIdentityNo = localStorage.getItem('operatorIdentityNo')
 		if (operatorIdentityNo == 'null'||operatorIdentityNo == ''||!operatorIdentityNo) {
-			isbind()
+			
 			$('#renzheng').html('未认证')
 		} else {
 			
@@ -453,10 +452,23 @@
 				islead(res.operatorIdentityNo)
 				isbind(res.applyStatus)
 				localStorage.setItem('applyStatus',applyStatus)
+				merStoreinfo()
 			}
 		})
 	}
-
+  //获取店铺merchant_store_info  
+  function merStoreinfo() {
+		var merStoreinfoId = localStorage.getItem('merchantStoreInfoId')
+		$util.http('/api/merchant-store-infos/'+ merStoreinfoId, {
+			dataType: 'json',
+			type: 'get',
+			success: function (res) {
+				console.log(res)
+				localStorage.setItem('merchantStoreInfoName',res.storeName)
+			}
+		})
+	}
+	
 
 	// 获取家居案例表接口(home_cases)
 	function getHomeCases() {

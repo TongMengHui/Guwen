@@ -404,7 +404,6 @@
 		token = localStorage.getItem('token'),
 		id = localStorage.getItem('id'),
 		getMerchant(),
-		merStoreinfo(),
 		islead(),
 		isbind()
 	)
@@ -454,6 +453,7 @@
 				islead(res.operatorIdentityNo)
 				isbind(res.applyStatus)
 				localStorage.setItem('applyStatus',applyStatus)
+				merStoreinfo()
 			}
 		})
 	}
