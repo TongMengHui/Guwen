@@ -31,37 +31,42 @@
 <script type="text/javascript" src="../js/icon-back.js"></script>
 <script src="../js/util.js"></script>
 <script type="text/javascript">
-var operatorIdentityNo =  localStorage.getItem('operatorIdentityNo')
+	var operatorIdentityNo = localStorage.getItem('operatorIdentityNo')
 	mui.init(
 
-		isReal()
+		// isReal()
 	)
 
 	// 先判断是否实名认证
-	function isReal() {
+
+
+	document.getElementById("bind-immediately").addEventListener('tap', function () {
 		if (operatorIdentityNo == null) {
-			document.getElementById("bind-immediately").addEventListener('tap', function () {
-				var btnArray = ['取消', '去认证'];
-				mui.confirm('绑定前您还需要实名认证哦！', ' ', new Array('取消', '去认证'), function (e) {
-					if (e.index == 1) {
-						self.location = 'certification_real_name.html';
-					}
-					else {
-						mui.toast('取消');
-					}
-				});
-			});
-			
+			mui.openWindow(
+				'my_shop_bind.html',
+				'my_shop_bind',
+				{}
+			)
 		} else {
-			document.getElementById("bind-immediately").addEventListener('tap', function () {
-				mui.openWindow(
-					'my_shop_bind.html',
-					'my_shop_bind',
-					{}
-				)
-			})
+			var btnArray = ['取消', '去认证'];
+			mui.confirm('绑定前您还需要实名认证哦！', ' ', new Array('取消', '去认证'), function (e) {
+				if (e.index == 1) {
+					self.location = 'certification_real_name.html';
+				}
+				else {
+					mui.toast('取消');
+				}
+			});
 		}
-	}
+
+	});
+			// 
+		// } else {
+		// 	document.getElementById("bind-immediately").addEventListener('tap', function () {
+		// 		
+		// 	})
+
+
 </script>
 
 </html>
