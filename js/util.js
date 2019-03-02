@@ -118,6 +118,7 @@
 		},
 		//上传图片至七牛
 		uploadToQiniu: function(filepath,callback) {
+			plus.nativeUI.showWaiting();
 			var _self=this;
 			var filename = filepath.substring(filepath.lastIndexOf('/') + 1);
 			this.http('/api/getQiNiuToken?key=' + filename + '&bucketName=testimage', {
@@ -132,12 +133,12 @@
 								var obs=qiniu.upload(blob,filename,data.token);
 								obs.subscribe({
 									complete:function(img){
+										plus.nativeUI.closeWaiting();
 										if(callback)
 											callback('http://pmwf46ayp.bkt.clouddn.com/'+img.key);
 									}
 								})
 							}
-
 						});
 					});
 // 					var url = "http://upload.qiniu.com/"; 
