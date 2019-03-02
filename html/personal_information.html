@@ -8,6 +8,8 @@
 	<title>个人信息</title>
 	<link rel="stylesheet" href="../css/mui.css" />
 	<link rel="stylesheet" href="../css/common.css" />
+	<link rel="stylesheet" type="text/css" href="../css/mui.picker.min.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/mui.dtpicker.css"/>
 	<link rel="stylesheet" type="text/css" href="../css/user-infomation.css" />
 	<link rel="stylesheet" type="text/css" href="../css/personal_information.css" />
 </head>
@@ -66,7 +68,7 @@
 		<li class="mui-table-view-cell ">
 			出生日期：
 			<input type="text" placeholder="请选择您的出生日期" />
-			<span class="choose position-top">选择</span>
+			<span class="choose position-top csny">选择</span>
 			<span class="mui-icon mui-icon-arrowright arrowright"></span>
 		</li>
 		<li class="mui-table-view-cell ">
@@ -133,6 +135,8 @@
 <script type="text/javascript" src="../js/jquery-1.11.0.min.js"></script>
 <script src="../js/common.js"></script>
 <script type="text/javascript" src="../js/mui.min.js"></script>
+<script src="../js/mui.picker.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/mui.dtpicker.js"></script>
 <script src="../js/util.js"></script>
 <script type="text/javascript">
 	mui.init()
@@ -192,7 +196,12 @@
 			}
 		})
 	}
-
+	//选择日期
+	mui('.mui-table-view-cell').on('tap','.csny',function(){
+		$util.showDatePicker(function(date){
+			console.log(date)
+		})
+	});
 	// 保存
 	$('.submit').on('tap',function(){
 		postmerchant()

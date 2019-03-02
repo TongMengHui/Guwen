@@ -165,6 +165,21 @@
 			});
 			picker.setData(datas);
 			picker.show(callback);
+		},
+		//日期选择
+		showDatePicker(callback){
+			var dtPicker = new mui.DtPicker({
+				type:'date'
+			}); 
+			dtPicker.show(function (selectItems) { 
+				var _temp=selectItems.value.split('-');
+				callback({
+					year:_temp[0],
+					month:_temp[1],
+					day:_temp[2],
+					value:selectItems.value
+				});
+			});
 		}
 	}
 })();
