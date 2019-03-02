@@ -8,8 +8,8 @@
 	<title>个人信息</title>
 	<link rel="stylesheet" href="../css/mui.css" />
 	<link rel="stylesheet" href="../css/common.css" />
-	<link rel="stylesheet" type="text/css" href="../css/mui.picker.min.css"/>
-	<link rel="stylesheet" type="text/css" href="../css/mui.dtpicker.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/mui.picker.min.css" />
+	<link rel="stylesheet" type="text/css" href="../css/mui.dtpicker.css" />
 	<link rel="stylesheet" type="text/css" href="../css/user-infomation.css" />
 	<link rel="stylesheet" type="text/css" href="../css/personal_information.css" />
 </head>
@@ -79,7 +79,7 @@
 		</li>
 		<li class="mui-table-view-cell ">
 			邮&nbsp&nbsp&nbsp&nbsp箱：
-			<input type="text" placeholder="请绑定您的常用邮箱" id="operatorEmail"  />
+			<input type="text" placeholder="请绑定您的常用邮箱" id="operatorEmail" />
 			<span class="choose position-top">绑定</span>
 			<span class="mui-icon mui-icon-arrowright arrowright"></span>
 		</li>
@@ -138,10 +138,17 @@
 <script src="../js/mui.picker.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="../js/mui.dtpicker.js"></script>
 <script src="../js/util.js"></script>
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 	mui.init()
-	// mui("#progress").progressbar({ progress: 31 }).show();
+		// mui("#progress").progressbar({ progress: 31 }).show();
+		(function ($) {
+			$(".mui-scroll-wrapper").scroll({
+				//bounce: false,//滚动条是否有弹力默认是true
+				//indicators: false, //是否显示滚动条,默认是true
+			});
+		})(mui);
 	// 设置头像
+
 	function chooseAvatar(file) {
 		var file = file.files[0];
 		var reader = new FileReader();
@@ -165,12 +172,12 @@
 	function postmerchant() {
 		//所缺少字段    出生日期    从业年限
 		var operatorCode = localStorage.getItem('operatorCode'),
-		operatorType = localStorage.getItem('operatorType'),
+			operatorType = localStorage.getItem('operatorType'),
 			avatar = localStorage.getItem('avatar'),                   //个人头像
 			operatorName = localStorage.getItem('operatorName'),	//真实姓名
 			operatorIdentityNo = localStorage.getItem('operatorIdentityNo'),
 			sex,     //性别
-			operatorMobile =   localStorage.getItem('operatorMobile'),   //手机
+			operatorMobile = localStorage.getItem('operatorMobile'),   //手机
 			operatorEmail,          										//邮箱
 			operatorAddress,                                             //家庭住址
 			personalSignature                                            //个性签名
@@ -197,18 +204,18 @@
 		})
 	}
 	//选择日期
-	mui('.mui-table-view-cell').on('tap','.csny',function(){
-		$util.showDatePicker(function(date){
+	mui('.mui-table-view-cell').on('tap', '.csny', function () {
+		$util.showDatePicker(function (date) {
 			console.log(date)
 		})
 	});
 	// 保存
-	$('.submit').on('tap',function(){
+	$('.submit').on('tap', function () {
 		postmerchant()
 	})
 
 
 
-</script>
+</script> -->
 
 </html>
