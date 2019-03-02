@@ -133,6 +133,7 @@
 <script src="../js/mui.poppicker.js"></script>
 <script type="text/javascript" src="../js/icon-back.js"></script>
 <script src="../js/util.js"></script>
+<script src="../js/city_data.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
 	mui.init(
 	)
@@ -156,110 +157,13 @@
 			infoInput[1].value = selectItems[0].text
 		})
 	})
-	// 选择所在地
-	infoMore[2].addEventListener('tap', function () {
-		// 省市区
-		$util.http('/api/districts', {
-			dataType: 'json',
-			type: 'get',
-			success: function (res) {
-				console.log(res)
-				var jsonStr1 = JSON.stringify(res)
-				var jsonArr = [];
-				for (var i = 0; i < res.length; i++) {
-					jsonArr[i] = res[i];
-				}
-				console.log(jsonArr)
-
-
-				var picker = new mui.PopPicker({
-					layer: 2
-				});
-				picker.setData([{
-					value: '110000',
-					text: '北京市',
-					children: [{
-						value: "110101",
-						text: "东城区"
-					}]
-				}, {
-					value: '120000',
-					text: '天津市',
-					children: [{
-						value: "120101",
-						text: "和平区"
-					}, {
-						value: "120102",
-						text: "河东区"
-					}, {
-						value: "120104",
-						text: "南开区"
-					}
-					]
-				}])
-				picker.pickers[0].setSelectedIndex(1);
-				picker.pickers[1].setSelectedIndex(1);
-				picker.show(function (SelectedItem) {
-					console.log(SelectedItem);
-				})
-			}
-		})
+	//
+	infoMore[2].addEventListener('tap',function(){
+		$util.showAdPicker(__CITY__,function(selectItems){
+			console.log(selectItems)
+		});
 	})
-
-	// //gosearch
-	// $('#gosearch').on('tap', function () {
-	// 	$('#search').show()
-	// })
-
-
-	// // 搜索小区
-	// var whereList = mui('.where-list')[0]
-	// var searchIcon = mui('.search-icon')[0]
-	// // 通过接口获取小区数据 插入小区
-	// for (var i = 0; i < 10; i++) {
-	// 	whereList.innerHTML +=
-	// 		`<li class="where-city" wherename="康桥丽都">
-	// 						<div class="where-city-prompt1">康桥丽都</div>
-	// 						<div class="where-city-prompt2">
-	// 							<button class="btn-yes">确定</button>
-	// 						</div>
-	// 					</li>`
-	// }
-	// //  点击放入input框内
-	// $('.where-city').on('click', function () {
-	// 	console.log($(this).attr('wherename'))
-	// 	$('.search-input1').val($(this).attr('wherename'))
-	// 	$('.where-city').hide()
-	// 	$('#customerVillage').val($('.search-input1').val())
-	// 	$('#search').hide()
-	// })
-	// // 点击back
-	// $('.mui-icon-search').on('tap', function () {
-	// 	$('#search').hide()
-	// })
-	// //  input框值与数据库的值对比 
-	// function searchVillage() {
-	// 	var searchVal = mui('.search-input input')[0].value
-	// 	var whereCity = mui('.where-city')
-	// 	console.log(searchVal)
-	// 	if (searchVal == '') {
-	// 		$('.where-city').hide()
-	// 	} else {
-	// 		whereCity.each(function () {
-	// 			var wherename = $(this).attr('wherename')
-	// 			if (wherename.indexOf(searchVal) != -1) {
-	// 				$(this).show()
-	// 			} else {
-	// 				$(this).hide()
-	// 			}
-	// 		})
-	// 	}
-	// }
-	// //  input框值与数据对比 
-	// $('.search-input input').bind('input propertychange', function () {
-	// 	searchVillage();
-	// });
-
+	
 
 	// 获取家居案例的接口
 	$(".publish-btn").on('tap', function () {
@@ -317,8 +221,8 @@
 			}
 		})
 	})
-
-
+	
+	//$util.showAdPicker(__CITY__);
 </script>
 
 </html>

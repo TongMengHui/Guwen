@@ -157,6 +157,14 @@
 				var __node__ = __createDialog__(_opt);
 				document.body.appendChild(__node__);
 			}
+		},
+		//地址选择
+		showAdPicker(datas,callback){
+			var picker = new mui.PopPicker({
+				layer: 3
+			});
+			picker.setData(datas);
+			picker.show(callback);
 		}
 	}
 })();
