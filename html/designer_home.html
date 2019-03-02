@@ -432,6 +432,8 @@
 		 applyStatus = localStorage.getItem('applyStatus')		
 		 if(applyStatus == 1) {
 			$('#bind').html('已绑定')
+		}else if(applyStatus == 0){
+			$('#bind').html('审核中')
 		}else{
 			$('#bind').html('未绑定')
 		}

@@ -137,12 +137,14 @@
 	$('#passwordlogin').on('tap',function(){
 		username = $('#phoneNum').val()
 		password = $('#code').val()
+		localStorage.setItem('operatorMobile',username)
+		localStorage.setItem('password',password)
 		getLogin()
 	
 		
 	})
 	// 账号密码登录
-	$('.mui-btn-login').on('tap',function(){
+	$('#smscodelogin').on('tap',function(){
 			username = $('#phonenum2').val()
 			password = $('#password').val()
 			localStorage.setItem('operatorMobile',username)

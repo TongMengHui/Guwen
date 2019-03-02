@@ -448,11 +448,12 @@
 				localStorage.setItem('operatorName',res.operatorName)	
 				localStorage.setItem('applyStatus',res.applyStatus)	
 				localStorage.setItem('operatorCode',res.operatorCode)	
-				localStorage.setItem('merchantStoreInfoId',res.id)																									
+				localStorage.setItem('merchantStoreInfoId',res.merStoreInfoId)																									
 				islead(res.operatorIdentityNo)
 				isbind(res.applyStatus)
 				localStorage.setItem('applyStatus',applyStatus)
 				merStoreinfo()
+				productsBy()
 			}
 		})
 	}
@@ -469,7 +470,17 @@
 		})
 	}
 	
-
+  	// 根据storeid调用店铺
+	function productsBy(){
+		var merStoreinfoId = localStorage.getItem('merchantStoreInfoId')
+		$util.http('/api/query/mer-store-productsByStoreId'+ merStoreinfoId, {
+			dataType: 'json',
+			type: 'get',
+			success: function (res) {
+				console.log(res)
+			}
+		})
+	}
 	// 获取家居案例表接口(home_cases)
 	function getHomeCases() {
 		$util.http('/api/home-cases/' + id, {
