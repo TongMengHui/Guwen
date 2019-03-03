@@ -144,19 +144,24 @@
 			<span class="mui-icon mui-icon-arrowright"></span>
 			<span class="msg">暂未绑定</span>
 		</li>
+		<li class="msgChild">
+			<span>个性签名：</span>
+			<input type="text" placeholder="请填写个性签名">
+		</li>
 	</ul>
 
 	<div class="submit">
 		<p>保存</p>
 	</div>
 </body>
-<script src="../js/mui.js"></script>
+<script src="../js/mui.min.js"></script>
 <script type="text/javascript" src="../js/jquery-1.11.0.min.js"></script>
 <script src="../js/common.js"></script>
 <script src="../js/mui.picker.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="../js/mui.dtpicker.js" type="text/javascript"></script>
 <script src="../js/mui.poppicker.js" type="text/javascript"></script>
 <script type="text/javascript" src="../js/back-to-top.js"></script>
+<script src="../js/city_data.js" type="text/javascript" charset="utf-8"></script>
 <script src="../js/util.js"></script>
 <script type="text/javascript">
 	mui.init(
@@ -180,7 +185,7 @@
 		$util.uploadToQiniu(src, function (imgPath) {
 			// 完整的url
 			console.log(imgPath)
-			localStorage.setItem('src', imgPath)
+			localStorage.setItem(avar, imgPath)
 		})
 	}
 	// 个人信息的接口
@@ -193,15 +198,15 @@
 			password = localStorage.getItem('password'),
 			operatorType = localStorage.getItem('operatorType'),
 			avatar = localStorage.getItem('avatar'),                   //个人头像
-
+			var personalSignature  = $('.msgChild').eq(13).val()    // 个性签名
 			operatorIdentityNo = localStorage.getItem('operatorIdentityNo'),
 			//性别
 			operatorMobile = localStorage.getItem('operatorMobile'),   //手机
-			operatorEmail,          										//邮箱
-			operatorAddress,                                             //家庭住址
-			personalSignature,                                            //个性签名
 			nickName = $('.msgChild').eq(0).val(),
-			operatorEmail = $('.msgChild').eq(6).val()                   //邮箱
+			operatorEmail = $('.msgChild').eq(6).val(),                   //邮箱
+			streetName = $('.msgChild').eq(8).find('input').val(),
+			companyName  = $('.msgChild').eq(12).find('input').val()
+			localStorage.setItem('personalSignature',personalSignature)
 		$util.http('/api/merchant-operators', {
 			data: {
 				id: id,                                      //id
@@ -215,7 +220,11 @@
 				operatorMobile: operatorMobile,                 //手机号码
 				avatar,                                       //头像
 				sex,
-				nickName
+				nickName,
+				streetName,
+				operatorEmail,
+				companyName,
+				personalSignature                           //个性签名
 			},
 			dataType: 'json',
 			type: 'put',
@@ -283,11 +292,28 @@
 	}
 // 所在城市
 $('.msgChild').eq(7).on('tap', function () {
-		console.log(1)
-		$util.showAdPicker(__CITY__,function(selectItems){
-			console.log(selectItems)
+		$util.showAdPicker(__CITY__,function(datas){
+			console.log(datas[0].text + '-'+datas[1].text+'-'+datas[2].text)
+			$('.msgChild').eq(7).find('input').val(datas[0].text + '-'+datas[1].text+'-'+datas[2].text)
 		});
 	});
+// 街道地址
+// 我的职业
+function myType(){
+	console.log(1)
+	var operatorType = localStorage.getItem('operatorType')
+	if(operatorType == 1){
+		$('.msgChild').eq(9).find('input').val('家居顾问')
+	}else if(operatorType == 2){
+		$('.msgChild').eq(9).find('input').val('设计顾问')
+	}
+}
+// 从业年限
+function myType(){
+	var operatorType = localStorage.getItem('operatorType')
+	var picker = new mui.PopPicker();
+	
+}
 </script>
 
 </html>

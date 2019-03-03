@@ -1,216 +1,259 @@
 <!doctype html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title>个人主页</title>
-		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-		<link href="../css/mui.min.css" rel="stylesheet" />
-		<link rel="stylesheet" href="../css/personal_homepage.css" />
-	</head>
-	<body style="background-color: white;">
-		<header class="mui-bar mui-bar-nav mui-bar-nav-bg" style="background-color: white; box-shadow: none;">
-			<span class="mui-icon mui-icon-back"></span>
-			<font class="mui-title" style="font-size: 18px; color: #333333;">个人主页</font>
-		</header>
-		<div class="mui-content" style="background-color: white;">
-			<div id="home-image-content">
-				<img id="bg" />
-				<input id="bg_change" type="file" onchange="chooseBg(this)" style="display:none">
-				<div id="camera-content" onclick="bg_change.click()">
-					<div id="round">
-						<img src="../img/camera.png" id="camera" />
-					</div>
-					<div id="caption">
-						上传主页形象图
-					</div>
+
+<head>
+	<meta charset="UTF-8">
+	<title>个人主页</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<link href="../css/mui.min.css" rel="stylesheet" />
+	<link rel="stylesheet" href="../css/personal_homepage.css" />
+</head>
+
+<body style="background-color: white;">
+	<header class="mui-bar mui-bar-nav mui-bar-nav-bg" style="background-color: white; box-shadow: none;">
+		<span class="mui-icon mui-icon-back"></span>
+		<font class="mui-title" style="font-size: 18px; color: #333333;">个人主页</font>
+	</header>
+	<div class="mui-content" style="background-color: white;">
+		<div id="home-image-content">
+			<img id="bg" />
+			<input id="bg_change" type="file" onchange="chooseBg(this)" style="display:none">
+			<div id="camera-content" onclick="bg_change.click()">
+				<div id="round">
+					<img src="../img/camera.png" id="camera" />
 				</div>
-				<a href="#"><button id="modify-btn">修改</button></a>
-			</div>
-			<div class="avatar-content-long">
-				<div class="avatar-content">
-					<div class="avatar-round">
-						<input id="avatar_change" type="file" onchange="chooseAvatar(this)" style="display:none">
-						<img src="../img/avatar.png" class="avatar-img" id="avatar_img" onclick="avatar_change.click()" />
-					</div>
-					<a href="personal_information.html"><button class="settings-btn">设置</button></a>
+				<div id="caption">
+					上传主页形象图
 				</div>
 			</div>
-			<div class="user-name-job-content">
-				<span id="user-name">夏夏</span>
-				<button class="job-btn">认证家居顾问</button>
-			</div>
-			<div class="shop-info-content">
-				<div class="shop-info-caption">
-					所在地区：
+			<a href="#">
+				<button id="modify-btn">修改</button>
+			</a>
+		</div>
+		<div class="avatar-content-long">
+			<div class="avatar-content">
+				<div class="avatar-round">
+					<!-- <input id="avatar_change" type="file" onchange="chooseAvatar(this)" style="display:none">
+					<img src="../img/avatar.png" class="avatar-img" id="avatar_img" onclick="avatar_change.click()" /> -->
+					<img class="avatar-img" src="../img/avatar.png" alt="">
 				</div>
-				<div class="shop-info-detail" id="area">
-					江苏省-苏州市-相城区
-				</div>
-			</div>
-			<div class="shop-info-content">
-				<div class="shop-info-caption">
-					所在店铺：
-				</div>
-				<div class="shop-info-detail" id="shop">
-					FIND
-				</div>
-			</div>
-			<div class="shop-info-content">
-				<div class="shop-info-caption">
-					店铺地址：
-				</div>
-				<div class="shop-info-detail" id="address">
-					红星美凯龙相城店4楼
-				</div>
-			</div>
-			<div class="signature-content">
-				<input class="signature-input" placeholder="编辑个性签名，让大家更了解你哦......" />
-				<img src="../img/pen.png" class="signature-icon" />
-			</div>
-			<div class="horizontal-line"></div>
-			<div class="features-info-content">
-				<div class="features-info-icon">
-					<img src="../img/feature1.png" class="icon-img" />
-				</div>
-				<div class="features-info-detail" id="address">
-					客户案例（16）
-				</div>
-				<a href="customer_case.html">
-					<div class="features-info-more">
-						<img src="../img/left-icon.png" class="more-icon" />
-					</div>
+				<a href="personal_information.html">
+					<button class="settings-btn">设置</button>
 				</a>
-			</div>
-			<div class="features-info-content">
-				<div class="features-info-icon">
-					<img src="../img/xiaoxi3.png" class="icon-img" />
-				</div>
-				<div class="features-info-detail" id="address">
-					产品推荐（20）
-				</div>
-				<a href="#">
-					<div class="features-info-more">
-						<img src="../img/left-icon.png" class="more-icon" />
-					</div>
-				</a>
-			</div>
-			<div class="horizontal-line"></div>
-			<div class="features-info-content">
-				<div class="features-info-icon">
-					<img src="../img/scpj.png" class="icon-img" />
-				</div>
-				<div class="features-info-detail" id="address">
-					客户留言（12）
-				</div>
-				<a href="client_messages.html">
-					<div class="features-info-more">
-						<img src="../img/left-icon.png" class="more-icon" />
-					</div>
-				</a>
-			</div>
-			<div class="features-info-content">
-				<div class="features-info-icon">
-					<img src="../img/dianzan.png" class="icon-img" />
-				</div>
-				<div class="features-info-detail" id="address">
-					案例点评（8）   
-				</div>
-				<a href="#">
-					<div class="features-info-more">
-						<img src="../img/left-icon.png" class="more-icon" />
-					</div>
-				</a>
-			</div>
-			<div class="access-statistics-content">
-				<div class="access-statistics-caption">访问统计</div>
-				<div class="access-statistics-quantity">
-					12,000人
-				</div>
-			</div>
-			<div class="bottom-font">
-				GO佳居顾问中心
 			</div>
 		</div>
-	</body>
-	<script src="../js/mui.min.js"></script>
-	<script type="text/javascript" src="../js/jquery-1.11.0.min.js"></script>
-	<script type="text/javascript" src="../js/icon-back.js"></script>
-	<script src="../js/util.js"></script>
-	<script type="text/javascript">
-		mui.init()
-		// 头像
-		function chooseAvatar(file) {
-			var file = file.files[0];
-			var reader = new FileReader();
-			reader.readAsDataURL(file);
-			reader.onload = function() {
-				var img = document.getElementById('avatar_img');
-				img.src = this.result
-				console.log(img.src)
-			};
-		}
+		<div class="user-name-job-content">
+			<span id="user-name">夏夏</span>
+			<button class="job-btn">认证家居顾问</button>
+		</div>
+		<div class="shop-info-content">
+			<div class="shop-info-caption">
+				所在地区：
+			</div>
+			<div class="shop-info-detail" id="area">
+				江苏省-苏州市-相城区
+			</div>
+		</div>
+		<div class="shop-info-content">
+			<div class="shop-info-caption">
+				所在店铺：
+			</div>
+			<div class="shop-info-detail" id="shop">
+				FIND
+			</div>
+		</div>
+		<div class="shop-info-content">
+			<div class="shop-info-caption">
+				店铺地址：
+			</div>
+			<div class="shop-info-detail" id="address">
+				红星美凯龙相城店4楼
+			</div>
+		</div>
+		<div class="signature-content">
+			<input class="signature-input" placeholder="编辑个性签名，让大家更了解你哦......" />
+			<img src="../img/pen.png" class="signature-icon" />
+		</div>
+		<div class="horizontal-line"></div>
+		<div class="features-info-content">
+			<div class="features-info-icon">
+				<img src="../img/feature1.png" class="icon-img" />
+			</div>
+			<div class="features-info-detail" id="address">
+				客户案例（16）
+			</div>
+			<a href="customer_case.html">
+				<div class="features-info-more">
+					<img src="../img/left-icon.png" class="more-icon" />
+				</div>
+			</a>
+		</div>
+		<div class="features-info-content">
+			<div class="features-info-icon">
+				<img src="../img/xiaoxi3.png" class="icon-img" />
+			</div>
+			<div class="features-info-detail" id="address">
+				产品推荐（20）
+			</div>
+			<a href="#">
+				<div class="features-info-more">
+					<img src="../img/left-icon.png" class="more-icon" />
+				</div>
+			</a>
+		</div>
+		<div class="horizontal-line"></div>
+		<div class="features-info-content">
+			<div class="features-info-icon">
+				<img src="../img/scpj.png" class="icon-img" />
+			</div>
+			<div class="features-info-detail" id="address">
+				客户留言（12）
+			</div>
+			<a href="client_messages.html">
+				<div class="features-info-more">
+					<img src="../img/left-icon.png" class="more-icon" />
+				</div>
+			</a>
+		</div>
+		<div class="features-info-content">
+			<div class="features-info-icon">
+				<img src="../img/dianzan.png" class="icon-img" />
+			</div>
+			<div class="features-info-detail" id="address">
+				案例点评（8）
+			</div>
+			<a href="#">
+				<div class="features-info-more">
+					<img src="../img/left-icon.png" class="more-icon" />
+				</div>
+			</a>
+		</div>
+		<div class="access-statistics-content">
+			<div class="access-statistics-caption">访问统计</div>
+			<div class="access-statistics-quantity">
+				12,000人
+			</div>
+		</div>
+		<div class="bottom-font">
+			GO佳居顾问中心
+		</div>
+	</div>
+</body>
+<script src="../js/mui.min.js"></script>
+<script type="text/javascript" src="../js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="../js/icon-back.js"></script>
+<script src="../js/util.js"></script>
+<script type="text/javascript">
+	mui.init(
+		postmerchant()
+	)
+	// 头像
+	function chooseAvatar(file) {
+		var file = file.files[0];
+		var reader = new FileReader();
+		reader.readAsDataURL(file);
+		reader.onload = function () {
+			var img = document.getElementById('avatar_img');
+			img.src = this.result
+			console.log(img.src)
+		};
+	}
 	// 主页形象图
-		function chooseBg(file) {
-			var file = file.files[0];
-			var reader = new FileReader();
-			reader.readAsDataURL(file);
-			reader.onload = function() {
-				var img = document.getElementById('bg');
-				img.src = this.result
-				console.log(img.src)
-			};
-			var modify_btn = document.getElementById('modify-btn')
-			modify_btn.style.display = 'block';
-			var camera = document.getElementById('camera-content');
-			camera.style.display = 'none';
-		}
+	function chooseBg(file) {
+		var file = file.files[0];
+		var reader = new FileReader();
+		reader.readAsDataURL(file);
+		reader.onload = function () {
+			var img = document.getElementById('bg');
+			img.src = this.result
+			getQiniuToken(img.src)
+		};
+		var modify_btn = document.getElementById('modify-btn')
+		modify_btn.style.display = 'block';
+		var camera = document.getElementById('camera-content');
+		camera.style.display = 'none';
+	}
 
-		function getQiniuToken(src) {
+	function getQiniuToken(src) {
 		$util.uploadToQiniu(src, function (imgPath) {
 			// 完整的url
 			console.log(imgPath)
-			localStorage.setItem(src, imgPath)
+			localStorage.setItem('homeImage', imgPath)
 		})
 	}
-// 个人信息的接口
+	// 个人信息的接口
 	function postmerchant() {
-		//所缺少字段    出生日期    从业年限
-		var operatorCode = localStorage.getItem('operatorCode'),
-		operatorType = localStorage.getItem('operatorType'),
-			avatar = localStorage.getItem('avatar'),                   //个人头像
-			operatorName = localStorage.getItem('operatorName'),	//真实姓名
+		var id = localStorage.getItem('id'),
+			operatorCode = localStorage.getItem('operatorCode'),
+			operatorType = localStorage.getItem('operatorType'),
 			operatorIdentityNo = localStorage.getItem('operatorIdentityNo'),
-			sex,     //性别
-			operatorMobile =   localStorage.getItem('operatorMobile'),   //手机
-			operatorEmail,          										//邮箱
-			operatorAddress,                                             //家庭住址
-			personalSignature                                            //个性签名
+			operatorName = localStorage.getItem('operatorName'),
+			password = localStorage.getItem('password'),
+			operatorMobile = localStorage.getItem('operatorMobile')
+			homeImage = localStorage.getItem('homeImage')
 		$util.http('/api/merchant-operators', {
 			data: {
-				id: '1',                                     //顾问id
+				id: id,                                      //id
 				operatorCode: operatorCode,					//顾问编号
 				operatorType: operatorType,					//顾问身份类型
-				operatorName: '丁磊',	                       //真实姓名
-				operatorIdentityNo: '321282199402041035',     //身份证号码
+				operatorName: operatorName,	                	//真实姓名
+				operatorIdentityNo: operatorIdentityNo,     	//身份证号码
 				registerAgreement: 'Y',						 //平台注册协议
 				status: true,                                 //是否激活
-				password: "admin",                            //登陆密码
-				operatorMobile: "18915427612",                //手机号码
-
-
-				avatar,                                        //个人头像
-				operatorEmail,                                 //邮箱
-				operatorAddress                                //家庭住址
+				password: password,                            //登陆密码
+				operatorMobile: operatorMobile,                 //手机号码
+				homeImage
 			},
 			dataType: 'json',
-			type: 'post',
+			type: 'put',
 			success: function (res) {
 				console.log(res)
+				if (storeAddress == null) {
+					$('#area').text('尚未绑定店铺')
+				} else {
+					$('#area').text(res.province + '-' + res.city + '-' + res.area)
+				}
+				if (storeAddress == null) {
+					$('#shop').text('尚未绑定店铺')
+				} else {
+					$('#shop').text(res.companyName)
+				}
+				
+				if (res.OperatorName == null) {
+					$('#user-name').text('尚未实名认证')
+				} else {
+					$('#user-name').text(res.OperatorName)
+				}
+
+
+				if (res.operatorType == 1) {
+					$('.job-btn').text('认证家居顾问')
+				} else if (res.operatorType == 2) {
+					$('.job-btn').text('认证设计顾问')
+				}
+				if(res.avatar == null){
+					$('.avatar-img').attr('src','../img/avatar.png')
+				}else{
+					$('.avatar-img').attr('src',res.avatar)
+				}
+				if(res.homeImage == null){
+					$('#bg').attr('src',none)
+				}else{
+					$('#bg').attr('src',res.homeImage)
+				}
+				$('.signature-input').val(res.personalSignature)
 			}
 		})
 	}
-	// 取信息
+	// 店铺地址
+	var storeAddress = localStorage.getItem('storeAddress')
+	if (storeAddress == null) {
+		$('#address').text('尚未绑定店铺')
+	} else {
+		$('#address').text('storeAddress')
+	}
 
 
-	</script>
+</script>
+
 </html>
