@@ -110,8 +110,123 @@
 <script type="text/javascript" src="../js/icon-back.js"></script>
 <script src="../js/util.js"></script>
 <script type="text/javascript">
+	mui.init()
+	$("#nextBtn2").on('tap',function(){
+		operation()
+	})
+	// 顾问接口
+	function operation(){
+		var id = localStorage.getItem('id'),
+			operatorCode = localStorage.getItem('operatorCode'),
+			operatorType = localStorage.getItem('operatorType'),
+			operatorName = localStorage.getItem('operatorName'),
+			operatorIdentityNo = localStorage.getItem('operatorIdentityNo'),
+			password = localStorage.getItem('password'),
+			operatorMobile = localStorage.getItem('operatorMobile'),
+			personalCard = localStorage.getItem('personalCard')
+		$util.http('/api/merchant-operators', {
+			data:{
+				id :id,                                      //id
+				operatorCode:operatorCode,					//顾问编号
+				operatorType:operatorType,					//顾问身份类型
+				operatorName: operatorName,	                       //真实姓名
+				operatorIdentityNo:operatorIdentityNo,     //身份证号码
+				registerAgreement:'Y',						 //平台注册协议
+				status:true,                                 //是否激活
+				password:password,                            //登陆密码
+				operatorMobile:operatorMobile,                 //手机号码
+				personalCard ,                                  //路径
+			},
+			dataType: 'json',
+			type: 'post',
+			success: function (res) {
+				console.log(res)	
+				mui.openWindow(
+					'certification_review.html',
+					'certification_review',
+					{}
+				)																					
+			}
+		})
+	}
+	// 选择照相机还是相册
+	document.getElementById('face').addEventListener('tap', function () {
+		if (mui.os.plus) {
+			var buttonTit = [{
+				title: "拍照"
+			}, {
+				title: "从手机相册选择"
+			}];
 
-	
+			plus.nativeUI.actionSheet({
+				title: "上传图片",
+				cancel: "取消",
+				buttons: buttonTit
+			}, function (b) { /*actionSheet 按钮点击事件*/
+				switch (b.index) {
+					case 0:
+						break;
+					case 1:
+						getImage(); /*拍照*/
+						break;
+					case 2:
+						galleryImg();/*打开相册*/
+						break;
+					default:
+						break;
+				}
+			})
+		}
+	}, false);
+
+	// 拍照获取图片
+	function getImage() {
+		var c = plus.camera.getCamera();
+		c.captureImage(function (e) {
+			plus.io.resolveLocalFileSystemURL(e, function (entry) {
+				var imgSrc = entry.toLocalURL() + "?version=" + new Date().getTime(); //拿到图片路径
+				// 其他操作,比如预览展示
+				$('#face').attr('src',imgSrc)
+				getQiniuToken(src)
+			}, function (e) {
+				console.log("读取拍照文件错误：" + e.message);
+			});
+		}, function (s) {
+			console.log("error" + s);
+		}, {
+				filename: "_doc/camera/"
+			})
+	}
+
+	// 从相册中选择图片 
+	function galleryImg() {
+		// 从相册中选择图片
+		plus.gallery.pick(function (e) {
+			for (var i in e.files) {
+				var fileSrc = e.files[i];
+				// 其他操作,比如预览展示
+				$('#face').attr('src',fileSrc)
+				getQiniuToken(src)
+			}
+		}, function (e) {
+			console.log("取消选择图片");
+		}, {
+				filter: "image",
+				multiple: true,
+				maximum: 1,
+				system: false,
+				onmaxed: function () {
+					plus.nativeUI.alert('最多只能选择1张图片');
+				}
+			});
+	}
+	function getQiniuToken(src) {
+		$util.uploadToQiniu(src, function (imgPath) {
+			// 完整的url
+			localStorage.setItem('personalCard',imgPath)
+		})
+	}
+
 
 
 </script>
