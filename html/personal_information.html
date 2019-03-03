@@ -12,6 +12,33 @@
 	<link rel="stylesheet" type="text/css" href="../css/mui.dtpicker.css" />
 	<link rel="stylesheet" type="text/css" href="../css/user-infomation.css" />
 	<link rel="stylesheet" type="text/css" href="../css/personal_information.css" />
+	<style>
+		.msg1 {
+			vertical-align: middle;
+		}
+
+		.msg {
+			float: right;
+			color: rgb(153, 153, 153);
+			margin-top: 3%;
+		}
+
+		.mui-icon-arrowright {
+			float: right;
+			color: rgb(153, 153, 153);
+			font-size: 15px;
+			margin-top: 3.5%;
+
+		}
+
+		.msgAll li {
+			border-bottom: 1px solid rgb(230, 230, 230);
+		}
+
+		.msgAll input {
+			font-size: 14px;
+		}
+	</style>
 </head>
 
 <body>
@@ -24,10 +51,10 @@
 		</div>
 		<!--进度条-->
 		<div>
-			<!-- <p>信息完整度31%</p>
+			<p>信息完整度31%</p>
 			<div id="progress" class="mui-progressbar mui-progressbar-green ">
 				<span></span>
-			</div> -->
+			</div>
 		</div>
 		<!--头像ID-->
 		<div>
@@ -42,113 +69,101 @@
 			</div>
 		</div>
 	</div>
-	<ul class="mui-table-view border">
-		<li class="mui-table-view-cell ">
-			昵&nbsp&nbsp&nbsp&nbsp称：
-			<input type="text" placeholder="请设置个人昵称" />
+
+	<ul style="padding:0 15px;" class="msgAll">
+		<li class="msgChild">
+			<span>昵称:</span>
+			<input type="text" placeholder="设置个人昵称">
 		</li>
-		<li class="mui-table-view-cell ">
-			真实姓名：
-			<input type="text" />
-			<span class="choose position-top">去认证</span>
-			<span class="mui-icon mui-icon-arrowright arrowright"></span>
+		<li class="msgChild">
+			<span class="msg1">真实姓名：</span>
+			<input type="text">
+			<a href="real_name_certification.html">
+			<span class="mui-icon mui-icon-arrowright"></span>
+			<span class="msg">去认证</span>
+		</a> 
 		</li>
-		<li class="mui-table-view-cell ">
-			身份证号：
-			<input type="text" />
-			<span class="choose position-top">去认证</span>
-			<span class="mui-icon mui-icon-arrowright arrowright"></span>
+		<li class="msgChild">
+			<span>身份证号：</span>
+			<input type="text">
+			<a href="real_name_certification.html">
+			<span class="mui-icon mui-icon-arrowright"></span>
+			<span class="msg">去认证</span> 
+		</a> 
 		</li>
-		<li class="mui-table-view-cell ">
-			性&nbsp&nbsp&nbsp&nbsp别：
-			<input type="text" placeholder="保密" />
-			<span class="choose position-top">选择</span>
-			<span class="mui-icon mui-icon-arrowright arrowright"></span>
+		<li class="msgChild">
+			<span>性别：</span>
+			<input type="text">
+			<span class="mui-icon mui-icon-arrowright"></span>
+			<span class="msg">选择</span>
 		</li>
-		<li class="mui-table-view-cell ">
-			出生日期：
-			<input type="text" placeholder="请选择您的出生日期" />
-			<span class="choose position-top csny">选择</span>
-			<span class="mui-icon mui-icon-arrowright arrowright"></span>
+		<li class="msgChild">
+			<span>出生日期：</span>
+			<input type="text">
+			<span class="mui-icon mui-icon-arrowright"></span>
+			<span class="msg">选择</span>
+
 		</li>
-		<li class="mui-table-view-cell ">
-			手&nbsp&nbsp&nbsp&nbsp机：
-			<input type="text" placeholder="138516230132" />
-			<span class="choose position-top">修改</span>
-			<span class="mui-icon mui-icon-arrowright arrowright"></span>
+		<li class="msgChild">
+			<span>手机：</span>
+			<input type="text">
+			<span class="mui-icon mui-icon-arrowright"></span>
+			<span class="msg">修改</span>
+
 		</li>
-		<li class="mui-table-view-cell ">
-			邮&nbsp&nbsp&nbsp&nbsp箱：
-			<input type="text" placeholder="请绑定您的常用邮箱" id="operatorEmail" />
-			<span class="choose position-top">绑定</span>
-			<span class="mui-icon mui-icon-arrowright arrowright"></span>
+		<li class="msgChild">
+			<span>邮箱：</span>
+			<input type="text">
+			<span class="mui-icon mui-icon-arrowright"></span>
+			<span class="msg">绑定</span>
+
+		</li>
+		<li class="msgChild">
+			<span>所在城市：</span>
+			<input type="text">
+			<span class="mui-icon mui-icon-arrowright"></span>
+			<span class="msg">选择</span>
+		</li>
+		<li class="msgChild">
+			<span>街道地址：</span>
+			<input type="text">
+		</li>
+		<li class="msgChild">
+			<span>我的职业：</span>
+			<input type="text">
+		</li>
+		<li class="msgChild">
+			<span>从业年限：</span>
+			<input type="text">
+			<span class="mui-icon mui-icon-arrowright"></span>
+			<span class="msg">选择</span>
+		</li>
+		<li class="msgChild">
+			<span>单位名称：</span>
+			<input type="text">
+			<span class="mui-icon mui-icon-arrowright"></span>
+			<span class="msg">暂未绑定</span>
 		</li>
 	</ul>
 
-	<ul class="mui-table-view border ">
-		<li class="mui-table-view-cell">
-			所在城市：
-			<input type="text" placeholder="请选择您所在的城市" />
-			<span class="mui-icon mui-icon-arrowdown arrowright "></span>
-		</li>
-		<li class="mui-table-view-cell">
-			详细地址：
-			<input type="text" placeholder="请输入您的详细地址" />
-		</li>
-	</ul>
-	<ul class="mui-table-view border">
-		<!-- <li class="mui-table-view-cell ">
-			我的职业：
-			<input type="text" placeholder="家居顾问" />
-			<span class="choose position-top">选择</span>
-			<span class="mui-icon mui-icon-arrowright arrowright"></span>
-		</li> -->
-		<li class="mui-table-view-cell ">
-			从业年限：
-			<input type="text" placeholder="请选择从业年限" />
-			<span class="choose position-top">选择</span>
-			<span class="mui-icon mui-icon-arrowright arrowright"></span>
-		</li>
-		<!-- <li class="mui-table-view-cell ">
-			单位名称：
-			<input type="text" placeholder="暂未绑定" />
-			<span class="choose position-top">绑定</span>
-			<span class="mui-icon mui-icon-arrowright arrowright"></span>
-		</li> -->
-		<li class="mui-table-view-cell ">
-			个人描述：
-			<br/>
-			<!--<input type="text" placeholder="138516230132" />-->
-			<textarea style="width: 100%; height: 120px; border: 0;" placeholder="请填写自我介绍，让客户更了解你"></textarea>
-
-		</li>
-	</ul>
-	<ul class="mui-table-view border ">
-		<li class="mui-table-view-cell">
-			<input type="text" style="color: #CCCCCC;" placeholder="推荐人 昵称(推荐码)" />
-		</li>
-	</ul>
 	<div class="submit">
 		<p>保存</p>
 	</div>
 </body>
+<script src="../js/mui.js"></script>
 <script type="text/javascript" src="../js/jquery-1.11.0.min.js"></script>
 <script src="../js/common.js"></script>
-<script type="text/javascript" src="../js/mui.min.js"></script>
 <script src="../js/mui.picker.min.js" type="text/javascript" charset="utf-8"></script>
-<script src="../js/mui.dtpicker.js"></script>
+<script src="../js/mui.dtpicker.js" type="text/javascript"></script>
+<script src="../js/mui.poppicker.js" type="text/javascript"></script>
+<script type="text/javascript" src="../js/back-to-top.js"></script>
 <script src="../js/util.js"></script>
-<!-- <script type="text/javascript">
-	mui.init()
-		// mui("#progress").progressbar({ progress: 31 }).show();
-		(function ($) {
-			$(".mui-scroll-wrapper").scroll({
-				//bounce: false,//滚动条是否有弹力默认是true
-				//indicators: false, //是否显示滚动条,默认是true
-			});
-		})(mui);
+<script type="text/javascript">
+	mui.init(
+		Mobile()   //显示手机号
+	)
 	// 设置头像
-
+	var sex, operatorName
 	function chooseAvatar(file) {
 		var file = file.files[0];
 		var reader = new FileReader();
@@ -165,57 +180,114 @@
 		$util.uploadToQiniu(src, function (imgPath) {
 			// 完整的url
 			console.log(imgPath)
-			localStorage.setItem(src, imgPath)
+			localStorage.setItem('src', imgPath)
 		})
 	}
 	// 个人信息的接口
 	function postmerchant() {
+		console.log(sex)
 		//所缺少字段    出生日期    从业年限
-		var operatorCode = localStorage.getItem('operatorCode'),
+		var id = localStorage.getItem('id'),
+			avatar = localStorage.getItem('avatar'),
+			operatorCode = localStorage.getItem('operatorCode'),
+			password = localStorage.getItem('password'),
 			operatorType = localStorage.getItem('operatorType'),
 			avatar = localStorage.getItem('avatar'),                   //个人头像
-			operatorName = localStorage.getItem('operatorName'),	//真实姓名
+
 			operatorIdentityNo = localStorage.getItem('operatorIdentityNo'),
-			sex,     //性别
+			//性别
 			operatorMobile = localStorage.getItem('operatorMobile'),   //手机
 			operatorEmail,          										//邮箱
 			operatorAddress,                                             //家庭住址
-			personalSignature                                            //个性签名
+			personalSignature,                                            //个性签名
+			nickName = $('.msgChild').eq(0).val(),
+			operatorEmail = $('.msgChild').eq(6).val()                   //邮箱
 		$util.http('/api/merchant-operators', {
 			data: {
-				id: '1',                                     //顾问id
+				id: id,                                      //id
 				operatorCode: operatorCode,					//顾问编号
 				operatorType: operatorType,					//顾问身份类型
-				operatorName: '丁磊',	                       //真实姓名
-				operatorIdentityNo: '321282199402041035',     //身份证号码
+				operatorName: operatorName,	                	//真实姓名
+				operatorIdentityNo: operatorIdentityNo,     	//身份证号码
 				registerAgreement: 'Y',						 //平台注册协议
 				status: true,                                 //是否激活
-				password: "admin",                            //登陆密码
-				operatorMobile: "18915427612",                //手机号码
-				avatar,                                        //个人头像
-				operatorEmail,                                 //邮箱
-				operatorAddress                                //家庭住址
+				password: password,                            //登陆密码
+				operatorMobile: operatorMobile,                 //手机号码
+				avatar,                                       //头像
+				sex,
+				nickName
 			},
 			dataType: 'json',
-			type: 'post',
+			type: 'put',
 			success: function (res) {
 				console.log(res)
 			}
 		})
 	}
-	//选择日期
-	mui('.mui-table-view-cell').on('tap', '.csny', function () {
-		$util.showDatePicker(function (date) {
-			console.log(date)
-		})
-	});
+
 	// 保存
 	$('.submit').on('tap', function () {
 		postmerchant()
 	})
+	// 真实姓名
+	$('.msgChild').eq(1).find('input').on('tap', function () {
+		operatorName = localStorage.getItem('operatorName')
+		if(operatorName == 'null'){
+			$(this).val('请实名认证')
+		}else{
+			$(this).val(operatorName)
+		}
+		
+	})
+	// 身份证号
+	$('.msgChild').eq(2).find('input').on('tap', function () {
+		operatorIdentityNo = localStorage.getItem('operatorIdentityNo')
+		if(operatorIdentityNo == 'null'){
+			$(this).val('请实名认证')
+		}else{
+			$(this).val(operatorIdentityNo)
+		}
+		
+	})
 
-
-
-</script> -->
+	// 选择性别
+	$('.msgChild').eq(3).on('tap', function () {
+		var picker = new mui.PopPicker();
+		picker.setData([{
+			value: '0',
+			text: '女士'
+		},
+		{
+			value: '1',
+			text: '男士'
+		}]);
+		picker.show(function (selectItems) {
+			console.log(selectItems)
+			$('.msgChild').eq(3).find('input').val(selectItems[0].text)
+			sex = selectItems[0].value
+			localStorage.setItem('sex', sex)
+		})
+	})
+	//选择日期
+	$('.msgChild').eq(4).on('tap', function () {
+		console.log(1)
+		$util.showDatePicker(function (date) {
+			console.log(date)
+			$('.msgChild').eq(4).find('input').val(date.value)
+		})
+	});
+//手机
+	function Mobile(){
+		operatorMobile = localStorage.getItem('operatorMobile')
+		$('.msgChild').eq(5).find('input').val(operatorMobile)
+	}
+// 所在城市
+$('.msgChild').eq(7).on('tap', function () {
+		console.log(1)
+		$util.showAdPicker(__CITY__,function(selectItems){
+			console.log(selectItems)
+		});
+	});
+</script>
 
 </html>

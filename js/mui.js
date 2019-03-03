@@ -1087,9 +1087,9 @@ Function.prototype.bind = Function.prototype.bind || function(to) {
 			var classList = document.body.classList;
 			if (classList.contains(CLASS_FOCUSIN)) {
 				classList.remove(CLASS_FOCUSIN);
-				setTimeout(function() {
-					window.scrollTo(document.body.scrollLeft, document.body.scrollTop);
-				}, 20);
+				// setTimeout(function() {
+				// 	window.scrollTo(document.body.scrollLeft, document.body.scrollTop);
+				// }, 20);
 			}
 		});
 	});
