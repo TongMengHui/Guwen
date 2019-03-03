@@ -1,105 +1,147 @@
 <!doctype html>
 <html>
+
 <head>
 	<meta charset="UTF-8">
 	<title>客户案例-关联产品-发布案例</title>
 	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 	<link href="../css/mui.min.css" rel="stylesheet" />
-	<link rel="stylesheet" type="text/css" href="../css/customer_case_related_products.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/customer_case_related_products.css" />
+	<style>
+		li {
+			list-style: none;
+		}
+	</style>
 </head>
+
 <body style="background-color: white;">
-<header class="mui-bar mui-bar-nav mui-bar-nav-bg" style="background-color: white; box-shadow: none; border-bottom: 1px solid #EEEEEE;">
-	<span class="mui-icon mui-icon-back"></span>
-   	<span class="mui-title" style="font-size: 18px; color: #333333;">发布案例</span>
-</header>
-<div class="mui-content" style="background-color: white;">
-	<div id="time-line-container">
-		<div id="line">
-			<div id="line-front"></div>
-			<div id="line-middle"></div>
-			<div id="line-back"></div> 
-		</div>
-		<div id="round-attribute">
-			<img src="../img/attribute.png" style="width: 100%; height: 100%;"/>
-		</div>
-		<div id="round-description">
-			<img src="../img/description.png" style="width: 100%; height: 100%;"/>
-		</div>
-		<div id="round-relate-products">
-			<img src="../img/relate-products.png" style="width: 100%; height: 100%;"/>
-		</div>
-		<div id="round-customer-information">
-			<img src="../img/customer-information1.png" style="width: 100%; height: 100%;"/>
-		</div>
-		<div id="font-attribute">案例属性</div>
-		<div id="font-description">案例描述</div>
-		<div id="font-relate-products">关联产品</div>
-		<div id="font-customer-information">客户信息</div>
-	</div>
-	<div class="products-caption">
-		关联产品
-	</div>
-	<div class="product-info-container">
-		<div class="product-info-container-inside">
-			<img src="../img/desk.png" class="product-pic"/>
-			<div class="product-introduction-container">
-				<div class="product-caption">
-					MADISON现代简约客厅边桌
-				</div>
-				<div class="product-brand">
-					FENDI CASA 芬迪
-				</div>
-				<div class="product-price">
-					￥5480-6480
-				</div>
+	<header class="mui-bar mui-bar-nav mui-bar-nav-bg" style="background-color: white; box-shadow: none; border-bottom: 1px solid #EEEEEE;">
+		<span class="mui-icon mui-icon-back"></span>
+		<span class="mui-title" style="font-size: 18px; color: #333333;">发布案例</span>
+	</header>
+	<div class="mui-content" style="background-color: white;">
+		<div id="time-line-container">
+			<div id="line">
+				<div id="line-front"></div>
+				<div id="line-middle"></div>
+				<div id="line-back"></div>
 			</div>
-			<a href="#"><button class="delete-icon"><span class="mui-icon mui-icon-trash"></span></button></a>
-		</div>
-	</div>
-	<div class="product-info-container">
-		<div class="product-info-container-inside">
-			<img src="../img/desk1.png" class="product-pic"/>
-			<div class="product-introduction-container">
-				<div class="product-caption">
-					MADISON现代简约客厅边桌
-				</div>
-				<div class="product-brand">
-					FENDI CASA 芬迪
-				</div>
-				<div class="product-price">
-					￥5480-6480
-				</div>
+			<div id="round-attribute">
+				<img src="../img/attribute.png" style="width: 100%; height: 100%;" />
 			</div>
-			<a href="#"><button class="delete-icon"><span class="mui-icon mui-icon-trash"></span></button></a>
-		</div>
-	</div>
-	<div class="product-info-container">
-		<div class="product-info-container-inside">
-			<img src="../img/desk2.png" class="product-pic"/>
-			<div class="product-introduction-container">
-				<div class="product-caption">
-					MADISON现代简约客厅边桌
-				</div>
-				<div class="product-brand">
-					FENDI CASA 芬迪
-				</div>
-				<div class="product-price">
-					￥5480-6480
-				</div>
+			<div id="round-description">
+				<img src="../img/description.png" style="width: 100%; height: 100%;" />
 			</div>
-			<a href="#"><button class="delete-icon"><span class="mui-icon mui-icon-trash"></span></button></a>
+			<div id="round-relate-products">
+				<img src="../img/relate-products.png" style="width: 100%; height: 100%;" />
+			</div>
+			<div id="round-customer-information">
+				<img src="../img/customer-information1.png" style="width: 100%; height: 100%;" />
+			</div>
+			<div id="font-attribute">案例属性</div>
+			<div id="font-description">案例描述</div>
+			<div id="font-relate-products">关联产品</div>
+			<div id="font-customer-information">客户信息</div>
 		</div>
-	</div>
-	<div class="bottom-btn-container">
-		<a href="customer_case_related_products_add.html"><button class="add-btn">添加关联产品</button></a>
-		<a href="customer_case_customerInformation.html"><button class="next-btn">下一步</button></a>
-	</div>
+		<div class="products-caption">
+			关联产品
+		</div>
+		<ul id="relateProduct" style="padding-left:0;">
+			<li class="product-info-container" v-for="item in res">
+				<div class="product-info-container-inside">
+					<img src="../img/desk.png" class="product-pic" />
+					<div class="product-introduction-container">
+						<div class="product-caption">
+							{{item.attentionNum}}
+						</div>
+						<div class="product-brand">
+							FENDI CASA 芬迪
+						</div>
+						<div class="product-price">
+							￥5480-6480
+						</div>
+					</div>
+					<a href="#">
+						<button class="delete-icon">
+							<span class="mui-icon mui-icon-trash"></span>
+						</button>
+					</a>
+				</div>
+			</li>
+			
+		</ul>
+		<div class="bottom-btn-container">
+			<a href="customer_case_related_products_add.html">
+				<button class="add-btn">添加关联产品</button>
+			</a>
+			<a href="customer_case_customerInformation.html">
+				<button class="next-btn">下一步</button>
+			</a>
+		</div>
 </body>
 <script src="../js/mui.min.js"></script>
-<script type="text/javascript" src="../js/jquery-1.11.0.min.js" ></script>
-<script type="text/javascript" src="../js/icon-back.js" ></script>
+<script type="text/javascript" src="../js/jquery-1.11.0.min.js"></script>
+<script src="../js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" src="../js/icon-back.js"></script>
 <script src="../js/util.js"></script>
 <script type="text/javascript">
-		mui.init()
+	new Vue({
+		el: '#relateProduct',
+		data: {
+			idList: [],
+			res:[]
+		},
+		methods: {
+			getidList() {
+				this.idList = localStorage.getItem('idList').split("")
+				this.getProduct()
+				console.log(this.idList)
+			},
+			getProduct() {
+				var self = this
+				for (var i = 0; i < self.idList.length; i++) {
+					$util.http('/api/mer-store-products/' + self.idList[i], {
+						dataType: 'json',
+						type: 'get',
+						success: function (res) {
+							self.res.push(JSON.stringify(res))
+							console.log(self.res)
+							console.log(res)
+						}
+					})
+				}
+			}
+		},
+		mounted:function(){
+			mui.init(
+				this.getidList()
+			)
+			
+		}
+		
+	})
+	// mui.init(
+	// 	getidList()
+	// )
+	// var idAll
+	// // 获取id
+	// function getidList() {
+	// 	idList = localStorage.getItem('idList').split("")
+	// 	console.log(idList)
+	// 	getProduct()
+	// }
+	// // 通过id获取产品表
+	// function getProduct() {
+	// 	for (var i = 0; i < idList.length; i++) {
+	// 		$util.http('/api/mer-store-products/' + idList[i], {
+	// 			dataType: 'json',
+	// 			type: 'get',
+	// 			success: function (res) {
+	// 				console.log(res)
+	// 			}
+	// 		})
+	// 	}
+	// }
 </script>
+
 </html>

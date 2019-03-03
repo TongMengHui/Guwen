@@ -448,7 +448,7 @@
 				localStorage.setItem('operatorName',res.operatorName)	
 				localStorage.setItem('applyStatus',res.applyStatus)	
 				localStorage.setItem('operatorCode',res.operatorCode)	
-				localStorage.setItem('merchantStoreInfoId',res.merStoreInfoId)																									
+				localStorage.setItem('merchantStoreinfoId',res.merStoreinfoId)																									
 				islead(res.operatorIdentityNo)
 				isbind(res.applyStatus)
 				localStorage.setItem('applyStatus',applyStatus)
@@ -459,7 +459,7 @@
 	}
   //获取店铺merchant_store_info  
   function merStoreinfo() {
-		var merStoreinfoId = localStorage.getItem('merchantStoreInfoId')
+		var merStoreinfoId = localStorage.getItem('merchantStoreinfoId')
 		$util.http('/api/merchant-store-infos/'+ merStoreinfoId, {
 			dataType: 'json',
 			type: 'get',
@@ -473,8 +473,8 @@
 	
   	// 根据storeid调用店铺
 	function productsBy(){
-		var merStoreinfoId = localStorage.getItem('merchantStoreInfoId')
-		$util.http('/api/query/mer-store-productsByStoreId'+ merStoreinfoId, {
+		var merStoreinfoId = localStorage.getItem('merchantStoreinfoId')
+		$util.http('/api/query/mer-store-productsByStoreId/'+ merStoreinfoId, {
 			dataType: 'json',
 			type: 'get',
 			success: function (res) {

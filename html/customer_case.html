@@ -32,8 +32,8 @@
 					<div class="case-time">
 						<span>{{item.createdDate}}</span>
 					</div>
-					<a href="customer_case_edit.html">
-						<button class="case-edit">编辑</button>
+					<a href="customer_case_attribute.html">
+						<button class="case-edit"  @click = "getId(item.id)">编辑</button>
 					</a>
 				</div>
 			</div>
@@ -66,14 +66,30 @@
 		el: '#content',
 		data: {
 			List: [],
-			id:localStorage.getItem('id')
+			id:localStorage.getItem('id'),
+			operatorType:localStorage.getItem('operatorType')
 		},
 		methods: {
+			
+			// 家居案例接口(design case)
+			getHomeCase: function () {
+				var self = this
+				id=this.id
+				$util.http('/api/home-cases-operator/?operatorId='+id, {
+					dataType: 'json',
+					type: 'get',
+					success: function (res) {
+						self.List = res
+						console.log(self.List)
+						self.haveCase(res)
+					}
+				})
+			},
 			// 设计案例接口(design case)
 			getDesignCase: function () {
 				var self = this
 				id=this.id
-				$util.http('/api/design-cases-operator/?operatorId='+id, {
+				$util.http('/api/home-cases-operator/?operatorId='+id, {
 					dataType: 'json',
 					type: 'get',
 					success: function (res) {
@@ -92,13 +108,27 @@
 					$('#mui-content1').css('display', 'none !important')
 					$('#mui-content2').css('display', 'block')
 				}
+			},
+			getCase:function(){
+				var  operatorType= this.operatorType,
+					self = this
+				if( operatorType==1){
+					self.getHomeCase()
+				}else if(operatorType ==2){
+					self.getDesignCase()
+				}
+			},
+			getId:function(obj){
+				console.log(obj)
+				localStorage.setItem('editId',obj)
 			}
 			
 
 		},
 		mounted() {
 			mui.init(
-				this.getDesignCase()
+				this.getCase()
+				
 			)
 		}
 	});

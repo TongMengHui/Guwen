@@ -1,100 +1,122 @@
 <!doctype html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title>客户案例-关联产品-发布案例</title>
-		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-		<link href="../css/mui.min.css" rel="stylesheet" />
-		<link rel="stylesheet" type="text/css" href="../css/customer_case_related_products_add.css" />
-	</head>
-	<body style="background-color: white;">
-		<header class="mui-bar mui-bar-nav mui-bar-nav-bg" style="background-color: white; box-shadow: none; border-bottom: 1px solid #EEEEEE;">
-			<span class="mui-icon mui-icon-back"></span>
-			<span class="mui-title" style="font-size: 18px; color: #333333;">选择关联产品</span>
-		</header>
-		<div class="mui-iframe-wrapper" style="top:45px;bottom: 0px;" id="product">
-			<div class="mui-content mui-scroll-wrapper" id="p_list">
-				<div class="mui-scroll">
-					<ul style="background: #fff;">
-					    <li class="product-info-container">
-							<div class="product-info-container-inside">
-								<img src="../img/desk.png" class="product-pic"/>
-								<div class="product-introduction-container">
-									<div class="product-caption">
-										MADISON现代简约客厅边桌
-									</div>
-									<div class="product-brand">
-										FENDI CASA 芬迪
-									</div>
-									<div class="product-price">
-										￥5480-6480
-									</div>
+
+<head>
+	<meta charset="UTF-8">
+	<title>客户案例-关联产品-发布案例</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<link href="../css/mui.min.css" rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" href="../css/customer_case_related_products_add.css" />
+</head>
+
+<body style="background-color: white;">
+	<header class="mui-bar mui-bar-nav mui-bar-nav-bg" style="background-color: white; box-shadow: none; border-bottom: 1px solid #EEEEEE;">
+		<span class="mui-icon mui-icon-back"></span>
+		<span class="mui-title" style="font-size: 18px; color: #333333;">选择关联产品</span>
+	</header>
+	<div class="mui-iframe-wrapper" style="top:45px;bottom: 0px;" id="product">
+		<div class="mui-content mui-scroll-wrapper" id="p_list">
+			<div class="mui-scroll">
+				<ul style="background: #fff;">
+					<li class="product-info-container" v-for="item in List">
+						<div class="product-info-container-inside">
+							<img :src="item.productImageDTOs[0].imageUrl" class="product-pic" />
+							<div class="product-introduction-container">
+								<div class="product-caption">
+									{{item.productTitle}}
 								</div>
-								<div class="mui-input-row mui-checkbox" onclick="num()">  		
-									<input name="checkbox1" value="Item1" type="checkbox">
+								<div class="product-brand">
+									FENDI CASA 芬迪
+								</div>
+								<div class="product-price">
+									{{item.productPriceDTOs.lowerPrice}}-{{item.productPriceDTOs.upperPrice}}
 								</div>
 							</div>
-						</li>
-						<li class="product-info-container">
-							<div class="product-info-container-inside">
-								<img src="../img/desk.png" class="product-pic"/>
-								<div class="product-introduction-container">
-									<div class="product-caption">
-										MADISON现代简约客厅边桌
-									</div>
-									<div class="product-brand">
-										FENDI CASA 芬迪
-									</div>
-									<div class="product-price">
-										￥5480-6480
-									</div>
-								</div>
-								<div class="mui-input-row mui-checkbox" onclick="num()">  		
-									<input name="checkbox1" value="Item1" type="checkbox">
-								</div>
+							<div class="mui-input-row mui-checkbox" @click="num">
+								<input name="checkbox1" v-bind:value="item.id" type="checkbox">
 							</div>
-						</li>
-					</ul>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div style="margin-top: 70px;">
+			<div class="bottom-btn-container">
+				<button class="add-btn" id="btn-nn">添加关联产品</button>
+				<a href="customer_case_customerInformation.html">
+					<button class="next-btn" @click ='idAll'>选好了</button>
+				</a>
+				<img src="../img/basket.png" class="basket-img" />
+				<div class="checked-num" id="checked-number">
+					0
 				</div>
 			</div>
 		</div>
+	</div>
 
-
-		</div>
-	</body>
-	<script src="../js/mui.min.js"></script>
-	<script type="text/javascript" src="../js/jquery-1.11.0.min.js"></script>
-	<script src="../js/vue.min.js" type="text/javascript" charset="utf-8"></script>
-	<script type="text/javascript" src="../js/icon-back.js"></script>
-	<script type="text/javascript" src="../js/back-to-top.js"></script>
-	<script src="../js/util.js"></script>
-	<script type="text/javascript">
-		new Vue({
-			el:'#product',
-			data:{
-				List:[],
-				storeId:0
+	</div>
+</body>
+<script src="../js/mui.min.js"></script>
+<script type="text/javascript" src="../js/jquery-1.11.0.min.js"></script>
+<script src="../js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" src="../js/icon-back.js"></script>
+<script type="text/javascript" src="../js/back-to-top.js"></script>
+<script src="../js/util.js"></script>
+<script type="text/javascript">
+	new Vue({
+		el: '#product',
+		data: {
+			List: [],
+			storeId: '',
+			idList: []
+		},
+		methods: {
+			getList() {
+				var self = this;
+				$util.http('/api/mer-store-productsByStoreId/' + this.storeId, {
+					type: 'get',
+					success: function (res) {
+						console.log(res)
+						self.List = res
+					}
+				})
 			},
-			methods:{
-				getList(){
-					$util.http('/api/mer-store-productsByStoreId/'+this.storeId,{
-						type:'get',
-						success:function(res){
-							console.log(res)
-						}
-					})
+			num() {
+				var num = 0;
+				var checkx = document.getElementsByName("checkbox1");
+				var nn = document.getElementById("checked-number");
+				var btn_nn = document.getElementById("btn-nn");
+				for (var i = 0; i < checkx.length; i++) {
+					if (checkx[i].checked) {
+						num++;
+					}
 				}
+				nn.innerText = num;
+				btn_nn.innerHTML = "已选择" + num + "款产品";
 			},
-			mounted(){
-				this.storeId=localStorage.getItem('merchantStoreInfoId')||2;
-				this.getList();
-				$util.pullRefresh('#p_list',function(cb){
-					var _self=this;
-					
-				}.bind(this));
+			idAll() {
+					var checkx = document.getElementsByName("checkbox1");
+					var self = this
+					for (var i = 0; i < checkx.length; i++) {
+						if (checkx[i].checked) {
+							self.idList.push(checkx[i].value)
+						}
+					}
+					console.log(self.idList)
+					localStorage.setItem('idList',self.idList.join(''))
 			}
-		})
-	</script>
+
+		},
+		mounted() {
+			this.storeId = localStorage.getItem('merchantStoreinfoId') || 2;
+			this.getList();
+			$util.pullRefresh('#p_list', function (cb) {
+				var _self = this;
+			}.bind(this));
+		}
+	})
+</script>
+
 </html>
 <!-- <div class="product-info-container">
 		<div class="product-info-container-inside">
@@ -115,9 +137,9 @@
 			</div>
 		</div>
 	</div> -->
-	
 
-	<!-- <button class="back_to_top">回到顶部</button>
+
+<!-- <button class="back_to_top">回到顶部</button>
 	<div style="margin-top: 70px;">
 		<div class="bottom-btn-container">
 			<button class="add-btn" id="btn-nn">添加关联产品</button>

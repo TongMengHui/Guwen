@@ -267,20 +267,20 @@
 						'customer_case_customerInformation.html',
 						'customer_case_customerInformation', {}
 					);
-// 					if(localStorage.getItem('operatorType')==1){
-// 						localStorage.setItem('case',JSON.stringify(this.form));
-// 						mui.openWindow(
-// 							'customer_case_related_products_none.html',
-// 							'customer_case_related_products_none', {}
-// 						);
-// 					}
-// 					if(localStorage.getItem('operatorType')==2){
-// 						//直接发布案例
-// 						mui.openWindow(
-// 							'customer_case_customerInformation.html',
-// 							'customer_case_customerInformation', {}
-// 						);
-// 					}
+					if(localStorage.getItem('operatorType')==1){
+						localStorage.setItem('case',JSON.stringify(this.form));
+						mui.openWindow(
+							'customer_case_related_products_none.html',
+							'customer_case_related_products_none', {}
+						);
+					}
+					if(localStorage.getItem('operatorType')==2){
+						//直接发布案例
+						mui.openWindow(
+							'customer_case_customerInformation.html',
+							'customer_case_customerInformation', {}
+						);
+					}
 				},
 			},
 			mounted() {

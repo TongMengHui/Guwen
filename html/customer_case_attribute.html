@@ -125,11 +125,28 @@
 						'customer_case_description',
 						{}
 					)
-			}
+			},
+			// 获取案例的接口
+			// getEditCase:function(){
+			// 	var storeId = localStorage.getItem('editId')
+			// 	$util.http('/api/home-cases',{
+			// 		data:{
+			// 			storeId,
+			// 			status:1,
+			// 			operatorId:3
+			// 		},
+			// 		type:'put',
+			// 		success:function(res){
+			// 			console.log(res)
+			// 		}
+			// 	})
+			// }
+			
 		},
 		mounted(){
 			this.getAttribute('roomType');
 			this.getAttribute('styleType');
+			this.getEditCase()
 		}
 	})
 // 	mui.init()

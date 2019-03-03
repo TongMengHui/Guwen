@@ -451,7 +451,7 @@
 				localStorage.setItem('operatorName',res.operatorName)	          
 				localStorage.setItem('applyStatus',res.applyStatus)	       
 				localStorage.setItem('operatorCode',res.operatorCode)	
-				localStorage.setItem('merchantStoreInfoId',res.merStoreinfoId)
+				localStorage.setItem('merchantStoreinfoId',res.merStoreinfoId)
 				islead(res.operatorIdentityNo)
 				isbind(res.applyStatus)
 				localStorage.setItem('applyStatus',applyStatus)
@@ -461,7 +461,7 @@
 	}
    //获取店铺merchant_store_info  
    function merStoreinfo() {
-		var merStoreinfoId = localStorage.getItem('merchantStoreInfoId')
+		var merStoreinfoId = localStorage.getItem('merchantStoreinfoId')
 		$util.http('/api/merchant-store-infos/'+ merStoreinfoId, {
 			dataType: 'json',
 			type: 'get',
