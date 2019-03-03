@@ -160,15 +160,27 @@
 					return;
 				}
 
-				if (localStorage.getItem('operatorType') == 1) {
-					this.getHomecase(this.form)
-				} else if (localStorage.getItem('operatorType') == 2) {
-					this.getDesigncase(this.form)
+
+
+				if (localStorage.getItem('editId')) {
+					if (localStorage.getItem('operatorType') == 1) {
+						this.putHomecase(this.form)
+					} else if (localStorage.getItem('operatorType') == 2) {
+						this.putDesigncase(this.form)
+					}
+				} else {
+					if (localStorage.getItem('operatorType') == 1) {
+						this.getHomecase(this.form)
+					} else if (localStorage.getItem('operatorType') == 2) {
+						this.getDesigncase(this.form)
+					}
 				}
+
+
 			},
 			// 获取家居案例接口
 			getHomecase: function (obj) {
-					var operatorId = localStorage.getItem('id')
+				var operatorId = localStorage.getItem('id')
 				$util.http('/api/home-cases', {
 					data: {
 						operatorId: operatorId,															//顾问id
@@ -198,12 +210,12 @@
 				})
 			},
 			// 修改家居案例接口
-			getHomecase: function (obj) {
-				var storeId = localStorage.getItem('merchantStoreinfoId'),
+			putHomecase: function (obj) {
+				var id = localStorage.getItem('editId'),
 					operatorId = localStorage.getItem('id')
 				$util.http('/api/home-cases', {
 					data: {
-						storeId: storeId,															 //案例id
+						id: id,															 //案例id
 						operatorId: operatorId,															//顾问id
 						status: true,                           	                                   //状态
 						casesName: obj.cases_name,                                                   //案例名称
@@ -234,6 +246,7 @@
 			getDesigncase: function (obj) {
 				// storeId= localStorage.getItem('merchantStoreinfoId'),
 				var operatorId = localStorage.getItem('id')
+				 	
 
 				$util.http('/api/design-cases', {
 					data: {
@@ -256,22 +269,23 @@
 					success: function (res) {
 						console.log(res)
 						mui.openWindow(
-							'customer_home.html',
-							'customer_home',
+							'designer_home.html',
+							'designer_home',
 							{}
 						)
 					}
 				})
 			},
 			// 修改设计案例接口
-			getDesigncase: function (obj) {
+			putDesigncase: function (obj) {
 				// storeId= localStorage.getItem('merchantStoreinfoId'),
-				var operatorId = localStorage.getItem('id')
+				var operatorId = localStorage.getItem('id'),
+				id = localStorage.getItem('editId')
 
 				$util.http('/api/design-cases', {
 					data: {
 						operatorId: operatorId,															//顾问id
-						storeId,																		//案例id
+						id,																		//案例id
 						status: true,                           	                                   //状态
 						casesName: obj.cases_name,                                                   //案例名称
 						customerName: obj.customer_name,                                                       //客户名字
@@ -290,8 +304,8 @@
 					success: function (res) {
 						console.log(res)
 						mui.openWindow(
-							'customer_home.html',
-							'customer_home',
+							'designer_home.html',
+							'designer_home',
 							{}
 						)
 					}

@@ -45,13 +45,7 @@
 			</div>
 		</div>
 		<div class="house-content">
-			<div
-				class="house-btn"
-				v-for="tag in js_attr"
-				:key="tag.id"
-				:class="{'house-btn-select':form.location==tag.entryCode}"
-				@click="form.location=tag.entryCode"
-			>{{tag.entryDesc}}</div>
+			<div class="house-btn" v-for="tag in js_attr" :key="tag.id" :class="{'house-btn-select':form.location==tag.entryCode}" @click="form.location=tag.entryCode">{{tag.entryDesc}}</div>
 		</div>
 		<div class="caption-content">
 			<div class="caption">
@@ -59,13 +53,8 @@
 			</div>
 		</div>
 		<div class="house-content">
-			<div
-				class="house-btn"
-				v-for="tag in fg_attr"
-				:key="tag.id"
-				:class="{'house-btn-select':form.renovating_style==tag.entryCode}"
-				@click="form.renovating_style=tag.entryCode"
-			>{{tag.entryDesc}}</div>
+			<div class="house-btn" v-for="tag in fg_attr" :key="tag.id" :class="{'house-btn-select':form.renovating_style==tag.entryCode}"
+			 @click="form.renovating_style=tag.entryCode">{{tag.entryDesc}}</div>
 		</div>
 		<div class="next-btn-content">
 			<button class="next-btn" @touchend="next">下一步</button>
@@ -79,74 +68,124 @@
 <script src="../js/util.js"></script>
 <script type="text/javascript">
 	new Vue({
-		el:'#case_attribute',
-		data:{
-			js_attr:[],//居室属性
-			fg_attr:[],//风格属性
-			form:{
-				id:'',
-				location:'',//居室,
-				renovating_style:'',//装修风格
+		el: '#case_attribute',
+		data: {
+			js_attr: [],//居室属性
+			fg_attr: [],//风格属性
+			form: {
+				id: '',
+				location: '',//居室,
+				renovating_style: '',//装修风格
 				cases_name: '',
 				cases_image: '',
 				cases_desc: '',
-				cases_renderings:[],
-				customer_name:'',
-				customer_sex:'',
-				customer_mobile:'',
-				customer_Province:'',
-				customer_City:'',
-				customer_Area:'',
-				customer_village:'',
-				customer_ADDRESS:''
+				cases_renderings: [],
+				customer_name: '',
+				customer_sex: '',
+				customer_mobile: '',
+				customer_Province: '',
+				customer_City: '',
+				customer_Area: '',
+				customer_village: '',
+				customer_ADDRESS: ''
 			}
 		},
-		methods:{
+		methods: {
 			//获取属性
-			getAttribute(lx){
-				var _self=this;
-				$util.http('/api/system-code-types/active/'+lx,{
-					type:'get',
-					success:function(res){
-						if(lx=='roomType'){
-							_self.js_attr=res;
+			getAttribute(lx) {
+				var _self = this;
+				$util.http('/api/system-code-types/active/' + lx, {
+					type: 'get',
+					success: function (res) {
+						if (lx == 'roomType') {
+							_self.js_attr = res;
 						}
-						if(lx=='styleType'){
-							_self.fg_attr=res;
+						if (lx == 'styleType') {
+							_self.fg_attr = res;
 						}
 					}
 				})
 			},
 			//下一步
-			next(){
-				localStorage.setItem('case',JSON.stringify(this.form));
+			next() {
+				localStorage.setItem('case', JSON.stringify(this.form));
 				mui.openWindow(
-						'customer_case_description.html',
-						'customer_case_description',
-						{}
-					)
+					'customer_case_description.html',
+					'customer_case_description',
+					{}
+				)
 			},
 			// 获取案例的接口
-			// getEditCase:function(){
-			// 	var storeId = localStorage.getItem('editId')
-			// 	$util.http('/api/home-cases',{
-			// 		data:{
-			// 			storeId,
-			// 			status:1,
-			// 			operatorId:3
-			// 		},
-			// 		type:'put',
-			// 		success:function(res){
-			// 			console.log(res)
-			// 		}
-			// 	})
-			// }
-			
+			getEditCase1: function () {
+				var editId = localStorage.getItem('editId')
+					self = this
+				$util.http('/api/home-cases/' + editId, {
+					type: 'get',
+					success: function (res) {
+						console.log(res)
+						self.form.id = res.id
+						self.form.location = res.location
+						self.form.renovating_style = res.renovatingStyle
+						self.form.cases_name = res.casesName
+						self.form.cases_image = res.casesImage
+						self.form.cases_desc = res.casesDesc
+						self.form.customer_name = res.casesName
+						self.form.customer_sex = res.customerSex
+						self.form.customer_mobile = res.customerMobile
+						self.form.customer_Province = res.customerProvince
+						self.form.customer_City = res.customerCity
+						self.form.customer_Area = res.customerArea
+						self.form.customer_village = res.customerVillage
+						self.form.customer_ADDRESS = res.customerAddress
+					}
+				})
+			},
+			getEditCase2: function () {
+				var editId = localStorage.getItem('editId')
+					self = this
+				$util.http('/api/design-cases/' + editId, {
+					type: 'get',
+					success: function (res) {
+						console.log(res)
+						self.form.id = res.id
+						self.form.location = res.location
+						self.form.renovating_style = res.renovatingStyle
+						self.form.cases_name = res.casesName
+						self.form.cases_image = res.casesImage
+						self.form.cases_desc = res.casesDesc
+						self.form.customer_name = res.casesName
+						self.form.customer_sex = res.customerSex
+						self.form.customer_mobile = res.customerMobile
+						self.form.customer_Province = res.customerProvince
+						self.form.customer_City = res.customerCity
+						self.form.customer_Area = res.customerArea
+						self.form.customer_village = res.customerVillage
+						self.form.customer_ADDRESS = res.customerAddress
+					}
+				})
+			},
+			// 判断需要哪个接口
+			iswho: function () {
+				var self = this
+				if (localStorage.getItem('editId')) {
+					if (localStorage.getItem('operatorType') == 1) {
+						self.getEditCase1()
+					} else if (localStorage.getItem('operatorType') == 2){
+						self.getEditCase2()
+					}
+				}
+
+
+
+
+			}
+
+
 		},
-		mounted(){
+		mounted() {
 			this.getAttribute('roomType');
 			this.getAttribute('styleType');
-			this.getEditCase()
+			this.iswho()
 		}
 	})
 // 	mui.init()
