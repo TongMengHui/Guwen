@@ -403,9 +403,7 @@
 	mui.init(
 		token = localStorage.getItem('token'),
 		id = localStorage.getItem('id'),
-		getMerchant(),
-		islead(),
-		isbind()
+		getMerchant()
 	)
 	// 弹出引导框
 	function lead() {
@@ -416,9 +414,8 @@
 	}
 	
 	// 判断是否需要弹出引导框
-	function islead() {
-		 operatorIdentityNo = localStorage.getItem('operatorIdentityNo')
-		if (operatorIdentityNo == 'null'||operatorIdentityNo == ''||!operatorIdentityNo) {
+	function islead(obj) {
+		if (!obj) {
 			lead()
 			$('#renzheng').html('未认证')
 		} else {
@@ -427,9 +424,8 @@
 		}
 	}
 	// 判断绑定店铺是否成功的首页显示
-	function isbind() {
-		 applyStatus = localStorage.getItem('applyStatus')		
-		 if(applyStatus == 1) {
+	function isbind(obj) {	
+		 if(obj == 1) {
 			$('#bind').html('已绑定')
 		}else{
 			$('#bind').html('未绑定')
@@ -502,7 +498,7 @@
 	$('.menu-smrz').on('tap', function () {
 		 operatorIdentityNo = localStorage.getItem('operatorIdentityNo')
 		 operatorName = localStorage.getItem('operatorName')
-		if (operatorIdentityNo== 'null'||operatorIdentityNo == ''||!operatorIdentityNo) {
+		if (!operatorIdentityNo) {
 			mui.openWindow(
 				'real_name_certification.html',
 				'real_name_certification',

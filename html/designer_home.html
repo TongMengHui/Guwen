@@ -419,7 +419,7 @@
 	// 判断是否需要弹出引导框
 	function islead() {
 		 operatorIdentityNo = localStorage.getItem('operatorIdentityNo')
-		if (operatorIdentityNo == 'null'||operatorIdentityNo == ''||!operatorIdentityNo) {
+		if (!operatorIdentityNo) {
 			lead()
 			$('#renzheng').html('未认证')
 		} else {
@@ -493,7 +493,7 @@
 	$('.menu-smrz').on('tap', function () {
 		 operatorIdentityNo = localStorage.getItem('operatorIdentityNo')
 		 operatorName = localStorage.getItem('operatorName')
-		if (operatorIdentityNo== 'null'||operatorIdentityNo == ''||!operatorIdentityNo) {
+		if (!operatorIdentityNo) {
 			mui.openWindow(
 				'real_name_certification.html',
 				'real_name_certification',

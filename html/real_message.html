@@ -109,21 +109,27 @@
 <script src="../js/util.js"></script>
 <script>
 	mui.init()
-	
+
 	var operatorName = localStorage.getItem('operatorName')
 	var operatorIdentityNo = localStorage.getItem('operatorIdentityNo')
 	$('#operatorName').val(operatorName)
 	$('#operatorIdentityNo').val(operatorIdentityNo)
-	console.log(operatorIdentityNo)
 	$('.mui-icon-back').on('tap', function () {
-		operatorName = localStorage.setItem('operatorName',operatorName)
-	    operatorIdentityNo = localStorage.setItem('operatorIdentityNo',operatorIdentityNo)
 		operatorType = localStorage.getItem('operatorType')
-		mui.openWindow(
-					'designer_home.html',
-					'designer_home',
-					{}
-				)
+		if (operatorType == 1) {
+			mui.openWindow(
+				'customer_home.html',
+				'customer_home',
+				{}
+			)
+		} else if (operatorType == 2) {
+			mui.openWindow(
+				'designer_home.html',
+				'designer_home',
+				{}
+			)
+		}
+
 	})
 
 
