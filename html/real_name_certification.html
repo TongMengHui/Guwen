@@ -252,6 +252,23 @@
 		var front = localStorage.getItem('front'),
 			back = localStorage.getItem('back'),
 			operatorName = $('#operatorName').val(),
+			operatorIdentityNo = $('#operatorIdentityNo').val()
+		if (front == '') {
+			mui.toast('请上传正面照')
+		} else if (back == '') {
+			mui.toast('请上传反面照')
+		} else if (operatorName == '' || operatorIdentityNo == '') {
+			mui.toast('请填写身份信息')
+		} else (
+			postmerchant()
+		)
+	})
+
+	// 上传顾问信息的接口
+	function postmerchant() {
+		var front = localStorage.getItem('front'),
+			back = localStorage.getItem('back'),
+			operatorName = $('#operatorName').val(),
 			operatorIdentityNo = $('#operatorIdentityNo').val(),
 			realAddress = $('#realAddress').val(),
 			operatorCode = localStorage.getItem('operatorCode'),
@@ -263,19 +280,6 @@
 
 			localStorage.setItem('operatorName', operatorName),
 			localStorage.setItem('operatorIdentityNo', operatorIdentityNo)
-		if (!front) {
-			mui.toast('请上传正面照')
-		} else if (!back) {
-			mui.toast('请上传反面照')
-		} else if (!operatorName || !operatorIdentityNo) {
-			mui.toast('请填写身份信息')
-		} else (
-			postmerchant()
-		)
-	})
-
-	// 上传顾问信息的接口
-	function postmerchant() {
 		$util.http('/api/merchant-operators', {
 			data: {
 				id: id,                                      //id
@@ -292,7 +296,7 @@
 				operatorAddress: operatorAddress
 			},
 			dataType: 'json',
-			type: 'post',
+			type: 'put',
 			success: function (res) {
 				mui.openWindow(
 					'real_message.html',

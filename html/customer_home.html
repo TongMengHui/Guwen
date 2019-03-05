@@ -415,7 +415,7 @@
 	
 	// 判断是否需要弹出引导框
 	function islead(obj) {
-		if (!obj) {
+		if (obj == null||obj == '') {
 			lead()
 			$('#renzheng').html('未认证')
 		} else {
@@ -494,17 +494,20 @@
 	gallery.slider({
 		interval: 3000 //自动轮播周期，若为0则不自动播放，默认为0；
 	});
-
+	
 	$('.menu-smrz').on('tap', function () {
 		 operatorIdentityNo = localStorage.getItem('operatorIdentityNo')
+		//  operatorIdentityNo = '1'
+		 console.log(Boolean(operatorIdentityNo))
 		 operatorName = localStorage.getItem('operatorName')
-		if (!operatorIdentityNo) {
+		if (operatorIdentityNo == 'null') {
 			mui.openWindow(
 				'real_name_certification.html',
 				'real_name_certification',
 				{}
 			)
-		} else  {
+		} 
+		else  {
 			mui.openWindow(
 				'real_message.html',
 				'real_message',
@@ -532,7 +535,7 @@
 			)
 		}else if(applyStatus == 2){                                        //被拒绝
 			// 被拒绝无此页面
-		}else if(applyStatus == 3||applyStatus == 'null'){                 //没申请
+		}else if(applyStatus == 3||applyStatus == 'undefined'){                 //没申请
 			mui.openWindow(
 				'my_shop_unbound.html',
 				'my_shop_unbound',

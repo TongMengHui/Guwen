@@ -137,7 +137,7 @@
 						</div>
 					</div>
 				</a>
-				<a href="customer_case_none0.html">
+				<a href="customer_case_none.html">
 					<div class="feature-hb">
 						<div class="hb-info">
 							<div class="hb-caption">发布案例</div>
@@ -417,9 +417,8 @@
 	}
 
 	// 判断是否需要弹出引导框
-	function islead() {
-		 operatorIdentityNo = localStorage.getItem('operatorIdentityNo')
-		if (!operatorIdentityNo) {
+	function islead(obj) {
+		if (obj == null||obj == '') {
 			lead()
 			$('#renzheng').html('未认证')
 		} else {
@@ -427,13 +426,10 @@
 			$('#renzheng').html('已认证')
 		}
 	}
-	// 判断是否绑定店铺
-	function isbind() {
-		 applyStatus = localStorage.getItem('applyStatus')		
-		 if(applyStatus == 1) {
+	// 判断绑定店铺是否成功的首页显示
+	function isbind(obj) {	
+		 if(obj == 1) {
 			$('#bind').html('已绑定')
-		}else if(applyStatus == 0){
-			$('#bind').html('审核中')
 		}else{
 			$('#bind').html('未绑定')
 		}
@@ -493,7 +489,7 @@
 	$('.menu-smrz').on('tap', function () {
 		 operatorIdentityNo = localStorage.getItem('operatorIdentityNo')
 		 operatorName = localStorage.getItem('operatorName')
-		if (!operatorIdentityNo) {
+		if (operatorIdentityNo == 'null') {
 			mui.openWindow(
 				'real_name_certification.html',
 				'real_name_certification',
@@ -505,9 +501,7 @@
 				'real_message',
 				{}
 			)
-			
 		}
-
 	})
 	// 判断
 	$('.menu-wddp').on('tap', function () {
@@ -526,7 +520,7 @@
 			)
 		}else if(applyStatus == 2){
 			// 被拒绝无此页面
-		}else if(applyStatus == 3 || applyStatus == null){
+		}else if(applyStatus == 3 || applyStatus == 'null'){
 			mui.openWindow(
 				'my_shop_unbound.html',
 				'my_shop_unbound',
