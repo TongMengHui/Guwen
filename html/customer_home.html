@@ -438,7 +438,10 @@
 			type: 'get',
 			success: function (res) {
 				console.log(res)
-				$('.person_pic').attr('src', res.avatar)
+				if(!res.avatar){
+					$('.person_pic').attr('src', res.avatar)
+				}
+				
 				$('.visit_num').text(res.viewNum)
 				localStorage.setItem('operatorIdentityNo',res.operatorIdentityNo)
 				localStorage.setItem('operatorName',res.operatorName)	

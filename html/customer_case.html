@@ -33,7 +33,7 @@
 						<span>{{item.createdDate}}</span>
 					</div>
 					<a href="customer_case_attribute.html">
-						<button class="case-edit"  @click = "getId(item.id)">编辑</button>
+						<button class="case-edit" @click="getId(item.id)">编辑</button>
 					</a>
 				</div>
 			</div>
@@ -60,44 +60,68 @@
 <script src="../js/vue.min.js" type="text/javascript"></script>
 <script type="text/javascript" src="../js/jquery-1.11.0.min.js"></script>
 <script type="text/javascript" src="../js/icon-back.js"></script>
+<script type="text/javascript" src="../js/city_data.js"></script>
 <script src="../js/util.js"></script>
 <script type="text/javascript">
 	new Vue({
 		el: '#content',
 		data: {
 			List: [],
-			id:localStorage.getItem('id'),
-			operatorType:localStorage.getItem('operatorType')
+			id: localStorage.getItem('id'),
+			operatorType: localStorage.getItem('operatorType')
 		},
 		methods: {
-			
+
 			// 家居案例接口(design case)
 			getHomeCase: function () {
 				var self = this
-				id=this.id
-				$util.http('/api/home-cases-operator/?operatorId='+id, {
+				id = this.id
+				$util.http('/api/home-cases-operator/?operatorId=' + id, {
 					dataType: 'json',
 					type: 'get',
 					success: function (res) {
 						self.List = res
-						console.log(self.List)
 						self.haveCase(res)
+						console.log(self.List)
+						Object.keys(__CITY__).forEach(function (key) {
+							console.log(__CITY__[key])
+							for(var i = 0;i <=__CITY__[key].length;i++ ){
+								if (__CITY__[key].value == self.List.customerProvince) {
+								self.List.customerProvince= __CITY__[key].text
+								Object.keys(__CITY__[key]).forEach(function (key){
+									console.log(__CITY__[key])
+								})
+							}
+							}
+						});
 					}
 				})
 			},
 			// 设计案例接口(design case)
 			getDesignCase: function () {
 				var self = this
-				id=this.id
-				$util.http('/api/home-cases-operator/?operatorId='+id, {
+				id = this.id
+				$util.http('/api/home-cases-operator/?operatorId=' + id, {
 					dataType: 'json',
 					type: 'get',
 					success: function (res) {
 						self.List = res
-						console.log(self.List)
 						self.haveCase(res)
+						Object.keys(__CITY__).forEach(function (key) {
+							if (__CITY__[key].value == self.List.customerProvince) {
+								self.List.customerProvince= __CITY__[key].text
+								Object.keys(__CITY__[key]).forEach(function (key){
+									console.log(__CITY__[key])
+								})
+							}
+							
+						});
 					}
 				})
+			},
+			// 遍历城市
+			traver: function (cityCode) {
+
 			},
 			// 是否有案例
 			haveCase: function (obj) {
@@ -109,26 +133,26 @@
 					$('#mui-content2').css('display', 'block')
 				}
 			},
-			getCase:function(){
-				var  operatorType= this.operatorType,
+			getCase: function () {
+				var operatorType = this.operatorType,
 					self = this
-				if( operatorType==1){
+				if (operatorType == 1) {
 					self.getHomeCase()
-				}else if(operatorType ==2){
+				} else if (operatorType == 2) {
 					self.getDesignCase()
 				}
 			},
-			getId:function(obj){
+			getId: function (obj) {
 				console.log(obj)
-				localStorage.setItem('editId',obj)
+				localStorage.setItem('editId', obj)
 			}
-			
+
 
 		},
 		mounted() {
 			mui.init(
 				this.getCase()
-				
+
 			)
 		}
 	});
