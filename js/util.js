@@ -77,7 +77,6 @@
 		// 			fail:失败回调
 		// 		}
 		http(url, options) {
-			console.log(BASEURL + url)
 			mui.ajax(BASEURL + url, {
 				headers: {
 					'Content-Type': 'application/json',
@@ -92,11 +91,10 @@
 						options.success(data)
 				},
 				error: function(xhr, type, errorThrown) {
-					console.log(xhr.status)
 					if (xhr.status == '401') {
 						//需要重新登陆
 					} else {
-						mui.toast('HTTP CODE: ' + xhr.status);
+						// mui.toast('HTTP CODE: ' + xhr.status);
 					}
 					// 					if(options.fail)
 					// 						options.fail(xhr,type,errorThrown);
