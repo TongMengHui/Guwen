@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>设计师首页</title>
+	<title>家居顾问首页</title>
 	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 	<link href="../css/mui.min.css" rel="stylesheet" />
 	<link href="../css/designer_home.css" rel="stylesheet" />
@@ -156,45 +156,33 @@
 					<!--支持循环，需要重复图片节点-->
 					<div class="mui-slider-item mui-slider-item-duplicate">
 						<a href="#">
-							<img src="../img/ad4.png" />
+							<img src="../img/ad4.jpg" />
 						</a>
 					</div>
 					<div class="mui-slider-item">
 						<a href="#">
-							<img src="../img/lb.png" class="pic" />
+							<img src="../img/lb.jpg" class="pic" />
 						</a>
 					</div>
 					<div class="mui-slider-item">
 						<a href="#">
-							<img src="../img/a1.png" class="pic" />
+							<img src="../img/a1.jpg" class="pic" />
 						</a>
 					</div>
 					<div class="mui-slider-item">
 						<a href="#">
-							<img src="../img/ad1.png" class="pic" />
-						</a>
-					</div>
-					<div class="mui-slider-item">
-						<a href="#">
-							<img src="../img/al2.png" class="pic" />
-						</a>
-					</div>
-					<div class="mui-slider-item">
-						<a href="#">
-							<img src="../img/ad4.png" class="pic" />
+							<img src="../img/ad4.jpg" class="pic" />
 						</a>
 					</div>
 					<!--支持循环，需要重复图片节点-->
 					<div class="mui-slider-item mui-slider-item-duplicate">
 						<a href="#">
-							<img src="../img/lb.png" />
+							<img src="../img/lb.jpg" />
 						</a>
 					</div>
 				</div>
 				<div class="mui-slider-indicator">
 					<div class="mui-indicator mui-active"></div>
-					<div class="mui-indicator"></div>
-					<div class="mui-indicator"></div>
 					<div class="mui-indicator"></div>
 					<div class="mui-indicator"></div>
 				</div>
@@ -438,7 +426,7 @@
 			type: 'get',
 			success: function (res) {
 				console.log(res)
-				if(!res.avatar){
+				if(res.avatar){
 					$('.person_pic').attr('src', res.avatar)
 				}
 				

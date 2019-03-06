@@ -156,38 +156,28 @@
 					<!--支持循环，需要重复图片节点-->
 					<div class="mui-slider-item mui-slider-item-duplicate">
 						<a href="#">
-							<img src="../img/ad4.png" />
+							<img src="../img/ad4.jpg" />
 						</a>
 					</div>
 					<div class="mui-slider-item">
 						<a href="#">
-							<img src="../img/lb.png" class="pic" />
+							<img src="../img/lb.jpg" class="pic" />
 						</a>
 					</div>
 					<div class="mui-slider-item">
 						<a href="#">
-							<img src="../img/a1.png" class="pic" />
+							<img src="../img/a1.jpg" class="pic" />
 						</a>
 					</div>
 					<div class="mui-slider-item">
 						<a href="#">
-							<img src="../img/ad1.png" class="pic" />
-						</a>
-					</div>
-					<div class="mui-slider-item">
-						<a href="#">
-							<img src="../img/al2.png" class="pic" />
-						</a>
-					</div>
-					<div class="mui-slider-item">
-						<a href="#">
-							<img src="../img/ad4.png" class="pic" />
+							<img src="../img/ad4.jpg" class="pic" />
 						</a>
 					</div>
 					<!--支持循环，需要重复图片节点-->
 					<div class="mui-slider-item mui-slider-item-duplicate">
 						<a href="#">
-							<img src="../img/lb.png" />
+							<img src="../img/lb.jpg" />
 						</a>
 					</div>
 				</div>
@@ -439,7 +429,9 @@
 			type: 'get',
 			success: function (res) {
 				console.log(res)
-				$('.person_pic').attr('src', res.avatar)
+				if(res.avatar){
+					$('.person_pic').attr('src', res.avatar)
+				}
 				$('.visit_num').text(res.viewNum)
 				localStorage.setItem('operatorIdentityNo',res.operatorIdentityNo)
 				localStorage.setItem('operatorName',res.operatorName)	          

@@ -51,7 +51,7 @@
 		</div>
 		<!--进度条-->
 		<div>
-			<p>信息完整度31%</p>
+			<p id="process">信息完整度31%</p>
 			<div id="progress" class="mui-progressbar mui-progressbar-green ">
 				<span></span>
 			</div>
@@ -78,18 +78,18 @@
 		<li class="msgChild">
 			<span class="msg1">真实姓名：</span>
 			<input type="text">
-			<a href="real_name_certification.html">
+			<!-- <a href="real_name_certification.html"> -->
 			<span class="mui-icon mui-icon-arrowright"></span>
 			<span class="msg">去认证</span>
-		</a> 
+			<!-- </a>  -->
 		</li>
 		<li class="msgChild">
 			<span>身份证号：</span>
 			<input type="text">
-			<a href="real_name_certification.html">
+			<!-- <a href="real_name_certification.html"> -->
 			<span class="mui-icon mui-icon-arrowright"></span>
-			<span class="msg">去认证</span> 
-		</a> 
+			<span class="msg">去认证</span>
+			<!-- </a>  -->
 		</li>
 		<li class="msgChild">
 			<span>性别：</span>
@@ -114,8 +114,8 @@
 		<li class="msgChild">
 			<span>邮箱：</span>
 			<input type="text">
-			<span class="mui-icon mui-icon-arrowright"></span>
-			<span class="msg">绑定</span>
+			<!-- <span class="mui-icon mui-icon-arrowright"></span> -->
+			<!-- <span class="msg">绑定</span> -->
 
 		</li>
 		<li class="msgChild">
@@ -141,8 +141,8 @@
 		<li class="msgChild">
 			<span>单位名称：</span>
 			<input type="text">
-			<span class="mui-icon mui-icon-arrowright"></span>
-			<span class="msg">暂未绑定</span>
+			<!-- <span class="mui-icon mui-icon-arrowright"></span>
+			<span class="msg">暂未绑定</span> -->
 		</li>
 		<li class="msgChild">
 			<span>个性签名：</span>
@@ -151,7 +151,7 @@
 	</ul>
 
 	<div class="submit">
-		<p>保存</p>
+		<p id="submit">保存</p>
 	</div>
 </body>
 <script src="../js/mui.min.js"></script>
@@ -160,13 +160,38 @@
 <script src="../js/mui.picker.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="../js/mui.dtpicker.js" type="text/javascript"></script>
 <script src="../js/mui.poppicker.js" type="text/javascript"></script>
+<script src="../js/qiniuUploader.js"></script>
 <script type="text/javascript" src="../js/back-to-top.js"></script>
 <script src="../js/city_data.js" type="text/javascript" charset="utf-8"></script>
 <script src="../js/util.js"></script>
 <script type="text/javascript">
 	mui.init(
-		Mobile()   //显示手机号
+		name(),  //真实姓名
+		identityNo(), //身份证号
+		Mobile(),   //显示手机号
+		myType()    //职业
 	)
+	percent()
+	$('input').bind("input propertychange",function(){
+		percent()
+	})
+	// 百分比信息
+	function percent() {
+		var progress = 0,
+			input = document.getElementsByTagName('input'),
+			num = 0;
+		for (var i = 0; i < input.length; i++) {
+			
+			if (input[i].value != '') {
+				num += 1
+				console.log(num)
+			}
+		}
+		progress = parseInt(num/13 * 100) 
+		console.log(progress)
+		mui("#progress").progressbar({ progress }).show();
+		$('#process').text('信息完整度'+progress+'%')
+	}
 	// 设置头像
 	var sex, operatorName
 	function chooseAvatar(file) {
@@ -183,30 +208,34 @@
 
 	function getQiniuToken(src) {
 		$util.uploadToQiniu(src, function (imgPath) {
-			// 完整的url
 			console.log(imgPath)
-			localStorage.setItem(avar, imgPath)
+			localStorage.setItem('avatar', imgPath)
 		})
 	}
 	// 个人信息的接口
 	function postmerchant() {
-		console.log(sex)
+		console.log('开始')
 		//所缺少字段    出生日期    从业年限
 		var id = localStorage.getItem('id'),
 			avatar = localStorage.getItem('avatar'),
 			operatorCode = localStorage.getItem('operatorCode'),
 			password = localStorage.getItem('password'),
 			operatorType = localStorage.getItem('operatorType'),
-			avatar = localStorage.getItem('avatar'),                   //个人头像
-			var personalSignature  = $('.msgChild').eq(13).val()    // 个性签名
-			operatorIdentityNo = localStorage.getItem('operatorIdentityNo'),
-			//性别
-			operatorMobile = localStorage.getItem('operatorMobile'),   //手机
-			nickName = $('.msgChild').eq(0).val(),
-			operatorEmail = $('.msgChild').eq(6).val(),                   //邮箱
+			avatar = localStorage.getItem('avatar'),                   		//个人头像
+			personalSignature = $('.msgChild').eq(12).find('input').val()    // 个性签名
+		operatorIdentityNo = localStorage.getItem('operatorIdentityNo'),
+			sex = localStorage.getItem('sex')							//性别
+		operatorMobile = localStorage.getItem('operatorMobile'),   		//手机
+			nickName = $('.msgChild').eq(0).find('input').val(),
+			operatorEmail = $('.msgChild').eq(6).find('input').val(),                   //邮箱
 			streetName = $('.msgChild').eq(8).find('input').val(),
-			companyName  = $('.msgChild').eq(12).find('input').val()
-			localStorage.setItem('personalSignature',personalSignature)
+			companyName = $('.msgChild').eq(11).find('input').val(),
+			customerBirthDate = localStorage.getItem('customerBirthDate'),
+			businessYears = localStorage.getItem('businessYears'),      //从业年限
+			province = localStorage.getItem('province'),
+			city = localStorage.getItem('city'),
+			area = localStorage.getItem('area')
+		localStorage.setItem('personalSignature', personalSignature)
 		$util.http('/api/merchant-operators', {
 			data: {
 				id: id,                                      //id
@@ -224,39 +253,73 @@
 				streetName,
 				operatorEmail,
 				companyName,
-				personalSignature                           //个性签名
+				personalSignature,                         //个性签名
+				customerBirthDate,                        //日期
+				businessYears,
+				companyName,
+				province,
+				city,
+				area
 			},
 			dataType: 'json',
 			type: 'put',
 			success: function (res) {
 				console.log(res)
+				mui.toast('保存成功')
+				mui.openWindow(
+					'personal_homepage.html',
+					'personal_homepage',
+					{}
+				)
 			}
 		})
 	}
 
 	// 保存
-	$('.submit').on('tap', function () {
+	$('#submit').on('tap', function () {
+		console.log(1)
 		postmerchant()
 	})
 	// 真实姓名
 	$('.msgChild').eq(1).find('input').on('tap', function () {
 		operatorName = localStorage.getItem('operatorName')
-		if(operatorName == 'null'){
-			$(this).val('请实名认证')
-		}else{
-			$(this).val(operatorName)
+		if (operatorName == null) {
+			mui.openWindow(
+				'real_name_certification.html',
+				'real_name_certification',
+				{}
+			)
 		}
-		
+
 	})
+	function name() {
+		operatorName = localStorage.getItem('operatorName')
+		if (operatorName == null) {
+			$('.msgChild').eq(1).find('input').val('请实名认证')
+		} else {
+			$('.msgChild').eq(1).find('input').val(operatorName)
+		}
+	}
+
 	// 身份证号
+	function identityNo() {
+		operatorIdentityNo = localStorage.getItem('operatorIdentityNo')
+		if (operatorIdentityNo == null) {
+			$('.msgChild').eq(2).find('input').val('请实名认证')
+		} else {
+			$('.msgChild').eq(2).find('input').val(operatorIdentityNo)
+		}
+	}
 	$('.msgChild').eq(2).find('input').on('tap', function () {
 		operatorIdentityNo = localStorage.getItem('operatorIdentityNo')
-		if(operatorIdentityNo == 'null'){
-			$(this).val('请实名认证')
-		}else{
-			$(this).val(operatorIdentityNo)
+		if (operatorIdentityNo == 'null') {
+			mui.openWindow(
+				'real_name_certification.html',
+				'real_name_certification',
+				{}
+			)
 		}
-		
+
 	})
 
 	// 选择性别
@@ -279,41 +342,53 @@
 	})
 	//选择日期
 	$('.msgChild').eq(4).on('tap', function () {
-		console.log(1)
 		$util.showDatePicker(function (date) {
 			console.log(date)
 			$('.msgChild').eq(4).find('input').val(date.value)
+			localStorage.setItem('customerBirthDate', date.value)
 		})
 	});
-//手机
-	function Mobile(){
+	//手机
+	function Mobile() {
 		operatorMobile = localStorage.getItem('operatorMobile')
 		$('.msgChild').eq(5).find('input').val(operatorMobile)
 	}
-// 所在城市
-$('.msgChild').eq(7).on('tap', function () {
-		$util.showAdPicker(__CITY__,function(datas){
-			console.log(datas[0].text + '-'+datas[1].text+'-'+datas[2].text)
-			$('.msgChild').eq(7).find('input').val(datas[0].text + '-'+datas[1].text+'-'+datas[2].text)
+
+	// 所在城市
+	$('.msgChild').eq(7).on('tap', function () {
+		$util.showAdPicker(__CITY__, function (datas) {
+			console.log(datas[0].text + '-' + datas[1].text + '-' + datas[2].text)
+			$('.msgChild').eq(7).find('input').val(datas[0].text + '-' + datas[1].text + '-' + datas[2].text)
+			localStorage.setItem('province', datas[0].value)
+			localStorage.setItem('city', datas[1].value)
+			localStorage.setItem('area', datas[2].value)
 		});
 	});
-// 街道地址
-// 我的职业
-function myType(){
-	console.log(1)
-	var operatorType = localStorage.getItem('operatorType')
-	if(operatorType == 1){
-		$('.msgChild').eq(9).find('input').val('家居顾问')
-	}else if(operatorType == 2){
-		$('.msgChild').eq(9).find('input').val('设计顾问')
+	// 街道地址
+	// 我的职业
+	function myType() {
+		var operatorType = localStorage.getItem('operatorType')
+		if (operatorType == 1) {
+			$('.msgChild').eq(9).find('input').val('家居顾问')
+		} else if (operatorType == 2) {
+			$('.msgChild').eq(9).find('input').val('设计顾问')
+		}
 	}
-}
-// 从业年限
-function myType(){
-	var operatorType = localStorage.getItem('operatorType')
-	var picker = new mui.PopPicker();
-	
-}
+	// 从业年限
+	$('.msgChild').eq(10).on('tap', function () {
+		var picker = new mui.PopPicker();
+		picker.setData([{ value: '1', text: '1' }, { value: '2', text: '2' }, { value: '3', text: '3' }, { value: '4', text: '4' }
+			, { value: '5', text: '5' }, { value: '6', text: '6' }, { value: '7', text: '7' }, { value: '8', text: '8' }, { value: '9', text: '9' },
+		{ value: '10', text: '10' }, { value: '10~', text: '10年以上' }]);
+		picker.show(function (selectItems) {
+			console.log(selectItems[0].text);
+			console.log(selectItems[0].value);
+			$('.msgChild').eq(10).find('input').val(selectItems[0].text + '年')
+			localStorage.setItem('businessYears', selectItems[0].value)
+		})
+	})
+	//单位名称
+
 </script>
 
 </html>

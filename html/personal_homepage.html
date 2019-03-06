@@ -80,7 +80,7 @@
 				<img src="../img/feature1.png" class="icon-img" />
 			</div>
 			<div class="features-info-detail" id="address">
-				客户案例（16）
+				客户案例
 			</div>
 			<a href="customer_case.html">
 				<div class="features-info-more">
@@ -93,7 +93,7 @@
 				<img src="../img/xiaoxi3.png" class="icon-img" />
 			</div>
 			<div class="features-info-detail" id="address">
-				产品推荐（20）
+				产品推荐
 			</div>
 			<a href="#">
 				<div class="features-info-more">
@@ -107,7 +107,7 @@
 				<img src="../img/scpj.png" class="icon-img" />
 			</div>
 			<div class="features-info-detail" id="address">
-				客户留言（12）
+				客户留言
 			</div>
 			<a href="client_messages.html">
 				<div class="features-info-more">
@@ -120,7 +120,7 @@
 				<img src="../img/dianzan.png" class="icon-img" />
 			</div>
 			<div class="features-info-detail" id="address">
-				案例点评（8）
+				案例点评
 			</div>
 			<a href="#">
 				<div class="features-info-more">
@@ -142,11 +142,10 @@
 <script src="../js/mui.min.js"></script>
 <script type="text/javascript" src="../js/jquery-1.11.0.min.js"></script>
 <script src="../js/qiniuUploader.js"></script>
-<script type="text/javascript" src="../js/icon-back.js"></script>
 <script src="../js/util.js"></script>
 <script type="text/javascript">
 	mui.init(
-		postmerchant()
+		getPersonalMsg()
 	)
 	// 头像
 	function chooseAvatar(file) {
@@ -178,35 +177,16 @@
 	function getQiniuToken(src) {
 		$util.uploadToQiniu(src, function (imgPath) {
 			// 完整的url
-			console.log(imgPath)
 			localStorage.setItem('homeImage', imgPath)
+			postmerchant()
 		})
 	}
-	// 个人信息的接口
-	function postmerchant() {
-		var id = localStorage.getItem('id'),
-			operatorCode = localStorage.getItem('operatorCode'),
-			operatorType = localStorage.getItem('operatorType'),
-			operatorIdentityNo = localStorage.getItem('operatorIdentityNo'),
-			operatorName = localStorage.getItem('operatorName'),
-			password = localStorage.getItem('password'),
-			operatorMobile = localStorage.getItem('operatorMobile')
-			homeImage = localStorage.getItem('homeImage')
-		$util.http('/api/merchant-operators', {
-			data: {
-				id: id,                                      //id
-				operatorCode: operatorCode,					//顾问编号
-				operatorType: operatorType,					//顾问身份类型
-				operatorName: operatorName,	                	//真实姓名
-				operatorIdentityNo: operatorIdentityNo,     	//身份证号码
-				registerAgreement: 'Y',						 //平台注册协议
-				status: true,                                 //是否激活
-				password: password,                            //登陆密码
-				operatorMobile: operatorMobile,                 //手机号码
-				homeImage
-			},
+	// 获取个人信息
+	function getPersonalMsg(){
+		var id = localStorage.getItem('id')
+		$util.http('/api/merchant-operators/'+id, {
 			dataType: 'json',
-			type: 'put',
+			type: 'get',
 			success: function (res) {
 				console.log(res)
 				if (storeAddress == null) {
@@ -219,11 +199,11 @@
 				} else {
 					$('#shop').text(res.companyName)
 				}
-				
-				if (res.OperatorName == null) {
+
+				if (res.operatorName == null) {
 					$('#user-name').text('尚未实名认证')
 				} else {
-					$('#user-name').text(res.OperatorName)
+					$('#user-name').text(res.operatorName)
 				}
 
 
@@ -232,20 +212,53 @@
 				} else if (res.operatorType == 2) {
 					$('.job-btn').text('认证设计顾问')
 				}
-				if(res.avatar == null){
-					$('.avatar-img').attr('src','../img/avatar.png')
-				}else{
-					$('.avatar-img').attr('src',res.avatar)
+				if (res.avatar == null) {
+					$('.avatar-img').attr('src', '../img/avatar.png')
+				} else {
+					$('.avatar-img').attr('src', res.avatar)
 				}
-				if(res.homeImage == null){
-					$('#bg').attr('src',none)
-				}else{
-					$('#bg').attr('src',res.homeImage)
+				if (res.homeImage == null) {
+					$('#bg').attr('src', '../img/u8393.png')
+				} else {
+					$('#bg').attr('src', res.homeImage)
 				}
 				$('.signature-input').val(res.personalSignature)
+				console.log(res.personalSignature)
 			}
 		})
 	}
+	// 个人信息的接口
+	function postmerchant() {
+		var id = localStorage.getItem('id'),
+			operatorCode = localStorage.getItem('operatorCode'),
+			operatorType = localStorage.getItem('operatorType'),
+			operatorIdentityNo = localStorage.getItem('operatorIdentityNo'),
+			operatorName = localStorage.getItem('operatorName'),
+			password = localStorage.getItem('password'),
+			operatorMobile = localStorage.getItem('operatorMobile'),
+			homeImage = localStorage.getItem('homeImage')
+		$util.http('/api/merchant-operators', {
+			data: {
+				id: id,                                      //id
+				operatorCode: operatorCode,					//顾问编号
+				operatorType: operatorType,					//顾问身份类型
+				operatorName: operatorName,	                	//真实姓名
+				operatorIdentityNo: operatorIdentityNo,     	//身份证号码
+				registerAgreement: 'Y',						 //平台注册协议
+				status: true,                                 //是否激活
+				password: password,                            //登陆密码
+				operatorMobile: operatorMobile,                 //手机号码
+				homeImage ,                                     //主页形象图
+			},
+			dataType: 'json',
+			type: 'put',
+			success: function (res) {
+				console.log(res)
+				
+			}
+		})
+	}
+	
 	// 店铺地址
 	var storeAddress = localStorage.getItem('storeAddress')
 	if (storeAddress == null) {
@@ -254,7 +267,24 @@
 		$('#address').text('storeAddress')
 	}
 
-
+// 点击返回到主页
+$('.mui-icon-back').on('tap',function(){
+	var operatorType = localStorage.getItem('operatorType')
+	if(operatorType == 1){
+		mui.openWindow(
+				'customer_home.html',
+				'customer_home',
+				{}
+			)
+	}else if(operatorType == 2){
+		mui.openWindow(
+				'designer_home.html',
+				'designer_home',
+				{}
+			)
+	}
+	
+})
 </script>
 
 </html>
