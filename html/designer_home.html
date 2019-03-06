@@ -84,7 +84,7 @@
 			<div class="state">
 				<div class="state1">
 					<div class="visit">访问人次</div>
-					<div class="visit_num">168
+					<div class="visit_num">0
 						<span>次</span>
 					</div>
 				</div>
@@ -262,20 +262,20 @@
 						</div>
 					</a>
 					<!-- <a href="my_shop_unbound.html"> -->
-						<div class="menu-wddp">
-							<div class="bubble-container">
-								<div class="bubble" id="bind">
-									未绑定
-								</div>
-								<div class="triangle"></div>
+					<div class="menu-wddp">
+						<div class="bubble-container">
+							<div class="bubble" id="bind">
+								未绑定
 							</div>
-							<div class="wddp-icon">
-								<img src="../img/wddp.png" style="width: 23px; height: 100%;" />
-							</div>
-							<div class="wddp-caption">
-								我的店铺
-							</div>
+							<div class="triangle"></div>
 						</div>
+						<div class="wddp-icon">
+							<img src="../img/wddp.png" style="width: 23px; height: 100%;" />
+						</div>
+						<div class="wddp-caption">
+							我的店铺
+						</div>
+					</div>
 					<!-- </a> -->
 					<!-- <a href="real_name_certification.html"> -->
 					<div class="menu-smrz">
@@ -384,12 +384,11 @@
 	//            是否店铺绑定  是否实名认证  
 	//            签到
 	var name = $('.name').text()
-	var code_num = $('.code_num').text()
 	var visit_num = $('.visit_num').text()
 	var profit_num = $('.profit_num').text()
 	var fenqiNum = $('.fenqi-num').find('span').text()
 	var designNum = $('.design-num').find('span').text()
-	var operatorName, operatorIdentityNo, token,id 
+	var operatorName, operatorIdentityNo, token, id;
 	mui.init(
 		token = localStorage.getItem('token'),
 		id = localStorage.getItem('id'),
@@ -406,58 +405,65 @@
 
 	// 判断是否需要弹出引导框
 	function islead(obj) {
-		if (obj == null||obj == '') {
+		if (obj == null || obj == '') {
 			lead()
 			$('#renzheng').html('未认证')
 		} else {
-			
+
 			$('#renzheng').html('已认证')
 		}
 	}
 	// 判断绑定店铺是否成功的首页显示
-	function isbind(obj) {	
-		 if(obj == 1) {
+	function isbind(obj) {
+		if (obj == 1) {
 			$('#bind').html('已绑定')
-		}else{
+		} else {
 			$('#bind').html('未绑定')
 		}
 	}
 	// 获取顾问表接口(merchant_operator)
 	function getMerchant() {
-		$util.http('/api/merchant-operators/'+ id, {
+		$util.http('/api/merchant-operators/' + id, {
 			dataType: 'json',
 			type: 'get',
 			success: function (res) {
 				console.log(res)
-				if(res.avatar){
+				if (res.avatar) {
 					$('.person_pic').attr('src', res.avatar)
 				}
-				$('.visit_num').text(res.viewNum)
-				localStorage.setItem('operatorIdentityNo',res.operatorIdentityNo)
-				localStorage.setItem('operatorName',res.operatorName)	          
-				localStorage.setItem('applyStatus',res.applyStatus)	       
-				localStorage.setItem('operatorCode',res.operatorCode)	
-				localStorage.setItem('merchantStoreinfoId',res.merStoreinfoId)
+				if(res.viewNum){
+					$('.visit_num').text(res.viewNum)
+				}else{
+					$('.visit_num').text(0)
+				}
+				localStorage.setItem('operatorIdentityNo', res.operatorIdentityNo)
+				localStorage.setItem('operatorName', res.operatorName)
+				localStorage.setItem('applyStatus', res.applyStatus)
+				localStorage.setItem('operatorCode', res.operatorCode)
+				localStorage.setItem('merchantStoreinfoId', res.merStoreinfoId)
+				$('.code_num').text(res.operatorCode) 
 				islead(res.operatorIdentityNo)
 				isbind(res.applyStatus)
 				merStoreinfo()
-				
+
 			}
 		})
 	}
-   //获取店铺merchant_store_info  
-   function merStoreinfo() {
+	//获取店铺merchant_store_info  
+	function merStoreinfo() {
 		var merStoreinfoId = localStorage.getItem('merchantStoreinfoId')
-		$util.http('/api/merchant-store-infos/'+ merStoreinfoId, {
-			dataType: 'json',
-			type: 'get',
-			success: function (res) {
-				console.log(res)
-				localStorage.setItem('merchantStoreInfoName',res.storeName)
-			}
-		})
+		if (merStoreinfoId != 'null') {
+			$util.http('/api/merchant-store-infos/' + merStoreinfoId, {
+				dataType: 'json',
+				type: 'get',
+				success: function (res) {
+					console.log(res)
+					localStorage.setItem('merchantStoreInfoName', res.storeName)
+				}
+			})
+		}
 	}
-	
+
 
 	// 获取设计案例表接口(design_cases)
 	function getDesignCases() {
@@ -477,15 +483,15 @@
 	});
 
 	$('.menu-smrz').on('tap', function () {
-		 operatorIdentityNo = localStorage.getItem('operatorIdentityNo')
-		 operatorName = localStorage.getItem('operatorName')
+		operatorIdentityNo = localStorage.getItem('operatorIdentityNo')
+		operatorName = localStorage.getItem('operatorName')
 		if (operatorIdentityNo == 'null') {
 			mui.openWindow(
 				'real_name_certification.html',
 				'real_name_certification',
 				{}
 			)
-		} else  {
+		} else {
 			mui.openWindow(
 				'real_message.html',
 				'real_message',
@@ -495,22 +501,22 @@
 	})
 	// 判断
 	$('.menu-wddp').on('tap', function () {
-		 applyStatus =  localStorage.getItem('applyStatus')
-		if(applyStatus == 1){
+		applyStatus = localStorage.getItem('applyStatus')
+		if (applyStatus == 1) {
 			mui.openWindow(
 				'my_shop_bind_success.html',
 				'my_shop_bind_success',
 				{}
 			)
-		}else if(applyStatus == 0){
+		} else if (applyStatus == 0) {
 			mui.openWindow(
 				'my_shop_review.html',
 				'my_shop_review',
 				{}
 			)
-		}else if(applyStatus == 2){
+		} else if (applyStatus == 2) {
 			// 被拒绝无此页面
-		}else if(applyStatus == 3 || applyStatus == 'null'){
+		} else if (applyStatus == 3 || applyStatus == 'null') {
 			mui.openWindow(
 				'my_shop_unbound.html',
 				'my_shop_unbound',
