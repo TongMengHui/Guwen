@@ -63,7 +63,7 @@
 							<span style="font-size: 15px; color: #333333; ">店铺编号</span>
 						</div>
 						<div class="dianpu-bianhao-input">
-							<input id="code" type="number" name="dianpu-bianhao" placeholder="请填写您所在的店铺编号" />
+							<input id="code" type="type" name="dianpu-bianhao" placeholder="请填写您所在的店铺编号" />
 						</div>
 						<input id="prove" type="button" value="验证" />
 					</div>
@@ -116,7 +116,7 @@
 					<div class="store-area-content">
 						<div class="store-area">所在地区</div>
 						<div class="store-area-input">
-							<input class="store-area-input1" id="storeArea" type="text" placeholder="请填写您所在店铺的区域" />
+							<input class="store-area-input1" id="storeArea" type="text" placeholder="请填写您所在店铺的区域" disabled/>
 						</div>
 						<div class="area-choice">
 							选择
@@ -176,6 +176,7 @@
 <script src="../js/mui.picker.min.js"></script>
 <script type="text/javascript" src="../js/icon-back.js"></script>
 <script src="../js/util.js"></script>
+<script src="../js/city_data.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
 
 	var storeName = $('#storeName').val()
@@ -196,19 +197,14 @@
 	}
 	// 选择地址
 	$('.area-choice').on('tap', function () {
-		var picker = new mui.PopPicker();
-		picker.setData([{
-			value: '0',
-			text: '苏州'
-		},
-		{
-			value: '1',
-			text: '南京'
-		}]);
-		picker.show(function (selectItems) {
-			console.log(selectItems)
-			$('.store-area-input1').val(selectItems[0].text)
-		})
+		var _self = this;
+				$util.showAdPicker(__CITY__, function (sel) {
+					console.log(sel)
+					$('#storeArea').val(sel[0].text+'-'+sel[1].text+'-'+sel[2].text)
+					localStorage.setItem('storeProvince',sel[0].value)
+					localStorage.setItem('storeCity',sel[1].value)
+					localStorage.setItem('storeArea',sel[2].value)
+				});
 	})
 
 	// 验证店铺
@@ -313,7 +309,7 @@
 		})
 	}
 
-	// 调取上传店铺的接口
+	// 调取上传有合作店铺的接口
 	function uppic(){
 		var doorImage = localStorage.getItem('doorImage')
 		var operatorCode = localStorage.getItem('operatorCode'),
@@ -325,8 +321,8 @@
 			merStoreinfoId = localStorage.getItem('merStoreinfoId'),
 			operatorType = localStorage.getItem('operatorType'),
 			applyStatus = 0
+
 			localStorage.setItem('applyStatus',applyStatus)
-			
 		$util.http('/api/merchant-operators', {
 			data:{
 				id :id,                                      //id
@@ -347,11 +343,43 @@
 			success: function (res) {
 				localStorage.setItem('merchantStoreinfoId',res.id)
 				localStorage.setItem('merchantStoreInfoName',res.storeName)	
-					mui.openwindow(
+					mui.openWindow(
 						'certification_review.html',
 						'certification_review',
 						{}
 			)																
+			}
+		})
+	}
+	// 上传无合作店铺的信息，获取编号
+	function getCode(){
+		var storeName = $('#storeName').val(),
+			storeProvince = localStorage.getItem('storeProvince'),
+			storeCity = localStorage.getItem('storeCity'),
+			storeArea = localStorage.getItem('storeArea'),
+			storeAddress = $('#storeAddress').val(),
+			storeMobile = $('#principalPhone').val(),
+			storeBusinessMan = $('#principalName').val()
+		$util.http('/api/merchant-store-infos', {
+			data:{
+				status:true,
+				storeProvince,
+				storeName,
+				storeCity,
+				storeArea,
+				storeAddress,
+				storeMobile,
+				storeBusinessMan
+			},
+			dataType: 'json',
+			type: 'post',
+			success: function (res) {
+				mui.openWindow(
+						'certification_review.html',
+						'certification_review',
+						{}
+			)		
+																			
 			}
 		})
 	}
@@ -360,7 +388,10 @@
 	$('#nextBtn1').on('tap',function(){
 		uppic()
 	})
-
+	// 无店铺
+	$('#nextBtn2').on('tap',function(){
+		getCode()
+	})
 
 </script>
 

@@ -447,7 +447,6 @@
 				localStorage.setItem('merchantStoreinfoId',res.merStoreinfoId)																									
 				islead(res.operatorIdentityNo)
 				isbind(res.applyStatus)
-				localStorage.setItem('applyStatus',applyStatus)
 				merStoreinfo()
 				productsBy()
 			}
@@ -497,7 +496,6 @@
 	
 	$('.menu-smrz').on('tap', function () {
 		 operatorIdentityNo = localStorage.getItem('operatorIdentityNo')
-		//  operatorIdentityNo = '1'
 		 console.log(Boolean(operatorIdentityNo))
 		 operatorName = localStorage.getItem('operatorName')
 		if (operatorIdentityNo == 'null') {
@@ -542,11 +540,6 @@
 				{}
 			)
 		}
-		// mui.openWindow(
-		// 		'my_shop_unbound.html',
-		// 		'my_shop_unbound',
-		// 		{}
-		// 	)
 	})
 </script>
 

@@ -45,7 +45,7 @@
 							<span style="font-size: 15px; color: #333333; ">店铺编号</span>
 						</div>
 						<div class="dianpu-bianhao-input">
-							<input id="code" type="number" name="dianpu-bianhao" placeholder="请填写您所在的店铺编号" />
+							<input id="code" type="number" style="margin-top:10px;" name="dianpu-bianhao" placeholder="请填写您所在的店铺编号" />
 						</div>
 						<input id="prove" type="button" value="验证" />
 					</div>
@@ -98,7 +98,7 @@
 					<div class="store-area-content">
 						<div class="store-area">所在地区</div>
 						<div class="store-area-input">
-							<input class="store-area-input1" id="storeArea" type="text" placeholder="请填写您所在店铺的区域" />
+							<input class="store-area-input1" id="storeArea" type="text" placeholder="请填写您所在店铺的区域" disabled="true" />
 						</div>
 						<div class="area-choice">
 							选择
@@ -158,6 +158,7 @@
 <script src="../js/mui.picker.min.js"></script>
 <script type="text/javascript" src="../js/icon-back.js"></script>
 <script src="../js/util.js"></script>
+<script src="../js/city_data.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
 
 	var storeName = $('#storeName').val()
@@ -179,19 +180,14 @@
 	}
 	// 选择地址
 	$('.area-choice').on('tap', function () {
-		var picker = new mui.PopPicker();
-		picker.setData([{
-			value: '0',
-			text: '苏州'
-		},
-		{
-			value: '1',
-			text: '南京'
-		}]);
-		picker.show(function (selectItems) {
-			console.log(selectItems)
-			$('.store-area-input1').val(selectItems[0].text)
-		})
+		var _self = this;
+		$util.showAdPicker(__CITY__, function (sel) {
+			console.log(sel)
+			$('#storeArea').val(sel[0].text + '-' + sel[1].text + '-' + sel[2].text)
+			localStorage.setItem('storeProvince', sel[0].value)
+			localStorage.setItem('storeCity', sel[1].value)
+			localStorage.setItem('storeArea', sel[2].value)
+		});
 	})
 
 	// 验证店铺
@@ -307,28 +303,28 @@
 			merStoreinfoId = localStorage.getItem('merStoreinfoId'),
 			operatorType = localStorage.getItem('operatorType'),
 			applyStatus = 0
-			localStorage.setItem('applyStatus',applyStatus)
+		localStorage.setItem('applyStatus', applyStatus)
 		$util.http('/api/merchant-operators', {
 			data: {
-				id :id,                                      //id
-				operatorCode:operatorCode,					//顾问编号
-				operatorType:operatorType,					//顾问身份类型
+				id: id,                                      //id
+				operatorCode: operatorCode,					//顾问编号
+				operatorType: operatorType,					//顾问身份类型
 				operatorName: operatorName,	                	//真实姓名
-				operatorIdentityNo:operatorIdentityNo,     	//身份证号码
-				registerAgreement:'Y',						 //平台注册协议
-				status:true,                                 //是否激活
-				password:password,                            //登陆密码
-				operatorMobile:operatorMobile,                 //手机号码
-				merStoreinfoId:merStoreinfoId,                  //店铺id
-				applyStatus:applyStatus,                             //申请店铺绑定的状态
-				doorImage:doorImage                    //门店合影照
+				operatorIdentityNo: operatorIdentityNo,     	//身份证号码
+				registerAgreement: 'Y',						 //平台注册协议
+				status: true,                                 //是否激活
+				password: password,                            //登陆密码
+				operatorMobile: operatorMobile,                 //手机号码
+				merStoreinfoId: merStoreinfoId,                  //店铺id
+				applyStatus: applyStatus,                             //申请店铺绑定的状态
+				doorImage: doorImage                    //门店合影照
 			},
 			dataType: 'json',
 			type: 'put',
 			success: function (res) {
 				console.log(res)
-				localStorage.setItem('merchantStoreinfoId',res.id)
-				localStorage.setItem('merchantStoreInfoName',res.storeName)				
+				localStorage.setItem('merchantStoreinfoId', res.id)
+				localStorage.setItem('merchantStoreInfoName', res.storeName)
 				mui.openWindow(
 					'certification_review.html',
 					'certification_review',
@@ -337,12 +333,48 @@
 			}
 		})
 	}
-
+	// 点击暂未合作
+	
+	// 上传无合作店铺的信息，获取编号
+	function getCode(){
+		var storeName = $('#storeName').val(),
+			storeProvince = localStorage.getItem('storeProvince'),
+			storeCity = localStorage.getItem('storeCity'),
+			storeArea = localStorage.getItem('storeArea'),
+			storeAddress = $('#storeAddress').val(),
+			storeMobile = $('#principalPhone').val(),
+			storeBusinessMan = $('#principalName').val()
+		$util.http('/api/merchant-store-infos', {
+			data:{
+				status:true,
+				storeProvince,
+				storeName,
+				storeCity,
+				storeArea,
+				storeAddress,
+				storeMobile,
+				storeBusinessMan
+			},
+			dataType: 'json',
+			type: 'post',
+			success: function (res) {
+				mui.openWindow(
+						'certification_review.html',
+						'certification_review',
+						{}
+			)		
+																			
+			}
+		})
+	}
 	// 点击下一步
 	$('#nextBtn1').on('tap', function () {
 		uppic()
 	})
-
+	// 点击下一步
+	$('#nextBtn2').on('tap', function () {
+		getCode()
+	})
 </script>
 
 </html>

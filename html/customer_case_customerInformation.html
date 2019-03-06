@@ -78,7 +78,7 @@
 					所在地：
 				</div>
 				<div style="display: inline-block;line-height: 60px;color:#999;">
-					{{form.customer_Province===''?'请选择所在地':form.customer_Province+'-'+form.customer_City+'-'+form.customer_Area}}
+					{{form.customer_Province===''?'请选择所在地':form.Province+'-'+form.City+'-'+form.Area}}
 				</div>
 				<a href="#">
 					<div class="info-more-container" @touchend="openAdPicker">
@@ -119,16 +119,22 @@
 				customer_City: '',
 				customer_Area: '',
 				customer_village: '',
-				customer_ADDRESS: ''
+				customer_ADDRESS: '',
+				Province: '',
+				City: '',
+				Area: ''
 			}
 		},
 		methods: {
 			openAdPicker() {
 				var _self = this;
 				$util.showAdPicker(__CITY__, function (sel) {
-					_self.form.customer_Province = sel[0].text;
-					_self.form.customer_City = sel[1].text;
-					_self.form.customer_Area = sel[2].text;
+					_self.form.customer_Province = sel[0].value;
+					_self.form.customer_City = sel[1].value;
+					_self.form.customer_Area = sel[2].value;
+					_self.form.Province = sel[0].text;
+					_self.form.City = sel[1].text;
+					_self.form.Area = sel[2].text;
 				});
 			},
 			openSexPicker() {
@@ -319,66 +325,6 @@
 			}
 		}
 	});
-// 	mui.init(
-// 	)
-// 	var infoMore = mui('.info-more-font')
-// 	var infoInput = mui('.info-input')
-// 
-// 
-// 	// 选择性别
-// 	infoMore[0].addEventListener('tap', function () {
-
-// 	})
-// 	//
-// 	infoMore[2].addEventListener('tap',function(){
-// 		$util.showAdPicker(__CITY__,function(selectItems){
-// 			console.log(selectItems)
-// 		});
-// 	})
-// 	
-// 
-// 	// 获取家居案例的接口
-// 	$(".publish-btn").on('tap', function () {
-// 		var id = localStorage.getItem('id'),
-// 		operatorId = localStorage.getItem('id'),
-// 			customerName = $('#customerName').val(),
-// 			customerSex = $('#customerSex').val(),
-// 			customerMobile = $('#customerMobile').val(),
-// 			area = $('#area').val(),
-// 			customerVillage = $('#customerVillage').val(),
-// 			casesName = localStorage.getItem('casesName'),
-// 			casesImage = localStorage.getItem('casesImage'),
-// 			casesDesc = localStorage.getItem('casesDesc'),
-// 			customerProvince = customerProvince,                                      //省市县填code
-// 			customerCity = customerCity,
-// 			customerArea = customerArea,
-// 			customerAddress
-// 		$util.http('/api/home-cases', {
-// 			data: {
-// 				storeId:storeId,															 //店铺id
-// 				operatorId:operatorId,															//顾问id
-// 				status:true,                           	                                   //状态
-// 				casesName:casesName,                                                   //案例名称
-// 				customerName:customerName,                                                       //客户名字
-// 				customerSex:1,                                                             //性别
-// 				customerMobile:customerMobile,                                              //手机
-// 				customerVillage:customerVillage,                                                //地址
-// 				casesImage:casesImage,                    //图片
-// 				casesDesc:casesDesc,                                                           //案例描述
-// 				customerProvince:customerProvince,                                                //省
-// 				customerCity:customerCity,														//市
-// 				customerArea:customerArea,														//区
-// 				customerAddress:'江苏省苏州市星湖街财富大厦飞翔花园'                          //街道
-// 			},
-// 			dataType: 'json',
-// 			type: 'post',
-// 			success: function (res) {
-// 				console.log(res)
-// 			}
-// 		})
-// 	})
-
-	//$util.showAdPicker(__CITY__);
 </script>
 
 </html>

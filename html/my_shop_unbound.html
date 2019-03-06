@@ -34,7 +34,7 @@
 	var operatorIdentityNo = localStorage.getItem('operatorIdentityNo')
 	mui.init(
 
-		// isReal()
+		
 	)
 
 	// 先判断是否实名认证
@@ -42,12 +42,6 @@
 
 	document.getElementById("bind-immediately").addEventListener('tap', function () {
 		if (operatorIdentityNo == null) {
-			mui.openWindow(
-				'my_shop_bind.html',
-				'my_shop_bind',
-				{}
-			)
-		} else {
 			var btnArray = ['取消', '去认证'];
 			mui.confirm('绑定前您还需要实名认证哦！', ' ', new Array('取消', '去认证'), function (e) {
 				if (e.index == 1) {
@@ -57,6 +51,12 @@
 					mui.toast('取消');
 				}
 			});
+		} else {
+			mui.openWindow(
+				'my_shop_bind.html',
+				'my_shop_bind',
+				{}
+			)
 		}
 
 	});

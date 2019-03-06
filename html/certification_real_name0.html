@@ -82,217 +82,218 @@
 <script src="../js/util.js"></script>
 <script type="text/javascript">
 	mui.init(
-	)
-	// 选择照相机还是相册
-	document.getElementById('face').addEventListener('tap', function () {
-		if (mui.os.plus) {
-			var buttonTit = [{
-				title: "拍照"
-			}, {
-				title: "从手机相册选择"
-			}];
-
-			plus.nativeUI.actionSheet({
-				title: "上传图片",
-				cancel: "取消",
-				buttons: buttonTit
-			}, function (b) { /*actionSheet 按钮点击事件*/
-				switch (b.index) {
-					case 0:
-						break;
-					case 1:
-						getImage1(); /*拍照*/
-						break;
-					case 2:
-						galleryImg1();/*打开相册*/
-						break;
-					default:
-						break;
-				}
-			})
-		}
-	}, false);
-
-	// 拍照获取图片  人像面
-	function getImage1() {
-		var c = plus.camera.getCamera();
-		c.captureImage(function (e) {
-			plus.io.resolveLocalFileSystemURL(e, function (entry) {
-				var imgSrc = entry.toLocalURL() + "?version=" + new Date().getTime(); //拿到图片路径
-				// 其他操作,比如预览展示
-				$('#face').attr('src', imgSrc)
-				localStorage.setItem('front', imgSrc)
-			}, function (e) {
-				console.log("读取拍照文件错误：" + e.message);
-			});
-		}, function (s) {
-			console.log("error" + s);
-		}, {
-				filename: "_doc/camera/"
-			})
-	}
-
-	// 从相册中选择图片 人像面
-	function galleryImg1() {
-		// 从相册中选择图片
-		plus.gallery.pick(function (e) {
-			console.log(e)
-			for (var i in e.files) {
-				var fileSrc = e.files[i];
-				// 其他操作,比如预览展示
-				$('#face').attr('src', fileSrc)
-				localStorage.setItem('front', fileSrc)
-			}
-		}, function (e) {
-			console.log("取消选择图片");
-		}, {
-				filter: "image",
-				multiple: true,
-				maximum: 1,
-				system: false,
-				onmaxed: function () {
-					plus.nativeUI.alert('最多只能选择1张图片');
-				}
-			});
-	}
-	// 选择照相机还是相册
-	document.getElementById('con').addEventListener('tap', function () {
-		if (mui.os.plus) {
-			var buttonTit = [{
-				title: "拍照"
-			}, {
-				title: "从手机相册选择"
-			}];
-
-			plus.nativeUI.actionSheet({
-				title: "上传图片",
-				cancel: "取消",
-				buttons: buttonTit
-			}, function (b) { /*actionSheet 按钮点击事件*/
-				switch (b.index) {
-					case 0:
-						break;
-					case 1:
-						getImage(); /*拍照*/
-						break;
-					case 2:
-						galleryImg();/*打开相册*/
-						break;
-					default:
-						break;
-				}
-			})
-		}
-	}, false);
-
-	// 拍照获取图片 国徽面
-	function getImage() {
-		var c = plus.camera.getCamera();
-		c.captureImage(function (e) {
-			plus.io.resolveLocalFileSystemURL(e, function (entry) {
-				var imgSrc = entry.toLocalURL() + "?version=" + new Date().getTime(); //拿到图片路径
-				// 其他操作,比如预览展示
-				$('#con').attr('src', imgSrc)
-				localStorage.setItem('back', imgSrc)
-			}, function (e) {
-				console.log("读取拍照文件错误：" + e.message);
-			});
-		}, function (s) {
-			console.log("error" + s);
-		}, {
-				filename: "_doc/camera/"
-			})
-	}
-
-	// 从相册中选择图片 国徽面
-	function galleryImg() {
-		// 从相册中选择图片
-		plus.gallery.pick(function (e) {
-			for (var i in e.files) {
-				var fileSrc = e.files[i];
-				// 其他操作,比如预览展示
-				$('#con').attr('src', fileSrc)
-				localStorage.setItem('back', fileSrc)
-			}
-		}, function (e) {
-			console.log("取消选择图片");
-		}, {
-				filter: "image",
-				multiple: true,
-				maximum: 1,
-				system: false,
-				onmaxed: function () {
-					plus.nativeUI.alert('最多只能选择1张图片');
-				}
-			});
-	}
-	function getQiniuToken(src) {
-		$util.uploadToQiniu(src, function (imgPath) {
-			// 完整的url
-			console.log(imgPath)
-			localStorage.setItem('imgPath', imgPath)
-		})
-	}
-	var front = localStorage.getItem('front')
-	var back = localStorage.getItem('back')
-
-	$('#submit').on('tap', function () {
-		var operatorName = $('#operatorName').val()
-		var operatorIdentityNo = $('#operatorIdentityNo').val()
-		var realAddress = $('#realAddress').val()
-		localStorage.setItem('operatorName', operatorName)
-		localStorage.setItem('operatorIdentityNo', operatorIdentityNo)
-		if (front == '') {
-			mui.toast('请上传正面照')
-		} else if (back == '') {
-			mui.toast('请上传反面照')
-		} else if (operatorName == '' || operatorName == '' || operatorIdentityNo == '') {
-			mui.toast('请填写身份信息')
-		} else (
-			getQiniuToken(front),
-			getQiniuToken(back),
-			$('.bottom-btn').css('background', '#007AFF'),
-			postmerchant(),
-			mui.openWindow('certification_shop.html', 'certification_shop', {})
 		)
-
-
-	})
-
-	// 上传身份证信息接口
-	function postmerchant(){
-		var front = localStorage.getItem('front')
-		var back = localStorage.getItem('back')		
-		var operatorCode = localStorage.getItem('operatorCode')	,
-		   operatorType = localStorage.getItem('operatorType'),
-			operatorName = $('#operatorName').val(),
-			id = localStorage.getItem('id'),
-			operatorIdentityNo = localStorage.getItem('operatorIdentityNo'),
-			password = localStorage.getItem('password'),
-			operatorMobile = localStorage.getItem('operatorMobile'),
-			operatorAddress = $('#realAddress').val()
-		$util.http('/api/merchant-operators', {
-			data:{
-				id :id,                                      //id
-				operatorIdentityObverse:front,   			//身份证正面照
-				operatorIdentityReverse:back,				//身份证反面照
-				operatorCode:operatorCode,					//顾问编号
-				operatorType:operatorType,					//顾问身份类型
-				operatorName: operatorName,	                       //真实姓名
-				operatorIdentityNo:operatorIdentityNo,     //身份证号码
-				registerAgreement:'Y',						 //平台注册协议
-				status:true,                                 //是否激活
-				password:password,                            //登陆密码
-				operatorMobile:operatorMobile,                 //手机号码
-				operatorAddress:operatorAddress                //居住地址
-			},
-			dataType: 'json',
-			type: 'put',
-			success: function (res) {
-				console.log(res)																						
+		// 选择照相机还是相册
+		document.getElementById('face').addEventListener('tap', function () {
+			if (mui.os.plus) {
+				var buttonTit = [{
+					title: "拍照"
+				}, {
+					title: "从手机相册选择"
+				}];
+	
+				plus.nativeUI.actionSheet({
+					title: "上传图片",
+					cancel: "取消",
+					buttons: buttonTit
+				}, function (b) { /*actionSheet 按钮点击事件*/
+					switch (b.index) {
+						case 0:
+							break;
+						case 1:
+							getImage1(); /*拍照*/
+							break;
+						case 2:
+							galleryImg1();/*打开相册*/
+							break;
+						default:
+							break;
+					}
+				})
 			}
+		}, false);
+	
+		// 拍照获取图片  人像面
+		function getImage1() {
+			var c = plus.camera.getCamera();
+			c.captureImage(function (e) {
+				plus.io.resolveLocalFileSystemURL(e, function (entry) {
+					var front = entry.toLocalURL() + "?version=" + new Date().getTime(); //拿到图片路径
+					// 其他操作,比如预览展示
+					$('#face').attr('src', front)
+					getQiniuToken(front)
+				}, function (e) {
+					console.log("读取拍照文件错误：" + e.message);
+				});
+			}, function (s) {
+				console.log("error" + s);
+			}, {
+					filename: "_doc/camera/"
+				})
+		}
+	
+		// 从相册中选择图片 人像面
+		function galleryImg1() {
+			// 从相册中选择图片
+			plus.gallery.pick(function (e) {
+				console.log(e)
+				for (var i in e.files) {
+					var front = e.files[i];
+					// 其他操作,比如预览展示
+					$('#face').attr('src', front)
+					getQiniuToken(front)
+				}
+			}, function (e) {
+				console.log("取消选择图片");
+			}, {
+					filter: "image",
+					multiple: true,
+					maximum: 1,
+					system: false,
+					onmaxed: function () {
+						plus.nativeUI.alert('最多只能选择1张图片');
+					}
+				});
+		}
+		// 选择照相机还是相册
+		document.getElementById('con').addEventListener('tap', function () {
+			if (mui.os.plus) {
+				var buttonTit = [{
+					title: "拍照"
+				}, {
+					title: "从手机相册选择"
+				}];
+	
+				plus.nativeUI.actionSheet({
+					title: "上传图片",
+					cancel: "取消",
+					buttons: buttonTit
+				}, function (b) { /*actionSheet 按钮点击事件*/
+					switch (b.index) {
+						case 0:
+							break;
+						case 1:
+							getImage(); /*拍照*/
+							break;
+						case 2:
+							galleryImg();/*打开相册*/
+							break;
+						default:
+							break;
+					}
+				})
+			}
+		}, false);
+	
+		// 拍照获取图片 国徽面
+		function getImage() {
+			var c = plus.camera.getCamera();
+			c.captureImage(function (e) {
+				plus.io.resolveLocalFileSystemURL(e, function (entry) {
+					var back = entry.toLocalURL() + "?version=" + new Date().getTime(); //拿到图片路径
+					// 其他操作,比如预览展示
+					$('#con').attr('src', back)
+					getQiniuToken(back)
+				}, function (e) {
+					console.log("读取拍照文件错误：" + e.message);
+				});
+			}, function (s) {
+				console.log("error" + s);
+			}, {
+					filename: "_doc/camera/"
+				})
+		}
+	
+		// 从相册中选择图片 国徽面
+		function galleryImg() {
+			// 从相册中选择图片
+			plus.gallery.pick(function (e) {
+				for (var i in e.files) {
+					var back = e.files[i];
+					// 其他操作,比如预览展示
+					$('#con').attr('src', back)
+					getQiniuToken(back)
+				}
+			}, function (e) {
+				console.log("取消选择图片");
+			}, {
+					filter: "image",
+					multiple: true,
+					maximum: 1,
+					system: false,
+					onmaxed: function () {
+						plus.nativeUI.alert('最多只能选择1张图片');
+					}
+				});
+		}
+		function getQiniuToken(src) {
+			$util.uploadToQiniu(src, function (imgPath) {
+				// 完整的url
+				console.log(imgPath)
+				localStorage.setItem('src', imgPath)
+			})
+		}
+		var front = localStorage.getItem('front')
+		var back = localStorage.getItem('back')
+	
+		$('.bottom-btn').on('tap', function () {
+			var front = localStorage.getItem('front'),
+				back = localStorage.getItem('back'),
+				operatorName = $('#operatorName').val(),
+				operatorIdentityNo = $('#operatorIdentityNo').val()
+			if (front == null || front =='') {
+				mui.toast('请上传正面照')
+			} else if (back == null || front =='') {
+				mui.toast('请上传反面照')
+			} else if (operatorName == '' || operatorName == '' || operatorIdentityNo == '') {
+				mui.toast('请填写身份信息')
+			} else (
+				postmerchant()
+	
+			)
+	
+	
 		})
-	}
+	
+		// 上传身份证信息接口
+		function postmerchant() {
+			var front = localStorage.getItem('front'),
+				back = localStorage.getItem('back'),
+				operatorName = $('#operatorName').val(),
+				operatorIdentityNo = $('#operatorIdentityNo').val(),
+				realAddress = $('#realAddress').val(),
+				operatorCode = localStorage.getItem('operatorCode'),
+				operatorType = localStorage.getItem('operatorType'),
+				id = localStorage.getItem('id'),
+				password = localStorage.getItem('password'),
+				operatorMobile = localStorage.getItem('operatorMobile'),
+				operatorAddress = $('#realAddress').val()
+	
+			localStorage.setItem('operatorName', operatorName),
+				localStorage.setItem('operatorIdentityNo', operatorIdentityNo)
+			$util.http('/api/merchant-operators', {
+				data: {
+					id: id,                                      //id
+					operatorIdentityObverse: front,   			//身份证正面照
+					operatorIdentityReverse: back,				//身份证反面照
+					operatorCode: operatorCode,					//顾问编号
+					operatorType: operatorType,					//顾问身份类型
+					operatorName: operatorName,	                       //真实姓名
+					operatorIdentityNo: operatorIdentityNo,     //身份证号码
+					registerAgreement: 'Y',						 //平台注册协议
+					status: true,                                 //是否激活
+					password: password,                            //登陆密码
+					operatorMobile: operatorMobile,                 //手机号码
+					operatorAddress: operatorAddress
+				},
+				dataType: 'json',
+				type: 'put',
+				success: function (res) {
+					mui.openWindow('certification_shop.html', 'certification_shop', {})
+				}
+			})
+		}
+	
 
 
 

@@ -206,7 +206,7 @@
 				<div id="mline4"></div>
 				<div id="mline5"></div>
 				<div class="menu-sgww-line">
-					<a href="customer_case0.html">
+					<a href="customer_case.html">
 						<div class="menu-sjal">
 							<div class="sjal-icon">
 								<img src="../img/sjal.png" style="width: 23px; height: 100%;" />
@@ -403,9 +403,7 @@
 	mui.init(
 		token = localStorage.getItem('token'),
 		id = localStorage.getItem('id'),
-		getMerchant(),
-		islead(),
-		isbind()
+		getMerchant()
 	)
 
 	// 弹出引导框
@@ -450,8 +448,8 @@
 				localStorage.setItem('merchantStoreinfoId',res.merStoreinfoId)
 				islead(res.operatorIdentityNo)
 				isbind(res.applyStatus)
-				localStorage.setItem('applyStatus',applyStatus)
 				merStoreinfo()
+				
 			}
 		})
 	}

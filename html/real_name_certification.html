@@ -40,7 +40,7 @@
 
 <body style="background-color: #EEEEEE;">
 	<header class="mui-bar mui-bar-nav mui-bar-nav-bg" style="background-color: white; box-shadow: none; border-bottom: 1px solid #CCCCCC; box-shadow: 0 5px 5px #DDDDDD;">
-		<span class="mui-icon mui-icon-back"></span>
+		<span class="mui-icon mui-icon-back" onClick="javascript :history.back(-1);"></span>
 		<span class="mui-title" style="font-size: 18px; color: #333333;">实名认证</span>
 	</header>
 	<div class="mui-content" style="background-color: #EEEEEE;">
@@ -225,7 +225,6 @@
 				// 其他操作,比如预览展示
 				$('#con').attr('src', back)
 				getQiniuToken(back)
-				// localStorage.setItem('back', fileSrc)
 			}
 		}, function (e) {
 			console.log("取消选择图片");
@@ -253,12 +252,15 @@
 			back = localStorage.getItem('back'),
 			operatorName = $('#operatorName').val(),
 			operatorIdentityNo = $('#operatorIdentityNo').val()
-		if (front == '') {
+		if (front == null || front =='') {
 			mui.toast('请上传正面照')
-		} else if (back == '') {
+			return
+		} else if (back == null || front =='') {
 			mui.toast('请上传反面照')
+			return
 		} else if (operatorName == '' || operatorIdentityNo == '') {
 			mui.toast('请填写身份信息')
+			return
 		} else (
 			postmerchant()
 		)

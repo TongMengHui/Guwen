@@ -157,7 +157,8 @@
     height: 60px;
     /*border: 1px solid #CCCCCC;*/
     }
-    input[type=number]{
+    input[type=number],
+    #code{
     width: 170px;
     padding-left: 0;
     padding-right: 0;
@@ -165,7 +166,10 @@
     font-size: 15px;
     color: #999999;
     border: 0;
-	}
+    }
+    #code{
+        margin-top: 20px;
+    }
 	input[type=button]{
 	width: 45px;
 	padding: 2px 0px;
