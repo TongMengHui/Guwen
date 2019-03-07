@@ -1,4 +1,4 @@
-var __CITY__=[{
+var __CITY__ = [{
 	"text": "北京市",
 	"value": "110000000000",
 	"children": [{

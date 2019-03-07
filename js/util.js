@@ -210,6 +210,19 @@
 					value:selectItems.value
 				});
 			});
+		},
+		//根据code取出对应的省市区名称
+		getAreaNameByCode(code,array){
+			for(var i=0;i<array.length;i++){
+				if(array[i].value==code){
+					return array[i].text;
+				}
+				if(array[i].hasOwnProperty('children')){
+					var name=this.getAreaNameByCode(code,array[i].children);
+					if(!!name)
+						return name;
+				}
+			}
 		}
 	}
 })();
