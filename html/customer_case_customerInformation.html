@@ -153,15 +153,16 @@
 				});
 			},
 			release() {
-				if (!this.form.customer_name) {
+				var self = self;
+				if (!self.form.customer_name) {
 					mui.toast('客户姓名不可为空');
 					return;
 				}
-				if (!this.form.customer_Province) {
+				if (!self.form.customer_Province) {
 					mui.toast('案例所在地不可为空');
 					return;
 				}
-				if (!this.form.customer_village) {
+				if (!self.form.customer_village) {
 					mui.toast('案例所在小区不可为空');
 					return;
 				}
@@ -170,15 +171,15 @@
 
 				if (localStorage.getItem('editId')) {
 					if (localStorage.getItem('operatorType') == 1) {
-						this.putHomecase(this.form)
+						self.putHomecase(self.form)
 					} else if (localStorage.getItem('operatorType') == 2) {
-						this.putDesigncase(this.form)
+						self.putDesigncase(self.form)
 					}
 				} else {
 					if (localStorage.getItem('operatorType') == 1) {
-						this.getHomecase(this.form)
+						self.getHomecase(self.form)
 					} else if (localStorage.getItem('operatorType') == 2) {
-						this.getDesigncase(this.form)
+						self.getDesigncase(self.form)
 					}
 				}
 

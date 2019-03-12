@@ -83,17 +83,7 @@
 						self.List = res
 						self.haveCase(res)
 						console.log(self.List)
-						Object.keys(__CITY__).forEach(function (key) {
-							console.log(__CITY__[key])
-							for(var i = 0;i <=__CITY__[key].length;i++ ){
-								if (__CITY__[key].value == self.List.customerProvince) {
-								self.List.customerProvince= __CITY__[key].text
-								Object.keys(__CITY__[key]).forEach(function (key){
-									console.log(__CITY__[key])
-								})
-							}
-							}
-						});
+						
 					}
 				})
 			},
@@ -101,21 +91,12 @@
 			getDesignCase: function () {
 				var self = this
 				id = this.id
-				$util.http('/api/home-cases-operator/?operatorId=' + id, {
+				$util.http('/api/design-cases-operator/?operatorId=' + id, {
 					dataType: 'json',
 					type: 'get',
 					success: function (res) {
 						self.List = res
 						self.haveCase(res)
-						Object.keys(__CITY__).forEach(function (key) {
-							if (__CITY__[key].value == self.List.customerProvince) {
-								self.List.customerProvince= __CITY__[key].text
-								Object.keys(__CITY__[key]).forEach(function (key){
-									console.log(__CITY__[key])
-								})
-							}
-							
-						});
 					}
 				})
 			},
