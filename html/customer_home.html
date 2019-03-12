@@ -517,12 +517,21 @@
 
 	$('.menu-wddp').on('tap', function () {
 		applyStatus = localStorage.getItem('applyStatus')
+		unbindApplyStatus = localStorage.getItem('unbindApplyStatus')
 		if (applyStatus == 1) {                                              //成功
-			mui.openWindow(
-				'my_shop_bind_success.html',
-				'my_shop_bind_success',
-				{}
-			)
+			if (unbindApplyStatus == 0) {
+				mui.openWindow(
+					'my_shop_bind_release.html',
+					'my_shop_bind_release',
+					{}
+				)
+			} else{
+				mui.openWindow(
+					'my_shop_bind_success.html',
+					'my_shop_bind_success',
+					{}
+				)
+			}
 		} else if (applyStatus == 0) {                                        //待审核
 			mui.openWindow(
 				'my_shop_review.html',

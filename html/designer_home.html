@@ -431,9 +431,9 @@
 				if (res.avatar) {
 					$('.person_pic').attr('src', res.avatar)
 				}
-				if(res.viewNum){
+				if (res.viewNum) {
 					$('.visit_num').text(res.viewNum)
-				}else{
+				} else {
 					$('.visit_num').text(0)
 				}
 				localStorage.setItem('operatorIdentityNo', res.operatorIdentityNo)
@@ -441,7 +441,7 @@
 				localStorage.setItem('applyStatus', res.applyStatus)
 				localStorage.setItem('operatorCode', res.operatorCode)
 				localStorage.setItem('merchantStoreinfoId', res.merStoreinfoId)
-				$('.code_num').text(res.operatorCode) 
+				$('.code_num').text(res.operatorCode)
 				islead(res.operatorIdentityNo)
 				isbind(res.applyStatus)
 				merStoreinfo()
@@ -503,11 +503,20 @@
 	$('.menu-wddp').on('tap', function () {
 		applyStatus = localStorage.getItem('applyStatus')
 		if (applyStatus == 1) {
-			mui.openWindow(
-				'my_shop_bind_success.html',
-				'my_shop_bind_success',
-				{}
-			)
+
+			if (unbindApplyStatus == 0) {
+				mui.openWindow(
+					'my_shop_bind_release.html',
+					'my_shop_bind_release',
+					{}
+				)
+			} else{
+				mui.openWindow(
+					'my_shop_bind_success.html',
+					'my_shop_bind_success',
+					{}
+				)
+			}
 		} else if (applyStatus == 0) {
 			mui.openWindow(
 				'my_shop_review.html',

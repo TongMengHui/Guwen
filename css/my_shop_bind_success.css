@@ -87,7 +87,8 @@
 	.rebinding-btn-content{
 	width: 100%;
 	height: 50px;
-	margin-top: 30px;
+	position: fixed;
+	bottom: 0;
 	}
 	.untie-shop-btn{
 	float: left;

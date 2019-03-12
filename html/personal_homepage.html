@@ -189,12 +189,12 @@
 			type: 'get',
 			success: function (res) {
 				console.log(res)
-				if (storeAddress == null) {
+				if (storeAddress == 'null') {
 					$('#area').text('尚未绑定店铺')
 				} else {
 					$('#area').text(res.province + '-' + res.city + '-' + res.area)
 				}
-				if (storeAddress == null) {
+				if (storeAddress == 'null') {
 					$('#shop').text('尚未绑定店铺')
 				} else {
 					$('#shop').text(res.companyName)

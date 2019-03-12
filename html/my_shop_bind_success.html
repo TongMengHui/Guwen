@@ -71,7 +71,7 @@
 </body>
 <script src="../js/mui.min.js"></script>
 <script type="text/javascript" src="../js/jquery-1.11.0.min.js"></script>
-<script type="text/javascript" src="../js/icon-back.js"></script>
+<!-- <script type="text/javascript" src="../js/icon-back.js"></script> -->
 <script src="../js/util.js"></script>
 <script type="text/javascript">
 	mui.init(
@@ -88,6 +88,22 @@
 			}
 		});
 	});
+	$('.mui-icon-back').on('tap',function(){
+		var operatorType = localStorage.getItem('operatorType')
+		if (operatorType == 1) {
+			mui.openWindow(
+				'customer_home.html',
+				'customer_home',
+				{}
+			)
+		} else if (operatorType == 2) {
+			mui.openWindow(
+				'designer_home.html',
+				'designer_home',
+				{}
+			)
+		}
+	})
 	// 获取顾问解绑店铺的接口
 	function release() {
 		var merchantOperatorId = localStorage.getItem('id'),
