@@ -139,22 +139,22 @@
 							}
 						});
 					});
-// 					var url = "http://upload.qiniu.com/"; 
-// 					var uploader = plus.uploader.createUpload(url,{},function(up,state){  
-// 						if( state==200 ) {
-// 							//这是文件名  真实的文件url未返回 需要手动添加前缀
-// 							var filename=JSON.parse(up.responseText).key;
-// 							if(callback)
-// 								callback('http://pmwf46ayp.bkt.clouddn.com/'+filename);
-// 						}
-// 						else  
-// 							console.log("上传失败 - ",state);  
-// 					});  
-// 					
-// 					uploader.addData("key",filename);  
-// 					uploader.addData("token",data.token);  
-// 					uploader.addFile(filepath,{"key":"file"});      // 固定值，千万不要改！！！！！！  
-// 					uploader.start();  
+					var url = "http://upload.qiniu.com/"; 
+					var uploader = plus.uploader.createUpload(url,{},function(up,state){  
+						if( state==200 ) {
+							//这是文件名  真实的文件url未返回 需要手动添加前缀
+							var filename=JSON.parse(up.responseText).key;
+							if(callback)
+								callback('http://pmwf46ayp.bkt.clouddn.com/'+filename);
+						}
+						else  
+							console.log("上传失败 - ",state);  
+					});  
+					
+					uploader.addData("key",filename);  
+					uploader.addData("token",data.token);  
+					uploader.addFile(filepath,{"key":"file"});      // 固定值，千万不要改！！！！！！  
+					uploader.start();  
 				}
 			});
 		},

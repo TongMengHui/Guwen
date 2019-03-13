@@ -245,13 +245,14 @@
 			localStorage.setItem('src', imgPath)
 		})
 	}
-
+	
 	//点击事件
 	$('#submit').on('tap', function () {
 		var front = localStorage.getItem('front'),
 			back = localStorage.getItem('back'),
 			operatorName = $('#operatorName').val(),
 			operatorIdentityNo = $('#operatorIdentityNo').val()
+			debugger
 		if (front == null || front =='') {
 			mui.toast('请上传正面照')
 			return
