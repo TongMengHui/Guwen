@@ -7,7 +7,7 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
 	<title>个人信息</title>
 	<link rel="stylesheet" href="../css/mui.css" />
-	<link rel="stylesheet" href="../css/common.css" />
+	<link rel="stylesheet" href="../css/common2.css" />
 	<link rel="stylesheet" type="text/css" href="../css/mui.picker.min.css" />
 	<link rel="stylesheet" type="text/css" href="../css/mui.dtpicker.css" />
 	<link rel="stylesheet" type="text/css" href="../css/user-infomation.css" />
@@ -59,7 +59,7 @@
 		<!--头像ID-->
 		<div>
 			<div class="touxiang-wrap">
-				<img src="../img/touxiang.png" alt="头像" class="touxiang position" id="avatar_img" onclick="avatar_change.click()" />
+				<img src="../img/touxiang.png" alt="头像" class="touxiang position" id="avatar_img" onclick="avatar_change.click()" style="border-radius:50%;" />
 				<input id="avatar_change" type="file" onchange="chooseAvatar(this)" style="display:none">
 				<!-- <img src="../img/avatar.png" class="avatar-img" id="avatar_img" onclick="avatar_change.click()" /> -->
 			</div>
@@ -188,7 +188,6 @@
 			}
 		}
 		progress = parseInt(num/13 * 100) 
-		console.log(progress)
 		mui("#progress").progressbar({ progress }).show();
 		$('#process').text('信息完整度'+progress+'%')
 	}
@@ -201,8 +200,7 @@
 		reader.onload = function () {
 			var img = document.getElementById('avatar_img');
 			img.src = this.result
-			var avatar = img.src
-			getQiniuToken(avatar)
+			getQiniuToken(this.result)
 		};
 	}
 
@@ -283,7 +281,7 @@
 	// 真实姓名
 	$('.msgChild').eq(1).find('input').on('tap', function () {
 		operatorName = localStorage.getItem('operatorName')
-		if (operatorName == null) {
+		if (operatorName == 'null') {
 			mui.openWindow(
 				'real_name_certification.html',
 				'real_name_certification',
@@ -294,7 +292,7 @@
 	})
 	function name() {
 		operatorName = localStorage.getItem('operatorName')
-		if (operatorName == null) {
+		if (operatorName == 'null') {
 			$('.msgChild').eq(1).find('input').val('请实名认证')
 		} else {
 			$('.msgChild').eq(1).find('input').val(operatorName)
@@ -304,7 +302,7 @@
 	// 身份证号
 	function identityNo() {
 		operatorIdentityNo = localStorage.getItem('operatorIdentityNo')
-		if (operatorIdentityNo == null) {
+		if (operatorIdentityNo == 'null') {
 			$('.msgChild').eq(2).find('input').val('请实名认证')
 		} else {
 			$('.msgChild').eq(2).find('input').val(operatorIdentityNo)
