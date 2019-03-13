@@ -111,37 +111,13 @@
 					})
 				}
 			}
-		},
+		}, 
 		mounted:function(){
 			mui.init(
 				this.getidList()
 			)
-			
 		}
-		
 	})
-	// mui.init(
-	// 	getidList()
-	// )
-	// var idAll
-	// // 获取id
-	// function getidList() {
-	// 	idList = localStorage.getItem('idList').split("")
-	// 	console.log(idList)
-	// 	getProduct()
-	// }
-	// // 通过id获取产品表
-	// function getProduct() {
-	// 	for (var i = 0; i < idList.length; i++) {
-	// 		$util.http('/api/mer-store-products/' + idList[i], {
-	// 			dataType: 'json',
-	// 			type: 'get',
-	// 			success: function (res) {
-	// 				console.log(res)
-	// 			}
-	// 		})
-	// 	}
-	// }
 </script>
 
 </html>

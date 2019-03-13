@@ -62,7 +62,7 @@
 	mui.init(
 
 	)
-	var phoneNumber, checkCode
+	var phoneNumber, checkCode,num =90
 	// 点击下一步
 	$('#nextBtn').on('tap', function () {
 		var textCode = $('#yanzheng_number').val()
@@ -82,7 +82,6 @@
 
 	// 点击获取验证码
 	$('.test-code-btn').on('tap', function () {
-		
 		yanzhengma()
 	})
 	// 手机号格式
@@ -94,51 +93,7 @@
 			mui.toast('请输入正确手机号')
 		}
 	}
-	// function istestCode(str) {
-	// 	var d = /^[\x01-\xfe]{8,20}$/
-	// 	if (str == '') {
-	// 		mui.toast('请输入密码')
-	// 	} else if (d.test(str) == false) {
-	// 		mui.toast('密码为8-20位')
-	// 	}
-	// }
 	
-	// 获取密码注册接口
-	// function register() {
-	// 	var testCode = $('#yanzheng_number').val()
-	// 	phoneNumber = $('#phone_number').val()
-	// 	var operatorType = localStorage.getItem('operatorType')
-	// 	phoneNum(phoneNumber)
-	// 	ischeckCode(testCode)
-	// 	localStorage.setItem('operatorMobile', phoneNumber)
-	// 	// localStorage.setItem('password', testCode)
-	// 	mui.ajax('http://39.98.77.177:8080/api/registerOperator', {
-	// 		data: {
-	// 			"operatorMobile": phoneNumber,
-	// 			"operatorType": operatorType,
-	// 			"password": testCode,
-	// 			"status": true
-	// 		},
-	// 		dataType: 'json', //服务器返回json格式数据
-	// 		type: 'post', //HTTP请求类型
-	// 		timeout: 10000, //超时时间设置为10秒
-	// 		headers: {
-	// 			'Content-Type': 'application/json',
-	// 		},
-	// 		success: function (data) {
-	// 			console.log(data)
-	// 			mui.openWindow(
-	// 				'login.html',
-	// 				'login',
-	// 				{}
-	// 			)
-	// 		},
-	// 		error: function (xhr, type, errorThrown) {
-	// 			//异常处理；
-	// 		}
-	// 	});
-	// }
-
 	// 获取验证码接口
 	function yanzhengma() {
 		phoneNumber = $('#phone_number').val()
@@ -155,13 +110,30 @@
 				checkCode = data.checkCode
 				localStorage.setItem('checkCode',checkCode)
 				console.log(data)
+				countdown()
 			},
 			error: function (xhr, type, errorThrown) {
 				//异常处理；
-
-
 			}
 		});
+	}
+
+	// 验证码倒计时
+	function countdown(){
+		if (num == 0) {
+			$('.test-code-btn').removeAttr("disabled");   
+			$('.test-code-btn').val("重新获取");
+			num = 90;
+		   } else { 
+		  
+			$('.test-code-btn').attr("disabled", true);
+			$('.test-code-btn').val( num+'"');
+			num--;
+			setTimeout(function() {
+				countdown()
+			},
+			1000)
+		   }
 	}
 </script>
 

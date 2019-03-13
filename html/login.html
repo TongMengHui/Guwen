@@ -18,7 +18,6 @@
 				<img src="../img/dllogo.png" style="height: 100%; width: 100%;" />
 			</div>
 		</div>
-
 		<div class="login-content">
 			<div class="login">
 				<div class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
@@ -27,7 +26,6 @@
 						<a class="mui-control-item" href="#account-login">账号登录</a>
 					</div>
 				</div>
-
 				<div class="mui-slider-group">
 					<div id="message-login" class="mui-slider-item mui-control-content mui-active a">
 						<form class="mui-input-group">
@@ -43,7 +41,7 @@
 							<div class="promt"></div>
 							<div class="mui-button-row">
 								<!-- <a href="designer_home.html"> -->
-									<button type="button" class="mui-btn-login" id="passwordlogin">登录</button>
+								<button type="button" class="mui-btn-login" id="passwordlogin">登录</button>
 								<!-- </a> -->
 								<a href="forgot_password_identity_verification.html">
 									<span class="mui-forget">忘记密码？</span>
@@ -64,7 +62,7 @@
 							</div>
 							<div class="mui-button-row">
 								<!-- <a href="designer_home.html"> -->
-									<button type="button" class="mui-btn-login" id="smscodelogin">登录</button>
+								<button type="button" class="mui-btn-login" id="smscodelogin">登录</button>
 								<!-- </a> -->
 								<a href="forgot_password_identity_verification.html">
 									<span class="mui-forget">忘记密码？</span>
@@ -98,190 +96,174 @@
 
 		</div>
 	</div>
-</body>
-<script src="../js/mui.min.js"></script>
-<script src="./../js/jquery-1.11.0.min.js"></script>
-<script src="../js/util.js"></script>
-<script type="text/javascript" charset="utf-8">
+	<script src="../js/mui.min.js"></script>
+	<script src="./../js/jquery-1.11.0.min.js"></script>
+	<script src="../js/util.js"></script>
+	<script type="text/javascript" charset="utf-8">
 	
-	mui.init(
-		clearStorage(),
-		logintype()
-		
-	);
-	var id ,username,password,checkCode,phoneNumber,
-	loginType = 'SMS_CODE'
+		mui.init(
+			clearStorage(),
+			logintype()
 	
-	//倒计时
-	var countdown = 60;
-	function setTime(obj) {
-		if (countdown == 0) {
-			obj.prop('disabled', false);
-			obj.text("重新获取");
-			countdown = 60; //60秒过后button上的文字初始化,计时器初始化;
-			return;
-		} else {
-			obj.prop('disabled', true);
-			obj.text(countdown + "\"");
-			countdown--;
-		}
-		setTimeout(function () {
-			setTime(obj)
-		}, 1000) //每1000毫秒执行一次
-	}
-	$('#getCode').on('tap',function () {
-		yanzhengma()
-	})
-	// 验证码登陆
-	$('#passwordlogin').on('tap',function(){
-		username = $('#phoneNum').val()
-		password = $('#code').val()
-		localStorage.setItem('operatorMobile',username)
-		localStorage.setItem('password',password)
-		getLogin()
-	})
-	// 账号密码登录
-	$('#smscodelogin').on('tap',function(){
-			username = $('#phonenum2').val()
-			password = $('#password').val()
-			localStorage.setItem('operatorMobile',username)
-			localStorage.setItem('password',password)
+		);
+		var id, username, password, checkCode, phoneNumber,
+			loginType = 'SMS_CODE',
+			num = 90
+	
+		$('#getCode').on('click', function () {
+			yanzhengma();
+		})
+		// 验证码登陆
+		$('#passwordlogin').on('tap', function () {
+			username = $('#phoneNum').val()
+			password = $('#code').val()
+			localStorage.setItem('operatorMobile', username)
+			localStorage.setItem('password', password)
 			getLogin()
 		})
-	// 登录接口请求
-	function getLogin() {
-		console.log(loginType)
-		mui.ajax('http://39.98.77.177:8080/api/authenticate/merchantOperator', {
-			data: {
-				username: username,
-				password: password,
-				rememberMe: true,
-				loginType:loginType
-			},
-			dataType: 'json', //服务器返回json格式数据
-			type: 'post', //HTTP请求类型
-			timeout: 10000, //超时时间设置为10秒
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			success: function (data) {
-				//服务器返回响应，根据响应结果，分析是否登录成功；
-				localStorage.setItem('token',data.id_token)
-				console.log(data)
-				getMerId()
-				
-			},
-			error: function (xhr, type, errorThrown) {
-				//异常处理；
-				console.log(type);
-			}
-		});
-	}
-	
-	// 验证码请求接口
-	function yanzhengma() {
-		phoneNumber = $('#phoneNum').val()
-		localStorage.setItem('operatorMobile',phoneNumber)
-		mui.ajax('http://39.98.77.177:8080/api/sendCheckCode?mobile=' + phoneNumber, {
-			dataType: 'json', //服务器返回json格式数据
-			type: 'get', //HTTP请求类型
-			timeout: 10000, //超时时间设置为10秒
-			headers: {
-				'Content-Type': 'application/json'
-			},
-			success: function (data) {
-				checkCode = data.checkCode
-				localStorage.setItem('password',checkCode)
-				console.log(data)
-			},
-			error: function (xhr, type, errorThrown) {
-				//异常处理；
-			}
-		});
-	}
-	
-	// 获取顾问id接口
-	function getMerId() {
-		// $util.http('/api/account', {
-		// 	dataType: 'json',
-		// 	type: 'get',
-		// 	success: function (res) {
-		// 		console.log(res)
-		// 		localStorage.setItem('id',res.id)
-		// 		id = res.id
-		// 		getMerchant()
-		// 	}
-		// })
-		var token = localStorage.getItem('token')
-		mui.ajax('http://39.98.77.177:8080/api/account', {
-			dataType: 'json', //服务器返回json格式数据
-			type: 'get', //HTTP请求类型
-			timeout: 10000, //超时时间设置为10秒
-			headers: {
-				'Content-Type': 'application/json',
-				'Authorization': 'Bearer ' + token
-			},
-			success: function (data) {
-				console.log(data)
-				localStorage.setItem('id',data.id)
-				getMerchant()
-			},
-			error: function (xhr, type, errorThrown) {
-				//异常处理；
-				console.log(type);
-			}
-		});
-	}
-	// 获取顾问表接口(merchant_operator)
-	function getMerchant() {
-		id= localStorage.getItem('id')
-		$util.http('/api/merchant-operators/' + id, {
-			dataType: 'json',
-			type: 'get',
-			success: function (res) {
-				console.log(res)	
-				localStorage.setItem('operatorType',res.operatorType)	
-				ishomepage()																					
-			}
+		// 账号密码登录
+		$('#smscodelogin').on('tap', function () {
+			username = $('#phonenum2').val()
+			password = $('#password').val()
+			localStorage.setItem('operatorMobile', username)
+			localStorage.setItem('password', password)
+			getLogin()
 		})
-	}
-	// 判断需要跳家居顾问主页还是设计顾问主页  1为家居顾问  2为设计顾问
-	function ishomepage(){
-		operatorType = localStorage.getItem('operatorType')	
-		if(operatorType == 1){
-			mui.openWindow(
+		// 登录接口请求
+		function getLogin() {
+			console.log(loginType)
+			mui.ajax('http://39.98.77.177:8080/api/authenticate/merchantOperator', {
+				data: {
+					username: username,
+					password: password,
+					rememberMe: true,
+					loginType: loginType
+				},
+				dataType: 'json', //服务器返回json格式数据
+				type: 'post', //HTTP请求类型
+				timeout: 10000, //超时时间设置为10秒
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				success: function (data) {
+					//服务器返回响应，根据响应结果，分析是否登录成功；
+					localStorage.setItem('token', data.id_token)
+					console.log(data)
+					getMerId()
+	
+				},
+				error: function (xhr, type, errorThrown) {
+					//异常处理；
+					console.log(type);
+				}
+			});
+		}
+	
+		// 验证码请求接口
+		function yanzhengma() {
+			phoneNumber = $('#phoneNum').val()
+			localStorage.setItem('operatorMobile', phoneNumber)
+			$util.http('/api/sendCheckCode?mobile=' + phoneNumber, {
+				dataType: 'json',
+				type: 'get',
+				success: function (res) {
+					checkCode = res.checkCode
+					localStorage.setItem('password', checkCode)
+					console.log(res)
+					count()
+				}
+			})
+		}
+	
+		// 获取顾问id接口
+		function getMerId() {
+			var token = localStorage.getItem('token')
+			mui.ajax('http://39.98.77.177:8080/api/account', {
+				dataType: 'json', //服务器返回json格式数据
+				type: 'get', //HTTP请求类型
+				timeout: 10000, //超时时间设置为10秒
+				headers: {
+					'Content-Type': 'application/json',
+					'Authorization': 'Bearer ' + token
+				},
+				success: function (data) {
+					console.log(data)
+					localStorage.setItem('id', data.id)
+					getMerchant()
+				},
+				error: function (xhr, type, errorThrown) {
+					//异常处理；
+					console.log(type);
+				}
+			});
+		}
+		// 获取顾问表接口(merchant_operator)
+		function getMerchant() {
+			id = localStorage.getItem('id')
+			$util.http('/api/merchant-operators/' + id, {
+				dataType: 'json',
+				type: 'get',
+				success: function (res) {
+					console.log(res)
+					localStorage.setItem('operatorType', res.operatorType)
+					ishomepage()
+				}
+			})
+		}
+		// 判断需要跳家居顾问主页还是设计顾问主页  1为家居顾问  2为设计顾问
+		function ishomepage() {
+			operatorType = localStorage.getItem('operatorType')
+			if (operatorType == 1) {
+				mui.openWindow(
 					'customer_home.html',
 					'customer_home',
 					{}
 				)
-		}else if(operatorType == 2){
-			mui.openWindow(
+			} else if (operatorType == 2) {
+				mui.openWindow(
 					'designer_home.html',
 					'designer_home',
 					{}
 				)
+			}
 		}
-	}
-	// 判断是密码登陆还是验证码登陆
-	function logintype(){
-		if($('.mui-control-item').eq(0).hasClass('a')){
-			loginType = 'SMS_CODE'
-		}else if($('.mui-control-item').eq(1).hasClass('a')){
-			loginType = 'PASSWORD'
+		// 判断是密码登陆还是验证码登陆
+		function logintype() {
+			if ($('.mui-control-item').eq(0).hasClass('a')) {
+				loginType = 'SMS_CODE'
+			} else if ($('.mui-control-item').eq(1).hasClass('a')) {
+				loginType = 'PASSWORD'
+			}
 		}
-	}
-	$('.mui-control-item').on('tap',function(){
-		$(this).siblings().removeClass('a')
-		$(this).addClass('a')
-		logintype()	
-		console.log(loginType)
-	})
+		$('.mui-control-item').on('tap', function () {
+			$(this).siblings().removeClass('a')
+			$(this).addClass('a')
+			logintype()
+			console.log(loginType)
+		})
 	
-	// 
-	// 清楚缓存
-	function clearStorage(){
-		localStorage.clear()
-	}
-</script>
-
+	
+		// 清楚缓存
+		function clearStorage() {
+			localStorage.clear()
+		}
+	
+		// 验证码倒计时
+		function count() {
+			if (num == 0) {
+				$('#getCode').removeAttr("disabled");
+				$('#getCode').text("重新获取");
+				num = 90;
+			} else {
+				$('#getCode').attr("disabled", true);
+				$('#getCode').text(num + '"');
+				num--;
+				setTimeout(function () {
+					count()
+				}, 1000)
+			}
+		}
+	
+	</script>
+</body>
 </html>

@@ -54,7 +54,7 @@
 					案例形象图
 				</div>
 				<div class="case-image-content">
-					<img :src="form.cases_image" v-if="!!form.cases_image" width="100%" height="100%"/>
+					<img :src="form.cases_image" v-if="!!form.cases_image"  style="object-fit: cover;width:100%; height:100%"/>
 					<div class="case-image-album-container" v-else @touchend="tapUpload('')">
 						<div class="case-image-album">
 							<img src="../img/album.png" class="case-image-icon" />
@@ -190,6 +190,7 @@
 					var c = plus.camera.getCamera();
 					c.captureImage(function(e) {
 						plus.io.resolveLocalFileSystemURL(e, function(entry) {
+							// cutImage(entry.toLocalURL())
 							var imgSrc = entry.toLocalURL(); //拿到图片路径
 							// 上传到七牛
 							_self.getQiniuToken(imgSrc);
@@ -201,6 +202,22 @@
 					}, {
 						filename: "_doc/camera/"
 					});
+				},
+				cutImage(path){
+					$.openWindow({
+                        url: 'cropper.html',
+                        id: 'cropper',
+                        extras: {
+                            path: path,
+                        },
+                        show: {
+                            aniShow: 'zoom-fade-in',
+                            duration: 800
+                        },
+                        waiting: {
+                            autoShow: true
+                        }
+                    });
 				},
 				getgallery() {
 					// 从相册中选择图片

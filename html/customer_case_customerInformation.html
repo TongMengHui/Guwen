@@ -153,10 +153,15 @@
 				});
 			},
 			release() {
-				var self = self;
+				var self =this,
+					t = /^[\u4E00-\u9FA5\uf900-\ufa2d·s]{2,20}$/,
+					p = /^1[3|4|5|7|8]\d{9}$/
 				if (!self.form.customer_name) {
 					mui.toast('客户姓名不可为空');
-					return;
+					return 
+				} else if(!t.test(self.form.customer_name)){
+					mui.toast('请填写正确的人名')
+					return
 				}
 				if (!self.form.customer_Province) {
 					mui.toast('案例所在地不可为空');
@@ -166,10 +171,14 @@
 					mui.toast('案例所在小区不可为空');
 					return;
 				}
-
+				if(!p.test(self.form.customer_mobile)&&self.form.customer_mobile!=''){
+					mui.toast('请输入正确的手机号');
+					return;
+				}
 
 
 				if (localStorage.getItem('editId')) {
+					var self =this
 					if (localStorage.getItem('operatorType') == 1) {
 						self.putHomecase(self.form)
 					} else if (localStorage.getItem('operatorType') == 2) {
@@ -197,7 +206,7 @@
 						customerSex: obj.customer_sex,                                                             //性别
 						customerMobile: obj.customer_mobile,                                              //手机
 						customerVillage: obj.customer_Province,                                                //地址
-						casesImage: obj.cases_image,                    //图片
+						casesImage: obj.cases_image,                    									//图片
 						casesDesc: obj.cases_desc,                                                           //案例描述
 						customerProvince: obj.customer_Province,                                                //省
 						customerCity: obj.customer_City,														//市
@@ -246,6 +255,7 @@
 							'customer_home',
 							{}
 						)
+						localStorage.setItem('editId',null)						
 					}
 				})
 			},
@@ -253,8 +263,6 @@
 			getDesigncase: function (obj) {
 				// storeId= localStorage.getItem('merchantStoreinfoId'),
 				var operatorId = localStorage.getItem('id')
-				 	
-
 				$util.http('/api/design-cases', {
 					data: {
 						operatorId: operatorId,															//顾问id
@@ -315,6 +323,7 @@
 							'designer_home',
 							{}
 						)
+						localStorage.setItem('editId',null)
 					}
 				})
 			},
